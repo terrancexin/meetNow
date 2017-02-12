@@ -1,7 +1,7 @@
 This is the proposal README. [Production README here](../README.md).
 
-# MeetNow: A MeetUp Clone
-[MeetNow](/wireframes/01-splash.png)
+# MeetNow: A Meetup Clone
+![MeetNow](/docs/wireframes/01-splash.png)
 
 
 ## Minimum Viable Product
