@@ -1,5 +1,6 @@
 # MeetNow
 MeetNow is a full-stack web application inspired by Meetup.
+
 Built using:
 -Ruby on Rails
 -ES6
