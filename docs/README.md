@@ -1,4 +1,4 @@
-This is the proposal README. ![Production README here](../README.md).
+This is the proposal README. [Production README here](../README.md).
 
 # MeetNow: A MeetUp Clone
 [MeetNow](/wireframes/01-splash.png)
