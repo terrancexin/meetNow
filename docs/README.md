@@ -1,12 +1,12 @@
 This is the proposal README. [Production README here](../README.md).
 
 # MeetNow: A Meetup Clone
-### [MeetNow](http://meetnow.herokuapp.com/)
+### [MeetNow Live](http://meetnow.herokuapp.com/)
 ![MeetNow](/docs/wireframes/01-splash.png)
 
 
 ## Minimum Viable Product
-MeetNow is a Meetup clone built using Ruby on Rails, ES6, and React+Redux.
+#### MeetNow is a Meetup clone built using Ruby on Rails, ES6, and React+Redux.
 
 The primary features of this website include:
 - [x] Production README
