@@ -1,6 +1,7 @@
 This is the proposal README. [Production README here](../README.md).
 
 # MeetNow: A Meetup Clone
+[MeetNow](http://meetnow.herokuapp.com/)
 ![MeetNow](/docs/wireframes/01-splash.png)
 
 
