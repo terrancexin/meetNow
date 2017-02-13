@@ -9,19 +9,28 @@
 **HomeContainer**
 - Logout
 - Search bar
-- Event feed
 - Nav bar
 - Side bar
 
-**GroupsContainer**
-- Groups page
+**GroupContainer**
+- GroupIndex
+- GroupPage
+- GroupList
+
+**GroupFormContainer**
+- GroupPage
   + EventContainer
-- Group creation page
+- GroupCreate
 
 **EventsContainer**
-- Events page
+- EventsPage
   + EventIndex
-- Events creation page
+- EventsList
+- EventIndex
+
+**EventFormContainer**
+- EventPage
+- EventCreate
 
 **Calendar Container**
 - Calendar
@@ -32,15 +41,16 @@
 
 ## Routes
 
-|Path                              |Component            |
-|----------------------------------|---------------------|
-|"/signup"                         |"AuthFormContainer"  |
-|"/login"                          |"AuthFormContainer"  |
-|"/home"                           |"HomeContainer"      |
-|"/home/events/"                   |"EventsListContainer"|
-|"/home/groups"                    |"GroupListContainer" |
-|"/group"                          |"GroupContainer"     |
-|"/group/create"                   |"GroupFormContainer" |
-|"/group/:groupId"                 |"GroupIndexContainer"|
-|"/group/:groupId/event/:eventId"  |"EventContainer"     |
-|"/group/:groupId/event/create"    |"EventFormContainer" |
+|Path                                   |Component            |
+|---------------------------------------|---------------------|
+|"/"                                    |"App"                |
+|"/signup"                              |"AuthFormContainer"  |
+|"/login"                               |"AuthFormContainer"  |
+|"/home"                                |"HomeContainer"      |
+|"/home/events/"                        |"EventsContainer"|
+|"/home/groups"                         |"GroupContainer" |
+|"/home/group"                          |"GroupContainer"     |
+|"/home/group/create"                   |"GroupFormContainer" |
+|"/home/group/:groupId"                 |"GroupsContainer"|
+|"/home/group/:groupId/event/:eventId"  |"EventsContainer"     |
+|"/home/group/:groupId/event/create"    |"EventFormContainer" |

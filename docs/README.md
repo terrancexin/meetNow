@@ -11,13 +11,14 @@ This is the proposal README. [Production README here](../README.md).
 The primary features of this website include:
 - [x] Production README
 - [ ] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
+- [ ] Authentication form
+  - New account creation, login, and guest/demo login
 - [ ] Groups (CRUD)
-  - Create, read, edit, and delete groups.
   - Join or leave groups.
+  - Create, read, edit, and delete groups.
 - [ ] Events (CRUD)
-  - Create, read, edit, and delete events.
   - RSVP to events.
+  - Create, read, edit, and delete events.
 - [ ] Calendar (on group page)
 - [ ] Search by location and group info (name, description)
 - [ ] Bonus: Live chats (unique feature)
@@ -37,7 +38,7 @@ The primary features of this website include:
 
 **Objective:** Functioning rails project with front-end Authentication.
 
-### Phase 2: Home page, Sign up page, Login page (1 day, by 6pm 2/15/2017)
+### Phase 2: Home page, Sign up page, Login page CSS (1 day, by 6pm 2/15/2017)
 
 **Objective:** Home page for no current user, functional sign up, login, and a front page for signed in users.
 
