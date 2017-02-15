@@ -1,8 +1,8 @@
 This is the proposal README. [Production README here](../README.md).
 
-# MeetNow: A Meetup Clone
-### [MeetNow Live](http://meetnow.herokuapp.com/)
-![MeetNow](/docs/wireframes/01-splash.png)
+# MeetNow!: A Meetup Clone
+### [MeetNow! Live](http://meet-now.herokuapp.com/)
+![MeetNow](/docs/wireframes/01-welcome.png)
 
 
 ## Minimum Viable Product
@@ -10,7 +10,7 @@ This is the proposal README. [Production README here](../README.md).
 
 The primary features of this website include:
 - [x] Production README
-- [ ] Hosting on Heroku
+- [x] Hosting on Heroku
 - [ ] Authentication form
   - New account creation, login, and guest/demo login
 - [ ] Groups (CRUD)
@@ -31,6 +31,7 @@ The primary features of this website include:
 - [API endpoints](api-endpoints.md)
 - [DB schema](schema.md)
 - [Sample State](sample-state.md)
+- [Redux Structure](redux-structure.md)
 
 ## Implementation Timeline
 

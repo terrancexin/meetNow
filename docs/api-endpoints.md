@@ -11,7 +11,7 @@
 ### Users
 
 - `POST /api/users`
-- `PATCH /api/users`
+- `PATCH /api/users/:id`
 
 ### Session
 
@@ -32,10 +32,10 @@
 
 - `GET /api/events`
   - ordered by date
-- `POST /api/groups/:groupId/events`
-- `GET /api/groups/:groupId/events/:id`
-- `DELETE /api/events/groups/:groupId/:id`
-- `PATCH /api/events/groups/:groupId/:id`
+- `POST /api/groups/groupId/events`
+- `GET /api/groups/groupId/events/:id`
+- `DELETE /api/events/groups/groupId/:id`
+- `PATCH /api/events/groups/groupId/:id`
 
 ### Calendars
 

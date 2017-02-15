@@ -1,12 +1,11 @@
 import React from 'react';
-import GreetingContainer from './greeting/greeting_container';
+import HeaderContainer from './shared/header_container';
 
 const App = ({ children }) => (
-  <div>
-    <h1>meetNow!</h1>
-    <GreetingContainer />
-    { children }
+  <div className="app">
+    <HeaderContainer />
+      {children}
   </div>
-)
+);
 
 export default App;
