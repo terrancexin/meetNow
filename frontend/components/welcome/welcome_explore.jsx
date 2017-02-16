@@ -16,15 +16,17 @@ const WelcomeExplore = (props) => (
         </Link><span>Music</span>
       </label>
       <label>
-        <Link to='/explore/food' className='explore-pic-links'>
-          <img className='explore-pics' src={window.assets.foodImage} />
-        </Link><span>Food</span>
+        <Link to='/explore/culture' className='explore-pic-links'>
+          <img className='explore-pics' src={window.assets.cultureImage} />
+        </Link><span>Culture</span>
       </label>
       <label>
         <Link to='/explore/tech' className='explore-pic-links'>
           <img className='explore-pics' src={window.assets.techImage} />
         </Link><span>Tech</span>
       </label>
+      </section>
+      <section className='explore-second-row'>
       <label>
         <Link to='/explore/art' className='explore-pic-links'>
           <img className='explore-pics' src={window.assets.artImage} />
@@ -41,9 +43,9 @@ const WelcomeExplore = (props) => (
         </Link><span>Health</span>
       </label>
       <label>
-        <Link to='/explore/business' className='explore-pic-links'>
-          <img className='explore-pics' src={window.assets.businessImage} />
-        </Link><span>Business</span>
+        <Link to='/explore/game' className='explore-pic-links'>
+          <img className='explore-pics' src={window.assets.gameImage} />
+        </Link><span>Game</span>
       </label>
     </section>
   </div>

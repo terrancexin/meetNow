@@ -7,8 +7,6 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import Welcome from './welcome/welcome';
 import HomePage from './home/home_page';
-// import AuthFormContainer from './authform/auth_form_container';
-// import LogInContainer from './authform/login';
 import AuthForm from './authform/auth_form';
 
 const Root = ({ store }) => {

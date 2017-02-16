@@ -6,25 +6,13 @@ import { logout } from '../../actions/session_actions';
 class WelcomeHeader extends React.Component {
   constructor(props){
     super(props);
-    this.handleSignOut = this.handleSignOut.bind(this);
-    this.state = { modalIsOpen: false };
-    this.closeModal = this.closeModal.bind(this);
-    this.openModal = this.openModal.bind(this);
-
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
-  closeModal () {
-    this.setState( { modalIsOpen: false });
-  }
-
-  handleSignOut(e){
+  handleLogout(e){
     e.preventDefault();
     this.props.logout();
     hashHistory.push('/');
-  }
-
-  openModal () {
-    this.setState( { modalIsOpen: true });
   }
 
   render(){
@@ -32,7 +20,7 @@ class WelcomeHeader extends React.Component {
     const text = this.props.loggedIn ? "Log out" : "Log in";
     let buttons;
     if (this.props.loggedIn){
-      buttons = (<Link onClick={this.handleSignOut}>Sign Out</Link>);
+      buttons = (<Link onClick={this.handleLogout}>Sign Out</Link>);
     } else {
       buttons = (<Link to="/login">Log in</Link>);
     }
@@ -50,7 +38,6 @@ class WelcomeHeader extends React.Component {
     );
   }
 }
-
 
 const mapStateToProps = (state) => {
   return ({
