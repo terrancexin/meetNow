@@ -1,14 +1,15 @@
+// React
 import React from 'react';
 import { Provider } from 'react-redux';
-
-// react router
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
-// react components
+// Components
 import App from './app';
+import Welcome from './welcome/welcome';
 import HomePage from './home/home_page';
-import AuthFormContainer from './authform/auth_form_container';
-import ProfileFormContainer from './profile/profile_form_container';
+// import AuthFormContainer from './authform/auth_form_container';
+// import LogInContainer from './authform/login';
+import AuthForm from './authform/auth_form';
 
 const Root = ({ store }) => {
 
@@ -30,9 +31,9 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route path="/" component={App}>
-          <IndexRoute component={HomePage}/>
-          <Route path="login" component={AuthFormContainer} onEnter={_redirectIfLoggedIn} />
-          <Route path="signup" component={AuthFormContainer} onEnter={_redirectIfLoggedIn} />
+          <IndexRoute component={Welcome} />
+          <Route path="login" component={AuthForm} onEnter={_redirectIfLoggedIn} />
+          <Route path="signup" component={AuthForm} onEnter={_redirectIfLoggedIn} />
         </Route>
       </Router>
     </Provider>

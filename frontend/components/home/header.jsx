@@ -28,6 +28,15 @@ class Header extends React.Component {
   }
 
   render(){
+
+    const text = this.props.loggedIn ? "Log out" : "Log in";
+    let buttons;
+    if (this.props.loggedIn){
+      buttons = (<Link onClick={this.handleSignOut}>Sign Out</Link>);
+    } else {
+      buttons = (<Link to="/login">Log in</Link>);
+    }
+
     return(
       <nav className="main-nav">
         <Link to='/' className='btn create-button'>Start a meetNow!</Link>
@@ -42,10 +51,10 @@ class Header extends React.Component {
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
-          contentLabel="Example Modal"
-
-        >
+          contentLabel="AuthFormModal">
         <h1>This is Modal!</h1>
+
+
 
         </Modal>
       </nav>
