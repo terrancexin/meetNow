@@ -10,15 +10,6 @@ class AuthForm extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidUpdate() {
-    this.redirectIfLoggedIn();
-  }
-
-  redirectIfLoggedIn() {
-    if (this.props.loggedIn) {
-      this.props.router.push("/");
-    }
-  }
 
   update(field) {
     return e => this.setState({
@@ -29,7 +20,9 @@ class AuthForm extends React.Component{
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm(user);
+    this.props.processForm(user).then(() => {
+      this.props.closeModal()
+    });
   }
 
   renderErrors() {
@@ -78,40 +71,50 @@ class AuthForm extends React.Component{
 
   navLink() {
     if (this.props.formType === 'login') {
-      return <Link to='/signup' className='form-bottom-link'>Sign up now.</Link>;
+      return <button onClick={this.props.toggleForm}>Sign up Now</button>;
     } else {
-      return <Link to='/login' className='form-bottom-link'>Log in to MeetNow!</Link>;
+      return <button onClick={this.props.toggleForm}>Log in Now</button>;
     }
   }
+
+  renderGuest() {
+   if (this.props.formType === "login"){
+       return <button type="button" className="guest-login" onClick={this.setGuest()}>Guest</button>
+   }
+  }
+
+  setGuest() {
+    return e => this.setState({
+      "username": "AppAcademy",
+      "password": "123abc"
+    });
+  }
+
   render() {
       return (
-        <div className='login-form-container'>
-          <form onSubmit={this.handleSubmit} className='login-form-box'>
-            <div className='login-form'>
-              <h3 className="login-header-text">{this.headerText()}</h3>
-              <div className='auth-errors'>{this.errorHandling()}</div>
+        <div className='auth-form-container'>
+          <form onSubmit={this.handleSubmit} className='auth-form-box'>
+            <div className='auth-form'>
+              <h3 className="auth-form-header">{this.headerText()}</h3>
+              <div className='auth-form-errors'>{this.errorHandling()}</div>
               <div className='login-labels'>
                 <label htmlFor='username'>Username  </label>
                 <input id='username'
                        type='text'
                        value={this.state.username}
                        onChange={this.update('username')}
-                       className='login-input'/>
+                       className='auth-input'/>
                 <label htmlFor='password'>Password</label>
                   <input id='password'
                          type='password'
                          value={this.state.password}
                          onChange={this.update('password')}
-                         className='login-input'/>
+                         className='auth-input'/>
               </div>
               <input type='submit' value={this.submitButtonText()} className='auth-form-submit-btn'></input>
+              {this.renderGuest()}
             </div>
-            <div className='below-form-item'>
-              <Link to="/" className='guest-login'>
-                <i className="fa fa-user" aria-hidden="true"></i>
-                <p>Login with guest account</p>
-              </Link>
-            </div>
+
             <div className='form-text'>
               {this.navText()} {this.navLink()}
             </div>
@@ -122,13 +125,15 @@ class AuthForm extends React.Component{
 
 }
 
-const mapStateToProps = ({ session }) => ({
-  loggedIn: Boolean(session.currentUser),
-  errors: session.errors
-});
+const mapStateToProps = ({ session }) => {
+  return {
 
-const mapDispatchToProps = (dispatch, { location }) => {
-  const formType = location.pathname.slice(1);
+    loggedIn: Boolean(session.currentUser),
+    errors: session.errors
+  }
+};
+
+const mapDispatchToProps = (dispatch, { formType }) => {
   const processForm = (formType === 'login') ? login : signup;
 
   return {

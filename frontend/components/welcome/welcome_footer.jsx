@@ -12,7 +12,10 @@ class WelcomeFooter extends React.Component {
   handleSignOut(e){
     e.preventDefault();
     this.props.logout();
-    hashHistory.push('/');
+    if (this.props.pathname !== "/") {
+
+      hashHistory.push('/');
+    }
   }
 
   render(){

@@ -8,3 +8,4 @@
 
 User.destroy_all
 User.create!(username: "Terrance", password: "123abc")
+User.create!(username: "AppAcademy", password: "123abc")

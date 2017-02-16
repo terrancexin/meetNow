@@ -13,8 +13,8 @@ class Welcome extends React.Component {
 
   render() {
     return (
-      <div className='welcome-header-container'>
-        <header className='welcome-header'>
+      <div className='welcome-container'>
+        <header className='welcome-header-container'>
           <WelcomeHeader />
         </header>
 
@@ -27,7 +27,7 @@ class Welcome extends React.Component {
         </div>
 
         <footer className='welcome-footer'>
-          <WelcomeFooter />
+          <WelcomeFooter pathname={this.props.location.pathname}/>
         </footer>
       </div>
     );

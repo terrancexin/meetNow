@@ -61,7 +61,7 @@ class WelcomeHeader extends React.Component {
              contentLabel="Example Modal"
            >
            <AuthForm />
-
+           is it working?
          </Modal>
       </div>
     );

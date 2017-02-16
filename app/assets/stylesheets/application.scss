@@ -5,6 +5,17 @@
 // @import "base/colors.scss";
 
 // Components
+.app-container {
+  margin: 0 auto;
+}
+
+
 @import "base/*";
 @import "components/*";
 @import "welcome/*";
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+}
