@@ -1,22 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './components/root';
 import configureStore from './store/store';
+import Root from './components/root';
+import Modal from 'react-modal';
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   let store;
-  if (window.currentUser) {
-    const preloadedState = {
-      session: {
-        currentUser: window.currentUser,
-        errors: []
-      }
-    };
+  if (window.currentUser){
+    const preloadedState = { session: { currentUser: window.currentUser} };
     store = configureStore(preloadedState);
   } else {
     store = configureStore();
   }
-
   window.store = store;
-  ReactDOM.render(<Root store={store}/>, document.getElementById('root'));
+
+  Modal.setAppElement(document.body);
+
+  const root = document.getElementById('root');
+  ReactDOM.render(<Root store={ store }/>, root);
 });

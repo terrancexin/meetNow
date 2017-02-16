@@ -1,127 +1,38 @@
 .main-nav {
-  border-bottom: 1px solid gray;
-  top: 0;
-  left: 0;
-  right: 0;
-  min-height: 61px;
-  width: 100%;
-  background-color: #f7f7f7;
   display: flex;
   align-items: center;
-  position: fixed;
-  z-index: 999;
-  box-shadow: 0 4px 4px -4px #5c5c5c;
-
-  .content {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    width: 80%;
-    position: relative;
-
-    section {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      width: 30%;
-
-      .middle-nav {
-        font-size: 17px;
-        color: #5c5c5c;
-        font-weight: 100;
-      }
-    }
-  }
-}
-
-.left-nav {
-
-  align-items: center;
-
-  i {
-    cursor: pointer;
-    margin-left: 5px;
-  }
-
-  i:hover {
-    transform: scale(1.01);
-  }
-}
-
-.middle-nav {
-  font-family: sans-serif;;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
 
   a {
-    font-weight: 300;
-  }
-
-  a:hover {
-    color: #ed1c40;
+    height: 20px;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 3px;
     text-decoration: none;
-    text-transform: none;
   }
-}
 
-.right-nav {
-  font-family: sans-serif;;
-
-  .session-buttons {
+  div {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    a {
-      display: flex;
-    }
-
-    h2 {
-      font-family: sans-serif;;
-      font-weight: 100;
-      display: flex;
-      margin: 0;
-      padding: 0 30px;
-      font-size: 30px;
-    }
-
-    button {
-      display: flex;
-      justify-content: center;
-      padding: 1px;
-    }
-
-    .sign-in {
-      cursor: pointer;
-      font-size: 17px;
-      color: #5c5c5c;
-      font-weight: 300;
-    }
-
-    .sign-in:hover {
-      color: #ed1c40;
-      transition: color 0.6s ease;
-      text-decoration: none;
-    }
-
-    .sign-up {
-      min-width: 104px;
-      height: 32px;
-      color: #fff;
-      background-color: #ed1c40;
-      text-decoration: none;
-      cursor: pointer;
-      line-height: 20px;
-      font-size: 16px;
-      margin: 8px 0;
-      font-weight: 200;
-      border: none;
-    }
-
-    .sign-up:hover {
-      background: #ed1c40;
-    }
+    align-items: baseline;
+    padding: 0 16px;
   }
-}
 
-.hidden {
-  display: none !important;
+  .signup-button {
+    background-color: #ed1c40;
+    color: #fff;
+    border-color: #ed1c40;
+    padding: 10px 16px;
+  }
+
+  .create-button {
+    color: rgba(0,0,0,.87);
+    font-size: 16px;
+    line-height: 1.45
+  }
+
+
 }

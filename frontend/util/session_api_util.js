@@ -1,39 +1,22 @@
-export const login = (user, success, error) => {
-  $.ajax({
-    method: 'post',
-    url: 'api/session',
-    data: {user},
-    success,
-    error
+export const login = (user) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/session',
+    data: user
   });
 };
 
-export const logout = (success, error) => {
-  $.ajax({
+export const signup = (user) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/users',
+    data: user
+  });
+};
+
+export const logout = () => {
+  return $.ajax({
     method: 'delete',
-    url: 'api/session',
-    success,
-    error: () => {
-      console.log("Logout error in SessionApiUtil#logout");
-    }
-  });
-};
-
-export const signup = (user, success, error) => {
-  $.ajax({
-    type: 'post',
-    url: 'api/users',
-    data: {user},
-    success,
-    error
-  });
-};
-
-export const createImage = (image, success, userId) => {
-  $.ajax({
-    method: "PATCH",
-    url: `api/users/${userId}`,
-    data: {user: {profile_img: image}},
-    success
+    url: '/api/session'
   });
 };

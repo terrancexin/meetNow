@@ -1,0 +1,40 @@
+.footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid grey;
+  font-family: sans-serif;
+  font-size: 16px;
+
+  position: absolute;
+  right: 0;
+  bottom: 0px;
+  left: 0;
+  background-color: #efefef;
+  text-align: center;
+
+  a {
+    height: 20px;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  div {
+    display: flex;
+    align-items: baseline;
+    padding: 0 16px;
+  }
+
+  .create-button {
+    color: rgba(0,0,0,.87);
+    font-family: helvetica,arial,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.45
+  }
+
+
+}
