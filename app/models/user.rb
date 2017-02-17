@@ -8,16 +8,24 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  first_name      :string
+#  last_name       :string
+#  email           :string
+#  city            :string
+#  bio             :text
 #
 
 class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
-  validates :session_token, :password_digest, presence: true
+  validates :session_token, :password_digest, :first_name, :last_name, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :ensure_session_token
 
   attr_reader :password
+
+  has_many :memberships
+  has_many :groups, through: :memberships, source: :group
 
   def self.find_by_credentials(username, password)
     user = self.find_by(username: username)

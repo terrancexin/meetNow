@@ -29,6 +29,7 @@ who                 | string    | not null
 description         | text      | not null
 city                | string    | not null
 state               | string    | not null
+event_id
 
 ## membership
 column name | data type | details

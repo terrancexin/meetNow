@@ -14,14 +14,14 @@
     1: {
       id: 1,
       name: "group name 1",
-      profile_image_url: "group1.jpg",
-      who: "programmers"
+      description: 'text',
+      members: [user1, user2, user3, user4, user5]
     },
     2: {
       id: 2,
       name: "group name 2",
-      profile_image_url: "group2.jpg",
-      who: "coders"
+      description: 'text',
+      members: [user1, user2, user3, user4, user5]
     }
   },
 

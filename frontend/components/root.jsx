@@ -8,6 +8,8 @@ import App from './app';
 import Welcome from './welcome/welcome';
 import HomePage from './home/home_page';
 import AuthForm from './authform/auth_form';
+import GroupPage from './group/group_page';
+import GroupIndex from './group/group_index';
 
 const Root = ({ store }) => {
 
@@ -31,6 +33,7 @@ const Root = ({ store }) => {
         <Route path="/" component={App}>
           <IndexRoute component={Welcome} />
         </Route>
+        <Route path='/groups' component={GroupIndex} />
       </Router>
     </Provider>
   );

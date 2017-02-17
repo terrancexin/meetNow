@@ -12,11 +12,14 @@ class WelcomeHeader extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.state = {
       modalOpen: false,
-      formType: null
+      formType: null,
+      username: '',
+      password: ''
     };
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.toggleFormType = this.toggleFormType.bind(this);
+    this.setGuest = this.setGuest.bind(this);
   }
 
   handleLogout(e){
@@ -44,6 +47,11 @@ class WelcomeHeader extends React.Component {
     };
   }
 
+  setGuest() {
+    this.setState({username: 'AppAcademy', password: '123abc'});
+  }
+
+
   render(){
 
     return(
@@ -51,7 +59,7 @@ class WelcomeHeader extends React.Component {
         <div><Link to='/signup' className='create-button'>Start a MeetNow!</Link></div>
         <div><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
         <ul className='header-buttons'>
-          <li><label className='language'>Language</label></li>
+          <li><Link to='/login' className='guest-button' onClick={this.setGuest}>Guest</Link></li>
           <li><button className='login-button' onClick={this.openModal("login")}>Log In</button></li>
           <li><button className='signup-button' onClick={this.openModal("signup")}>Sign Up</button></li>
         </ul>

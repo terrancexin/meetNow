@@ -119,7 +119,7 @@ class AuthForm extends React.Component{
                          className='auth-input'/>
                        <div className='submit-btn-wrapper'> <input type='submit' value={this.submitButtonText()} className='login-button' /></div>
 
-                       {this.renderGuest()}
+                      //  {this.renderGuest()}
               </div>
             </div>
           </form>

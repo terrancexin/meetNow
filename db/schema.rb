@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214171224) do
+ActiveRecord::Schema.define(version: 20170217144347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "group_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_memberships_on_group_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_memberships_on_user_id", unique: true, using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
@@ -21,6 +37,11 @@ ActiveRecord::Schema.define(version: 20170214171224) do
     t.string   "session_token",   null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "city"
+    t.text     "bio"
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 

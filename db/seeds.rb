@@ -7,5 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-User.create!(username: "Terrance", password: "123abc")
-User.create!(username: "AppAcademy", password: "123abc")
+Group.destroy_all
+
+User.create!(
+  username: "Terrance",
+  password: "123abc",
+  first_name: 'Terrance',
+  last_name: 'X'
+)
+
+User.create!(
+  username: "AppAcademy",
+  password: "123abc",
+  first_name: "App",
+  last_name: "Academy"
+)
+
+5.times { Group.create!(name: Faker::GameOfThrones.house, description: Faker::Friends.quote) }
