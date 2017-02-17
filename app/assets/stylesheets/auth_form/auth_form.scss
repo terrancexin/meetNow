@@ -1,0 +1,58 @@
+.login-labels label {
+  display: block;
+}
+
+.login-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+
+  label {
+    padding-bottom: 5px;
+  }
+
+  input[type="text"], input[type="password"] {
+    padding: 8px 4px;
+    font-size: 16px;
+    background-color: rgb(250, 255, 189);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-style: none;
+    border: 1px solid #aaa;
+  }
+
+  input[type="text"]:focus, input[type="password"]:focus {
+    border: 1px solid black;
+    outline: none;
+  }
+}
+
+.form-text {
+  display: block;
+  box-sizing: border-box;
+  height: 110px;
+  h1, label {
+    padding: 20px;
+  }
+
+  h1 {
+    color: $meetup-red;
+    font-size: 34px;
+    font-weight: 500;
+  }
+
+  label {
+    font-size: 14px;
+    padding-right: 0;
+  }
+
+  label:last-child {
+    padding-left: 5px;
+    color: $link-blue
+  }
+
+  input[type="submit"] {
+    padding: 50px;
+  }
+}

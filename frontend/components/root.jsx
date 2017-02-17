@@ -30,8 +30,6 @@ const Root = ({ store }) => {
       <Router history={hashHistory}>
         <Route path="/" component={App}>
           <IndexRoute component={Welcome} />
-          <Route path="login" component={AuthForm} onEnter={_redirectIfLoggedIn} />
-          <Route path="signup" component={AuthForm} onEnter={_redirectIfLoggedIn} />
         </Route>
       </Router>
     </Provider>

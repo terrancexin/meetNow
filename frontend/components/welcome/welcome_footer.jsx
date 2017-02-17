@@ -2,11 +2,25 @@ import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+import Modal from 'react-modal';
+import AuthForm from '../authform/auth_form';
+import modalStyle from './modalStyle';
 
 class WelcomeFooter extends React.Component {
   constructor(props){
     super(props);
     this.handleSignOut = this.handleSignOut.bind(this);
+    this.state = { modalOpen: false, formType: 'login' };
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({ modalOpen: true});
+  }
+
+  closeModal() {
+    this.setState({ modalOpen: false});
   }
 
   handleSignOut(e){
@@ -18,19 +32,31 @@ class WelcomeFooter extends React.Component {
     }
   }
 
+
   render(){
-    const text = this.props.loggedIn ? "Log out" : "Log in";
     let buttons;
     if (this.props.loggedIn){
-      buttons = (<Link onClick={this.handleSignOut}>Sign Out</Link>);
+      buttons =  (<Link className='footer-logout-button' onClick={this.handleSignOut}>Log out</Link>);
     } else {
-      buttons = (<Link to="/login">Log in</Link>);
+      buttons = (<button className='footer-login-button' onClick={this.openModal}>Log in</button> );
     }
 
     return(
-      <div>
+      <div className='footer-buttons'>
         <Link to='/' className='create-button'>Start a meetNow!</Link>
         {buttons}
+
+        <Modal
+          isOpen={this.state.modalOpen}
+          onRequestClose={this.closeModal}
+          style={modalStyle}
+          contentLabel='footer-login-modal'
+          >
+          <AuthForm
+            formType={this.state.formType}
+            closeModal={this.closeModal}
+            />
+        </Modal>
       </div>
     );
   }

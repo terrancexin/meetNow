@@ -62,11 +62,11 @@ export default class WelcomeVideo extends React.Component {
   }
 
 
+  // <div className="filter"></div>
   render(){
     return(
       <div className="homepage-hero-module">
         <div className="video-container">
-          <div className="filter"></div>
           <video autoPlay loop className="fillWidth">
             <source src={ window.assets.coverVideoMP4 } type="video/mp4" />
           </video>

@@ -46,31 +46,21 @@ class WelcomeHeader extends React.Component {
 
   render(){
 
-    const text = this.props.loggedIn ? "Log out" : "Log in";
-    let buttons;
-    if (this.props.loggedIn){
-      buttons = (<Link onClick={this.handleLogout}>Sign Out</Link>);
-    } else {
-      buttons = (<Link to="/login">Log in</Link>);
-    }
-
     return(
       <div className='welcome-header'>
-        <Link to='/signup' className='create-button'>Create a MeetNow!</Link>
-        <Link to='/' className='logo'><img src={window.assets.logo} /></Link>
-        <ul>
+        <div><Link to='/signup' className='create-button'>Start a MeetNow!</Link></div>
+        <div><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
+        <ul className='header-buttons'>
           <li><label className='language'>Language</label></li>
-          <li><Link to='/login' className='login-button'>Log in</Link></li>
-          <li><Link to='/signup' className='signup-button'>Sign up</Link></li>
-          <li><button onClick={this.openModal("login")}>Log In</button></li>
-          <li><button onClick={this.openModal("signup")}>Sign Up</button></li>
+          <li><button className='login-button' onClick={this.openModal("login")}>Log In</button></li>
+          <li><button className='signup-button' onClick={this.openModal("signup")}>Sign Up</button></li>
         </ul>
 
         <Modal
            isOpen={this.state.modalOpen}
            onRequestClose={this.closeModal}
            style={modalStyle}
-           contentLabel="Example Modal"
+           contentLabel="header-modal"
          >
          <AuthForm toggleForm={this.toggleFormType} formType={this.state.formType} closeModal={this.closeModal}/>
        </Modal>

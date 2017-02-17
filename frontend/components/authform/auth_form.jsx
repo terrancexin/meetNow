@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { login, logout, signup, clearSessionErrors } from './../../actions/session_actions';
 
@@ -38,9 +38,9 @@ class AuthForm extends React.Component{
   }
 
   errorHandling() {
-    return this.props.errors.map((error) => (
+    return this.props.errors.map((error, i) => (
       <ul>
-        <li key={error.id}>{error}</li>
+        <li key={i}>{error}</li>
       </ul>
     ));
   }
@@ -63,23 +63,23 @@ class AuthForm extends React.Component{
 
   navText() {
     if (this.props.formType === 'login') {
-      return 'New member? Sign up';
+      return 'Not registered with us yet?';
     } else {
-      return 'Already member? Log in';
+      return 'Already member?';
     }
   }
 
   navLink() {
     if (this.props.formType === 'login') {
-      return <button onClick={this.props.toggleForm}>Sign up Now</button>;
+      return <button onClick={this.props.toggleForm}>Sign up</button>;
     } else {
-      return <button onClick={this.props.toggleForm}>Log in Now</button>;
+      return <button onClick={this.props.toggleForm}>Log in</button>;
     }
   }
 
   renderGuest() {
    if (this.props.formType === "login"){
-       return <button type="button" className="guest-login" onClick={this.setGuest()}>Guest</button>
+       return <button className="guest-login" onClick={this.setGuest()}>Guest</button>
    }
   }
 
@@ -95,28 +95,30 @@ class AuthForm extends React.Component{
         <div className='auth-form-container'>
           <form onSubmit={this.handleSubmit} className='auth-form-box'>
             <div className='auth-form'>
-              <h3 className="auth-form-header">{this.headerText()}</h3>
+                <div className='form-text'>
+                  <h1 className="auth-form-header">{this.headerText()}</h1>
+                  <label className='nav-text'>{this.navText()}</label>
+                  <label className='nav-link'>{this.navLink()}</label>
+                </div>
+
               <div className='auth-form-errors'>{this.errorHandling()}</div>
               <div className='login-labels'>
-                <label htmlFor='username'>Username  </label>
+                <label htmlFor='username'>Username:</label>
                 <input id='username'
                        type='text'
                        value={this.state.username}
                        onChange={this.update('username')}
                        className='auth-input'/>
-                <label htmlFor='password'>Password</label>
+                     <label htmlFor='password'>Password:</label>
                   <input id='password'
                          type='password'
                          value={this.state.password}
                          onChange={this.update('password')}
                          className='auth-input'/>
-              </div>
-              <input type='submit' value={this.submitButtonText()} className='auth-form-submit-btn'></input>
-              {this.renderGuest()}
-            </div>
+                 <input type='submit' value={this.submitButtonText()} className='auth-form-submit-btn'></input>
+                 {this.renderGuest()}
 
-            <div className='form-text'>
-              {this.navText()} {this.navLink()}
+              </div>
             </div>
           </form>
         </div>
@@ -146,4 +148,4 @@ const mapDispatchToProps = (dispatch, { formType }) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(AuthForm));
+)(AuthForm);
