@@ -69,3 +69,14 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+input[type="submit"] {
+  background-color: $meetup-red;
+  color: #fff;
+  border-color: $meetup-red;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+}

@@ -62,7 +62,10 @@ class WelcomeHeader extends React.Component {
            style={modalStyle}
            contentLabel="header-modal"
          >
-         <AuthForm toggleForm={this.toggleFormType} formType={this.state.formType} closeModal={this.closeModal}/>
+         <AuthForm
+           toggleForm={this.toggleFormType}
+           formType={this.state.formType}
+           closeModal={this.closeModal}/>
        </Modal>
       </div>
     );

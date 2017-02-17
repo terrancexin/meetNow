@@ -1,33 +1,39 @@
 .welcome-header {
   display: flex;
-  align-items: baseline;;
+  align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid grey;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
-  font-weight: normal;
+  font-weight: 600;
 
-
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    padding: 0;
+    margin: 0 auto;
+    width: 90px;
+  }
 
   img {
-    max-width: 120px;
-    max-height: 70px;
-
+    max-width: 100px;
+    max-height: 100%;
 
   }
 
-  a {
+  div {
+    width: 300px;
+  }
+
+
+  li {
     height: 20px;
     padding: 10px;
     margin: 20px 0;
-    border-radius: 3px;
+    border-radius: 5px;
     text-decoration: none;
-  }
-
-  .logo {
-    padding: 0;
-    margin: 0;
-    height: 50px;
   }
 
   ul {
@@ -42,13 +48,26 @@
     color: #fff;
     border-color: $meetup-red;
     padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
   }
 
   .create-button {
     color: rgba(0,0,0,.87);
-    font-size: 16px;
-    line-height: 1.45
+    line-height: 1.45;
+
   }
 
+  .login-button {
+    cursor: pointer;
+  }
+
+  a {
+    height: 20px;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 3px;
+    text-decoration: none;
+  }
 
 }

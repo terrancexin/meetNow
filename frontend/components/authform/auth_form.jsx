@@ -6,8 +6,10 @@ import { login, logout, signup, clearSessionErrors } from './../../actions/sessi
 class AuthForm extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = { username: '', password: '', modalOpen: false };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderGuest = this.renderGuest.bind(this);
+
   }
 
 
@@ -85,8 +87,8 @@ class AuthForm extends React.Component{
 
   setGuest() {
     return e => this.setState({
-      "username": "AppAcademy",
-      "password": "123abc"
+      username: "AppAcademy",
+      password: "123abc",
     });
   }
 
@@ -115,9 +117,9 @@ class AuthForm extends React.Component{
                          value={this.state.password}
                          onChange={this.update('password')}
                          className='auth-input'/>
-                 <input type='submit' value={this.submitButtonText()} className='auth-form-submit-btn'></input>
-                 {this.renderGuest()}
+                       <div className='submit-btn-wrapper'> <input type='submit' value={this.submitButtonText()} className='login-button' /></div>
 
+                       {this.renderGuest()}
               </div>
             </div>
           </form>

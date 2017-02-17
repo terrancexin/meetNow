@@ -52,7 +52,15 @@
     color: $link-blue
   }
 
-  input[type="submit"] {
-    padding: 50px;
-  }
+
+}
+
+.guest-login {
+  background-color: $meetup-red;
+  color: #fff;
+  border-color: $meetup-red;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80px;
 }
