@@ -10,16 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217144347) do
+ActiveRecord::Schema.define(version: 20170218073448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body",       null: false
+    t.integer  "user_id",    null: false
+    t.integer  "event_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.datetime "time",        null: false
+    t.string   "location",    null: false
+    t.text     "description", null: false
+    t.integer  "group_id",    null: false
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["group_id"], name: "index_events_on_group_id", unique: true, using: :btree
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string   "name",        null: false
     t.text     "description", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "category"
+    t.string   "about"
+    t.string   "location"
+    t.datetime "founded"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -27,21 +52,37 @@ ActiveRecord::Schema.define(version: 20170217144347) do
     t.integer  "group_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_memberships_on_group_id", unique: true, using: :btree
-    t.index ["user_id"], name: "index_memberships_on_user_id", unique: true, using: :btree
+  end
+
+  create_table "organizers", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "group_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rsvps", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "event_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "username",           null: false
+    t.string   "password_digest",    null: false
+    t.string   "session_token",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "city"
     t.text     "bio"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 

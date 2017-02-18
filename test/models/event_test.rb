@@ -1,21 +1,22 @@
 # == Schema Information
 #
-# Table name: groups
+# Table name: events
 #
 #  id          :integer          not null, primary key
 #  name        :string           not null
+#  time        :datetime         not null
+#  location    :string           not null
 #  description :text             not null
+#  group_id    :integer          not null
+#  lat         :float
+#  lng         :float
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  category    :string
-#  about       :string
-#  location    :string
-#  founded     :datetime
 #
 
 require 'test_helper'
 
-class GroupTest < ActiveSupport::TestCase
+class EventTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

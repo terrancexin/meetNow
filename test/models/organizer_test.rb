@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: memberships
+# Table name: organizers
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer          not null
@@ -9,10 +9,10 @@
 #  updated_at :datetime         not null
 #
 
-class Membership < ActiveRecord::Base
-  validates :user_id, :group_id, presence: true
-  validates :user_id, uniqueness: { scope: :group_id }
+require 'test_helper'
 
-  belongs_to :user
-  belongs_to :group
+class OrganizerTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

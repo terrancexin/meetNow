@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAllGroups } from '../../actions/group_actions';
+import { fetchAllGroups } from '../../actions/group_actions';
 import { groupsArray } from '../../reducers/group_reducer';
+import CreateGroupForm from './group_form';
 
 class GroupIndex extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class GroupIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getAllGroups();
+    this.props.fetchAllGroups();
   }
 
   render () {
@@ -17,12 +18,13 @@ class GroupIndex extends React.Component {
       <ul>
         {
           this.props.groups.map(group => {
-          return <li>{group.name}
+          return <li key={group.id}>{group.name}
             <br/>
             {group.description}
           </li>;
         })
       }
+      <CreateGroupForm />
       </ul>
     );
   }
@@ -37,7 +39,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return (
     {
-      getAllGroups: () => dispatch(getAllGroups())
+      fetchAllGroups: () => dispatch(fetchAllGroups())
     }
   );
 

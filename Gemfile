@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'annotate'
   gem 'faker'
+  gem 'paperclip', '~> 5.0.0.beta1'
 end
 
 group :production do

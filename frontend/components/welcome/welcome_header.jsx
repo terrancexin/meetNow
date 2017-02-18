@@ -5,6 +5,7 @@ import { logout } from '../../actions/session_actions';
 import Modal from 'react-modal';
 import AuthForm from '../authform/auth_form';
 import modalStyle from './modalStyle';
+import GroupFormButton from '../group/group_form_button';
 
 class WelcomeHeader extends React.Component {
   constructor(props){
@@ -53,9 +54,10 @@ class WelcomeHeader extends React.Component {
 
 
   render(){
-
+    const button = "IS IT WORKING";
     return(
       <div className='welcome-header'>
+        <GroupFormButton button={button} />
         <div><Link to='/signup' className='create-button'>Start a MeetNow!</Link></div>
         <div><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
         <ul className='header-buttons'>

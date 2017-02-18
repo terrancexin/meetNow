@@ -8,7 +8,7 @@ import App from './app';
 import Welcome from './welcome/welcome';
 import HomePage from './home/home_page';
 import AuthForm from './authform/auth_form';
-import GroupPage from './group/group_page';
+import GroupShow from './group/group_show';
 import GroupIndex from './group/group_index';
 
 const Root = ({ store }) => {
@@ -34,6 +34,7 @@ const Root = ({ store }) => {
           <IndexRoute component={Welcome} />
         </Route>
         <Route path='/groups' component={GroupIndex} />
+        <Route path='/groups/:groupId' component={GroupShow} />
       </Router>
     </Provider>
   );

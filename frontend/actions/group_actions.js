@@ -19,8 +19,8 @@ const receiveGroupErrors = errors => ({
   errors
 });
 
-export const getAllGroups = () => dispatch => (
-  GroupApiUtil.getAllGroups()
+export const fetchAllGroups = () => dispatch => (
+  GroupApiUtil.fetchAllGroups()
     .then(groups =>{
       dispatch(receiveAllGroups(groups));
     },
@@ -28,17 +28,24 @@ export const getAllGroups = () => dispatch => (
 );
 
 
-export const createGroup = group => (
+export const createGroup = group => dispatch => (
   GroupApiUtil.createGroup(group)
     .then(group => dispatch(receiveOneGroup(group)),
     error => dispatch(receiveGroupErrors(error.responseJSON)))
 );
 
-export const getSingleGroup = id => (
-  GroupApiUtil.getSingleGroup(id)
-    .then(group => dispatch(receiveOneGroup(group)),
-    errors => dispatch(receiveGroupErrors(error.responseJSON)))
-);
+export const fetchSingleGroup = id => dispatch => {
+  return (
+    GroupApiUtil.fetchSingleGroup(id)
+      .then(group => {
+        // debugger
+        dispatch(receiveOneGroup(group));
+      },
+      errors => dispatch(receiveGroupErrors(error.responseJSON)))
+  );
+
+};
+
 
 
 // export const getAllGroups = function() {

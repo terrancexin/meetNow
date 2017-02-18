@@ -7,10 +7,21 @@
 #  description :text             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  category    :string
+#  about       :string
+#  location    :string
+#  founded     :datetime
 #
 
 class Group < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
+  validates :category, :description, :location, presence: true
+  validates :description, length: { minimum: 1 }
+
   has_many :memberships
+  has_many :events
+  has_many :organizers
+
   has_many :users, through: :memberships, source: :user
+  has_many :group_organizers, through: :organizer, source: :user
 end

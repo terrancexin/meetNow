@@ -2,17 +2,21 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  username        :string           not null
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  first_name      :string
-#  last_name       :string
-#  email           :string
-#  city            :string
-#  bio             :text
+#  id                 :integer          not null, primary key
+#  username           :string           not null
+#  password_digest    :string           not null
+#  session_token      :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  first_name         :string
+#  last_name          :string
+#  email              :string
+#  city               :string
+#  bio                :text
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
 #
 
 class User < ActiveRecord::Base
@@ -20,12 +24,22 @@ class User < ActiveRecord::Base
   validates :session_token, :password_digest, :first_name, :last_name, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  # has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "aa-logo-test.png"
+  # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
   after_initialize :ensure_session_token
 
   attr_reader :password
 
   has_many :memberships
+  has_many :comments
+  has_many :organizers
+  has_many :rsvps
+
   has_many :groups, through: :memberships, source: :group
+  has_many :comment_events, through: :comments, source: :event
+  has_many :organizer_groups, through: :organizer, source: :group
+  has_many :events, through: :rsvps, source: :event
 
   def self.find_by_credentials(username, password)
     user = self.find_by(username: username)
