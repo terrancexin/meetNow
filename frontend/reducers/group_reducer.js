@@ -5,7 +5,14 @@ import { merge } from 'lodash';
 
 const _nullGroup = {
   allGroups: {},
-  selectedGroup: {}
+  selectedGroup: {
+    name: '',
+    description: '',
+    location: '',
+    about: '',
+    founded: '',
+    events: {}
+  }
 };
 
 const GroupReducer = (state = _nullGroup, action ) => {
@@ -14,11 +21,9 @@ const GroupReducer = (state = _nullGroup, action ) => {
     case RECEIVE_ALL_GROUPS:
       return merge({}, state, { allGroups: action.groups });
     case RECEIVE_ONE_GROUP:
-    // debugger
       return merge({}, state, {selectedGroup: action.group});
     case RECEIVE_GROUP_ERRORS:
       return merge({}, state, action.errors);
-
     default:
       return state;
   }

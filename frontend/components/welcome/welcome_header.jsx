@@ -5,7 +5,6 @@ import { logout } from '../../actions/session_actions';
 import Modal from 'react-modal';
 import AuthForm from '../authform/auth_form';
 import modalStyle from './modalStyle';
-import GroupFormButton from '../group/group_form_button';
 
 class WelcomeHeader extends React.Component {
   constructor(props){
@@ -51,20 +50,59 @@ class WelcomeHeader extends React.Component {
   setGuest() {
     this.setState({username: 'AppAcademy', password: '123abc'});
   }
+  // componentWillUnmount () {
+  //   window.clearInterval(this.intervalId);
+  // }
 
+  // handleDemoLogin (e) {
+  //   const demo = {
+  //     username: 'AppAcademy',
+  //     password: 'password'
+  //   };
+  //   const chars = demo.email.length;
+  //
+  //   let i = 0;
+  //   this.intervalId = window.setInterval(() => {
+  //     i++;
+  //     if (i <= chars)  {
+  //       this.setState({
+  //         username: (demo.username.slice(0, i))
+  //       });
+  //     } else if (i <= demo.password.length + chars){
+  //       this.setState({
+  //         password: (demo.password.slice(0, i - chars))
+  //       });
+  //     } else {
+  //       this.handleSubmit();
+  //     }
+  //   }, 100);
+  //
+  //   return (e) => {
+  //     e.preventDefault();
+  //     this.props.submitForm(guest)
+  //       .then(this.redirect);
+  //   };
+  // }
 
   render(){
-    const button = "IS IT WORKING";
+    if (this.props.loggedIn) {
+
+    }
+
     return(
       <div className='welcome-header'>
-        <GroupFormButton button={button} />
-        <div><Link to='/signup' className='create-button'>Start a MeetNow!</Link></div>
+        <div>
+        <ul className='ul-create-button'><Link to='/groups' className='create-button'>Start a MeetNow!</Link></ul>
         <div><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
-        <ul className='header-buttons'>
-          <li><Link to='/login' className='guest-button' onClick={this.setGuest}>Guest</Link></li>
-          <li><button className='login-button' onClick={this.openModal("login")}>Log In</button></li>
-          <li><button className='signup-button' onClick={this.openModal("signup")}>Sign Up</button></li>
-        </ul>
+          { !this.props.loggedIn &&
+            <ul className='header-buttons'>
+              <li><button className='login-button' onClick={this.openModal("login")}>Log in</button></li>
+              <li><button className='signup-button' onClick={this.openModal("signup")}>Sign up</button></li>
+            </ul>
+           }
+
+           { this.props.loggedIn && <label className='signup-button'>Profile</label>}
+        </div>
 
         <Modal
            isOpen={this.state.modalOpen}

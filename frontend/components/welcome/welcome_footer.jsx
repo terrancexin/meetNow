@@ -36,7 +36,7 @@ class WelcomeFooter extends React.Component {
   render(){
     let buttons;
     if (this.props.loggedIn){
-      buttons =  (<Link className='footer-logout-button' onClick={this.handleSignOut}>Log out</Link>);
+      buttons =  (<button className='footer-logout-button' onClick={this.handleSignOut}>Log out</button>);
     } else {
       buttons = (<button className='footer-login-button' onClick={this.openModal}>Log in</button> );
     }

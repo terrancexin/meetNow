@@ -1,10 +1,12 @@
-export const createGroup = (group) => (
-  $.ajax({
-    method: 'POST',
-    url: '/api/groups',
-    data: { group }
-  })
-);
+export const createGroup = (group) => {
+  return (
+    $.ajax({
+      method: 'POST',
+      url: '/api/groups',
+      data: { group }
+    })
+  );
+};
 
 export const fetchAllGroups = () => (
   $.ajax({

@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchSingleGroup } from '../../actions/group_actions';
+import { fetchSingleGroup, updateGroup } from '../../actions/group_actions';
 import Modal from 'react-modal';
-import CreateGroupForm from './group_form';
 import modalStyle from '../welcome/modalStyle';
+import GroupsForm from './groups_form';
+import GroupsHeader from './groups_header';
+import EventShow from '../events/events_show.jsx';
 
-class GroupShow extends React.Component {
+class GroupsShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = { modalOpen: false };
@@ -29,16 +31,18 @@ class GroupShow extends React.Component {
     // debugger
     return (
       <div>
-        <h1>{this.props.group.name}</h1>
-        <h2>{this.props.group.description}</h2>
-        <button className='create-group-form-button' onClick={this.openModal}>Create Group</button>
+        <GroupsHeader />
+        <h1 className='group-name'>{this.props.group.name}</h1>
+        <ul className='group-side-bar-info'>
+          <li>{this.props.group.description}</li>
+          <li>{this.props.group.location}</li>
+        </ul>
 
       <Modal
         isOpen={this.state.modalOpen}
         onRequestClose={this.closeModal}
         style={modalStyle}
         contentLabel='create-group-form'>
-        <CreateGroupForm />
       </Modal>
       </div>
     );
@@ -55,7 +59,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return (
     {
-      fetchSingleGroup: (id) => dispatch(fetchSingleGroup(id))
+      fetchSingleGroup: (id) => dispatch(fetchSingleGroup(id)),
     }
   );
 
@@ -65,4 +69,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GroupShow);
+)(GroupsShow);

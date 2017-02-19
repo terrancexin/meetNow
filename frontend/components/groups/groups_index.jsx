@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAllGroups } from '../../actions/group_actions';
 import { groupsArray } from '../../reducers/group_reducer';
-import CreateGroupForm from './group_form';
+import { Link } from 'react-router';
 
-class GroupIndex extends React.Component {
+class GroupsIndex extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,16 +15,14 @@ class GroupIndex extends React.Component {
 
   render () {
     return (
-      <ul>
+      <ul className='group-index-wrapper'>
         {
           this.props.groups.map(group => {
-          return <li key={group.id}>{group.name}
-            <br/>
-            {group.description}
+          return <li key={group.id}>
+            <Link className='group-index' to={`/groups/${group.id}`}>{group.name}</Link>
           </li>;
         })
       }
-      <CreateGroupForm />
       </ul>
     );
   }
@@ -49,4 +47,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GroupIndex);
+)(GroupsIndex);

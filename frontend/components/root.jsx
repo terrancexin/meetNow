@@ -8,8 +8,10 @@ import App from './app';
 import Welcome from './welcome/welcome';
 import HomePage from './home/home_page';
 import AuthForm from './authform/auth_form';
-import GroupShow from './group/group_show';
-import GroupIndex from './group/group_index';
+import Groups from './groups/groups';
+import GroupsForm from './groups/groups_form';
+import GroupIndex from './groups/groups_index';
+import GroupsShow from './groups/groups_show';
 
 const Root = ({ store }) => {
 
@@ -33,8 +35,9 @@ const Root = ({ store }) => {
         <Route path="/" component={App}>
           <IndexRoute component={Welcome} />
         </Route>
-        <Route path='/groups' component={GroupIndex} />
-        <Route path='/groups/:groupId' component={GroupShow} />
+        <Route path='groups' component={Groups} />
+        <Route path='groups/:groupId' component={GroupsShow} />
+        <Route path='groupsform' component={GroupsForm} />
       </Router>
     </Provider>
   );
