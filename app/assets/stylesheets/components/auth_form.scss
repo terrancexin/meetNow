@@ -23,7 +23,7 @@
   }
 
   input[type="text"]:focus, input[type="password"]:focus {
-    border: 1px solid black;
+    border: 1px solid rgb(10, 8, 126);
     outline: none;
   }
 }
@@ -32,6 +32,8 @@
   display: block;
   box-sizing: border-box;
   height: 110px;
+  border-bottom: 1px solid lightgray;
+
   h1, label {
     padding: 20px;
   }
@@ -52,17 +54,13 @@
     color: $link-blue
   }
 
-
 }
 
-.guest-login {
-  background-color: $meetup-red;
-  color: #fff;
-  border-color: $meetup-red;
-  padding: 10px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 80px;
+.guest-login > input  {
+  background-color: $guest-login;
+  width: 99px;
+  border-color: $guest-login;
+
 }
 
 .submit-btn-wrapper {

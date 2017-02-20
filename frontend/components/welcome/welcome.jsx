@@ -17,7 +17,7 @@ class Welcome extends React.Component {
           <WelcomeHeader />
         </header>
 
-        <div className="xxx">
+        <div>
           <WelcomeVideo />
         </div>
 

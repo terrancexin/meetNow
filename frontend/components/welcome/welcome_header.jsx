@@ -50,39 +50,6 @@ class WelcomeHeader extends React.Component {
   setGuest() {
     this.setState({username: 'AppAcademy', password: '123abc'});
   }
-  // componentWillUnmount () {
-  //   window.clearInterval(this.intervalId);
-  // }
-
-  // handleDemoLogin (e) {
-  //   const demo = {
-  //     username: 'AppAcademy',
-  //     password: 'password'
-  //   };
-  //   const chars = demo.email.length;
-  //
-  //   let i = 0;
-  //   this.intervalId = window.setInterval(() => {
-  //     i++;
-  //     if (i <= chars)  {
-  //       this.setState({
-  //         username: (demo.username.slice(0, i))
-  //       });
-  //     } else if (i <= demo.password.length + chars){
-  //       this.setState({
-  //         password: (demo.password.slice(0, i - chars))
-  //       });
-  //     } else {
-  //       this.handleSubmit();
-  //     }
-  //   }, 100);
-  //
-  //   return (e) => {
-  //     e.preventDefault();
-  //     this.props.submitForm(guest)
-  //       .then(this.redirect);
-  //   };
-  // }
 
   render(){
     if (this.props.loggedIn) {
@@ -107,8 +74,9 @@ class WelcomeHeader extends React.Component {
                 <li><button className='signup-button' onClick={this.openModal("signup")}>Sign up</button></li>
               </ul>
             }
-
-           { this.props.loggedIn &&   <ul className='header-buttons'><li><button className='signup-button' onClick={this.openModal("signup")}>Profile</button></li></ul>}
+            {
+              this.props.loggedIn &&   <ul className='header-buttons'><li><button className='signup-button' onClick={this.openModal("signup")}>Profile</button></li></ul>
+            }
         </div>
 
         <Modal
@@ -122,6 +90,7 @@ class WelcomeHeader extends React.Component {
            formType={this.state.formType}
            closeModal={this.closeModal}/>
        </Modal>
+
       </div>
     );
   }

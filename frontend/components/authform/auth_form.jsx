@@ -9,7 +9,7 @@ class AuthForm extends React.Component{
     this.state = { username: '', password: '', modalOpen: false };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderGuest = this.renderGuest.bind(this);
-    // this.handleDemoLogin = this.handleDemoLogin.bind(this);
+    this.handleGuestLogIn = this.handleGuestLogIn.bind(this);
 
   }
 
@@ -68,7 +68,7 @@ class AuthForm extends React.Component{
     if (this.props.formType === 'login') {
       return 'Not registered with us yet?';
     } else {
-      return 'Already member?';
+      return 'Already a member?';
     }
   }
 
@@ -80,54 +80,50 @@ class AuthForm extends React.Component{
     }
   }
 
-  renderGuest() {
-   if (this.props.formType === "login"){
-       return <button className="guest-login" onClick={this.setGuest()}>Guest</button>
-   }
-  }
-
   componentWillUnmount () {
     window.clearInterval(this.intervalId);
   }
 
-  // handleDemoLogin (e) {
-  //   const demo = {
-  //     username: 'AppAcademy',
-  //     password: 'password'
-  //   };
-  //   const chars = demo.username.length;
-  //
-  //   let i = 0;
-  //   this.intervalId = window.setInterval(() => {
-  //     i++;
-  //     if (i <= chars)  {
-  //       this.setState({
-  //         username: (demo.username.slice(0, i))
-  //       });
-  //     } else if (i <= demo.password.length + chars){
-  //       this.setState({
-  //         password: (demo.password.slice(0, i - chars))
-  //       });
-  //     } else {
-  //       // this.handleSubmit();
-  //
-  //         // e.preventDefault();
-  //         const user = this.state;
-  //         // debugger
-  //         this.props.processForm(user).then(() => {
-  //           this.props.closeModal()
-  //         });
-  //
-  //     }
-  //   }, 100);
+  handleGuestLogIn (e) {
+    const guest = {
+      username: 'AppAcademy',
+      password: 'password'
+    };
 
-    // return (e) => {
-    //   e.preventDefault();
-    //   // this.props.submitForm(guest)
-    //   //   .then(this.redirect);
-    //   this.props.closeModal();
-    // };
-  // }
+    const chars = guest.username.length;
+
+    let i = 0;
+    this.intervalId = window.setInterval(() => {
+      i++;
+      if (i <= chars)  {
+        this.setState({
+          username: (guest.username.slice(0, i))
+        });
+      } else if (i <= guest.password.length + chars){
+        this.setState({
+          password: (guest.password.slice(0, i - chars))
+        });
+      } else {
+        this.handleSubmit();
+      }
+    }, 100);
+
+    return (e) => {
+      e.preventDefault();
+      this.handleSubmit();
+      this.props.closeModal();
+    };
+  }
+
+  renderGuest() {
+    if (this.props.formType === "login"){
+      return (
+        <div className='guest-login'>
+          <input type="submit" value="Guest" className="guest-login" onClick={this.setGuest()}/>
+        </div>
+      );
+    }
+  }
 
   setGuest() {
     return e => this.setState({
