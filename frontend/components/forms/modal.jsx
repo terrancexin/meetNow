@@ -2,13 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { receiveModal } from '../../actions/modal_actions';
 import LogInForm from './log_in_form';
-import SignUpForm from './sign_up_form';
-import CreateNewGroup from './create_new_group';
 
 const modals = {
-  signUp: <SignUpForm />,
+
   logIn: <LogInForm />,
-  createNewGroup: <CreateNewGroup />
+
 };
 
 class Modal extends React.Component {

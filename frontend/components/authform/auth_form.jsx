@@ -9,6 +9,7 @@ class AuthForm extends React.Component{
     this.state = { username: '', password: '', modalOpen: false };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderGuest = this.renderGuest.bind(this);
+    // this.handleDemoLogin = this.handleDemoLogin.bind(this);
 
   }
 
@@ -85,9 +86,52 @@ class AuthForm extends React.Component{
    }
   }
 
+  componentWillUnmount () {
+    window.clearInterval(this.intervalId);
+  }
+
+  // handleDemoLogin (e) {
+  //   const demo = {
+  //     username: 'AppAcademy',
+  //     password: 'password'
+  //   };
+  //   const chars = demo.username.length;
+  //
+  //   let i = 0;
+  //   this.intervalId = window.setInterval(() => {
+  //     i++;
+  //     if (i <= chars)  {
+  //       this.setState({
+  //         username: (demo.username.slice(0, i))
+  //       });
+  //     } else if (i <= demo.password.length + chars){
+  //       this.setState({
+  //         password: (demo.password.slice(0, i - chars))
+  //       });
+  //     } else {
+  //       // this.handleSubmit();
+  //
+  //         // e.preventDefault();
+  //         const user = this.state;
+  //         // debugger
+  //         this.props.processForm(user).then(() => {
+  //           this.props.closeModal()
+  //         });
+  //
+  //     }
+  //   }, 100);
+
+    // return (e) => {
+    //   e.preventDefault();
+    //   // this.props.submitForm(guest)
+    //   //   .then(this.redirect);
+    //   this.props.closeModal();
+    // };
+  // }
+
   setGuest() {
     return e => this.setState({
-      username: "AppAcademy",
+      username: "Terrance",
       password: "123abc",
     });
   }
@@ -117,9 +161,12 @@ class AuthForm extends React.Component{
                          value={this.state.password}
                          onChange={this.update('password')}
                          className='auth-input'/>
-                       <div className='submit-btn-wrapper'> <input type='submit' value={this.submitButtonText()} className='login-button' /></div>
+                       <div className='submit-btn-wrapper'>
+                         <input type='submit' value={this.submitButtonText()} className='login-button' />
 
-                      //  {this.renderGuest()}
+                         {this.renderGuest()}
+                       </div>
+
               </div>
             </div>
           </form>

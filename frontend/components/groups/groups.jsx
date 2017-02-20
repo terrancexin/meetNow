@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import GroupsHeader from './groups_header';
+import WelcomeHeader from '../welcome/welcome_header';
 import GroupsIndex from './groups_index';
 
 class Groups extends React.Component {
@@ -12,7 +12,7 @@ class Groups extends React.Component {
     return (
       <div className='welcome-container'>
         <header className='groups-header-container'>
-          <GroupsHeader />
+          <WelcomeHeader />
           <GroupsIndex />
         </header>
       </div>

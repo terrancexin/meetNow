@@ -1,13 +1,37 @@
-.hero-video {
+.cover-video {
   background-color: white;
   width: 100%;
   position: relative;
   top: -200px;
-  height: 600px;
   overflow: hidden;
 
 }
 
 video {
   width: 100%;
+}
+
+.cover-video > h1 {
+  width: 100%;
+  color: rgb(240, 239, 239);
+  font-size: 60px;
+  position: absolute;
+  top: 50%;
+  left: 33%;
+  text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+}
+
+.cover-video > p {
+  width: 100%;
+  color: rgb(240, 239, 239);
+  font-size: 20px;
+  position: absolute;
+  top: 60%;
+  left: 40%;
+  text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+
+}
+
+.splash-main {
+  height: auto;
 }

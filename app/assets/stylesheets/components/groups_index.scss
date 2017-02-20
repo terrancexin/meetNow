@@ -1,0 +1,41 @@
+.group-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid red;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: $meetup-red;
+  color: white;
+}
+
+.group-index-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0 auto;
+
+  li {
+    width: 33%;
+
+    a {
+      height: 50px;
+      border: 1px solid red;
+    }
+  }
+}
+
+.group-pics > {
+  position: relative;
+  // width: 60%;
+
+  h4 {
+    position: absolute;
+    top: 50px;
+    left: 150px;
+    // width: 100%;
+    z-index: 100;
+  }
+}

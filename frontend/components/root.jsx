@@ -6,8 +6,6 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 // Components
 import App from './app';
 import Welcome from './welcome/welcome';
-import HomePage from './home/home_page';
-import AuthForm from './authform/auth_form';
 import Groups from './groups/groups';
 import GroupsForm from './groups/groups_form';
 import GroupIndex from './groups/groups_index';

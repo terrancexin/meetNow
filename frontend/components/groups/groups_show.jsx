@@ -4,8 +4,7 @@ import { fetchSingleGroup, updateGroup } from '../../actions/group_actions';
 import Modal from 'react-modal';
 import modalStyle from '../welcome/modalStyle';
 import GroupsForm from './groups_form';
-import GroupsHeader from './groups_header';
-import EventShow from '../events/events_show.jsx';
+import WelcomeHeader from '../welcome/welcome_header';
 
 class GroupsShow extends React.Component {
   constructor(props) {
@@ -31,12 +30,15 @@ class GroupsShow extends React.Component {
     // debugger
     return (
       <div>
-        <GroupsHeader />
-        <h1 className='group-name'>{this.props.group.name}</h1>
+        <WelcomeHeader />
+        <h1 className='group-banner'>{this.props.group.name}</h1>
         <ul className='group-side-bar-info'>
           <li>{this.props.group.description}</li>
           <li>{this.props.group.location}</li>
         </ul>
+
+        <section>Events</section>
+        <div>Right side bar</div>
 
       <Modal
         isOpen={this.state.modalOpen}

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchAllGroups } from '../../actions/group_actions';
 import { groupsArray } from '../../reducers/group_reducer';
 import { Link } from 'react-router';
+import WelcomeExplore from '../welcome/welcome_explore';
 
 class GroupsIndex extends React.Component {
   constructor(props) {
@@ -15,18 +16,38 @@ class GroupsIndex extends React.Component {
 
   render () {
     return (
-      <ul className='group-index-wrapper'>
-        {
-          this.props.groups.map(group => {
-          return <li key={group.id}>
-            <Link className='group-index' to={`/groups/${group.id}`}>{group.name}</Link>
-          </li>;
-        })
-      }
-      </ul>
+
+    <div>
+      <h1 className='group-banner'>Groups</h1>
+        <ul className='group-index-wrapper'>
+          {
+            this.props.groups.map(group => {
+            return (
+              <li className='group-pics' key={group.id}>
+                <GroupsIndexItems
+                  groupId={group.id}
+                  name={group.name}
+                  members={group.name.length}
+                  />
+              </li>
+            );
+          })
+        }
+        </ul>
+      </div>
     );
   }
 }
+
+const GroupsIndexItems = ({ groupId, name, members }) => {
+  return (
+    <Link to={`/groups/${groupId}`} className='group-links'>
+        <h4 className='group-name'>{name}</h4>
+        <p className='member-count'>We're {members} Members</p>
+        <img src={window.assets.aaImage} alt="groups"/>
+    </Link>
+  );
+};
 
 const mapStateToProps = state => {
   return ({

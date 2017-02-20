@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
-import ReactPlayer from 'react-player';
 import WelcomeFooter from './welcome_footer';
 import WelcomeHeader from './welcome_header';
 import WelcomeExplore from './welcome_explore';
 import WelcomeVideo from './welcome_video';
-import WelcomeGroups from './welcome_groups';
 
 class Welcome extends React.Component {
   constructor(props) {
@@ -19,9 +17,9 @@ class Welcome extends React.Component {
           <WelcomeHeader />
         </header>
 
-      <div>
-        <WelcomeVideo />
-      </div>
+        <div className="xxx">
+          <WelcomeVideo />
+        </div>
 
         <div className='welcome-explore'>
           <WelcomeExplore />

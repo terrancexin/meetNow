@@ -92,16 +92,23 @@ class WelcomeHeader extends React.Component {
     return(
       <div className='welcome-header'>
         <div>
-        <ul className='ul-create-button'><Link to='/groups' className='create-button'>Start a MeetNow!</Link></ul>
-        <div><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
-          { !this.props.loggedIn &&
-            <ul className='header-buttons'>
-              <li><button className='login-button' onClick={this.openModal("login")}>Log in</button></li>
-              <li><button className='signup-button' onClick={this.openModal("signup")}>Sign up</button></li>
-            </ul>
-           }
+          {
+            !this.props.loggedIn && <ul className='ul-create-button'><Link to='/groups' className='create-button'>Start a MeetNow!</Link></ul>
+          }
 
-           { this.props.loggedIn && <label className='signup-button'>Profile</label>}
+          {
+            this.props.loggedIn && <ul className='ul-create-button'><Link to='/groupsform' className='create-button'>Start a MeetNow!</Link></ul>
+          }
+
+          <div><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
+            { !this.props.loggedIn &&
+              <ul className='header-buttons'>
+                <li><button className='login-button' onClick={this.openModal("login")}>Log in</button></li>
+                <li><button className='signup-button' onClick={this.openModal("signup")}>Sign up</button></li>
+              </ul>
+            }
+
+           { this.props.loggedIn &&   <ul className='header-buttons'><li><button className='signup-button' onClick={this.openModal("signup")}>Profile</button></li></ul>}
         </div>
 
         <Modal
