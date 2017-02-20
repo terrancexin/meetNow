@@ -48,8 +48,20 @@ class Api::GroupsController < ApplicationController
     end
   end
 
+  # def join
+  #   group_id = params[:group_id].to_i
+  #   @new_membership = current_user.memberships.new(group_id: group_id)
+  #   if @new_membership.save!
+  #     @users = Group.find(group_id).users
+  #     # render 'api/users/index'
+  #     render :show
+  #   else
+  #     render json: @new_membership.errors.full_messages, status: 422
+  #   end
+  # end
+
   private
   def group_params
-    params.require(:group).permit(:name, :description, :category, :location, :about, :founded)
+    params.require(:group).permit(:name, :description, :category, :location, :member_count, :about, :founded)
   end
 end

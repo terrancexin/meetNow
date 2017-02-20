@@ -20,8 +20,8 @@
 #
 
 class User < ActiveRecord::Base
-  validates :username, :email, presence: true#, uniqueness: true
-  validates :session_token, :password_digest, :first_name, :last_name, presence: true
+  validates :username, presence: true#, uniqueness: true
+  validates :session_token, :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   # has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "aa-logo-test.png"

@@ -21,9 +21,7 @@ class Welcome extends React.Component {
           <WelcomeVideo />
         </div>
 
-        <div className='welcome-explore'>
-          <WelcomeExplore />
-        </div>
+
 
         <footer className='welcome-footer'>
           <WelcomeFooter pathname={this.props.location.pathname}/>
@@ -34,3 +32,7 @@ class Welcome extends React.Component {
 }
 
 export default Welcome;
+
+// <div className='welcome-explore'>
+//   <WelcomeExplore />
+// </div>

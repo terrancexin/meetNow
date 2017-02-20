@@ -10,7 +10,7 @@ const receiveAllGroups = groups => ({
   groups
 });
 
-const receiveOneGroup = group => ({
+export const receiveOneGroup = group => ({
   type: RECEIVE_ONE_GROUP,
   group
 });
@@ -20,17 +20,11 @@ const receiveGroupErrors = errors => ({
   errors
 });
 
-const removeGroup = group => ({
-  type: REMOVE_GROUP,
-  group
-});
-
 export const fetchAllGroups = () => dispatch => (
   GroupApiUtil.fetchAllGroups()
     .then(groups =>{
       dispatch(receiveAllGroups(groups));
-    },
-    error => dispatch(receiveGroupErrors(error.responseJSONs)))
+    }, error => dispatch(receiveGroupErrors(error.responseJSONs)))
 );
 
 
@@ -46,10 +40,8 @@ export const fetchSingleGroup = id => dispatch => {
   return (
     GroupApiUtil.fetchSingleGroup(id)
       .then(group => {
-        // debugger
         dispatch(receiveOneGroup(group));
-      },
-      error => dispatch(receiveGroupErrors(error.responseJSON)))
+      }, error => dispatch(receiveGroupErrors(error.responseJSON)))
   );
 
 };

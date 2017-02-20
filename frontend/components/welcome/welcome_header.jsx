@@ -60,12 +60,13 @@ class WelcomeHeader extends React.Component {
       <div className='welcome-header'>
         <div>
           {
-            !this.props.loggedIn && <ul className='ul-create-button'><Link to='/groups' className='create-button'>Start a MeetNow!</Link></ul>
+            !this.props.loggedIn && <ul className='ul-create-button'><Link to='/groups' className='create-button'>Let's MeetNow!</Link></ul>
           }
 
           {
-            this.props.loggedIn && <ul className='ul-create-button'><Link to='/groupsform' className='create-button'>Start a MeetNow!</Link></ul>
+            this.props.loggedIn && <ul className='ul-create-button'><Link to='/groupsform' className='create-button'>Let's MeetNow!</Link></ul>
           }
+          
 
           <div><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
             { !this.props.loggedIn &&

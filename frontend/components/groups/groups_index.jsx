@@ -27,7 +27,7 @@ class GroupsIndex extends React.Component {
                 <GroupsIndexItems
                   groupId={group.id}
                   name={group.name}
-                  members={group.name.length}
+                  members={group.member_count}
                   />
               </li>
             );
@@ -51,7 +51,7 @@ const GroupsIndexItems = ({ groupId, name, members }) => {
 
 const mapStateToProps = state => {
   return ({
-    groups: groupsArray(state.groups.allGroups)
+    groups: groupsArray(state.groups)
   });
 };
 
