@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 const WelcomeExplore = () => (
   <div>
     <h3 className='welcome-explore-header'>Explore</h3>
+    <div className='welcome-explore-below-header'>
       <section className='explore-first-section'>
 
         <label className='explore-pic-wrapper'>
@@ -32,7 +33,7 @@ const WelcomeExplore = () => (
 
       </section>
 
-      <section className='explore-second-row'>
+      <section className='explore-second-section'>
 
         <label className='explore-pic-wrapper'>
           <Link to='/art' className='explore-pic-links'>
@@ -59,6 +60,7 @@ const WelcomeExplore = () => (
         </label>
 
       </section>
+    </div>
   </div>
 );
 
