@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.includes(:memberships)
     render :index
   end
 

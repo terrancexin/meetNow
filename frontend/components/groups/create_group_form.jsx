@@ -1,5 +1,5 @@
 import React from 'react';
-import { createGroup, fetchSingleGroup } from '../../actions/group_actions';
+import { createGroup } from '../../actions/group_actions';
 import { connect } from 'react-redux';
 import { Router, withRouter } from 'react-router';
 
@@ -7,7 +7,7 @@ class CreateGroupForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = this.props.group;
+    this.state = {name: '', location: '', description: '', category: ''};
 
     this.handleLocation = this.handleLocation.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
@@ -15,32 +15,13 @@ class CreateGroupForm extends React.Component {
     this.handleDescription = this.handleDescription.bind(this);
   }
 
-  // componentDidMount() {
-  //   if (this.props.params) {
-  //     this.props.fetchSingleGroup(this.props.params.groupId);
-  //   }
-  // }
-
-  // componentWillReceiveProps(newProps) {
-  //   this.setState(newProps.group);
-  // }
-
-  // update(field) {
-  //   return (e) => {
-  //     this.setState({[field]: e.target.value});
-  //   };
-  // }
-
-
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   this.props.action(this.state);
-  // }
-  //
   handleSubmit(e) {
     e.preventDefault();
     this.props.createGroup(this.state)
-      .then(() => this.props.router.push('/groups'));
+      .then(() => {
+        this.props.closeModal();
+        this.props.router.push('groups');
+      });
   }
 
   handleLocation(e) {
@@ -59,59 +40,47 @@ class CreateGroupForm extends React.Component {
     this.setState({description: e.target.value});
   }
 
-
   render() {
-    // const text = this.props.formType === "new" ? "Create" : "Update";
-
     return (
       <div className='create-group-form-container'>
-        <h1>Group Form</h1>
+        <h1 className='group-form-header'>Group Form</h1>
         <form className='create-group-from' onSubmit={this.handleSubmit}>
               <label>Name</label>
               <input
                 type='text'
                 value={this.state.name}
-                onChange={this.handleName}
-                />
+                onChange={this.handleName}/>
+
             <label>Category</label>
             <input
               type='text'
               value={this.state.category}
-              onChange={this.handleCategory}
-              />
+              onChange={this.handleCategory}/>
+
             <label>Description</label>
             <input
               type='text'
               value={this.state.description}
-              onChange={this.handleDescription}
-              />
+              onChange={this.handleDescription}/>
 
             <label>Location</label>
               <input
                 type='text'
                 value={this.state.location}
-                onChange={this.handleLocation}
-                />
+                onChange={this.handleLocation}/>
 
-            <input
-              type='submit' value="create group"/>
+            <input type='submit' value="create group"/>
         </form>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  group: state.groups.selectedGroup
-});
-
-
 const mapDispatchToProps = (dispatch) => ({
-  fetchSingleGroup: id => dispatch(fetchSingleGroup(id)),
-  createGroup: group => dispatch(createGroup(group))
+  createGroup: group => dispatch(createGroup(group)),
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(withRouter(CreateGroupForm));

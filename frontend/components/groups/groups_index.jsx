@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { fetchAllGroups } from '../../actions/group_actions';
 import { groupsArray } from '../../reducers/group_reducer';
 import { Link } from 'react-router';
-import WelcomeExplore from '../welcome/welcome_explore';
 
 class GroupsIndex extends React.Component {
   constructor(props) {
@@ -16,24 +15,22 @@ class GroupsIndex extends React.Component {
 
   render () {
     return (
-
-    <div>
-      <h1 className='group-banner'>Groups</h1>
-        <ul className='group-index-wrapper'>
-          {
-            this.props.groups.map(group => {
-            return (
-              <li className='group-pics' key={group.id}>
-                <GroupsIndexItems
-                  groupId={group.id}
-                  name={group.name}
-                  members={group.member_count}
-                  />
-              </li>
-            );
-          })
-        }
-        </ul>
+      <div>
+        <h1 className='group-banner'>Groups</h1>
+          <ul className='group-index-wrapper'>
+            {
+              this.props.groups.map(group => {
+              return (
+                <li className='group-pics' key={group.id}>
+                  <GroupsIndexItems
+                    groupId={group.id}
+                    name={group.name}
+                    members={group.member_count}/>
+                </li>
+                );
+              })
+            }
+          </ul>
       </div>
     );
   }
@@ -63,7 +60,6 @@ const mapDispatchToProps = dispatch => {
   );
 
 };
-
 
 export default connect(
   mapStateToProps,

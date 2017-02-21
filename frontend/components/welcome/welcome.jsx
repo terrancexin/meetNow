@@ -13,15 +13,18 @@ class Welcome extends React.Component {
   render() {
     return (
       <div className='welcome-container'>
+
         <header className='welcome-header-container'>
           <WelcomeHeader />
         </header>
 
-        <div>
+        <div className="welcome-vid">
           <WelcomeVideo />
         </div>
 
-
+        <div className="explore-div">
+          <WelcomeExplore />
+        </div>
 
         <footer className='welcome-footer'>
           <WelcomeFooter pathname={this.props.location.pathname}/>

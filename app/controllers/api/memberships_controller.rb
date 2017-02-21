@@ -1,4 +1,7 @@
 class Api::MembershipsController < ApplicationController
+  def index
+  end
+  
   def create
     @membership = Membership.new(membership_params)
     @group = @membership.group

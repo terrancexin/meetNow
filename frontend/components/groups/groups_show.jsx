@@ -4,7 +4,7 @@ import { fetchSingleGroup, updateGroup } from '../../actions/group_actions';
 import { addUserToGroup } from '../../actions/member_actions';
 import Modal from 'react-modal';
 import modalStyle from '../welcome/modalStyle';
-import GroupsForm from './groups_form';
+import CreateGroupForm from './create_group_form';
 import WelcomeHeader from '../welcome/welcome_header';
 import WelcomeFooter from '../welcome/welcome_footer';
 
@@ -45,45 +45,43 @@ class GroupsShow extends React.Component {
   }
 
   render () {
-    // debugger
     if (this.props.group) {
-
       return (
         <div>
           <WelcomeHeader />
-
           {
             !this.state.joinGroup && <button onClick={this.handleJoinGroup} className="join-group-button">Join us!</button>
-        }
+          }
 
-        {
-          this.state.joinGroup && <button onClick={this.handleJoinGroup} className="join-group-button">Leave Group</button>
-      }
+          {
+            this.state.joinGroup && <button onClick={this.handleJoinGroup} className="join-group-button">Leave Group</button>
+          }
 
-      {
-        this.props.group.users && <label>We have {Object.keys(this.props.group.users).length} members!</label>
-    }
+          {
+            this.props.group.users && <label>We have {Object.keys(this.props.group.users).length} members!</label>
+          }
+
+          <button onClick={this.openModal} >FORM</button>
+
+          <h1 className='group-banner'>{this.props.group.name}</h1>
+          <ul className='group-side-bar-info'>
+            <li>{this.props.group.description}</li>
+            <li>{this.props.group.location}</li>
+          </ul>
 
 
-    <h1 className='group-banner'>{this.props.group.name}</h1>
-    <ul className='group-side-bar-info'>
-      <li>{this.props.group.description}</li>
-      <li>{this.props.group.location}</li>
-    </ul>
+          <Modal
+            isOpen={this.state.modalOpen}
+            onRequestClose={this.closeModal}
+            style={modalStyle}
+            contentLabel='create-group-form'>
 
-    <section>Events</section>
-    <div>Right side bar</div>
+            <CreateGroupForm closeModal={this.closeModal}/>
+          </Modal>
 
-    <WelcomeFooter />
-
-    <Modal
-      isOpen={this.state.modalOpen}
-      onRequestClose={this.closeModal}
-      style={modalStyle}
-      contentLabel='create-group-form'>
-    </Modal>
-  </div>
-);
+          <WelcomeFooter />
+        </div>
+    );
     } else {
       return <div>Loading...</div>;
     }

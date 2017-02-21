@@ -1,68 +1,187 @@
-.cover-video {
-  background-color: white;
-  width: 100%;
-  position: relative;
-  top: -200px;
-  overflow: hidden;
+// .cover-video {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: white;
+//   width: 100%;
+//   position: relative;
+//   top: -200px;
+//   overflow: hidden;
+//
+// }
+//
+// video {
+//   width: 100%;
+// }
+//
+//
+//
+// .cover-video > div > h1 {
+//   position: absolute;
+//   width: 100%;
+//   color: rgb(240, 239, 239);
+//   font-size: 70px;
+//   position: absolute;
+//   text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+// }
+//
+// .cover-video > div > p {
+//   width: 100%;
+//   color: rgb(240, 239, 239);
+//   font-size: 25px;
+//   position: absolute;
+//   top: 60%;
+//   left: 40%;
+//   text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+//   // border: 1px solid red;
+//   width: auto;
+//   margin-top: 8px;
+//
+// }
+//
+// .splash-main {
+//   height: auto;
+// }
+//
+//
+// // media query
+// @media screen and (max-width: 1000px) {
+//   .cover-video > h1 {
+//     width: 100%;
+//     color: rgb(240, 239, 239);
+//     font-size: 50px;
+//     position: absolute;
+//     top: 50%;
+//     left: 33%;
+//     text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+//   }
+//
+//   .cover-video > p {
+//     width: 100%;
+//     color: rgb(240, 239, 239);
+//     font-size: 20px;
+//     position: absolute;
+//     top: 60%;
+//     left: 40%;
+//     text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+//     // border: 1px solid red;
+//     width: auto;
+//     margin-top: 8px;
+//
+//   }
+// }
 
-}
 
-video {
-  width: 100%;
-}
-
-.cover-video > h1 {
-  width: 100%;
-  color: rgb(240, 239, 239);
-  font-size: 70px;
+.video-div {
   position: absolute;
-  top: 50%;
-  left: 33%;
-  text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
-}
-
-.cover-video > p {
+  top: 0;
+  left: 0;
   width: 100%;
-  color: rgb(240, 239, 239);
-  font-size: 25px;
-  position: absolute;
-  top: 60%;
-  left: 40%;
-  text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
-  // border: 1px solid red;
-  width: auto;
-  margin-top: 8px;
-
-}
-
-.splash-main {
   height: auto;
+  z-index: -1000;
+  background: rgba(0, 0, 0, 0);
+}
+
+.video-letters {
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0);
+  height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(240, 239, 239);
+  font-size: 35px;
+  // text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+
+  div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 200px;
+
+  }
+  p {
+    font-size: 20px;
+    margin-top: 20px;
+    // text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+  }
+}
+
+.cover-video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.welcome-vid {
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 
 // media query
-@media screen and (max-width: 1000px) {
-  .cover-video > h1 {
-    width: 100%;
-    color: rgb(240, 239, 239);
-    font-size: 50px;
+@media screen and (max-width: 900px) {
+  .video-div {
     position: absolute;
-    top: 50%;
-    left: 33%;
-    text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1000;
+    background: rgba(0, 0, 0, 0);
   }
 
-  .cover-video > p {
-    width: 100%;
+  .video-letters {
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: rgb(240, 239, 239);
-    font-size: 20px;
-    position: absolute;
-    top: 60%;
-    left: 40%;
-    text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
-    // border: 1px solid red;
-    width: auto;
-    margin-top: 8px;
+    font-size: 28px;
+    // text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+
+    div {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+    }
+    p {
+      font-size: 15px;
+      margin-top: 20px;
+      // text-shadow: 0px 0px 3px lightgray, -1px -1px #000, 1px 1px lightgray;
+    }
+  }
+
+  .cover-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
   }
+
+  .welcome-vid {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+}
+
+.video-letters > div > button {
+  font-size: 16px;
+  margin-top: 70px;
+  background-color: $meetup-red;
+  color: #fff;
+  border-color: $meetup-red;
+  padding: 14px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 200;
+  width: 280px;
+
 }

@@ -7,8 +7,6 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import Welcome from './welcome/welcome';
 import Groups from './groups/groups';
-import GroupsForm from './groups/groups_form';
-import GroupIndex from './groups/groups_index';
 import GroupsShow from './groups/groups_show';
 
 const Root = ({ store }) => {
@@ -35,7 +33,6 @@ const Root = ({ store }) => {
         </Route>
         <Route path='groups' component={Groups} />
         <Route path='groups/:groupId' component={GroupsShow} />
-        <Route path='groupsform' component={GroupsForm} />
       </Router>
     </Provider>
   );

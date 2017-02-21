@@ -66,7 +66,7 @@ class WelcomeHeader extends React.Component {
           {
             this.props.loggedIn && <ul className='ul-create-button'><Link to='/groupsform' className='create-button'>Let's MeetNow!</Link></ul>
           }
-          
+
 
           <div><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
             { !this.props.loggedIn &&
@@ -91,7 +91,7 @@ class WelcomeHeader extends React.Component {
            formType={this.state.formType}
            closeModal={this.closeModal}/>
        </Modal>
-
+       
       </div>
     );
   }
