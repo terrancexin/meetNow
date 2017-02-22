@@ -8,7 +8,7 @@ import CreateGroupForm from './create_group_form';
 import WelcomeHeader from '../welcome/welcome_header';
 import WelcomeFooter from '../welcome/welcome_footer';
 import { Link } from 'react-router';
-import Events from '../events/events';
+import EventsIndex from '../events/events_index';
 import AuthForm from '../authform/auth_form';
 import { openAuthForm, closeAuthForm } from '../../actions/modal_actions';
 
@@ -87,7 +87,7 @@ class GroupsShow extends React.Component {
 
 
   render () {
-    if (!this.props.group || !this.props.group.users) {
+    if (!this.props.group || !this.props.group.users || !this.props.group.events) {
           return <div className="loading">Loading...</div>;
 
     } else {
@@ -111,8 +111,8 @@ class GroupsShow extends React.Component {
 
           <div className='content-container'>
             <ul className='group-side-bar-info'>
-              <li>{this.props.group.location}</li>
-              <li>{this.props.group.member_count}</li>
+              <li>Location: {this.props.group.location}</li>
+              <li>Members: {this.props.group.member_count}</li>
             </ul>
 
                 <div className="group-show-about">
@@ -129,7 +129,24 @@ class GroupsShow extends React.Component {
                 </div>
 
 
-              <div>EVENTS</div>
+              <div>
+
+                <EventsIndex events={this.props.group.events} />
+              </div>
+
+
+              <Modal
+                 isOpen={this.props.authForm}
+                 onRequestClose={this.props.closeAuthForm}
+                 style={modalStyle}
+                 contentLabel="header-modal">
+
+                  <AuthForm toggleForm={this.toggleFormType} formType={this.state.formType} closeModal={this.props.closeAuthForm}/>
+              </Modal>
+
+
+
+
           </div>
 
             {this.props.children}
@@ -139,7 +156,6 @@ class GroupsShow extends React.Component {
     }
   }
 }
-
 
 const mapStateToProps = (state, ownProps) => {
   // debugger

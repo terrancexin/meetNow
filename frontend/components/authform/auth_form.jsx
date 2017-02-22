@@ -27,7 +27,7 @@ class AuthForm extends React.Component{
     const user = this.state;
     this.props.processForm(user).then(() => {
       this.props.closeModal();
-      this.props.router.push('groups');
+      // this.props.router.push('groups');
     });
   }
 

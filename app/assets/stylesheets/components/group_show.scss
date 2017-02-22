@@ -63,20 +63,18 @@
   // content container
   .content-container {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
 
   }
 
   .group-side-bar-info {
-    display: flex;
-    justify-content: flex-start;
+    width: 200px;
+    border: 1px solid #ccc;
   }
 
   .group-show-about {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    width: 500px;
+    border: 1px solid #ccc;
   }
 
 

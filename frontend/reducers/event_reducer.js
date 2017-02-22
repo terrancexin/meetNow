@@ -12,4 +12,10 @@ const EventReducer = (state = {}, action) => {
   }
 };
 
+export const eventsArray = allEvents => {
+  return Object.keys(allEvents).map(id => {
+    return allEvents[id];
+  });
+};
+
 export default EventReducer;
