@@ -1,0 +1,17 @@
+.video-modal {
+  width: 350px;
+  height: 350px;
+
+  margin: 100px auto;
+  background-color: white;
+  // position: absolute;
+
+  // display: block;
+  border: 1px solid lightgrey;
+
+  .form-text {
+    height: 80px;
+  }
+
+  cursor: pointer;
+}

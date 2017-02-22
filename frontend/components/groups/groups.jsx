@@ -12,7 +12,6 @@ class Groups extends React.Component {
     return (
       <div className='welcome-container'>
         <header className='groups-header-container'>
-          <WelcomeHeader />
           <GroupsIndex />
         </header>
       </div>

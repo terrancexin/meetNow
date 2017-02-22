@@ -14,9 +14,16 @@ class GroupsIndex extends React.Component {
   }
 
   render () {
+    const sumGroup = this.props.groups.length
+
     return (
-      <div>
-        <h1 className='group-banner'>Groups</h1>
+      <div className='group-index-box'>
+
+        <div className='group-banner'>
+          <h1>Find a Group</h1>
+          <div className='sum-group'>{sumGroup} passions nearby. Come MeetNow!</div>
+        </div>
+
           <ul className='group-index-wrapper'>
             {
               this.props.groups.map(group => {
@@ -31,6 +38,7 @@ class GroupsIndex extends React.Component {
               })
             }
           </ul>
+
       </div>
     );
   }
@@ -39,9 +47,11 @@ class GroupsIndex extends React.Component {
 const GroupsIndexItems = ({ groupId, name, members }) => {
   return (
     <Link to={`/groups/${groupId}`} className='group-links'>
+        <img src={window.assets.techImage} alt="groups"/>
         <h4 className='group-name'>{name}</h4>
         <p className='member-count'>We're {members} Members</p>
-        <img src={window.assets.aaImage} alt="groups"/>
+
+
     </Link>
   );
 };

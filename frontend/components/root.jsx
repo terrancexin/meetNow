@@ -8,6 +8,8 @@ import App from './app';
 import Welcome from './welcome/welcome';
 import Groups from './groups/groups';
 import GroupsShow from './groups/groups_show';
+import EventsIndex from './events/events_index';
+import EventShow from './events/event_show';
 
 const Root = ({ store }) => {
 
@@ -27,12 +29,13 @@ const Root = ({ store }) => {
 
   return (
     <Provider store={store}>
-      <Router history={hashHistory}>
+      <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
         <Route path="/" component={App}>
           <IndexRoute component={Welcome} />
+          <Route path='groups' component={Groups} />
+          <Route path='groups/:groupId' component={GroupsShow}/>
+
         </Route>
-        <Route path='groups' component={Groups} />
-        <Route path='groups/:groupId' component={GroupsShow} />
       </Router>
     </Provider>
   );

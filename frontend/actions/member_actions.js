@@ -10,9 +10,10 @@ const receiveMember = (groupId, group) => ({
   group
 });
 
-const removeMember = (userId) => ({
+const removeMember = (groupId, group) => ({
   type: REMOVE_MEMBER,
-  userId
+  groupId,
+  group
 });
 
 export const addUserToGroup = (userId, groupId) => dispatch => {
@@ -21,6 +22,9 @@ export const addUserToGroup = (userId, groupId) => dispatch => {
   );
 };
 
-export const removeUserFromGroup = userId => dispatch => (
-  MemberApiUtil.removeUserFromGroup(userId).then(userId => dispatch(removeMember(userId)))
-);
+export const removeUserFromGroup = (userId, groupId) => dispatch => {
+  // debugger
+  return (
+    MemberApiUtil.removeUserFromGroup(userId, groupId).then(group => dispatch(receiveOneGroup(group)))
+  );
+};

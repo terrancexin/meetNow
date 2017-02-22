@@ -5,6 +5,7 @@ import { logout } from '../../actions/session_actions';
 import Modal from 'react-modal';
 import AuthForm from '../authform/auth_form';
 import modalStyle from './modalStyle';
+import CreateGroupForm from '../groups/create_group_form';
 
 class WelcomeHeader extends React.Component {
   constructor(props){
@@ -59,18 +60,15 @@ class WelcomeHeader extends React.Component {
     return(
       <div className='welcome-header'>
         <div>
-          {
-            !this.props.loggedIn && <ul className='ul-create-button'><Link to='/groups' className='create-button'>Let's MeetNow!</Link></ul>
-          }
+            <ul className='ul-create-button'><Link to='/groups' className='create-button'>Let's MeetNow!</Link></ul>
 
-          {
-            this.props.loggedIn && <ul className='ul-create-button'><Link to='/groupsform' className='create-button'>Let's MeetNow!</Link></ul>
-          }
+
 
 
           <div><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
             { !this.props.loggedIn &&
               <ul className='header-buttons'>
+
                 <li><button className='login-button' onClick={this.openModal("login")}>Log in</button></li>
                 <li><button className='signup-button' onClick={this.openModal("signup")}>Sign up</button></li>
               </ul>
@@ -91,7 +89,7 @@ class WelcomeHeader extends React.Component {
            formType={this.state.formType}
            closeModal={this.closeModal}/>
        </Modal>
-       
+
       </div>
     );
   }

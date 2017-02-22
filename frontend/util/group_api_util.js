@@ -21,3 +21,10 @@ export const fetchSingleGroup = id => {
     url: `/api/groups/${id}`
   });
 };
+
+export const deleteGroup = id => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/groups/${id}`
+  });
+};

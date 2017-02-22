@@ -14,9 +14,6 @@ class Welcome extends React.Component {
     return (
       <div className='welcome-container'>
 
-        <header className='welcome-header-container'>
-          <WelcomeHeader />
-        </header>
 
         <div className="welcome-vid">
           <WelcomeVideo />
@@ -26,9 +23,7 @@ class Welcome extends React.Component {
           <WelcomeExplore />
         </div>
 
-        <footer className='welcome-footer'>
-          <WelcomeFooter pathname={this.props.location.pathname}/>
-        </footer>
+
       </div>
     );
   }

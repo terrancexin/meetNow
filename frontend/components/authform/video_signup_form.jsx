@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { login, logout, signup, clearSessionErrors } from './../../actions/session_actions';
 import { Router, withRouter } from 'react-router';
 
-class AuthForm extends React.Component{
+class VideoSignUp extends React.Component{
   constructor(props) {
     super(props);
     this.state = { username: '', password: '', modalOpen: false };
@@ -24,8 +24,9 @@ class AuthForm extends React.Component{
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm(user).then(() => {
-      this.props.closeModal()
+    this.props.signup(user).then(() => {
+      this.props.closeModal();
+      this.props.router.push('groups');
     });
   }
 
@@ -135,33 +136,31 @@ class AuthForm extends React.Component{
 
   render() {
       return (
-        <div className='auth-form-container'>
-          <form onSubmit={this.handleSubmit} className='auth-form-box'>
-            <div className='auth-form'>
+        <div className='video-form-container'>
+          <form onSubmit={this.handleSubmit} className='video-form-box'>
+            <div className='video-form'>
                 <div className='form-text'>
-                  <h1 className="auth-form-header">{this.headerText()}</h1>
-                  <label className='nav-text'>{this.navText()}</label>
-                  <label className='nav-link'>{this.navLink()}</label>
+                  <h1 className="video-form-header">{this.headerText()}</h1>
+
                 </div>
 
-              <div className='auth-form-errors'>{this.errorHandling()}</div>
+              <div className='video-form-errors'>{this.errorHandling()}</div>
               <div className='login-labels'>
                 <label htmlFor='username'>Username:</label>
                 <input id='username'
                        type='text'
                        value={this.state.username}
                        onChange={this.update('username')}
-                       className='auth-input'/>
+                       className='video-input'/>
                      <label htmlFor='password'>Password:</label>
                   <input id='password'
                          type='password'
                          value={this.state.password}
                          onChange={this.update('password')}
-                         className='auth-input'/>
+                         className='video-input'/>
                        <div className='submit-btn-wrapper'>
-                         <input autoFocus type='submit' value={this.submitButtonText()} className='login-button' />
+                         <input type='submit' value={this.submitButtonText()} className='login-button' />
 
-                         {this.renderGuest()}
                        </div>
 
               </div>
@@ -186,7 +185,7 @@ const mapDispatchToProps = (dispatch, { formType }) => {
 
   return {
     clearErrors: () => dispatch(receiveSessionErrors({})),
-    processForm: user => dispatch(processForm(user)),
+    signup: user => dispatch(signup(user)),
     formType
   };
 };
@@ -194,4 +193,4 @@ const mapDispatchToProps = (dispatch, { formType }) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(AuthForm));
+)(withRouter(VideoSignUp));

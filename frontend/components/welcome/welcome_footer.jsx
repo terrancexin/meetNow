@@ -43,7 +43,7 @@ class WelcomeFooter extends React.Component {
 
     return(
       <div className='footer-buttons'>
-        <Link to='/' className='create-button'>Start a meetNow!</Link>
+        <Link to='groups' className='create-button'>Start a meetNow!</Link>
         {buttons}
 
         <Modal

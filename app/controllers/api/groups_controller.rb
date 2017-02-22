@@ -43,22 +43,12 @@ class Api::GroupsController < ApplicationController
 
   def destroy
     @group = Group.find(params[:id])
-    unless @group.destroy
+    if @group.destroy
+      render :show
+    else
       render json: @group.errors.full_messages, status: 422
     end
   end
-
-  # def join
-  #   group_id = params[:group_id].to_i
-  #   @new_membership = current_user.memberships.new(group_id: group_id)
-  #   if @new_membership.save!
-  #     @users = Group.find(group_id).users
-  #     # render 'api/users/index'
-  #     render :show
-  #   else
-  #     render json: @new_membership.errors.full_messages, status: 422
-  #   end
-  # end
 
   private
   def group_params

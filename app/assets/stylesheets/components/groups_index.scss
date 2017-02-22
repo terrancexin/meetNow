@@ -1,41 +1,107 @@
-.group-banner {
+.group-index-box {
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 100%;
-  border: 1px solid red;
-  margin: 0 auto;
-  padding: 50px;
-  background-color: $meetup-red;
-  color: white;
-}
-
-.group-index-wrapper {
-  display: flex;
+  align-items: flex-end;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: space-between;
-  margin: 0 auto;
 
-  li {
-    width: 33%;
+  .group-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 5px auto;
+    padding: 60px;
+    background-color: $meetup-red;
+    color: white;
+    height: 50px;
+    font-size: 30px;
 
-    a {
-      height: 50px;
-      border: 1px solid red;
+    .sum-group {
+      margin-top: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,.7);
+    }
+
+    .group-banner > h1 {
+      font-family: 'Roboto', sans-serif;
+    }
+
+  }
+
+  .group-index-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    width: 1000px;
+    // min-width: 650px;
+    height: auto;
+    min-width: 900px;
+
+
+    li {
+      // width: 33%;
+      // flex-shrink: 0;
+      // width: 200px;
+      // min-width: 200px;
+      // border: 1px solid red;
+      width: 300px;
+      height: 180px;
+      margin: 10px;
+      position: relative;
+
+
+
+      img {
+        z-index: -1;
+        width: 300px;
+        height: 180px;
+        filter: brightness(0.5);
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      p {
+        color: white;
+        position: absolute;
+        bottom: 0;
+        left: 10px;
+        margin-bottom: 40px;
+        font-size: 14px;
+
+        width: auto;
+        height: auto;
+        text-decoration: none;
+      }
+
+      h4 {
+        font-size: 20px;
+        position: absolute;
+        font-weight: bold;
+        top: 60px;
+        left: 10px;
+        color: white;
+      }
+
     }
   }
 }
 
-.group-pics > {
-  position: relative;
-  // width: 60%;
 
-  h4 {
-    position: absolute;
-    top: 50px;
-    left: 150px;
-    // width: 100%;
-    z-index: 100;
-  }
-}
+
+//
+// .group-pics > {
+//   position: relative;
+//   // width: 60%;
+//
+//   h4 {
+//     position: absolute;
+//     top: 50px;
+//     left: 150px;
+//     // width: 100%;
+//     z-index: 100;
+//   }
+// }
