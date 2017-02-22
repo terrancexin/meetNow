@@ -141,6 +141,7 @@ event6 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60
 event7 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'SF', description: Faker::Friends.quote, group_id: group7.id)
 event8 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'SF', description: Faker::Friends.quote, group_id: group8.id)
 event9 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'SF', description: Faker::Friends.quote, group_id: group9.id)
+event10 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'SF', description: Faker::Friends.quote, group_id: group9.id)
 
 event_ids = Event.all.ids
 user_ids = User.all.ids
