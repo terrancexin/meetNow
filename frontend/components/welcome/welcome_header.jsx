@@ -6,6 +6,8 @@ import Modal from 'react-modal';
 import AuthForm from '../authform/auth_form';
 import modalStyle from './modalStyle';
 import CreateGroupForm from '../groups/create_group_form';
+import { openCreateGroup, closeCreateGroup,
+         openAuthForm, closeAuthForm} from '../../actions/modal_actions';
 
 class WelcomeHeader extends React.Component {
   constructor(props){
@@ -15,12 +17,15 @@ class WelcomeHeader extends React.Component {
       modalOpen: false,
       formType: null,
       username: '',
-      password: ''
+      password: '',
     };
+
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.toggleFormType = this.toggleFormType.bind(this);
     this.setGuest = this.setGuest.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.openModalGroupForm = this.openModalGroupForm.bind(this);
   }
 
   handleLogout(e){
@@ -44,28 +49,38 @@ class WelcomeHeader extends React.Component {
 
   openModal(formType) {
     return () => {
+      this.props.openAuthForm();
       this.setState({ modalOpen: true, formType: formType});
     };
   }
+
+  openModalGroupForm() {
+    return () => {
+      this.props.openCreateGroup();
+      this.setState({modalOpen: true});
+    };
+  }
+
+
 
   setGuest() {
     this.setState({username: 'AppAcademy', password: '123abc'});
   }
 
   render(){
-    if (this.props.loggedIn) {
-
-    }
 
     return(
       <div className='welcome-header'>
-        <div>
-            <ul className='ul-create-button'><Link to='/groups' className='create-button'>Let's MeetNow!</Link></ul>
+
+          <section className='right-header-buttons'>
+            <Link to='/groups' className='create-button'>Let's MeetNow!</Link>
+            <button onClick={this.openModalGroupForm()} className='new-group-button'>New Group</button>
+          </section>
 
 
 
 
-          <div><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
+          <div className='image-div'><Link to='/' className='logo'><img src={window.assets.logo} /></Link></div>
             { !this.props.loggedIn &&
               <ul className='header-buttons'>
 
@@ -76,7 +91,7 @@ class WelcomeHeader extends React.Component {
             {
               this.props.loggedIn &&   <ul className='header-buttons'><li><button className='signup-button' onClick={this.openModal("signup")}>Profile</button></li></ul>
             }
-        </div>
+
 
         <Modal
            isOpen={this.state.modalOpen}
@@ -84,10 +99,12 @@ class WelcomeHeader extends React.Component {
            style={modalStyle}
            contentLabel="header-modal"
          >
-         <AuthForm
-           toggleForm={this.toggleFormType}
-           formType={this.state.formType}
-           closeModal={this.closeModal}/>
+         {
+           this.props.authForm && <AuthForm toggleForm={this.toggleFormType} formType={this.state.formType} closeModal={this.closeModal}/>
+         }
+         {
+           this.props.groupForm && <CreateGroupForm />
+         }
        </Modal>
 
       </div>
@@ -99,12 +116,18 @@ const mapStateToProps = (state) => {
   return ({
   loggedIn: Boolean(state.session.currentUser),
   errors: state.session.errors,
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  groupForm: state.modal.groupForm,
+  authForm: state.modal.authForm
   });
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  openCreateGroup: () => dispatch(openCreateGroup()),
+  closeCreateGroup: () => dispatch(closeCreateGroup()),
+  openAuthForm: () => dispatch(openAuthForm()),
+  closeAuthForm: () => dispatch(closeAuthForm())
 });
 
 export default connect(
