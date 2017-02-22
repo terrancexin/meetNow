@@ -1,6 +1,6 @@
 const style = {
   overlay : {
-    // position        : 'fixed',
+    position        : 'fixed',
     top             : 0,
     left            : 0,
     right           : 0,
@@ -9,7 +9,7 @@ const style = {
     zIndex          : 10
   },
   content : {
-    // position        : 'fixed',
+    position        : 'fixed',
     width: '400px',
     margin: '0 auto',
     height: '400px',

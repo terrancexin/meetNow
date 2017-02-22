@@ -130,24 +130,6 @@ class GroupsShow extends React.Component {
               <div>EVENTS</div>
           </div>
 
-
-          <Modal
-            isOpen={this.props.authForm}
-            onRequestClose={this.props.closeAuthForm}
-            style={modalStyle}
-            contentLabel='create-group-form'>
-
-          {
-            this.props.authForm &&   <AuthForm
-                       toggleForm={this.toggleFormType}
-                       formType={this.state.formType}
-                       closeModal={this.props.closeAuthForm}/>
-          }
-
-
-          </Modal>
-
-
             {this.props.children}
         </div>
 

@@ -159,7 +159,7 @@ class VideoSignUp extends React.Component{
                          onChange={this.update('password')}
                          className='video-input'/>
                        <div className='submit-btn-wrapper'>
-                         <input autoFocus type='submit' value={this.submitButtonText()} className='login-button' />
+                         <input type='submit' value={this.submitButtonText()} className='login-button' />
 
                        </div>
 

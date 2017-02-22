@@ -161,7 +161,7 @@ class AuthForm extends React.Component{
                          onChange={this.update('password')}
                          className='auth-input'/>
                        <div className='submit-btn-wrapper'>
-                         <input autoFocus type='submit' value={this.submitButtonText()} className='login-button' />
+                         <input type='submit' value={this.submitButtonText()} className='login-button' />
 
                          {this.renderGuest()}
                        </div>
