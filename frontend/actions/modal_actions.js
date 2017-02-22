@@ -2,6 +2,18 @@ export const OPEN_SIGNUP = "OPEN_SIGNUP";
 export const CLOSE_SIGNUP = "CLOSE_SIGNUP";
 export const OPEN_CREATE_GROUP = "OPEN_CREATE_GROUP";
 export const CLOSE_CREATE_GROUP = "CLOSE_CREATE_GROUP";
+export const OPEN_AUTHFORM = "OPEN_AUTHFORM";
+export const CLOSE_AUTHFORM = "CLOSE_AUTHFORM";
+
+export const openAuthForm = () => ({
+  type: OPEN_AUTHFORM,
+  open: true
+});
+
+export const closeAuthForm = () => ({
+  type: CLOSE_AUTHFORM,
+  open: false
+});
 
 export const openSignUp = () => ({
   type: OPEN_SIGNUP,

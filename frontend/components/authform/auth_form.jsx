@@ -22,10 +22,12 @@ class AuthForm extends React.Component{
   }
 
   handleSubmit(e) {
+    // debugger
     e.preventDefault();
     const user = this.state;
     this.props.processForm(user).then(() => {
-      this.props.closeModal()
+      this.props.closeModal();
+      this.props.router.push('groups');
     });
   }
 
@@ -128,7 +130,7 @@ class AuthForm extends React.Component{
 
   setGuest() {
     return e => this.setState({
-      username: "Terrance",
+      username: "AppAcademy",
       password: "123abc",
     });
   }

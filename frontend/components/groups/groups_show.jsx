@@ -9,15 +9,31 @@ import WelcomeHeader from '../welcome/welcome_header';
 import WelcomeFooter from '../welcome/welcome_footer';
 import { Link } from 'react-router';
 import Events from '../events/events';
+import AuthForm from '../authform/auth_form';
+import { openAuthForm, closeAuthForm } from '../../actions/modal_actions';
 
 class GroupsShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalOpen: false };
+    this.state = {
+      modalOpen: false,
+      formType: 'login'
+    };
+
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.handleJoinGroup = this.handleJoinGroup.bind(this);
     this.handleLeaveGroup = this.handleLeaveGroup.bind(this);
+    this.toggleFormType = this.toggleFormType.bind(this);
+  }
+
+  toggleFormType(e) {
+    e.preventDefault();
+    if (this.state.formType === "login") {
+      this.setState({ formType: "signup"});
+    } else {
+      this.setState({ formType: "login" });
+    }
   }
 
   componentDidMount() {
@@ -42,7 +58,7 @@ class GroupsShow extends React.Component {
     if (this.props.currentUser) {
       this.props.addUserToGroup(this.props.currentUser.id, this.props.group.id);
     } else {
-      console.log("must log in first");
+      this.props.openAuthForm();
     }
 
   }
@@ -55,11 +71,16 @@ class GroupsShow extends React.Component {
   }
 
   correctButton() {
+  if (this.props.currentUser) {
     if (Object.keys(this.props.group.users).includes(`${this.props.currentUser.id}`)) {
       return <button onClick={this.handleLeaveGroup} className="join-group-button">Leave</button>;
     } else {
       return <button onClick={this.handleJoinGroup} className="join-group-button">Join us!</button>;
+      }
+    }  else {
+      return <button onClick={this.handleJoinGroup} className="join-group-button">Join us!</button>;
     }
+
   }
 
 
@@ -72,48 +93,59 @@ class GroupsShow extends React.Component {
 
         <div className='group-show-page'>
 
-          <h1 className='group-banner'>{this.props.group.name}</h1>
+          <div className='group-name-nav'>
+            <h1 className='group-name'>{this.props.group.name}</h1>
 
+            <div className='group-header-buttons'>
 
-          <ul className='group-side-bar-info'>
-            <li>{this.props.group.location}</li>
-            <li>{this.props.group.member_count}</li>
-          </ul>
-
-          <li>{this.props.group.description}</li>
-          { this.correctButton() }
-
-          {
-            this.props.group.users && <label>We have {Object.keys(this.props.group.users).length} members!</label>
-          }
-
-          <button onClick={this.openModal} >FORM</button>
-
-
-            <div className='group-show-members'>
-              <ul>
-              {
-                Object.values(this.props.group.users).map(user => (
-                  <li key={user.id}>
-                    {user.first_name}
-                  </li>
-                ))
-              }
+              <ul className='left-side-buttons'>
+                <li>Home</li>
+                <li>Members</li>
+                <li>Photos</li>
+              {this.correctButton()}
               </ul>
+
             </div>
+          </div>
+
+          <div className='content-container'>
+            <ul className='group-side-bar-info'>
+              <li>{this.props.group.location}</li>
+              <li>{this.props.group.member_count}</li>
+            </ul>
+
+                <div className="group-show-about">
+                  {this.props.group.description}
+                    <ul>
+                    {
+                      Object.values(this.props.group.users).map(user => (
+                        <li key={user.id}>
+                          {user.first_name}
+                        </li>
+                      ))
+                    }
+                    </ul>
+                </div>
 
 
-
-
+              <div>EVENTS</div>
+          </div>
 
 
           <Modal
-            isOpen={this.state.modalOpen}
-            onRequestClose={this.closeModal}
+            isOpen={this.props.authForm}
+            onRequestClose={this.props.closeAuthForm}
             style={modalStyle}
             contentLabel='create-group-form'>
 
-            <CreateGroupForm closeModal={this.closeModal}/>
+          {
+            this.props.authForm &&   <AuthForm
+                       toggleForm={this.toggleFormType}
+                       formType={this.state.formType}
+                       closeModal={this.props.closeAuthForm}/>
+          }
+
+
           </Modal>
 
 
@@ -131,7 +163,8 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,
-    group: state.groups[ownProps.params.groupId]
+    group: state.groups[ownProps.params.groupId],
+    authForm: state.modal.authForm
   });
 };
 
@@ -141,7 +174,9 @@ const mapDispatchToProps = dispatch => {
       fetchSingleGroup: (id) => dispatch(fetchSingleGroup(id)),
       addUserToGroup: (userId, groupId) => dispatch(addUserToGroup(userId, groupId)),
       removeUserFromGroup: (userId, groupId) => dispatch(removeUserFromGroup(userId, groupId)),
-      deleteGroup: id => dispatch(deleteGroup(id))
+      deleteGroup: id => dispatch(deleteGroup(id)),
+      openAuthForm: () => dispatch(openAuthForm()),
+      closeAuthForm: () => dispatch(closeAuthForm())
     }
   );
 

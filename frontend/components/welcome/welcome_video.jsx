@@ -35,7 +35,7 @@ class WelcomeVideo extends React.Component {
             <div>
               <h1>What do you love?</h1>
               <p>Share your passion with MeetNow!</p>
-              <button autofocus onClick={this.props.openSignUp}>Sign up</button>
+              <button autoFocus onClick={this.props.openSignUp}>Sign up</button>
             </div>
           </div>
 
