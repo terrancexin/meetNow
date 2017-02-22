@@ -5,10 +5,12 @@ export const CLOSE_CREATE_GROUP = "CLOSE_CREATE_GROUP";
 export const OPEN_AUTHFORM = "OPEN_AUTHFORM";
 export const CLOSE_AUTHFORM = "CLOSE_AUTHFORM";
 
-export const openAuthForm = () => ({
-  type: OPEN_AUTHFORM,
-  open: true
-});
+export const openAuthForm = () => {
+  return ({
+    type: OPEN_AUTHFORM,
+    open: true
+  });
+};
 
 export const closeAuthForm = () => ({
   type: CLOSE_AUTHFORM,
@@ -30,7 +32,9 @@ export const openCreateGroup = () => ({
   open: true
 });
 
-export const closeCreateGroup = () => ({
-  type: CLOSE_CREATE_GROUP,
-  open: false
-});
+export const closeCreateGroup = () => {
+  return ({
+    type: CLOSE_CREATE_GROUP,
+    open: false
+  });
+};

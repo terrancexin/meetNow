@@ -36,7 +36,9 @@ const Root = ({ store }) => {
           <Route path='groups/:groupId' component={GroupsShow}>
             <Route path='events' component={EventsIndex} />
           </Route>
-          
+
+          <Route path='events' component={EventsIndex} />
+
         </Route>
       </Router>
     </Provider>

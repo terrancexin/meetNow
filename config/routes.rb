@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :create]
     resources :memberships, only: [:create]
     resource :memberships, only: [:destroy]
+    resources :events, only: [:index, :create]
 
 
     resources :groups, except: [:new, :edit]

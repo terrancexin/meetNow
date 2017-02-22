@@ -27,7 +27,7 @@ const ModalReducer = (state = initialState, action) => {
       return Object.assign({}, {authForm: action.open});
     case CLOSE_AUTHFORM:
       return Object.assign({}, {authForm: action.close});
-      
+
     default:
     return state;
   }

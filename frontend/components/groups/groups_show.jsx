@@ -84,6 +84,8 @@ class GroupsShow extends React.Component {
   }
 
 
+
+
   render () {
     if (!this.props.group || !this.props.group.users) {
           return <div className="loading">Loading...</div>;

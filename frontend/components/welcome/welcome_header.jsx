@@ -106,7 +106,7 @@ class WelcomeHeader extends React.Component {
            this.props.authForm && <AuthForm toggleForm={this.toggleFormType} formType={this.state.formType} closeModal={this.closeModal}/>
          }
          {
-           this.props.groupForm && <CreateGroupForm />
+           this.props.groupForm && <CreateGroupForm closeModal={this.closeModal}/>
          }
        </Modal>
 

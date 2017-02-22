@@ -2,6 +2,7 @@ import React from 'react';
 import { createGroup } from '../../actions/group_actions';
 import { connect } from 'react-redux';
 import { Router, withRouter } from 'react-router';
+import { closeCreateGroup, openCreateGroup } from '../../actions/modal_actions';
 
 class CreateGroupForm extends React.Component {
   constructor(props) {
@@ -16,9 +17,11 @@ class CreateGroupForm extends React.Component {
   }
 
   handleSubmit(e) {
+    // debugger
     e.preventDefault();
     this.props.createGroup(this.state)
       .then(() => {
+        // debugger;
         this.props.closeModal();
         this.props.router.push('groups');
       });
@@ -43,7 +46,7 @@ class CreateGroupForm extends React.Component {
   render() {
     return (
       <div className='create-group-form-container'>
-        <h1 className='group-form-header'>Group Form</h1>
+        <h1 className='group-form-header'>Start a new group!</h1>
         <form className='create-group-from' onSubmit={this.handleSubmit}>
               <label>Name</label>
               <input
@@ -76,8 +79,11 @@ class CreateGroupForm extends React.Component {
   }
 }
 
+
 const mapDispatchToProps = (dispatch) => ({
   createGroup: group => dispatch(createGroup(group)),
+  closeCreateGroup: () => dispatch(closeCreateGroup()),
+  openCreateGroup: () => dispatch(openCreateGroup())
 });
 
 export default connect(
