@@ -102,9 +102,8 @@ class GroupsShow extends React.Component {
                 <li>Home</li>
                 <li>Members</li>
                 <li>Photos</li>
-              {this.correctButton()}
               </ul>
-
+              {this.correctButton()}
             </div>
           </div>
 
@@ -116,7 +115,7 @@ class GroupsShow extends React.Component {
 
                 <div className="group-show-about">
                   {this.props.group.description}
-                    <ul>
+                    <ul className='group-members'>
                     {
                       Object.values(this.props.group.users).map(user => (
                         <li key={user.id}>
