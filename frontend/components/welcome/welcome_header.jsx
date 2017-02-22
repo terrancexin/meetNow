@@ -74,7 +74,10 @@ class WelcomeHeader extends React.Component {
 
           <section className='right-header-buttons'>
             <Link to='/groups' className='create-button'>Let's MeetNow!</Link>
-            <button onClick={this.openModalGroupForm()} className='new-group-button'>New Group</button>
+            {
+              this.props.loggedIn && <button onClick={this.openModalGroupForm()} className='new-group-button'>New Group</button>
+            }
+
           </section>
 
 
