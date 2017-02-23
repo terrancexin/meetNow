@@ -17,7 +17,7 @@ class EventsIndex extends React.Component {
             {
               eventArray.map(event => (
                 <ul key={event.id}>
-                  <div>{event.name}</div>
+                  <Link to={`groups/${this.props.groupId}/events/${event.id}`}>{event.name}</Link>
                 <li>{event.description}</li>
                 <li>{event.time}</li>
                 <li>{event.location}</li>
@@ -25,6 +25,8 @@ class EventsIndex extends React.Component {
 
             ))
           }
+
+
         </div>
       );
     } else {

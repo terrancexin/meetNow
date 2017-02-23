@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchAllGroups } from '../../actions/group_actions';
 import { groupsArray } from '../../reducers/group_reducer';
 import { Link } from 'react-router';
+import SearchBar from '../search/search_form';
 
 class GroupsIndex extends React.Component {
   constructor(props) {
@@ -18,23 +19,28 @@ class GroupsIndex extends React.Component {
 
     return (
       <div className='group-index-box'>
+        <SearchBar />
 
         <div className='group-banner'>
           <h1>Find a Group</h1>
           <div className='sum-group'>{sumGroup} passions nearby. Come MeetNow!</div>
         </div>
 
+
+
           <ul className='group-index-wrapper'>
             {
               this.props.groups.map(group => {
-              return (
-                <li className='group-pics' key={group.id}>
-                  <GroupsIndexItems
-                    groupId={group.id}
-                    name={group.name}
-                    members={group.member_count}/>
-                </li>
-                );
+              if (group.member_count !== 0) {
+                return (
+                  <li className='group-pics' key={group.id}>
+                    <GroupsIndexItems
+                      groupId={group.id}
+                      name={group.name}
+                      members={group.member_count}/>
+                  </li>
+                  );
+                }
               })
             }
           </ul>

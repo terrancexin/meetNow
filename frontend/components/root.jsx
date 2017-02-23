@@ -33,11 +33,8 @@ const Root = ({ store }) => {
         <Route path="/" component={App}>
           <IndexRoute component={Welcome} />
           <Route path='groups' component={Groups} />
-          <Route path='groups/:groupId' component={GroupsShow}>
-            <Route path='events' component={EventsIndex} />
-          </Route>
-
-          <Route path='events' component={EventsIndex} />
+          <Route path='groups/:groupId' component={GroupsShow}></Route>
+          <Route path='groups/:groupId/events/:eventId' component={EventShow}></Route>
 
         </Route>
       </Router>

@@ -8,10 +8,11 @@ export const createGroup = (group) => {
   );
 };
 
-export const fetchAllGroups = () => (
+export const fetchAllGroups = (filter) => (
   $.ajax({
     method: 'GET',
-    url: '/api/groups'
+    url: '/api/groups',
+    data: {filter}
   })
 );
 

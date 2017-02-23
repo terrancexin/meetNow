@@ -1,7 +1,14 @@
 class Api::GroupsController < ApplicationController
 
   def index
-    @groups = Group.all.includes(:users)
+    # debugger
+    search_bar_filter = params[:filter]
+    if search_bar_filter
+      @groups = Group.where("LOWER(location) LIKE ?", "#{search_bar_filter.downcase}%")
+    else
+      @groups = Group.all
+    end
+
     render :index
   end
 

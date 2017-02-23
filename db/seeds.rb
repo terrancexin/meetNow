@@ -16,7 +16,13 @@ Rsvp.destroy_all
 
 user1 = User.create!(username: "Terrance", password: "123abc", first_name: 'Terrance', last_name: 'X', email: 'txin@meetnow.com', city: 'nyc')
 user2 = User.create!(username: "AppAcademy", password: "123abc", first_name: "App", last_name: "Academy", email: 'appacademy@meetnow.com')
-20.times { User.create!(username: Faker::GameOfThrones.character, password: "123abc", first_name: Faker::HarryPotter.character, last_name: "Xin", email: Faker::Internet.email) }
+
+i = 10
+500.times do
+  User.create!(username: (Faker::GameOfThrones.character + i.to_s), password: "123abc", first_name: Faker::HarryPotter.character, last_name: "Xin", email: Faker::Internet.email)
+  i += 1
+end
+
 user_ids = User.all.ids
 
 group1 = Group.create!(
@@ -130,7 +136,7 @@ group_ids = Group.all.ids
 Organizer.create!(user_id: user1.id, group_id: group1.id)
 Organizer.create!(user_id: user1.id, group_id: group2.id)
 Organizer.create!(user_id: user2.id, group_id: group2.id)
-20.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
+500.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
 
 event1 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'NYC', description: Faker::Friends.quote, group_id: group1.id)
 event2 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'NYC', description: Faker::Friends.quote, group_id: group2.id)
@@ -145,7 +151,7 @@ event10 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(6
 
 event_ids = Event.all.ids
 user_ids = User.all.ids
-20.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }
+200.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }
 
 #
 # comment1 = Comment.create!(body: "comment 1", user_id: user1.id, event_id: event1.id)

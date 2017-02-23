@@ -1,7 +1,7 @@
 class Api::EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @events = Event.all.includes(:users)
   end
 
   def show
@@ -15,6 +15,10 @@ class Api::EventsController < ApplicationController
   end
 
   def create
+    unless logged_in?
+      render json: ["must log in first"]
+    end
+
     @event = current_user.rsvps.new(event_params)
     @event.group_id = params[:group_id]
 

@@ -6,6 +6,8 @@ import Modal from 'react-modal';
 import configureStore from './store/store';
 import Root from './components/root';
 
+import {fetchAllGroups} from './actions/group_actions';
+
 document.addEventListener('DOMContentLoaded', () => {
   // console.log("%cLet's chat! @txin001 \n\nBuilt using: \n• React+Redux \n• ES6 \n• Ruby on Rails \n• PostgreSQL \n-Terrance", 'background: #fff; color: #00adef');
 
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
   window.store = store;
+  // window.fetchAllGroups = fetchAllGroups;
 
   const root = document.getElementById('root');
   Modal.setAppElement(root);

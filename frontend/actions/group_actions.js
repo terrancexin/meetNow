@@ -6,6 +6,7 @@ export const RECEIVE_ONE_GROUP = "RECEIVE_ONE_GROUP";
 export const RECEIVE_GROUP_ERRORS = "RECEIVE_GROUP_ERRORS";
 export const REMOVE_GROUP = "REMOVE_GROUP";
 
+
 const receiveAllGroups = groups => ({
   type: RECEIVE_ALL_GROUPS,
   groups
@@ -26,8 +27,9 @@ const removeGroup = group => ({
   group
 });
 
-export const fetchAllGroups = () => dispatch => (
-  GroupApiUtil.fetchAllGroups()
+
+export const fetchAllGroups = (filter) => dispatch => (
+  GroupApiUtil.fetchAllGroups(filter)
     .then(groups =>{
       dispatch(receiveAllGroups(groups));
     }, error => dispatch(receiveGroupErrors(error.responseJSONs)))

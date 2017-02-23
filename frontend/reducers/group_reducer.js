@@ -13,7 +13,8 @@ const GroupReducer = (state = _nullGroup, action ) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ALL_GROUPS:
-      return merge({}, state, action.groups);
+      return action.groups;
+
     case RECEIVE_ONE_GROUP:
       newState = merge({}, state, {[action.group.id]: action.group});
       newState[action.group.id].users = action.group.users;

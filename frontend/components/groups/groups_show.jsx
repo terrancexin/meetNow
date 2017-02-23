@@ -87,6 +87,7 @@ class GroupsShow extends React.Component {
 
 
   render () {
+    // fix this.props.group.events bc I can't go to the page if group has no events
     if (!this.props.group || !this.props.group.users || !this.props.group.events) {
           return <div className="loading">Loading...</div>;
 
@@ -131,7 +132,7 @@ class GroupsShow extends React.Component {
 
               <div>
 
-                <EventsIndex events={this.props.group.events} />
+                <EventsIndex events={this.props.group.events} groupId={this.props.group.id}/>
               </div>
 
 
