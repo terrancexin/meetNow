@@ -4,7 +4,7 @@
   justify-content: space-between;
   font-size: 16px;
   font-weight: 200;
-  padding: 15px;
+  padding: 15px 20px;
   font-family: 'Montserrat', sans-serif;
   color: white;
   border-bottom: 1px solid #eee;
@@ -16,4 +16,13 @@
     text-decoration: none;
     color: white;
   }
+
+  .footer-icons {
+    margin: 0 15px;
+  }
+
+  .linked-footer-icons {
+    padding-right: 80px;
+  }
+
 }

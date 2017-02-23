@@ -33,8 +33,8 @@ class WelcomeVideo extends React.Component {
 
           <div className="video-letters">
             <div>
-              <h1>What do you love?</h1>
-              <p>Start your passion with MeetNow!</p>
+              <h1>Love something? Why wait.</h1>
+              <p>Let's MeetNow!</p>
               <button onClick={this.props.openSignUp}>Sign up</button>
             </div>
           </div>

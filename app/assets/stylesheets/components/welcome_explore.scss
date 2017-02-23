@@ -21,6 +21,11 @@
     height: 186px;
     border-radius: 10px;
     border: 1px solid #eee;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.035);
+    }
   }
 
   .explore-first-section, .explore-second-section {

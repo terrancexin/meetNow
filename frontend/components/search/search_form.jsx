@@ -18,15 +18,20 @@ class SearchBar extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='search-bar'>
+        <div className='search-bar-left'>
+          <input className='search-input' type='text' placeholder='e.g. New York' value={this.state.location} onChange={this.updateSearch} />
+          <div className='within-miles'>with 25 miles by location</div>
+        </div>
 
-      <input
-      type='text'
-      placeholder='All groups'
-      value={this.state.location}
-      onChange={this.updateSearch} />
-  </div>
-);
+        <div className='search-bar-right'>
+          <button className='groups-button'>Groups</button>
+          <button className='calendar-button'>Calendar</button>
+        </div>
+
+
+      </div>
+    );
   }
 }
 

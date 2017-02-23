@@ -19,12 +19,12 @@ class GroupsIndex extends React.Component {
 
     return (
       <div className='group-index-box'>
-        <SearchBar />
 
         <div className='group-banner'>
           <h1>Find a Group</h1>
           <div className='sum-group'>{sumGroup} passions nearby. Come MeetNow!</div>
         </div>
+        <SearchBar />
 
 
 

@@ -25,6 +25,14 @@ end
 
 user_ids = User.all.ids
 
+category_array = ["Tech", "Fitness", "Music", "Dance", "Health", "Game", "Culture", "Art"]
+
+i = 10
+50.times do
+  Group.create!(name: (Faker::Book.title + i.to_s), description: Faker::Lorem.paragraph, category: category_array.sample, location: Faker::Address.state)
+end
+
+
 group1 = Group.create!(
   name: "Coffee and Coding Conundrum NYC",
   description: "Kinda like speed dating-style pair programming. Language- and platform-agnostic. Come share, get exposed to new technologies, and meet nice people.
@@ -138,22 +146,8 @@ Organizer.create!(user_id: user1.id, group_id: group2.id)
 Organizer.create!(user_id: user2.id, group_id: group2.id)
 500.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
 
-event1 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'NYC', description: Faker::Friends.quote, group_id: group1.id)
-event2 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'NYC', description: Faker::Friends.quote, group_id: group2.id)
-event3 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'NYC', description: Faker::Friends.quote, group_id: group3.id)
-event4 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'LA', description: Faker::Friends.quote, group_id: group4.id)
-event5 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'SF', description: Faker::Friends.quote, group_id: group5.id)
-event6 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'SF', description: Faker::Friends.quote, group_id: group6.id)
-event7 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'SF', description: Faker::Friends.quote, group_id: group7.id)
-event8 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'SF', description: Faker::Friends.quote, group_id: group8.id)
-event9 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'SF', description: Faker::Friends.quote, group_id: group9.id)
-event10 = Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: 'SF', description: Faker::Friends.quote, group_id: group9.id)
+Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: Faker::Address.state, description: Faker::Friends.quote, group_id: group_ids.sample)
 
 event_ids = Event.all.ids
 user_ids = User.all.ids
 200.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }
-
-#
-# comment1 = Comment.create!(body: "comment 1", user_id: user1.id, event_id: event1.id)
-# comment2 = Comment.create!(body: "comment 2", user_id: user2.id, event_id: event2.id)
-# comment3 = Comment.create!(body: "comment 3", user_id: user1.id, event_id: event1.id)
