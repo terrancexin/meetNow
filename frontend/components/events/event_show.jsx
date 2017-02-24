@@ -33,7 +33,7 @@ class EventShow extends React.Component {
 
   attendButton() {
     if (this.props.currentUser) {
-      if (Object.keys(this.props.event.users).includes(`${this.props.currentUser.id}`)) {
+      if (Object.keys(this.props.event.guys).includes(`${this.props.currentUser.id}`)) {
         return <button onClick={this.handleLeaveEvent} className='attend-event-button'>Not Attending</button>;
       } else {
         return <button onClick={this.handleAttendEvent} className='attend-event-button'>Attend</button>;
@@ -47,13 +47,15 @@ class EventShow extends React.Component {
   render() {
     if (this.props.event) {
       return (
-        <div className='event-show-container'>
-            <li>{this.props.event.name}</li>
-            <li>{this.props.event.description}</li>
-            <li>{this.props.event.location}</li>
-            <li>{this.props.event.time}</li>
-            <li>Attending: {this.props.event.rsvp_count}</li>
-            {this.attendButton()}
+        <div>
+          <div className='event-show-container'>
+              <li>{this.props.event.name}</li>
+              <li>{this.props.event.description}</li>
+              <li>{this.props.event.location}</li>
+              <li>{this.props.event.time}</li>
+              <li>Attending: {this.props.event.rsvp_count}</li>
+              {this.attendButton()}
+        </div>
       </div>
 
       );

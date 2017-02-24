@@ -10,17 +10,26 @@ class EventsIndex extends React.Component {
   }
 
   render() {
+
     if (this.props.events) {
+      // debugger
       const eventArray = Object.keys(this.props.events).map(id => this.props.events[id]);
       return (
         <div>
             {
               eventArray.map(event => (
-                <ul key={event.id}>
+              <ul className='events-box-on-group' key={event.id}>
+                <div className='event-time'><li>{event.time}</li></div>
+                <div className='event-title'>
                   <Link to={`groups/${this.props.groupId}/events/${event.id}`}>{event.name}</Link>
-                <li>{event.description}</li>
-                <li>{event.time}</li>
-                <li>{event.location}</li>
+                </div>
+                <li className='event-location'>{event.location}</li>
+
+                <div>
+                  {event.users}
+                </div>
+
+                <li className='event-description'>{event.description}</li>
               </ul>
 
             ))

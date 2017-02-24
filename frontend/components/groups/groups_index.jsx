@@ -22,7 +22,7 @@ class GroupsIndex extends React.Component {
 
         <div className='group-banner'>
           <h1>Find a Group</h1>
-          <div className='sum-group'>{sumGroup} passions nearby. Come MeetNow!</div>
+          <div className='sum-group'>{sumGroup} interesting groups nearby. Go MeetNow!</div>
         </div>
         <SearchBar />
 

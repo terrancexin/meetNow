@@ -37,11 +37,13 @@ class GroupsShow extends React.Component {
   }
 
   componentDidMount() {
+    // debugger
+    console.log("%ccomponentDidMount", 'background: #000; color: #fff');
     this.props.fetchSingleGroup(this.props.params.groupId);
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.params.groupId !== newProps.params.groupId) {
+    if (this.props.params.groupId !== newProps.params.groupId || !newProps.group.users) {
       this.props.fetchSingleGroup(newProps.params.groupId);
     }
   }
@@ -83,22 +85,46 @@ class GroupsShow extends React.Component {
 
   }
 
+  middleStuff() {
+    if (this.props.children) {
+      return this.props.children;
+    } else {
+      return (
+        <div className='mid-content-box'>
+            <div className="group-show-description">
+              <h1>Welcome!</h1>
+              <p>{this.props.group.description}</p>
+        </div>
+
+        {
+          this.props.group.events && <EventsIndex events={this.props.group.events} groupId={this.props.group.id}/>
+        }
+        {
+          !this.props.group.events && <div className='display-no-events'>No Events</div>
+        }
+
+    </div>
+  );
+    }
+  }
+
 
 
 
   render () {
+    // debugger
+    console.log(`%crender`, 'background: #000; color: #fff');
+
     // fix this.props.group.events bc I can't go to the page if group has no events
-    if (!this.props.group || !this.props.group.users || !this.props.group.events) {
+    if (!this.props.group || !this.props.group.users) {
           return <div className="loading">Loading...</div>;
 
     } else {
       return (
-
         <div className='group-show-page'>
 
           <div className='group-name-nav'>
             <h1 className='group-name'>{this.props.group.name}</h1>
-
             <div className='group-header-buttons'>
 
               <ul className='left-side-buttons'>
@@ -112,28 +138,60 @@ class GroupsShow extends React.Component {
 
           <div className='content-container'>
             <ul className='group-side-bar-info'>
-              <li>Location: {this.props.group.location}</li>
-              <li>Members: {this.props.group.member_count}</li>
-            </ul>
-
-                <div className="group-show-about">
-                  {this.props.group.description}
-                    <ul className='group-members'>
-                    {
-                      Object.values(this.props.group.users).map(user => (
-                        <li key={user.id}>
-                          {user.first_name}
-                        </li>
-                      ))
-                    }
-                    </ul>
-                </div>
+              <img className='group-side-bar-pic' src={window.assets.fitnessImage} />
 
 
-              <div>
+              <section className='side-bar-text-box'>
+                <div className='text-info-inner-box'>
+                  <div className='side-bar-location'>{this.props.group.location}</div>
+                  <li className='side-founded'>Founded March 17, 2017</li>
+                  <div className='side-aboutus'><li>About us...</li></div>
 
-                <EventsIndex events={this.props.group.events} groupId={this.props.group.id}/>
-              </div>
+                    <li className='side-bar-info'>
+                      <div>
+                        Events
+                      </div>
+                      <div>
+                        {this.props.group.event_count}
+                      </div>
+                    </li>
+
+                    <li className='side-bar-info'>
+                      <div>
+                        Members
+                      </div>
+                      <div>
+                        {this.props.group.member_count}
+                      </div>
+                    </li>
+
+
+                    <div className='group-members-list'>
+                      <ul className='group-members'>
+                      {
+                        Object.keys(this.props.group.users).map(id => (
+
+                          <div className='member-and-pic-box' key={id}>
+                            <div className='pro-pic-box'>
+                              <img className='pro-pic' src={window.assets.memberlistImage} />
+                            </div>
+
+                            <div className='member-name'>
+                              {this.props.group.users[id].name}
+                            </div>
+
+                          </div>
+                        ))
+                      }
+                      </ul>
+                    </div>
+
+                    </div>
+                </section>
+
+              </ul>
+
+              {this.middleStuff()}
 
 
               <Modal
@@ -145,12 +203,8 @@ class GroupsShow extends React.Component {
                   <AuthForm toggleForm={this.toggleFormType} formType={this.state.formType} closeModal={this.props.closeAuthForm}/>
               </Modal>
 
-
-
-
           </div>
 
-            {this.props.children}
         </div>
 
       );

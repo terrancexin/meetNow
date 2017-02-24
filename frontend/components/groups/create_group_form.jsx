@@ -72,7 +72,7 @@ class CreateGroupForm extends React.Component {
                 value={this.state.location}
                 onChange={this.handleLocation}/>
 
-            <input type='submit' value="create group"/>
+              <input type='submit' value="Create"/>
         </form>
       </div>
     );
