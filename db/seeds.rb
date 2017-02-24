@@ -6,6 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+USER_PHOTOS = [
+  image_path("logo.png")
+]
+
+GROUPS_PHOTOS = [
+  "http://cdn.thedailybeast.com/content/dailybeast/articles/2016/04/23/welcome-to-the-devolution-the-high-tech-world-is-making-us-weak-and-weird/jcr:content/image.crop.800.500.jpg/48712578.cached.jpg",
+  "https://www.spotrunner.com/wp-content/uploads/2016/11/fitness_tracker_guide_cover_2.jpg",
+  "http://az616578.vo.msecnd.net/files/2016/05/27/635999184041758451-974082916_Live-music-bg.jpg",
+  "https://tctechcrunch2011.files.wordpress.com/2015/04/codecode.jpg",
+  "https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/2005/s300/logo-emblem-red-1000-1-.jpg"
+]
+
 User.destroy_all
 Group.destroy_all
 Event.destroy_all
@@ -18,8 +30,8 @@ user1 = User.create!(username: "Terrance", password: "123abc", first_name: 'Terr
 user2 = User.create!(username: "AppAcademy", password: "123abc", first_name: "App", last_name: "Academy", email: 'appacademy@meetnow.com')
 
 i = 1
-800.times do
-  User.create!(username: (Faker::GameOfThrones.character + i.to_s), password: "123abc", first_name: Faker::HarryPotter.character, last_name: "Xin", email: Faker::Internet.email)
+1000.times do
+  User.create!(username: (Faker::GameOfThrones.character + i.to_s), password: "123abc", first_name: Faker::Friends.character, last_name: "Xin", email: Faker::Internet.email)
   i += 1
 end
 
@@ -29,7 +41,7 @@ category_array = ["Tech", "Fitness", "Music", "Dance", "Health", "Game", "Cultur
 
 i = 1
 50.times do
-  Group.create!(name: (Faker::Book.title + i.to_s), description: Faker::Lorem.paragraph, category: category_array.sample, location: Faker::Address.state)
+  Group.create!(name: (Faker::GameOfThrones.character + i.to_s), description: Faker::Lorem.paragraph(2), category: category_array.sample, location: Faker::Address.state)
   i += 1
 end
 
@@ -145,10 +157,10 @@ group_ids = Group.all.ids
 Organizer.create!(user_id: user1.id, group_id: group1.id)
 Organizer.create!(user_id: user1.id, group_id: group2.id)
 Organizer.create!(user_id: user2.id, group_id: group2.id)
-500.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
-200.times { Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: Faker::Address.state, description: Faker::Friends.quote, group_id: group_ids.sample) }
+1000.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
+100.times { Event.create!(name: (Faker::GameOfThrones.character + i.to_s), time: Faker::Time.forward(60), location: Faker::GameOfThrones.city, description: Faker::Friends.quote, group_id: group_ids.sample) }
 
 
 event_ids = Event.all.ids
 user_ids = User.all.ids
-200.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }
+600.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }

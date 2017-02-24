@@ -23,6 +23,7 @@ class CreateGroupForm extends React.Component {
       .then(() => {
         // debugger;
         this.props.closeModal();
+
         this.props.router.push('groups');
       });
   }

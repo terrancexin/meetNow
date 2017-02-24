@@ -5,6 +5,7 @@ import { logout } from '../../actions/session_actions';
 import Modal from 'react-modal';
 import AuthForm from '../authform/auth_form';
 import modalStyle from './modalStyle';
+import groupModalStyle from './group_modal_style';
 import CreateGroupForm from '../groups/create_group_form';
 import { openCreateGroup, closeCreateGroup,
          openAuthForm, closeAuthForm} from '../../actions/modal_actions';
@@ -70,9 +71,7 @@ class WelcomeHeader extends React.Component {
 
   conditionalModalStyles({ newGroupForm }) {
     if (newGroupForm) {
-      modalStyle.content.height = '500px';
-
-      return modalStyle;
+      return groupModalStyle;
     } else {
       return modalStyle;
     }

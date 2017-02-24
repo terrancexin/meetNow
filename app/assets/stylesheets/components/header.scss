@@ -171,6 +171,10 @@
     border-radius: 3px;
     cursor: pointer;
     font-weight: 200;
+
+    &:hover {
+      background-color: rgb(182, 14, 24);
+    }
   }
 
   a, button {

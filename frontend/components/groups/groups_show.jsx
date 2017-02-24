@@ -63,8 +63,14 @@ class GroupsShow extends React.Component {
 
   }
 
-  currentUserMember() {
-
+  checkJoined() {
+    if (this.props.currentUser) {
+      if (Object.keys(this.props.group.users).includes(`${this.props.currentUser.id}`)) {
+        return true;
+      }
+    } else {
+      return false;
+    }
   }
 
   handleLeaveGroup () {
@@ -98,8 +104,7 @@ class GroupsShow extends React.Component {
         </div>
 
         {
-          this.props.group.events && <EventsIndex handleJoinGroup={this.handleJoinGroup} isMember={Object.keys(this.props.group.users).includes(`${this.props.currentUser.id}`)} 
-          events={this.props.group.events} groupId={this.props.group.id}/>
+          this.props.group.events && <EventsIndex handleJoinGroup={this.handleJoinGroup} isMember={this.checkJoined()} events={this.props.group.events} groupId={this.props.group.id}/>
         }
         {
           !this.props.group.events && <div className='no-events-box'><div className='display-no-events'>No Upcoming Events</div><button className='create-event'>Create an Event</button></div>
@@ -121,6 +126,7 @@ class GroupsShow extends React.Component {
 
     } else {
       return (
+        <div className='width-setter'>
         <div className='group-show-page'>
 
           <div className='group-name-nav'>
@@ -207,6 +213,7 @@ class GroupsShow extends React.Component {
 
         </div>
 
+        </div>
       );
     }
   }

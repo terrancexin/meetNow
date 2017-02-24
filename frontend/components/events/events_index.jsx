@@ -31,7 +31,6 @@ class EventsIndex extends React.Component {
                         <li key={attendee.id}>
                           <div className='attendee-wrapper'>
                             <img className='attendee-pic' src={window.assets.memberlistImage} />
-                            <div className='attendee-name'>{attendee.first_name}</div>
                           </div>
                         </li>
 

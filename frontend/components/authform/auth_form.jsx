@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { login, logout, signup, clearSessionErrors } from './../../actions/session_actions';
 import { Router, withRouter } from 'react-router';
+import { closeAuthForm } from '../../actions/modal_actions';
 
 class AuthForm extends React.Component{
   constructor(props) {
@@ -27,6 +28,7 @@ class AuthForm extends React.Component{
     const user = this.state;
     this.props.processForm(user).then(() => {
       this.props.closeModal();
+      // this.props.closeAuthForm();
       // this.props.router.push('groups');
     });
   }
@@ -188,6 +190,7 @@ const mapDispatchToProps = (dispatch, { formType }) => {
 
   return {
     clearErrors: () => dispatch(receiveSessionErrors({})),
+    closeAuthForm: () => dispatch(closeAuthForm()),
     processForm: user => dispatch(processForm(user)),
     formType
   };
