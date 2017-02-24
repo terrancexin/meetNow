@@ -33,7 +33,7 @@ class EventShow extends React.Component {
 
   attendButton() {
     if (this.props.currentUser) {
-      if (Object.keys(this.props.event.guys).includes(`${this.props.currentUser.id}`)) {
+      if (Object.keys(this.props.event.attendees).includes(`${this.props.currentUser.id}`)) {
         return <button onClick={this.handleLeaveEvent} className='attend-event-button'>Not Attending</button>;
       } else {
         return <button onClick={this.handleAttendEvent} className='attend-event-button'>Attend</button>;

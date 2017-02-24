@@ -37,8 +37,6 @@ class GroupsShow extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
-    console.log("%ccomponentDidMount", 'background: #000; color: #fff');
     this.props.fetchSingleGroup(this.props.params.groupId);
   }
 
@@ -85,7 +83,7 @@ class GroupsShow extends React.Component {
 
   }
 
-  middleStuff() {
+  checkChildren() {
     if (this.props.children) {
       return this.props.children;
     } else {
@@ -112,8 +110,6 @@ class GroupsShow extends React.Component {
 
 
   render () {
-    // debugger
-    console.log(`%crender`, 'background: #000; color: #fff');
 
     // fix this.props.group.events bc I can't go to the page if group has no events
     if (!this.props.group || !this.props.group.users) {
@@ -128,7 +124,7 @@ class GroupsShow extends React.Component {
             <div className='group-header-buttons'>
 
               <ul className='left-side-buttons'>
-                <li>Home</li>
+                <Link to={`/groups/${this.props.group.id}`}><li>Home</li></Link>
                 <li>Members</li>
                 <li>Photos</li>
               </ul>
@@ -191,7 +187,7 @@ class GroupsShow extends React.Component {
 
               </ul>
 
-              {this.middleStuff()}
+              {this.checkChildren()}
 
 
               <Modal

@@ -98,7 +98,10 @@
   }
 }
 
-
+.search-group-index-box {
+  display: flex;
+  flex-direction: column;
+}
 
 //
 // .group-pics > {

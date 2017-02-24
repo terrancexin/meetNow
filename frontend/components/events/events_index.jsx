@@ -23,7 +23,22 @@ class EventsIndex extends React.Component {
                 <div className='event-title'>
                   <Link to={`groups/${this.props.groupId}/events/${event.id}`}>{event.name}</Link>
                 </div>
-                <li className='event-location'>{event.location}</li>
+
+
+                <div className='rsvp-flex'>
+                  <ul className='attendee-box'>
+                      {Object.keys(event.attendees).map(id => event.attendees[id]).map(attendee => (
+                        <li key={attendee.id}>
+                          <img className='attendee-pic' src={window.assets.memberlistImage} />
+                        </li>
+
+                    ))}
+                  </ul>
+
+                  <Link className='rsvp-button' to={`groups/${this.props.groupId}/events/${event.id}`}>RSVP</Link>
+                </div>
+
+                <li className='event-location'>Location: {event.location}</li>
 
                 <div>
                   {event.users}
@@ -45,3 +60,6 @@ class EventsIndex extends React.Component {
 }
 
 export default EventsIndex;
+
+
+// <div className='attendee-name'>{attendee.first_name}</div>

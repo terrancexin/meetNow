@@ -24,6 +24,8 @@ class GroupsIndex extends React.Component {
           <h1>Find a Group</h1>
           <div className='sum-group'>{sumGroup} interesting groups nearby. Go MeetNow!</div>
         </div>
+
+        <div className='search-group-index-box'>
         <SearchBar />
 
 
@@ -44,7 +46,7 @@ class GroupsIndex extends React.Component {
               })
             }
           </ul>
-
+          </div>
       </div>
     );
   }
