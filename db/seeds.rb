@@ -6,11 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-USER_PHOTOS = [
-  image_path("logo.png")
-]
-
-GROUPS_PHOTOS = [
+GROUP_PHOTOS = [
   "http://cdn.thedailybeast.com/content/dailybeast/articles/2016/04/23/welcome-to-the-devolution-the-high-tech-world-is-making-us-weak-and-weird/jcr:content/image.crop.800.500.jpg/48712578.cached.jpg",
   "https://www.spotrunner.com/wp-content/uploads/2016/11/fitness_tracker_guide_cover_2.jpg",
   "http://az616578.vo.msecnd.net/files/2016/05/27/635999184041758451-974082916_Live-music-bg.jpg",
@@ -41,7 +37,7 @@ category_array = ["Tech", "Fitness", "Music", "Dance", "Health", "Game", "Cultur
 
 i = 1
 50.times do
-  Group.create!(name: (Faker::GameOfThrones.character + i.to_s), description: Faker::Lorem.paragraph(2), category: category_array.sample, location: Faker::Address.state)
+  Group.create!(name: (Faker::GameOfThrones.character + i.to_s), description: Faker::Lorem.paragraph(2), category: category_array.sample, location: Faker::Address.state, about: GROUP_PHOTOS.sample)
   i += 1
 end
 

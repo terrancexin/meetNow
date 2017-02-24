@@ -144,7 +144,7 @@ class GroupsShow extends React.Component {
 
           <div className='content-container'>
             <ul className='group-side-bar-info'>
-              <img className='group-side-bar-pic' src={window.assets.fitnessImage} />
+              <img className='group-side-bar-pic' src={this.props.group.about} />
 
 
               <section className='side-bar-text-box'>
