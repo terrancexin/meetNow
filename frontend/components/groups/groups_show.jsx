@@ -101,11 +101,17 @@ class GroupsShow extends React.Component {
             <div className="group-show-description">
               <h1>Welcome!</h1>
               <p>{this.props.group.description}</p>
-        </div>
+            </div>
 
         {
-          this.props.group.events && <EventsIndex handleJoinGroup={this.handleJoinGroup} isMember={this.checkJoined()} events={this.props.group.events} groupId={this.props.group.id}/>
+          this.props.group.events && <EventsIndex
+                                      handleJoinGroup={this.handleJoinGroup}
+                                      isMember={this.checkJoined()}
+                                      events={this.props.group.events}
+                                      groupId={this.props.group.id}
+                                      currentUser={this.props.currentUser}/>
         }
+
         {
           !this.props.group.events && <div className='no-events-box'><div className='display-no-events'>No Upcoming Events</div><button className='create-event'>Create an Event</button></div>
         }

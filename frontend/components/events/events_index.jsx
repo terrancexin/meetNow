@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { fetchAllEvents } from '../../actions/event_actions';
+import { fetchAllEvents, attendEvent, leave } from '../../actions/event_actions';
 import { eventsArray } from '../../reducers/event_reducer';
 
 class EventsIndex extends React.Component {
   constructor(props) {
     super(props);
   }
+
 
   render() {
     // debugger

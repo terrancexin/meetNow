@@ -11,11 +11,18 @@
   background-color: black;
   height: 16px;
   text-align: center;
+  cursor: pointer;
+
+
+
 
 
   a {
     text-decoration: none;
     color: white;
+    &:hover {
+      color: rgb(27, 123, 223);
+    }
   }
 
   .footer-icons {
@@ -26,4 +33,11 @@
     padding-right: 80px;
   }
 
+}
+
+.footer-logout-button {
+  cursor: pointer;
+  &:hover {
+    color: rgb(27, 123, 223);
+  }
 }

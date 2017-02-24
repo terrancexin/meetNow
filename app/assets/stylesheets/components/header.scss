@@ -108,10 +108,18 @@
     .create-button {
       margin-right: 14px;
       cursor: pointer;
+
+      &:hover {
+        color: rgb(10, 41, 251);
+      }
     }
 
     .new-group-button {
       cursor: pointer;
+
+      &:hover {
+        color: rgb(161, 34, 34);
+      }
     }
 
   }

@@ -34,12 +34,12 @@ class EventShow extends React.Component {
   attendButton() {
     if (this.props.currentUser) {
       if (Object.keys(this.props.event.attendees).includes(`${this.props.currentUser.id}`)) {
-        return <button onClick={this.handleLeaveEvent} className='attend-event-button'>Not Attending</button>;
+        return <button onClick={this.handleLeaveEvent} className='attend-event-button'>Going</button>;
       } else {
-        return <button onClick={this.handleAttendEvent} className='attend-event-button'>Attend</button>;
+        return <button onClick={this.handleAttendEvent} className='attend-event-button'>Not going</button>;
       }
     } else {
-      return <button onClick={this.handleLeaveEvent} className='attend-event-button'>Not Attending</button>;
+      return <button onClick={this.handleLeaveEvent} className='attend-event-button'>Not going</button>;
     }
   }
 
@@ -47,14 +47,17 @@ class EventShow extends React.Component {
   render() {
     if (this.props.event) {
       return (
-        <div className='event-showpage-outer'>
-          <div className='event-show-container'>
-              <li>{this.props.event.name}</li>
-              <li>{this.props.event.description}</li>
-              <li>{this.props.event.location}</li>
-              <li>{this.props.event.time}</li>
-              <li>Attending: {this.props.event.rsvp_count}</li>
-              {this.attendButton()}
+        <div className='mid-content-box'>
+          <div className='event-show-description'>
+            <div className='event-info-box'>
+              <div className='event-show-name'><li>{this.props.event.name}</li></div>
+              <div className='event-show-date'><li>Friday, March 17, 2017</li></div>
+              <div className='event-show-time'><li>6:00 PM</li></div>
+              <div className='event-show-location'><li>Location: {this.props.event.location}</li></div>
+              <div className='event-show-attending'><li>Attending: {this.props.event.rsvp_count}</li></div>
+              <div className='event-show-description'><li className='event-description'>{this.props.event.description}</li></div>
+                {this.attendButton()}
+            </div>
         </div>
       </div>
 

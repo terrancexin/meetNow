@@ -1,5 +1,5 @@
 .width-setter {
-  width: 60%;
+  width: 900px;
   margin: 0 auto;
 }
 
@@ -270,6 +270,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 12px;
+  max-width: 450px;
 
   .attendee-pic {
     width: 40px;
@@ -298,7 +299,8 @@
     // margin-top: 15px;
     width: 90px;
     margin: 8px;
-
+    text-align: center;
+    
     &:hover {
       background-color: $meetup-red;
     }
