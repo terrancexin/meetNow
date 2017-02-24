@@ -10,7 +10,7 @@ class EventsIndex extends React.Component {
   }
 
   render() {
-
+    // debugger
     if (this.props.events) {
       // debugger
       const eventArray = Object.keys(this.props.events).map(id => this.props.events[id]);
@@ -29,22 +29,34 @@ class EventsIndex extends React.Component {
                   <ul className='attendee-box'>
                       {Object.keys(event.attendees).map(id => event.attendees[id]).map(attendee => (
                         <li key={attendee.id}>
-                          <img className='attendee-pic' src={window.assets.memberlistImage} />
+                          <div className='attendee-wrapper'>
+                            <img className='attendee-pic' src={window.assets.memberlistImage} />
+                            <div className='attendee-name'>{attendee.first_name}</div>
+                          </div>
                         </li>
 
                     ))}
                   </ul>
 
-                  <Link className='rsvp-button' to={`groups/${this.props.groupId}/events/${event.id}`}>RSVP</Link>
+                  {
+                    this.props.isMember && <Link className='rsvp-button' to={`groups/${this.props.groupId}/events/${event.id}`}>RSVP</Link>
+                  }
+                  {
+                    !this.props.isMember && <button onClick={this.props.handleJoinGroup} className="join-group-button">Join us!</button>
+                  }
+
                 </div>
 
-                <li className='event-location'>Location: {event.location}</li>
 
-                <div>
-                  {event.users}
+                <div className='going-box'>
+                  <div>
+                    <li className='event-location'>Location: {event.location}</li>
+                    <li className='event-description'>{event.description}</li>
+                  </div>
+
+                  <div className='count-going'>{Object.keys(event.attendees).map(id => event.attendees[id]).length} going</div>
                 </div>
 
-                <li className='event-description'>{event.description}</li>
               </ul>
 
             ))
@@ -54,7 +66,7 @@ class EventsIndex extends React.Component {
         </div>
       );
     } else {
-      return <div className='loading'>No events</div>;
+      return <div className='loading-no-event'>No events</div>;
     }
   }
 }
@@ -62,4 +74,5 @@ class EventsIndex extends React.Component {
 export default EventsIndex;
 
 
-// <div className='attendee-name'>{attendee.first_name}</div>
+
+// {event.users}

@@ -68,6 +68,16 @@ class WelcomeHeader extends React.Component {
     this.setState({username: 'AppAcademy', password: '123abc'});
   }
 
+  conditionalModalStyles({ newGroupForm }) {
+    if (newGroupForm) {
+      modalStyle.content.height = '500px';
+
+      return modalStyle;
+    } else {
+      return modalStyle;
+    }
+  }
+
   render(){
 
     return(
@@ -100,7 +110,7 @@ class WelcomeHeader extends React.Component {
         <Modal
            isOpen={this.state.modalOpen}
            onRequestClose={this.closeModal}
-           style={modalStyle}
+           style={this.conditionalModalStyles({ newGroupForm: this.props.groupForm})}
            contentLabel="header-modal"
          >
          {

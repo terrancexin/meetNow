@@ -46,8 +46,11 @@ class CreateGroupForm extends React.Component {
   render() {
     return (
       <div className='create-group-form-container'>
-        <h1 className='group-form-header'>Start a new group!</h1>
-        <form className='create-group-from' onSubmit={this.handleSubmit}>
+        <form className='create-group-form' onSubmit={this.handleSubmit}>
+          <div className='form-text'>
+            <h1 className='group-form-header'>Start a new group!</h1>
+          </div>
+          <div className='login-labels'>
               <label>Name</label>
               <input
                 type='text'
@@ -73,6 +76,7 @@ class CreateGroupForm extends React.Component {
                 onChange={this.handleLocation}/>
 
               <input type='submit' value="Create"/>
+            </div>
         </form>
       </div>
     );
