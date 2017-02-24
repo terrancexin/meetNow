@@ -18,7 +18,7 @@ user1 = User.create!(username: "Terrance", password: "123abc", first_name: 'Terr
 user2 = User.create!(username: "AppAcademy", password: "123abc", first_name: "App", last_name: "Academy", email: 'appacademy@meetnow.com')
 
 i = 1
-500.times do
+800.times do
   User.create!(username: (Faker::GameOfThrones.character + i.to_s), password: "123abc", first_name: Faker::HarryPotter.character, last_name: "Xin", email: Faker::Internet.email)
   i += 1
 end
@@ -124,7 +124,7 @@ group11 = Group.create!(
 )
 
 group12 = Group.create!(
-  name: "The New York Asian Meetup Group",
+  name: "Da Meetup Group",
   description: "Welcome Asians and lovers of Asian culture!
 
                 We host Asian events on our own and international events with other groups.
@@ -146,7 +146,7 @@ Organizer.create!(user_id: user1.id, group_id: group1.id)
 Organizer.create!(user_id: user1.id, group_id: group2.id)
 Organizer.create!(user_id: user2.id, group_id: group2.id)
 500.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
-100.times { Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: Faker::Address.state, description: Faker::Friends.quote, group_id: group_ids.sample) }
+200.times { Event.create!(name: Faker::Superhero.name, time: Faker::Time.forward(60), location: Faker::Address.state, description: Faker::Friends.quote, group_id: group_ids.sample) }
 
 
 event_ids = Event.all.ids

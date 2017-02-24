@@ -47,7 +47,7 @@ class EventShow extends React.Component {
   render() {
     if (this.props.event) {
       return (
-        <div>
+        <div className='event-showpage-outer'>
           <div className='event-show-container'>
               <li>{this.props.event.name}</li>
               <li>{this.props.event.description}</li>

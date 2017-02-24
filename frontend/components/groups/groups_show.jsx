@@ -85,7 +85,7 @@ class GroupsShow extends React.Component {
 
   checkChildren() {
     if (this.props.children) {
-      return this.props.children;
+      return <div className='mid-content-box'>{this.props.children}</div>;
     } else {
       return (
         <div className='mid-content-box'>
