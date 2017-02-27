@@ -3,7 +3,6 @@ class Api::RsvpsController < ApplicationController
   end
 
   def create
-    # debugger
     @rsvp = current_user.rsvps.new(rsvp_params)
     @event = @rsvp.event
 

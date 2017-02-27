@@ -3,7 +3,6 @@ class Api::MembershipsController < ApplicationController
   end
 
   def create
-    # debugger
     @membership = Membership.new(membership_params)
     @group = @membership.group
     if @membership.save
@@ -14,7 +13,6 @@ class Api::MembershipsController < ApplicationController
   end
 
   def destroy
-    # debugger
     @membership = Membership.find_by(
       user_id: params[:user_id],
       group_id: params[:group_id]
