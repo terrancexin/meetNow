@@ -24,8 +24,9 @@ class User < ActiveRecord::Base
   validates :session_token, :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  # has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "aa-logo-test.png"
-  # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  # has_attached_file :image, default_url: "aa-logo-test.png"
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "aa-logo-test.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
 

@@ -102,7 +102,10 @@ class WelcomeHeader extends React.Component {
               </ul>
             }
             {
-              this.props.loggedIn &&   <ul className='header-buttons'><li><button className='signup-button' >Profile</button></li></ul>
+              this.props.loggedIn &&   <ul className='header-buttons'>
+                                          <li><button className='signup-button' >Profile</button></li>
+                                          <img src={currentUser.image_url}/>
+                                        </ul>
             }
 
 

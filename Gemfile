@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
+# git_source(:github) do |repo_name|
+#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+#   "https://github.com/#{repo_name}.git"
+# end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -18,7 +18,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
@@ -29,7 +28,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
 gem 'paperclip', '~> 5.0.0.beta1'
+gem 'figaro'
+gem 'aws-sdk', '>= 2.0'
+
+gem 'rails_12factor', group: :production
+
 gem 'faker'
 
 # Use Capistrano for deployment
@@ -41,10 +46,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
-end
-
-group :production do
-  gem 'rails_12factor'
 end
 
 group :development do
