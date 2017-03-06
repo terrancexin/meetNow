@@ -20,9 +20,10 @@
 #
 
 class User < ActiveRecord::Base
-  validates :username, presence: true#, uniqueness: true
-  validates :session_token, :password_digest, presence: true
+  validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
+  validates :first_name, :session_token, :password_digest, presence: true
+
 
   # has_attached_file :image, default_url: "aa-logo-test.png"
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "aa-logo-test.png"
@@ -42,8 +43,8 @@ class User < ActiveRecord::Base
   has_many :organizer_groups, through: :organizer, source: :group
   has_many :events, through: :rsvps, source: :event
 
-  def self.find_by_credentials(username, password)
-    user = self.find_by(username: username)
+  def self.find_by_credentials(email, password)
+    user = self.find_by(email: email)
     user && user.is_password?(password) ? user : nil
   end
 

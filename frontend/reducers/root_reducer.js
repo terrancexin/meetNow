@@ -3,12 +3,19 @@ import SessionReducer from './session_reducer';
 import GroupReducer from './group_reducer';
 import ModalReducer from './modal_reducer';
 import EventReducer from './event_reducer';
+import UserDetailReducer from './user_detail_reducer';
+import ErrorsReducer from './errors_reducer';
+import NoticesReducer from './notices_reducer';
+
 
 const RootReducer = combineReducers({
   session: SessionReducer,
   groups: GroupReducer,
   modal: ModalReducer,
-  events: EventReducer
+  events: EventReducer,
+  userDetail: UserDetailReducer,
+  notices: NoticesReducer,
+  errors: ErrorsReducer
 });
 
 export default RootReducer;

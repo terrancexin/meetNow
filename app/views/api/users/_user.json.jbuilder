@@ -1,4 +1,4 @@
-json.extract! user, :id, :username, :email, :first_name, :last_name, :city, :bio
+json.extract! user, :id, :email, :first_name, :last_name, :city, :bio
 json.image_url asset_path(user.image.url)
 
 json.groups do
