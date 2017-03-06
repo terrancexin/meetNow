@@ -1,25 +1,33 @@
 import React from 'react';
-import { openSignUp, closeSignUp } from '../../actions/modal_actions';
-import { videoModalStyle } from './video_sign_style';
+import { Link, hashHistory } from 'react-router';
 import { connect } from 'react-redux';
-import VideoSignUp  from '../authform/video_signup_form';
 import Modal from 'react-modal';
+import SignUpForm from '../forms/signup_form';
+import LogInForm from '../forms/login_form';
 
 class WelcomeVideo extends React.Component {
   constructor() {
     super();
-    this.state = { formType: 'signup' };
+    this.state = { modalType: "" };
+    this.handleModalOpen = this.handleModalOpen.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  toggleFormType() {
-      this.setState({ formType: "signup"});
+  handleModalOpen(form) {
+    return () => {
+      this.closeModal();
+      this.setState({ modalType: form });
+    };
+  }
+
+  closeModal() {
+    this.setState({ modalType: false });
   }
 
   render () {
     return (
       <div className="splash-main">
         <div className="cover-video">
-
           <div className="video-div">
             <video
               width="100%"
@@ -27,48 +35,39 @@ class WelcomeVideo extends React.Component {
               alt="covervideo"
               src={ window.assets.coverVideoMP4 } type="video/mp4"
               loop autoPlay muted />
-
-
           </div>
 
           <div className="video-letters">
             <div>
               <h1>Love something? Why wait.</h1>
               <p>Let's MeetNow!</p>
-              <button onClick={this.props.openSignUp}>Sign up</button>
+
+              { !this.props.loggedIn && <button className='signup-button' onClick={this.handleModalOpen('signup')}>Sign up</button> }
+              { this.props.loggedIn && <Link to='/groups' className='video-groups-button'>Let's Go!</Link> }
             </div>
           </div>
-
         </div>
 
         <Modal
-          className='video-modal'
-          isOpen={this.props.signUpForm}
-          onRequestClose={this.props.closeSignUp}
-
-          contentLabel='video-signup'>
-
-          <VideoSignUp
-            toggleForm={this.toggleFormType}
-            formType={'signup'}
-            closeModal={this.props.closeSignUp}/>
+          isOpen={this.state.modalType === "signup"}
+          onRequestClose={this.closeModal}
+          contentLabel="signup-modal">
+          <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")}/>
         </Modal>
 
+        <Modal
+          isOpen={this.state.modalType === "login"}
+          onRequestClose={this.closeModal}
+          contentLabel="login-modal">
+          <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")}/>
+        </Modal>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  signUpForm: state.modal.signUpForm
+  loggedIn: !!state.session.currentUser
 });
 
-const mapDispatchToProps = dispatch => ({
-  openSignUp: () => dispatch(openSignUp()),
-  closeSignUp: () => dispatch(closeSignUp())
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WelcomeVideo);
+export default connect(mapStateToProps)(WelcomeVideo);

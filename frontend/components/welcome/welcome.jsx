@@ -6,8 +6,8 @@ import WelcomeExplore from './welcome_explore';
 import WelcomeVideo from './welcome_video';
 
 class Welcome extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
 
   render() {
@@ -30,7 +30,3 @@ class Welcome extends React.Component {
 }
 
 export default Welcome;
-
-// <div className='welcome-explore'>
-//   <WelcomeExplore />
-// </div>

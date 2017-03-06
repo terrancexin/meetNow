@@ -3,31 +3,33 @@ import { Link, hashHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import Modal from 'react-modal';
-import AuthForm from '../authform/auth_form';
-import modalStyle from './modalStyle';
+import LogInForm from '../forms/login_form';
+import SignUpForm from '../forms/signup_form';
 
 class WelcomeFooter extends React.Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.handleSignOut = this.handleSignOut.bind(this);
-    this.state = { modalOpen: false, formType: 'login' };
-    this.openModal = this.openModal.bind(this);
+    this.state = { modalType: "" };
+    this.handleModalOpen = this.handleModalOpen.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
-  openModal() {
-    this.setState({ modalOpen: true});
+  handleModalOpen(form) {
+    return () => {
+      this.closeModal();
+      this.setState({ modalType: form });
+    };
   }
 
   closeModal() {
-    this.setState({ modalOpen: false});
+    this.setState({ modalType: false});
   }
 
   handleSignOut(e){
     e.preventDefault();
     this.props.logout();
     if (this.props.pathname !== "/") {
-
       hashHistory.push('/');
     }
   }
@@ -36,9 +38,9 @@ class WelcomeFooter extends React.Component {
   render(){
     let buttons;
     if (this.props.loggedIn){
-      buttons =  (<button className='footer-logout-button' onClick={this.handleSignOut}>Log out</button>);
+      buttons =  (<button className='footer-button' onClick={this.handleSignOut}>Log out</button>);
     } else {
-      buttons = (<button className='footer-login-button' onClick={this.openModal}>Log in</button> );
+      buttons = (<button className='footer-button' onClick={this.handleModalOpen("login")}>Log in</button> );
     }
 
     return(
@@ -51,15 +53,17 @@ class WelcomeFooter extends React.Component {
         {buttons}
 
         <Modal
-          isOpen={this.state.modalOpen}
+          isOpen={this.state.modalType === "signup"}
           onRequestClose={this.closeModal}
-          style={modalStyle}
-          contentLabel='footer-login-modal'
-          >
-          <AuthForm
-            formType={this.state.formType}
-            closeModal={this.closeModal}
-            />
+          contentLabel="signup-modal">
+          <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")}/>
+        </Modal>
+
+        <Modal
+          isOpen={this.state.modalType === "login"}
+          onRequestClose={this.closeModal}
+          contentLabel="login-modal">
+          <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")}/>
         </Modal>
       </div>
     );
@@ -68,9 +72,8 @@ class WelcomeFooter extends React.Component {
 
 const mapStateToProps = (state) => {
   return ({
-  loggedIn: Boolean(state.session.currentUser),
+  loggedIn: !!state.session.currentUser,
   errors: state.session.errors,
-  currentUser: state.session.currentUser
   });
 };
 

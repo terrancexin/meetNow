@@ -11,22 +11,26 @@
   background-color: black;
   height: 16px;
   text-align: center;
-  cursor: pointer;
-
-
-
-
 
   a {
     text-decoration: none;
     color: white;
     &:hover {
-      color: rgb(27, 123, 223);
+      color: $meetup-red;
+      transform: scale(1.1);
     }
   }
 
   .footer-icons {
     margin: 0 15px;
+    img {
+      width: 28px;
+      height: 28px;
+
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
   }
 
   .linked-footer-icons {
@@ -35,9 +39,10 @@
 
 }
 
-.footer-logout-button {
+.footer-button {
   cursor: pointer;
   &:hover {
-    color: rgb(27, 123, 223);
+    color: $meetup-red;
+    transform: scale(1.1);
   }
 }
