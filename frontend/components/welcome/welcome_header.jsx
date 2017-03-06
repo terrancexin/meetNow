@@ -40,7 +40,7 @@ class WelcomeHeader extends React.Component {
       <div className='welcome-header'>
 
           <div className='left-header-buttons'>
-            <Link to='/groups' className='create-button'>Let's MeetNow!</Link>
+            <Link to='/groups' className='meetnow-button'>Let's MeetNow!</Link>
             { loggedIn &&
               <button
                 onClick={this.handleModalOpen("createGroup")}
@@ -52,7 +52,7 @@ class WelcomeHeader extends React.Component {
               <button
                 className="guest-login-button"
                 onClick={this.handleModalOpen("guest-login")}>
-                Guest
+                Guest Login
               </button> }
           </div>
 
@@ -64,12 +64,12 @@ class WelcomeHeader extends React.Component {
 
           { loggedIn &&
             <div className='right-header-buttons'>
-              <img src={currentUser.image_url}/>
-              <button className='signup-button'>{currentUser.first_name}</button>
+              <button className='profile-button'>Welcome, {currentUser.first_name}</button>
+              <img className="profile-thumbnail" src={currentUser.image_url}/>
             </div> }
 
           { !loggedIn &&
-            <div className='right-header-button'>
+            <div className='right-header-buttons'>
               <button className='login-button' onClick={this.handleModalOpen("login")}>Log in</button>
               <button className='signup-button' onClick={this.handleModalOpen("signup")}>Sign up</button>
             </div> }
