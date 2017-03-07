@@ -11,9 +11,9 @@ class EventsIndex extends React.Component {
 
 
   render() {
-    // debugger
+    // 
     if (this.props.events) {
-      // debugger
+      // 
       const eventArray = Object.keys(this.props.events).map(id => this.props.events[id]);
       return (
         <div>

@@ -17,11 +17,11 @@ class CreateGroupForm extends React.Component {
   }
 
   handleSubmit(e) {
-    // debugger
+    // 
     e.preventDefault();
     this.props.createGroup(this.state)
       .then(() => {
-        // debugger;
+        // ;
         this.props.closeModal();
 
         this.props.router.push('groups');

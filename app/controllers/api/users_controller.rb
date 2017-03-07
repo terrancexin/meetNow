@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    # debugger
+    # 
     # if current_user
     #   @user = User.includes(:groups).find(current_user.id)
     # end

@@ -75,6 +75,8 @@ class WelcomeHeader extends React.Component {
             </div> }
 
           <Modal
+            overlayClassName='modal-overlay'
+            className='modal-container modal-large-signup'
             isOpen={modalType === "signup"}
             onRequestClose={this.closeModal}
             contentLabel="signup-modal">
@@ -82,6 +84,8 @@ class WelcomeHeader extends React.Component {
           </Modal>
 
           <Modal
+            overlayClassName='modal-overlay'
+            className='modal-container'
             isOpen={modalType === "login"}
             onRequestClose={this.closeModal}
             contentLabel="login-modal">
@@ -89,6 +93,8 @@ class WelcomeHeader extends React.Component {
           </Modal>
 
           <Modal
+            overlayClassName='modal-overlay'
+            className='modal-container'
             isOpen={modalType === "guest-login"}
             onRequestClose={this.closeModal}
             contentLabel="guest-login-modal">
@@ -96,6 +102,8 @@ class WelcomeHeader extends React.Component {
           </Modal>
 
           <Modal
+            overlayClassName='modal-overlay'
+            className='modal-container large-modal'
             isOpen={modalType === "createGroup"}
             onRequestClose={this.closeModal}
             contentLabel="create-group-modal">

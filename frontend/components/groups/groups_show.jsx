@@ -226,7 +226,7 @@ class GroupsShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
+  // 
   return ({
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,

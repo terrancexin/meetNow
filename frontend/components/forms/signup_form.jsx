@@ -28,12 +28,12 @@ class SignUpForm extends React.Component {
     const { first_name, email, password } = this.state;
 
     return (
-      <div className='form-container'>
+      <div className='modal-form-container'>
         <div className='form-header'>
           <h1>Sign up</h1>
           <div className='nav-links-box'>
-            <p>Already a member?</p>
-            <button onClick={this.props.handleModalOpen}>Log in.</button>
+            <div className='nav-link-text'>Already a member?</div>
+            <button className='nav-link-button' onClick={this.props.handleModalOpen}>Log in.</button>
           </div>
         </div>
         <Errors errors={ this.props.errors } />
@@ -57,7 +57,7 @@ class SignUpForm extends React.Component {
               className={this.props.errors.email ? "input-error" : "" } />
           </div>
 
-          <div>
+          <div className='password-box'>
             <label>Password</label>
             <input
               type="password"

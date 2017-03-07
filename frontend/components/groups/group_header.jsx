@@ -74,7 +74,7 @@ class GroupHeader extends React.Component {
               </ul>
             }
             {
-              this.props.loggedIn &&   <ul className='header-buttons'><li><button className='signup-button'}>Profile</button></li></ul>
+              this.props.loggedIn &&   <ul className='header-buttons'><li><button className={'signup-button'}>Profile</button></li></ul>
             }
         </div>
 

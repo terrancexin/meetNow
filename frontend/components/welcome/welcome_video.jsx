@@ -33,7 +33,8 @@ class WelcomeVideo extends React.Component {
               width="100%"
               id="video-bg"
               alt="covervideo"
-              src={ window.assets.coverVideoMP4 } type="video/mp4"
+              src="https://s3.amazonaws.com/meetnow-DEV/meetNow/cover_video.mp4"
+              type="video/mp4"
               loop autoPlay muted />
           </div>
 
@@ -49,6 +50,8 @@ class WelcomeVideo extends React.Component {
         </div>
 
         <Modal
+          overlayClassName='modal-overlay'
+          className='modal-container modal-large-signup'
           isOpen={this.state.modalType === "signup"}
           onRequestClose={this.closeModal}
           contentLabel="signup-modal">
@@ -56,6 +59,8 @@ class WelcomeVideo extends React.Component {
         </Modal>
 
         <Modal
+          overlayClassName='modal-overlay'
+          className='modal-container'
           isOpen={this.state.modalType === "login"}
           onRequestClose={this.closeModal}
           contentLabel="login-modal">

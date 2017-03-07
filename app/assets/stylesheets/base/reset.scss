@@ -78,6 +78,10 @@ input[type="submit"] {
 	margin-right: 15px;
 	margin-top: 15px;
 	width: 99px;
+
+	&:hover {
+		background-color: $red-hover;
+	}
 }
 
 .group-index-box > .group-banner > h1 {

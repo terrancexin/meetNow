@@ -28,12 +28,12 @@ class LogInForm extends React.Component {
     const { email, password } = this.state;
 
     return (
-      <div className='form-container'>
+      <div className='modal-form-container'>
         <div className='form-header'>
           <h1>Log in</h1>
           <div className='nav-links-box'>
-            <p>Not registered with us yet?</p>
-            <button onClick={this.props.handleModalOpen}>Sign up.</button>
+            <div className='nav-link-text'>Not registered with us yet?</div>
+            <button className='nav-link-button' onClick={this.props.handleModalOpen}>Sign up.</button>
           </div>
         </div>
         <Errors errors={this.props.errors} />

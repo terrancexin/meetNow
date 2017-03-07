@@ -43,12 +43,12 @@ class GuestLogIn extends React.Component {
     const { email, password } = this.state;
 
     return (
-      <div className='form-container'>
+      <div className='modal-form-container'>
         <div className='form-header'>
-          <h1>Guest Log in</h1>
+          <h1 className='guest-login-header'>Guest Log in</h1>
         </div>
 
-        <form className='login-form'>
+        <form className='guest-login-form'>
 
           <div className='email-address-box'>
             <label>Email address:</label>

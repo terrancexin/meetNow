@@ -53,6 +53,8 @@ class WelcomeFooter extends React.Component {
         {buttons}
 
         <Modal
+          overlayClassName='modal-overlay'
+          className='modal-container modal-large-signup'
           isOpen={this.state.modalType === "signup"}
           onRequestClose={this.closeModal}
           contentLabel="signup-modal">
@@ -60,6 +62,8 @@ class WelcomeFooter extends React.Component {
         </Modal>
 
         <Modal
+          overlayClassName='modal-overlay'
+          className='modal-container'
           isOpen={this.state.modalType === "login"}
           onRequestClose={this.closeModal}
           contentLabel="login-modal">
