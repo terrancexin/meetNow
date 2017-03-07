@@ -3,8 +3,6 @@ import { Link, hashHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import Modal from 'react-modal';
-import AuthForm from '../authform/auth_form';
-import modalStyle from './modalStyle';
 import CreateGroupForm from '../groups/create_group_form';
 
 class GroupHeader extends React.Component {

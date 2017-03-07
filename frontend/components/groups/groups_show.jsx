@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import { fetchSingleGroup, updateGroup, deleteGroup } from '../../actions/group_actions';
 import { addUserToGroup, removeUserFromGroup } from '../../actions/member_actions';
 import Modal from 'react-modal';
-import modalStyle from '../welcome/modalStyle';
 import CreateGroupForm from './create_group_form';
 import WelcomeHeader from '../welcome/welcome_header';
 import WelcomeFooter from '../welcome/welcome_footer';
 import { Link } from 'react-router';
 import EventsIndex from '../events/events_index';
-import AuthForm from '../authform/auth_form';
 import { openAuthForm, closeAuthForm } from '../../actions/modal_actions';
 
 class GroupsShow extends React.Component {
@@ -226,7 +224,7 @@ class GroupsShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // 
+  //
   return ({
     loggedIn: Boolean(state.session.currentUser),
     currentUser: state.session.currentUser,
