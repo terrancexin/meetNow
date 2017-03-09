@@ -5,10 +5,6 @@ import { addUserToGroup, removeUserFromGroup } from '../../actions/member_action
 import Modal from 'react-modal';
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
-
-// import CreateGroupForm from './create_group_form';
-// import WelcomeHeader from '../welcome/welcome_header';
-// import WelcomeFooter from '../welcome/welcome_footer';
 import { Link } from 'react-router';
 import EventsIndex from '../events/events_index';
 
@@ -22,15 +18,6 @@ class GroupsShow extends React.Component {
     this.handleJoinGroup = this.handleJoinGroup.bind(this);
     this.handleLeaveGroup = this.handleLeaveGroup.bind(this);
   }
-  //
-  // toggleFormType(e) {
-  //   e.preventDefault();
-  //   if (this.state.formType === "login") {
-  //     this.setState({ formType: "signup"});
-  //   } else {
-  //     this.setState({ formType: "login" });
-  //   }
-  // }
 
   componentDidMount() {
     this.props.fetchSingleGroup(this.props.params.groupId);
@@ -48,7 +35,6 @@ class GroupsShow extends React.Component {
 
   handleModalOpen(form) {
     return () => {
-    //   // debugger
       this.closeModal();
       this.setState({ modalType: form });
     };
@@ -58,9 +44,7 @@ class GroupsShow extends React.Component {
     if (this.props.loggedIn) {
       this.props.addUserToGroup(this.props.currentUser.id, this.props.group.id);
     } else {
-      // debugger
-      this.setState({modalType: 'login'});
-      // this.handleModalOpen('login');
+      this.handleModalOpen('login')();
     }
   }
 
@@ -80,8 +64,7 @@ class GroupsShow extends React.Component {
     }
   }
 
-  correctButton() {
-    // debugger
+  toggleJoinRsvp() {
   if (this.props.loggedIn) {
     if (Object.keys(this.props.group.users).includes(`${this.props.currentUser.id}`)) {
       return <button onClick={this.handleLeaveGroup} className="join-group-button">Leave</button>;
@@ -114,9 +97,7 @@ class GroupsShow extends React.Component {
                                       currentUser={this.props.currentUser}/>
         }
 
-        {
-          !this.props.group.events && <div className='no-events-box'><div className='display-no-events'>No Upcoming Events</div><button className='create-event'>Create an Event</button></div>
-        }
+        { !this.props.group.events && <div className='no-events-box'><div className='display-no-events'>No Upcoming Events</div><button className='create-event'>Create an Event</button></div> }
 
     </div>
   );
@@ -127,11 +108,8 @@ class GroupsShow extends React.Component {
 
 
   render () {
-
-    // fix this.props.group.events bc I can't go to the page if group has no events
     if (!this.props.group || !this.props.group.users) {
-          return <div className="loading">Loading...</div>;
-
+      return <div className="loading">Loading...</div>;
     } else {
       return (
         <div className='width-setter'>
@@ -146,14 +124,13 @@ class GroupsShow extends React.Component {
                 <li>Members</li>
                 <li>Photos</li>
               </ul>
-              {this.correctButton()}
+              {this.toggleJoinRsvp()}
             </div>
           </div>
 
           <div className='content-container'>
             <ul className='group-side-bar-info'>
               <img className='group-side-bar-pic' src={this.props.group.about} />
-
 
               <section className='side-bar-text-box'>
                 <div className='text-info-inner-box'>
@@ -200,19 +177,16 @@ class GroupsShow extends React.Component {
                       </ul>
                     </div>
 
-                    </div>
+                  </div>
                 </section>
 
               </ul>
 
               {this.checkChildren()}
 
-
-
           </div>
 
         </div>
-
 
 
         <Modal

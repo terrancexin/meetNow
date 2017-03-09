@@ -6,18 +6,23 @@ import CreateGroupForm from '../groups/create_group_form';
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
 import GuestLogIn from '../forms/guest_login_form';
+import ProfileForm from '../forms/profile_form';
+import { logout } from '../../actions/session_actions';
 
 class WelcomeHeader extends React.Component {
   constructor(){
     super();
-    this.state = { modalType: "" };
+    this.state = { modalType: "", profile: false };
     this.closeModal = this.closeModal.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
+    this.toggleProfile = this.toggleProfile.bind(this);
+    this.handleProfile = this.handleProfile.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
-  handleLogout(e){
-    e.preventDefault();
-    logout();
+  handleLogout(){
+    this.handleProfile();
+    this.props.logout();
     hashHistory.push('/');
   }
 
@@ -30,6 +35,19 @@ class WelcomeHeader extends React.Component {
       this.closeModal();
       this.setState({ modalType: form });
     };
+  }
+
+  handleProfile() {
+    this.setState({ profile: !this.state.profile });
+    this.toggleProfile();
+  }
+
+  toggleProfile() {
+    if (this.state.profile) {
+      return { visibility: 'visible' };
+    } else {
+      return { visibility: 'hidden' };
+    }
   }
 
   render(){
@@ -64,8 +82,14 @@ class WelcomeHeader extends React.Component {
 
           { loggedIn &&
             <div className='right-header-buttons'>
-              <button className='profile-button'>Welcome, {currentUser.first_name}</button>
-              <img className="profile-thumbnail" src={currentUser.image_url}/>
+              <label className='welcome-msg'>Welcome, {currentUser.first_name}</label>
+              <img  onClick={this.handleProfile} className="profile-thumbnail" src={currentUser.image_url}/>
+              <div  style={this.toggleProfile()} className='profile-form-box' >
+                <div className='profile-buttons-box'>
+                  <button className='profile-buttons'>Profile</button>
+                  <button className='profile-buttons' onClick={this.handleLogout}>Log out</button>
+                </div>
+              </div>
             </div> }
 
           { !loggedIn &&
@@ -109,6 +133,15 @@ class WelcomeHeader extends React.Component {
             contentLabel="create-group-modal">
             <CreateGroupForm closeModal={this.closeModal}/>
           </Modal>
+
+          <Modal
+            overlayClassName='profile-overlay'
+            className='profile-modal-box'
+            isOpen={modalType === "profile"}
+            onRequestClose={this.closeModal}
+            contentLabel="profile-modal">
+            <ProfileForm closeModal={this.closeModal}/>
+          </Modal>
       </div>
     );
   }
@@ -117,12 +150,12 @@ class WelcomeHeader extends React.Component {
 const mapStateToProps = (state) => {
   return ({
   loggedIn: !!state.session.currentUser,
-  currentUser: state.session.currentUser,
+  currentUser: state.session.currentUser
   });
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logout()),
+  logout: () => dispatch(logout())
 });
 
 export default connect(

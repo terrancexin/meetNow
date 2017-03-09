@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
-import WelcomeHeader from '../welcome/welcome_header';
 import GroupsIndex from './groups_index';
 
 class Groups extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
 
   render() {

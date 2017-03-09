@@ -11,9 +11,7 @@ class EventsIndex extends React.Component {
 
 
   render() {
-    // 
     if (this.props.events) {
-      // 
       const eventArray = Object.keys(this.props.events).map(id => this.props.events[id]);
       return (
         <div>
@@ -72,7 +70,3 @@ class EventsIndex extends React.Component {
 }
 
 export default EventsIndex;
-
-
-
-// {event.users}

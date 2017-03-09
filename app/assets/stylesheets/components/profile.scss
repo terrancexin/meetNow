@@ -1,0 +1,62 @@
+.right-header-buttons {
+  position: relative;
+  transition: all 0.3s ease 0s;
+
+  // &:hover {
+
+    .profile-form-box {
+      visibility: visible;
+      opacity: 1;
+    }
+  // }
+}
+
+.profile-form-box {
+  transition: all 0.3s ease 0s;
+  height: 110px;
+  width: 150px;
+  position: absolute;
+  top: 110%;
+  right: 10%;
+  background-color: white;
+  border-radius: 4px;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+
+  box-shadow: rgba(0,0,0,0.54) 0 3px 8px 0;
+
+
+}
+
+.profile-buttons-box {
+  // width: 100px;
+  // margin: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 5px;
+}
+
+.profile-buttons {
+  padding: 12px 5px;
+  font-weight: normal;
+  // margin-top: 10px;
+  border-bottom: 1px solid lightgray;
+  width: 135px;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 8px;
+  // height: 30px;
+  border-radius: 3px;
+  &:hover {
+    background-color: $meetup-red;
+    color: white;
+  }
+
+}
+
+.welcome-msg {
+  color: $meetup-red;
+}

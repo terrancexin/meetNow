@@ -287,7 +287,8 @@
   align-items: center;
 
   .rsvp-button {
-    background-color: rgb(182, 14, 24);
+    // background-color: rgb(182, 14, 24);
+    background-color: $meetup-red;
     color: #fff;
     border-color: $meetup-red;
     padding: 10px 15px;
@@ -300,9 +301,9 @@
     width: 90px;
     margin: 8px;
     text-align: center;
-    
+
     &:hover {
-      background-color: $meetup-red;
+      background-color: $red-hover;
     }
   }
 }

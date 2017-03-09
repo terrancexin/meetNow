@@ -28,8 +28,6 @@ class GroupsIndex extends React.Component {
         <div className='search-group-index-box'>
         <SearchBar />
 
-
-
           <ul className='group-index-wrapper'>
             {
               this.props.groups.map(group => {
@@ -58,7 +56,6 @@ const GroupsIndexItems = ({ groupId, name, members }) => {
         <img src={window.assets.techImage} alt="groups"/>
         <h4 className='group-name'>{name}</h4>
         <p className='member-count'>We're {members} Members</p>
-
 
     </Link>
   );

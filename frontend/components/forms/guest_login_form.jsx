@@ -46,6 +46,9 @@ class GuestLogIn extends React.Component {
       <div className='modal-form-container'>
         <div className='form-header'>
           <h1 className='guest-login-header'>Guest Log in</h1>
+          <div className='nav-links-box'>
+            <div className='nav-link-text'>Click "Log in" to generate a guest account.</div>
+          </div>
         </div>
 
         <form className='guest-login-form'>
