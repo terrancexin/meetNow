@@ -59,23 +59,3 @@ export const deleteGroup = id => dispatch => {
     GroupApiUtil.deleteGroup(id).then(group => dispatch(removeGroup(group)))
   );
 };
-
-//
-// export const updateGroup = group => dispatch => (
-//   GroupApiUtil.updateGroup(group).then(group => dispatch(receiveOneGroup(group)))
-//     .then(hashHistory.push('/'))
-// );
-
-// export const deleteGroup = (group) => dispatch => (
-//   GroupApiUtil.deleteGroup(group).then(group => dispatch(removeGroup(group)))
-// );
-
-// export const getAllGroups = function() {
-//   return function(dispatch) {
-//     GroupApiUtil.getAllGroups()
-//       .then(groups =>{
-//         dispatch(receiveAllGroups(groups));
-//       },
-//       error => dispatch(receiveGroupErrors(error.responseJSONs)));
-//   };
-// };

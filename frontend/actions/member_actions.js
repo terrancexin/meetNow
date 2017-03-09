@@ -23,7 +23,6 @@ export const addUserToGroup = (userId, groupId) => dispatch => {
 };
 
 export const removeUserFromGroup = (userId, groupId) => dispatch => {
-  // 
   return (
     MemberApiUtil.removeUserFromGroup(userId, groupId).then(group => dispatch(receiveOneGroup(group)))
   );

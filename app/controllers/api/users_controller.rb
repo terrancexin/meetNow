@@ -16,10 +16,6 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    # 
-    # if current_user
-    #   @user = User.includes(:groups).find(current_user.id)
-    # end
     @user = User.find(params[:id])
 
     if @user

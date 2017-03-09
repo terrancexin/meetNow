@@ -2,13 +2,10 @@
   position: relative;
   transition: all 0.3s ease 0s;
 
-  // &:hover {
-
     .profile-form-box {
       visibility: visible;
       opacity: 1;
     }
-  // }
 }
 
 .profile-form-box {
@@ -31,8 +28,6 @@
 }
 
 .profile-buttons-box {
-  // width: 100px;
-  // margin: 8px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -42,13 +37,11 @@
 .profile-buttons {
   padding: 12px 5px;
   font-weight: normal;
-  // margin-top: 10px;
   border-bottom: 1px solid lightgray;
   width: 135px;
   text-align: left;
   cursor: pointer;
   margin-top: 8px;
-  // height: 30px;
   border-radius: 3px;
   &:hover {
     background-color: $meetup-red;
