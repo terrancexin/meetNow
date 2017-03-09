@@ -3,36 +3,34 @@ import { connect } from 'react-redux';
 import { fetchSingleGroup, updateGroup, deleteGroup } from '../../actions/group_actions';
 import { addUserToGroup, removeUserFromGroup } from '../../actions/member_actions';
 import Modal from 'react-modal';
-import CreateGroupForm from './create_group_form';
-import WelcomeHeader from '../welcome/welcome_header';
-import WelcomeFooter from '../welcome/welcome_footer';
+import LogInForm from '../forms/login_form';
+import SignUpForm from '../forms/signup_form';
+
+// import CreateGroupForm from './create_group_form';
+// import WelcomeHeader from '../welcome/welcome_header';
+// import WelcomeFooter from '../welcome/welcome_footer';
 import { Link } from 'react-router';
 import EventsIndex from '../events/events_index';
-import { openAuthForm, closeAuthForm } from '../../actions/modal_actions';
 
 class GroupsShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      modalOpen: false,
-      formType: 'login'
-    };
-
+    this.state = { modalType: ''};
     this.closeModal = this.closeModal.bind(this);
-    this.openModal = this.openModal.bind(this);
+    this.handleModalOpen = this.handleModalOpen.bind(this);
+
     this.handleJoinGroup = this.handleJoinGroup.bind(this);
     this.handleLeaveGroup = this.handleLeaveGroup.bind(this);
-    this.toggleFormType = this.toggleFormType.bind(this);
   }
-
-  toggleFormType(e) {
-    e.preventDefault();
-    if (this.state.formType === "login") {
-      this.setState({ formType: "signup"});
-    } else {
-      this.setState({ formType: "login" });
-    }
-  }
+  //
+  // toggleFormType(e) {
+  //   e.preventDefault();
+  //   if (this.state.formType === "login") {
+  //     this.setState({ formType: "signup"});
+  //   } else {
+  //     this.setState({ formType: "login" });
+  //   }
+  // }
 
   componentDidMount() {
     this.props.fetchSingleGroup(this.props.params.groupId);
@@ -45,24 +43,29 @@ class GroupsShow extends React.Component {
   }
 
   closeModal() {
-    this.setState({modalOpen: false});
+    this.setState({ modalType: false});
   }
 
-  openModal() {
-    this.setState({modalOpen: true});
+  handleModalOpen(form) {
+    return () => {
+    //   // debugger
+      this.closeModal();
+      this.setState({ modalType: form });
+    };
   }
 
   handleJoinGroup() {
-    if (this.props.currentUser) {
+    if (this.props.loggedIn) {
       this.props.addUserToGroup(this.props.currentUser.id, this.props.group.id);
     } else {
-      this.props.openAuthForm();
+      // debugger
+      this.setState({modalType: 'login'});
+      // this.handleModalOpen('login');
     }
-
   }
 
   checkJoined() {
-    if (this.props.currentUser) {
+    if (this.props.loggedIn) {
       if (Object.keys(this.props.group.users).includes(`${this.props.currentUser.id}`)) {
         return true;
       }
@@ -72,13 +75,14 @@ class GroupsShow extends React.Component {
   }
 
   handleLeaveGroup () {
-    if (this.props.currentUser) {
+    if (this.props.loggedIn) {
       this.props.removeUserFromGroup(this.props.currentUser.id, this.props.group.id);
     }
   }
 
   correctButton() {
-  if (this.props.currentUser) {
+    // debugger
+  if (this.props.loggedIn) {
     if (Object.keys(this.props.group.users).includes(`${this.props.currentUser.id}`)) {
       return <button onClick={this.handleLeaveGroup} className="join-group-button">Leave</button>;
     } else {
@@ -204,18 +208,30 @@ class GroupsShow extends React.Component {
               {this.checkChildren()}
 
 
-              <Modal
-                 isOpen={this.props.authForm}
-                 onRequestClose={this.props.closeAuthForm}
-                 style={modalStyle}
-                 contentLabel="header-modal">
-
-                  <AuthForm toggleForm={this.toggleFormType} formType={this.state.formType} closeModal={this.props.closeAuthForm}/>
-              </Modal>
 
           </div>
 
         </div>
+
+
+
+        <Modal
+          overlayClassName='modal-overlay'
+          className='modal-container'
+          isOpen={this.state.modalType === "login"}
+          onRequestClose={this.closeModal}
+          contentLabel="login-modal">
+          <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")}/>
+        </Modal>
+
+        <Modal
+          overlayClassName='modal-overlay'
+          className='modal-container modal-large-signup'
+          isOpen={this.state.modalType === "signup"}
+          onRequestClose={this.closeModal}
+          contentLabel="signup-modal">
+          <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")}/>
+        </Modal>
 
         </div>
       );
@@ -224,12 +240,10 @@ class GroupsShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  //
   return ({
-    loggedIn: Boolean(state.session.currentUser),
+    loggedIn: !!state.session.currentUser,
     currentUser: state.session.currentUser,
     group: state.groups[ownProps.params.groupId],
-    authForm: state.modal.authForm
   });
 };
 
@@ -240,8 +254,6 @@ const mapDispatchToProps = dispatch => {
       addUserToGroup: (userId, groupId) => dispatch(addUserToGroup(userId, groupId)),
       removeUserFromGroup: (userId, groupId) => dispatch(removeUserFromGroup(userId, groupId)),
       deleteGroup: id => dispatch(deleteGroup(id)),
-      openAuthForm: () => dispatch(openAuthForm()),
-      closeAuthForm: () => dispatch(closeAuthForm())
     }
   );
 

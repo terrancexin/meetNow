@@ -27,12 +27,12 @@ Membership.destroy_all
 Organizer.destroy_all
 Rsvp.destroy_all
 
-user1 = User.create!(username: "Terrance", password: "123abc", first_name: 'Terrance', last_name: 'X', email: 'txin@meetnow.com', city: 'nyc')
-user2 = User.create!(username: "AppAcademy", password: "123abc", first_name: "App", last_name: "Academy", email: 'appacademy@meetnow.com')
+user1 = User.create!(password: "passwordsafe", first_name: 'Terrance', last_name: 'X', email: 'txin@meetnow.com', city: 'nyc')
+user2 = User.create!(password: "123abc", first_name: "App", last_name: "Academy", email: 'appacademy@meetnow.com')
 
 i = 1
-3000.times do
-  User.create!(username: (Faker::GameOfThrones.character + i.to_s), password: "123abc", first_name: Faker::Friends.character, last_name: "Xin", email: Faker::Internet.email)
+30.times do
+  User.create!(password: "123abc", first_name: Faker::Friends.character, last_name: "Xin", email: Faker::Internet.email, image: '')
   i += 1
 end
 
@@ -41,7 +41,7 @@ user_ids = User.all.ids
 category_array = ["Tech", "Fitness", "Music", "Dance", "Health", "Game", "Culture", "Art"]
 
 i = 1
-50.times do
+5.times do
   Group.create!(name: (Faker::GameOfThrones.character + i.to_s), description: Faker::Friends.quote, category: category_array.sample, location: Faker::Address.state, about: GROUP_PHOTOS.sample)
   i += 1
 end
@@ -158,11 +158,11 @@ group_ids = Group.all.ids
 Organizer.create!(user_id: user1.id, group_id: group1.id)
 Organizer.create!(user_id: user1.id, group_id: group2.id)
 Organizer.create!(user_id: user2.id, group_id: group2.id)
-1000.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
-100.times { Event.create!(name: (Faker::GameOfThrones.character + i.to_s), time: Faker::Time.forward(60), location: Faker::GameOfThrones.city, description: "
+10.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
+10.times { Event.create!(name: (Faker::GameOfThrones.character + i.to_s), time: Faker::Time.forward(60), location: Faker::GameOfThrones.city, description: "
   Over 12 weeks, you'll learn all the skills needed to begin a career as a web developer. Tuition is 22% of your first year's salary. Prior programming experience isn't required, but you’ll need lots of tenacity and a passion for building cool stuff. Over 1,700 App Academy grads work as developers at top tech companies like Google, Facebook, Uber and more, and earn an average salary of $105,000 in SF and $89,000 in NYC.", group_id: group_ids.sample) }
 
 
 event_ids = Event.all.ids
 user_ids = User.all.ids
-600.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }
+6.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }

@@ -36,7 +36,7 @@ class GuestLogIn extends React.Component {
     this.setState({ [field]: this.state[field] + value[0] });
     setTimeout(() => {
       this.typeValue(value.slice(1), field, callback);
-    }, 100);
+    }, 40);
   }
 
   render() {
@@ -65,7 +65,7 @@ class GuestLogIn extends React.Component {
               value={ password }
               onChange={this.handleChange("password")}/>
           </div>
-          <input onClick={this.guestLogin("txin@meetnow.com", "123abc")} type="submit" value="Log in" />
+          <input onClick={this.guestLogin("txin@meetnow.com", "passwordsafe")} type="submit" value="Log in" />
         </form>
       </div>
     );

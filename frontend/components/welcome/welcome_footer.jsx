@@ -47,8 +47,8 @@ class WelcomeFooter extends React.Component {
       <div className='footer-buttons'>
         <Link to='groups' className='create-button'>Start a MeetNow!</Link>
         <div className='footer-icon-box'>
-          <a href='https://github.com/txin001' className='gh-footer-icons footer-icons' target="_blank"><img src={window.assets.githubImage}/></a>
-          <a href='https://www.linkedin.com/in/txin001' className='linked-footer-icons footer-icons' target="_blank"><img src={window.assets.linkedinImage}/></a>
+          <a href='https://github.com/terrancexin' className='gh-footer-icons footer-icons' target="_blank"><img src={window.assets.githubImage}/></a>
+          <a href='https://www.linkedin.com/in/terrancexin/' className='linked-footer-icons footer-icons' target="_blank"><img src={window.assets.linkedinImage}/></a>
         </div>
         {buttons}
 
