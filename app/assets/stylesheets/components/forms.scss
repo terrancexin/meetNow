@@ -72,7 +72,7 @@
   }
 }
 
-.signup-form, .login-form, .guest-login-form {
+.signup-form, .login-form, .guest-login-form, .create-group-form {
   display: flex;
   flex-direction: column;
   margin: 18px;
@@ -122,4 +122,9 @@
       background-color: $blue-hover;
     }
   }
+}
+
+.group-form-inputs-box {
+  display: flex;
+  flex-direction: column;
 }

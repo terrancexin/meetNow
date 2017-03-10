@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
-import CreateGroupForm from '../groups/create_group_form';
+import CreateGroupForm from '../forms/create_group_form';
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
 import GuestLogIn from '../forms/guest_login_form';
@@ -60,18 +60,12 @@ class WelcomeHeader extends React.Component {
           <div className='left-header-buttons'>
             <Link to='/groups' className='meetnow-button'>Let's MeetNow!</Link>
             { loggedIn &&
-              <button
-                onClick={this.handleModalOpen("createGroup")}
-                className='new-group-button'>
-                New Group
-              </button> }
+              <button onClick={this.handleModalOpen("createGroup")}
+                className='new-group-button'>New Group</button> }
 
             { !loggedIn &&
-              <button
-                className="guest-login-button"
-                onClick={this.handleModalOpen("guest-login")}>
-                Guest Login
-              </button> }
+              <button className="guest-login-button"
+                onClick={this.handleModalOpen("guest-login")}>Guest Login</button> }
           </div>
 
           <div className='mid-image-logo'>
@@ -134,14 +128,6 @@ class WelcomeHeader extends React.Component {
             <CreateGroupForm closeModal={this.closeModal}/>
           </Modal>
 
-          <Modal
-            overlayClassName='profile-overlay'
-            className='profile-modal-box'
-            isOpen={modalType === "profile"}
-            onRequestClose={this.closeModal}
-            contentLabel="profile-modal">
-            <ProfileForm closeModal={this.closeModal}/>
-          </Modal>
       </div>
     );
   }
