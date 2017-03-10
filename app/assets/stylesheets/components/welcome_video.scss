@@ -133,3 +133,100 @@
     background-color: rgb(182, 14, 24);
   }
 }
+
+
+
+@media screen and (max-width: 800px) {
+  html {
+    width: 1000px;
+  }
+
+  .video-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1000;
+    background: rgba(0, 0, 0, 0);
+    display: none;
+  }
+
+
+  .video-letters {
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0);
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: auto;
+    color: rgb(240, 239, 239);
+    font-size: 26px;
+    margin-top: 60px;
+
+    div {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      margin: 60px;
+
+    }
+    p {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  }
+
+
+  .cover-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+
+  }
+
+  .welcome-vid {
+    background-color: rgba(0, 0, 0, 0.25);
+    background-image: url("https://s3.amazonaws.com/meetnow-DEV/meetNow/mobile_bg.png");
+  }
+
+}
+
+.video-letters > div > button {
+  font-size: 16px;
+  margin-top: 70px;
+  background-color: $meetup-red;
+  color: #fff;
+  border-color: $meetup-red;
+  padding: 14px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 200;
+  width: 280px;
+
+  &:hover {
+    background-color: rgb(182, 14, 24);
+  }
+}
+
+.video-groups-button {
+  background-color: $meetup-red;
+  color: #fff;
+  border-color: $meetup-red;
+  padding: 10px 70px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 200;
+  margin: 80px 14px 0 18px;
+  text-decoration: none;
+  font-size: 25px;
+
+  &:hover {
+    background-color: rgb(182, 14, 24);
+  }
+}
