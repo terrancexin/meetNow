@@ -229,4 +229,28 @@
   &:hover {
     background-color: rgb(182, 14, 24);
   }
+
+}
+
+@media screen and (max-width: 800px) {
+  .welcome-explore-below-header {
+
+    height: 600px;
+    background-color: white;
+    padding: 0 20px;
+    width: auto;
+    margin: auto;
+
+    .explore-pics {
+      width: 230px;
+      height: 170px;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.06);
+      }
+    }
+  }
 }
