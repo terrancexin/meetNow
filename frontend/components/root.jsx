@@ -10,6 +10,7 @@ import Groups from './groups/groups';
 import GroupsShow from './groups/groups_show';
 import EventsIndex from './events/events_index';
 import EventShow from './events/event_show';
+import ExplorePage from './explore/explore_page';
 
 const Root = ({ store }) => {
 
@@ -32,6 +33,7 @@ const Root = ({ store }) => {
       <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
         <Route path="/" component={App}>
           <IndexRoute component={Welcome} />
+          <Route path='explore/:category' component={ExplorePage} />
           <Route path='groups' component={Groups} />
           <Route path='groups/:groupId' component={GroupsShow}>
               <Route path='events/:eventId' component={EventShow}/>

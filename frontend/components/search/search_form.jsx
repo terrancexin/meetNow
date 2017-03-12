@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: ''};
+    this.state = {name: this.props.category || '' };
     this.updateSearch = this.updateSearch.bind(this);
   }
 
