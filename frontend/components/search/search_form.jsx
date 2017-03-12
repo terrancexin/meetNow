@@ -25,8 +25,8 @@ class SearchBar extends React.Component {
         </div>
 
         <div className='search-bar-right'>
-          <button className='groups-button'>Groups</button>
-          <button className='calendar-button'>Calendar</button>
+          <button onClick={this.props.toggleCalendar} className='groups-button'>Groups</button>
+          <button onClick={this.props.toggleCalendar} className='calendar-button'>Calendar</button>
         </div>
 
 

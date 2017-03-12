@@ -12,13 +12,13 @@ class EventsIndex extends React.Component {
 
   render() {
     if (this.props.events) {
-      const eventArray = Object.keys(this.props.events).map(id => this.props.events[id]);
+      const eventArray = Object.keys(this.props.events).map(id  => this.props.events[id]);
       return (
         <div>
             {
               eventArray.map(event => (
               <ul className='events-box-on-group' key={event.id}>
-                <div className='event-time'><li>{event.time}</li></div>
+                <div className='event-time'><li>{event.time.slice(0, 10)}</li></div>
                 <div className='event-title'>
                   <Link to={`groups/${this.props.groupId}/events/${event.id}`}>{event.name}</Link>
                 </div>

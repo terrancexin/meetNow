@@ -1,22 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAllGroups } from '../../actions/group_actions';
+import { fetchAllEvents } from '../../actions/event_actions';
 import { groupsArray } from '../../reducers/group_reducer';
 import { Link } from 'react-router';
 import SearchBar from '../search/search_form';
+import EventCalendar from '../search/calendar';
 
 class GroupsIndex extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.state = { calendar: false };
+    this.toggleCalendar = this.toggleCalendar.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchAllGroups();
+    this.props.fetchAllEvents();
+  }
+
+  toggleCalendar() {
+    this.setState({ calendar: !this.state.calendar });
   }
 
   render () {
     const sumGroup = this.props.groups.length
-
     return (
       <div className='group-index-box'>
 
@@ -26,9 +34,9 @@ class GroupsIndex extends React.Component {
         </div>
 
         <div className='search-group-index-box'>
-        <SearchBar />
+        <SearchBar toggleCalendar={this.toggleCalendar}/>
 
-          <ul className='group-index-wrapper'>
+        {!this.state.calendar && <ul className='group-index-wrapper'>
             {
               this.props.groups.map(group => {
               if (group.member_count !== 0) {
@@ -44,7 +52,11 @@ class GroupsIndex extends React.Component {
                 }
               })
             }
-          </ul>
+          </ul>}
+
+        {this.state.calendar && <ul className='calendar-group-index-wrapper'>
+              <EventCalendar events={this.props.events}/>
+          </ul>}
           </div>
       </div>
     );
@@ -64,14 +76,16 @@ const GroupsIndexItems = ({ groupPhoto, groupId, name, members }) => {
 
 const mapStateToProps = state => {
   return ({
-    groups: groupsArray(state.groups)
+    groups: groupsArray(state.groups),
+    events: state.events
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return (
     {
-      fetchAllGroups: () => dispatch(fetchAllGroups())
+      fetchAllGroups: () => dispatch(fetchAllGroups()),
+      fetchAllEvents: () => dispatch(fetchAllEvents())
     }
   );
 
