@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   validates :first_name, :session_token, :password_digest, presence: true
 
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "https://s3.amazonaws.com/meetnow-DEV/meetNow/member_list.png"
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "https://s3.amazonaws.com/meetnow-DEV/meetNow/member_list.png", :s3_protocol => :https
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
