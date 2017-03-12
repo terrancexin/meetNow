@@ -42,10 +42,11 @@ end
 user_ids = User.all.ids
 
 category_array = ["Tech", "Fitness", "Music", "Dance", "Health", "Game", "Culture", "Art"]
+group_name = ['workout', 'karaoke', 'meditation', 'trilingual', 'painting', 'tech', 'salsa', 'catan']
 
 i = 1
-5.times do
-  Group.create!(name: (Faker::GameOfThrones.character + i.to_s), description: Faker::Friends.quote, category: category_array.sample, location: Faker::Address.state, photo_url: GROUP_PHOTOS.sample)
+30.times do
+  Group.create!(name: (Faker::Food.ingredient + " " + group_name.sample + i.to_s), description: "This group explores the links between creativity and tech while providing a unique opportunity to network (and drinks!). Each event over the course of this meetup combines cocktails, appetizers, panelists, and speakers to create the perfect atmosphere for making new connections and facilitating innovative discussion. Examine how technology can be used to promote creativity and how creativity can inspire technology with us!", category: category_array.sample, location: Faker::HarryPotter.location, photo_url: GROUP_PHOTOS.sample)
   i += 1
 end
 
@@ -150,34 +151,23 @@ group11 = Group.create!(
   photo_url: GROUP_PHOTOS.sample
 )
 
-group12 = Group.create!(
-  name: "Da Meetup Group",
-  description: "Welcome Asians and lovers of Asian culture!
-
-                We host Asian events on our own and international events with other groups.
-
-                Thank you very much for your support and we hope you enjoy our events!
-
-                You don't have to be Asian to join our group,
-
-                you just have to love the culture, the people, and the fun!
-
-                If you have ideas for Asian events, Asian venues, or Asian themes, contact us!",
-  category: "Social",
-  location: "New York",
-  photo_url: GROUP_PHOTOS.sample
-)
-
 group_ids = Group.all.ids
 
 Organizer.create!(user_id: guest.id, group_id: group1.id)
 Organizer.create!(user_id: guest.id, group_id: group2.id)
 Organizer.create!(user_id: me.id, group_id: group2.id)
+
 300.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
-50.times { Event.create!(name: (Faker::GameOfThrones.character + i.to_s), time: Faker::Time.forward(60), location: Faker::GameOfThrones.city, description: "
-  Over 12 weeks, you'll learn all the skills needed to begin a career as a web developer. Tuition is 22% of your first year's salary. Prior programming experience isn't required, but you’ll need lots of tenacity and a passion for building cool stuff. Over 1,700 App Academy grads work as developers at top tech companies like Google, Facebook, Uber and more, and earn an average salary of $105,000 in SF and $89,000 in NYC.", group_id: group_ids.sample) }
+
+200.times { Event.create!(
+  name: (Faker::GameOfThrones.character + i.to_s),
+  time: Faker::Time.forward(60),
+  location: Faker::GameOfThrones.city,
+  description: "Greek philosopher Heraclitus once said: “No man ever steps in the same river twice, for it's not the same river and he's not the same man.” The world around us is rapidly changing. The rate of change is accelerating. Tech sector, evolving into a tech ecosystem, is at the forefront of many changes that we experience daily. This meetup is created for those who embrace the change, actively seek opportunities, and want be prepared and ready for the change in tech sector. It is a collective of lifelong learners who believe in lifelong learning, which is defined as the “ongoing, voluntary, and self-motivated pursuit of knowledge for either personal or professional reasons. Therefore, it not only enhances social inclusion, active citizenship, and personal development, but also self-sustainability, as well as competitiveness and employability.",
+  group_id: group_ids.sample)
+}
 
 
 event_ids = Event.all.ids
 user_ids = User.all.ids
-200.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }
+300.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }
