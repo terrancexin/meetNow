@@ -166,12 +166,12 @@ class GroupsShow extends React.Component {
 
                           <div className='member-and-pic-box' key={id}>
                             <div className='pro-pic-box'>
-                              <img className='pro-pic' src={this.props.group.users[id].image_url} />
+                              <Link to={`/profile/${id}`}><img className='pro-pic' src={this.props.group.users[id].image_url} /></Link>
                             </div>
 
-                            <div className='member-name'>
+                            <Link to={`/profile/${id}`}><div className='member-name'>
                               {this.props.group.users[id].name}
-                            </div>
+                            </div></Link>
 
                           </div>
                         ))

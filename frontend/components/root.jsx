@@ -39,9 +39,7 @@ const Root = ({ store }) => {
           <Route path='groups/:groupId' component={GroupsShow}>
               <Route path='events/:eventId' component={EventShow}/>
           </Route>
-          <Route path='profile' component={ProfilePage} />
-
-
+          <Route path='profile/:id' component={ProfilePage} />
         </Route>
       </Router>
     </Provider>

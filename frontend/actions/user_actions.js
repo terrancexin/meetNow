@@ -4,7 +4,7 @@ export const RECEIVE_SINGLE_USER = "RECEIVE_SINGLE_USER";
 
 export const fetchSingleUser = id => dispatch => {
   return UserApiUtil.fetchSingleUser(id).then(user => {
-    dispatch(receiveCurrentUser(user));
+    dispatch(receiveSingleUser(user));
     return user;
   });
 };

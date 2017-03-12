@@ -6,7 +6,6 @@ import CreateGroupForm from '../forms/create_group_form';
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
 import GuestLogIn from '../forms/guest_login_form';
-// import ProfileForm from '../forms/profile_form';
 import { logout } from '../../actions/session_actions';
 
 class WelcomeHeader extends React.Component {
@@ -18,18 +17,20 @@ class WelcomeHeader extends React.Component {
     this.toggleProfile = this.toggleProfile.bind(this);
     this.handleProfile = this.handleProfile.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
-    this.handleProfileButton = this.handleProfileButton.bind(this);
+  }
+
+  handleProfileButton(id) {
+    return () => {
+      this.handleProfile();
+      hashHistory.push(`profile/${id}`);
+
+    };
   }
 
   handleLogout(){
     this.handleProfile();
     this.props.logout();
     hashHistory.push('/');
-  }
-
-  handleProfileButton() {
-    this.handleProfile();
-    hashHistory.push('/profile');
   }
 
   closeModal() {
@@ -86,7 +87,7 @@ class WelcomeHeader extends React.Component {
               <img  onClick={this.handleProfile} className="profile-thumbnail" src={currentUser.image_url}/>
               <div  style={this.toggleProfile()} className='profile-form-box' >
                 <div className='profile-buttons-box'>
-                  <button className='profile-buttons' onClick={this.handleProfileButton}>Profile</button>
+                  <button className='profile-buttons' onClick={this.handleProfileButton(currentUser.id)}>Profile</button>
                   <button className='profile-buttons' onClick={this.handleLogout}>Log out</button>
                 </div>
               </div>

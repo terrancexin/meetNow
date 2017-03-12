@@ -6,7 +6,7 @@ const UserDetailReducer = (oldState = defaultState, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_SINGLE_USER:
-      return action.user.user_detail;
+      return action.user;
     default:
       return oldState;
   }

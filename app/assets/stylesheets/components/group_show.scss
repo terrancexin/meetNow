@@ -118,6 +118,14 @@
             justify-content: flex-start;
             align-items: center;
 
+            a {
+              text-decoration: none;
+              color: black;
+
+              &:hover {
+                color: $blue-hover;
+              }
+            }
             .pro-pic {
               width: 25px;
               height: 25px;
