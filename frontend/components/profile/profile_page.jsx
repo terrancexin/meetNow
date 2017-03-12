@@ -9,14 +9,11 @@ class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSingleUser(this.props.params.id);
+    this.props.fetchSingleUser(this.props.profileId);
   }
 
   render() {
-    const currentUser = this.props.currentUser;
-    const fullName = currentUser.first_name.concat(` ${currentUser.last_name}`);
-
-    if (this.props.userDetail.id) {
+    if (this.props.userDetail.groups) {
       const userDetail = this.props.userDetail
       const userDetailGroups = Object.values(this.props.userDetail.groups)
 
@@ -45,24 +42,7 @@ class ProfilePage extends React.Component {
     } else {
       return (
         <div className='profile-page-container'>
-          <div className='profile-page-box'>
-
-            <div className='profile-left-section'>
-              <div className='profile-name'>{fullName}</div>
-              <div className='profile-location'>Location:</div>
-              <div className='profile-city'>{currentUser.city}</div>
-              <div className='profile-bio'>{currentUser.bio}</div>
-              <div className='profile-group-member-count'>Member of {this.props.groups.length} Groups</div>
-              <div className='profile-groups'>{this.props.groups.map(group => {
-                  return <div key={group.id}><ProfileGroupsInfo group={group}/></div>
-                })}</div>
-            </div>
-
-            <div className='profile-right-section'>
-              <img src={currentUser.image_url} alt='profile_pic'/>
-            </div>
-
-          </div>
+          Loading...
         </div>
       );
     }
@@ -83,10 +63,9 @@ const ProfileGroupsInfo = ({ group }) => {
   );
 }
 
-const mapStatetoProps = state => {
+const mapStatetoProps = (state, ownProps) => {
   return ({
-    currentUser: state.session.currentUser,
-    groups: Object.values(state.session.currentUser.groups),
+    profileId: ownProps.params.id,
     userDetail: state.userDetail
   })
 };
