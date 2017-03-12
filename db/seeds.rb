@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 USER_PHOTOS = []
 users_idx = 1
-while users_idx <= 99 do
+while users_idx <= 300 do
     USER_PHOTOS.push("https://s3.amazonaws.com/meetnow-DEV/users/#{users_idx}.jpg")
     users_idx += 1
 end
@@ -15,7 +15,7 @@ end
 GROUP_PHOTOS = []
 
 groups_idx = 1
-while groups_idx <= 7 do
+while groups_idx <= 8 do
   GROUP_PHOTOS.push("https://s3.amazonaws.com/meetnow-DEV/groups/group000#{groups_idx}.png")
   groups_idx += 1
 end
@@ -34,7 +34,7 @@ me = User.create!(first_name: 'Terrance', password: "123abc", last_name: 'Xin', 
 
 i = 1
 300.times do
-  User.create!(password: "123abc", first_name: Faker::Friends.character, last_name: "Xin", email: Faker::Internet.email, image: USER_PHOTOS.sample)
+  User.create!(password: "123abc", first_name: Faker::Friends.character, last_name: "Smith", email: "user#{i}@gmail.com", image: USER_PHOTOS.shift)
   i += 1
 end
 
@@ -60,56 +60,64 @@ group1 = Group.create!(
 
                 Coffee and Coding Conundrum started in Osaka, Japan in 2014. Let's make NYC its second home!",
   category: "Tech",
-  location: "New York"
+  location: "New York",
+  about: GROUP_PHOTOS.sample
 )
 
 group2 = Group.create!(
   name: "Let's Taco About it",
   description: "TACO EVERY DAY!",
   category: "Food",
-  location: 'LA'
+  location: 'LA',
+  about: GROUP_PHOTOS.sample
 )
 
 group3 = Group.create!(
   name: "Hackers Hours",
   description: "Free office hours for programming help - any programming language, all skill levels. The format is super simple: you come with your laptop, sit and hang out and code, and flag down one of the organizers if you have a question.  That's it! If we can't answer your question, we'll find you someone who can, or at least point you in the right direction.",
   category: "Tech",
-  location: 'New York'
+  location: 'New York',
+  about: GROUP_PHOTOS.sample
 )
 
 group4 = Group.create!(
   name: "Google Developer Group",
   description: "We are software developers, designers, educators and students with an interest in learning about emergent technologies in areas including (but not limited to) mobile, web, wearables, cloud computing, education technology, data sciences and smart homes.",
   category: "Tech",
-  location: 'New York'
+  location: 'New York',
+  about: GROUP_PHOTOS.sample
 )
 
 group5 = Group.create!(
   name: "Ktown Cow Boys",
   description: "BCD Tofu House, Ichiumi, Maru, Wabar, Woorijip, Third Floor, BaekJeong KBBQ, Mad for Chicken, Circle.",
   category: "Fun",
-  location: 'New York'
+  location: 'New York',
+  about: GROUP_PHOTOS.sample
 )
 
 group6 = Group.create!(
   name: "NYC Machine Learning",
   description: "A group to discuss machine learning, information retrieval, natural language processing, knowledge representation, and artificial intelligence. Meetings will cover research papers and algorithms in the field. We'll also try to occasionally bring in a speaker to talk about their work.",
   category: "Tech",
-  location: 'New York'
+  location: 'New York',
+  about: GROUP_PHOTOS.sample
 )
 
 group7 = Group.create!(
   name: "#Resist: New York",
   description: "Concerned about where the country is heading? You're not alone. Join others who care about what's happening to democracy, equality, human rights, social justice, sustainability, and other important topics. It's ok if you've never been to a protest, march, or town hall -- start here. You really can make a difference.",
   category: "Movement",
-  location: 'New York'
+  location: 'New York',
+  about: GROUP_PHOTOS.sample
 )
 
 group8 = Group.create!(
   name: "Women Who Code NYC",
   description: "Women Who Code is a global nonprofit organization dedicated to inspiring women to excel in technology careers by creating a global, connected community of women in technology. The organization tripled in 2013 and has grown to be one of the largest communities of women engineers in the world.",
   category: "Tech",
-  location: 'New York'
+  location: 'New York',
+  about: GROUP_PHOTOS.sample
 )
 
 group9 = Group.create!(
@@ -122,21 +130,24 @@ group9 = Group.create!(
 
                 • Bridging the gap between FinTech Entrepreneurs and the investment community",
   category: "Business",
-  location: 'Dubai'
+  location: 'Dubai',
+  about: GROUP_PHOTOS.sample
 )
 
 group10 = Group.create!(
   name: "NYC PICKUP SOCCER-'SAY GOODBYE TO LEAGUE FEES'",
   description: "We will provide high quality Soccer tournaments, NYC PICKUP Soccer games, and yearly NYC World Cup; without the high cost!!!",
   category: "Sports",
-  location: 'New York'
+  location: 'New York',
+  about: GROUP_PHOTOS.sample
 )
 
 group11 = Group.create!(
   name: "Singles casual cocktail hour",
   description: "We are a meet-up group revolving around singles in the NYC area who like to get out, socialize, have some drinks and get to know each other. A fun laid back group always looking for new members.",
   category: "Fun",
-  location: 'Internet'
+  location: 'Internet',
+  about: GROUP_PHOTOS.sample
 )
 
 group12 = Group.create!(
@@ -153,7 +164,8 @@ group12 = Group.create!(
 
                 If you have ideas for Asian events, Asian venues, or Asian themes, contact us!",
   category: "Social",
-  location: "New York"
+  location: "New York",
+  about: GROUP_PHOTOS.sample
 )
 
 group_ids = Group.all.ids

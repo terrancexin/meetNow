@@ -35,6 +35,7 @@ class GroupsIndex extends React.Component {
                 return (
                   <li className='group-pics' key={group.id}>
                     <GroupsIndexItems
+                      groupPhoto={group.about}
                       groupId={group.id}
                       name={group.name}
                       members={group.member_count}/>
@@ -50,10 +51,10 @@ class GroupsIndex extends React.Component {
   }
 }
 
-const GroupsIndexItems = ({ groupId, name, members }) => {
+const GroupsIndexItems = ({ groupPhoto, groupId, name, members }) => {
   return (
     <Link to={`/groups/${groupId}`} className='group-links'>
-        <img src={window.assets.techImage} alt="groups"/>
+        <img src={groupPhoto} alt="groups"/>
         <h4 className='group-name'>{name}</h4>
         <p className='member-count'>We're {members} Members</p>
 

@@ -21,7 +21,7 @@ class SearchBar extends React.Component {
       <div className='search-bar'>
         <div className='search-bar-left'>
           <input className='search-input' type='text' placeholder='e.g. tech' value={this.state.name} onChange={this.updateSearch} />
-          <div className='within-miles'>with 25 miles by location</div>
+          <div className='within-miles'>within 25 miles by location</div>
         </div>
 
         <div className='search-bar-right'>
