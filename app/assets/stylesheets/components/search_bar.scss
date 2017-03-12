@@ -29,6 +29,14 @@
     justify-content: flex-start;
     align-items: center;
     margin: 12px;
+    position: relative;
+
+    .search-icon {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      left: 220px;
+    }
   }
 
 
