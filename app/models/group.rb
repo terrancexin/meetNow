@@ -17,6 +17,11 @@ class Group < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :category, :description, :location, presence: true
   validates :description, length: { minimum: 1 }
+  after_initialize :init
+
+  def init
+    self.photo_url ||= "https://s3.amazonaws.com/meetnow-DEV/category/tech.png"
+  end
 
   has_many :memberships
   has_many :events

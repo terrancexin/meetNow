@@ -53,3 +53,110 @@
 .welcome-msg {
   color: $meetup-red;
 }
+
+
+.profile-page-container {
+  margin-top: 6px;
+  border-top: 1px solid lightgray;
+
+  .profile-page-box {
+    border: 1px solid lightgray;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    .profile-left-section {
+      display: flex;
+      flex-direction: column;
+      margin: 14px 0;
+      margin-right: 50px;
+      width: 100%;
+
+      .profile-name {
+        font-size: 30px;
+        font-weight: bold;
+        padding: 0 0 5px 14px;
+        border-bottom: 1px solid lightgray;
+      }
+
+      .profile-location {
+        padding: 20px 0 5px 14px;
+      }
+
+      .profile-city {
+        padding: 5px 0 5px 14px;
+      }
+
+      .profile-bio {
+        margin-top: 80px;
+        padding: 0 0 25px 14px;
+        border-bottom: 1px solid lightgray;
+
+      }
+
+      .profile-group-member-count {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 20px 0 20px 14px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid lightgray;
+
+      }
+
+      .profile-groups {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 14px;
+        width: 800px;
+
+        a {
+          text-decoration: none;
+          color: black;
+
+          &:hover {
+            color: $blue-hover;
+          }
+        }
+
+        .profile-groups-box {
+          display: flex;
+          align-items: center;
+          padding-bottom: 10px;
+          border-bottom: 1px solid gray;
+          border-style: dotted;
+          padding-right: 40px;
+          margin-right: 40px;
+          width: 300px;
+
+          .profile-group-thumb {
+            border-radius: 4px;
+          }
+
+          .group-name-member-count {
+            margin: 0 15px;
+
+            label {
+              font-weight: bold;
+              cursor: pointer;
+            }
+
+            .profile-group-members-count {
+              margin: 10px 0;
+            }
+          }
+        }
+      }
+    }
+
+    .profile-right-section{
+      margin-right: 14px;
+      margin-top: 14px;
+
+      img {
+        width: 250px;
+        height: 250px;
+        border-radius: 4px;
+      }
+    }
+  }
+}

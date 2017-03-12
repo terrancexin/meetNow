@@ -11,6 +11,7 @@ import GroupsShow from './groups/groups_show';
 import EventsIndex from './events/events_index';
 import EventShow from './events/event_show';
 import ExplorePage from './explore/explore_page';
+import ProfilePage from './profile/profile_page';
 
 const Root = ({ store }) => {
 
@@ -38,6 +39,7 @@ const Root = ({ store }) => {
           <Route path='groups/:groupId' component={GroupsShow}>
               <Route path='events/:eventId' component={EventShow}/>
           </Route>
+          <Route path='profile' component={ProfilePage} />
 
 
         </Route>

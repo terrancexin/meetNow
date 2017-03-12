@@ -60,7 +60,7 @@ class ExplorePage extends React.Component {
                 return (
                   <li className='group-pics' key={group.id}>
                     <GroupsIndexItems
-                      groupPhoto={group.about}
+                      groupPhoto={group.photo_url}
                       groupId={group.id}
                       name={group.name}
                       members={group.member_count}/>

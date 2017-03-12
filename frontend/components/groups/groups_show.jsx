@@ -24,6 +24,8 @@ class GroupsShow extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    if (newProps.group === undefined) { return; }
+
     if (this.props.params.groupId !== newProps.params.groupId || !newProps.group.users) {
       this.props.fetchSingleGroup(newProps.params.groupId);
     }
@@ -130,7 +132,7 @@ class GroupsShow extends React.Component {
 
           <div className='content-container'>
             <ul className='group-side-bar-info'>
-              <img className='group-side-bar-pic' src={this.props.group.about} />
+              <img className='group-side-bar-pic' src={this.props.group.photo_url} />
 
               <section className='side-bar-text-box'>
                 <div className='text-info-inner-box'>

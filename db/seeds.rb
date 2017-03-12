@@ -29,12 +29,12 @@ Membership.destroy_all
 Organizer.destroy_all
 Rsvp.destroy_all
 
-guest = User.create!(first_name: 'Guest', password: "passwordsafe", last_name: 'Xin', email: 'awesome_guest@gmail.com', city: 'nyc', image: "https://s3.amazonaws.com/meetnow-DEV/meetNow/elon.jpg")
-me = User.create!(first_name: 'Terrance', password: "123abc", last_name: 'Xin', email: 'tx@gmail.com', city: 'nyc', image: "https://s3.amazonaws.com/meetnow-DEV/meetNow/txin.jpg")
+guest = User.create!(first_name: 'Guest', password: "passwordsafe", last_name: 'Musk', email: 'awesome_guest@gmail.com', city: 'Los Angeles, California', image: "https://s3.amazonaws.com/meetnow-DEV/meetNow/elon.jpg", bio: "CEO, and CTO of SpaceX; co-founder, CEO, and product architect of Tesla Inc.; co-founder and chairman of SolarCity; co-chairman of OpenAI; co-founder of Zip2; and founder of X.com, which merged with Confinity and took the name PayPal. As of February 2017, he has an estimated net worth of 13.9 billion, making him the 94th wealthiest person in the world. In December 2016, Musk was ranked 21st on Forbes list of The World's Most Powerful People.")
+me = User.create!(first_name: 'Terrance', password: "123abc", last_name: 'Xin', email: 'tx@gmail.com', city: 'New York City, NY', image: "https://s3.amazonaws.com/meetnow-DEV/meetNow/txin.jpg", bio: "Pursuit of happiness to me means making progress towards learning and change. This is why I'm passionate about technology and software development. I love solving everyday problems by leveraging the power of our modern technology. I truly believe in bringing people closer through web apps, around the world.")
 
 i = 1
 300.times do
-  User.create!(password: "123abc", first_name: Faker::Friends.character, last_name: "Smith", email: "user#{i}@gmail.com", image: USER_PHOTOS.shift)
+  User.create!(password: "123abc", first_name: Faker::Friends.character, last_name: "Smith", email: "user#{i}@gmail.com", image: USER_PHOTOS.shift, city: Faker::Address.state, bio: Faker::Friends.quote)
   i += 1
 end
 
@@ -45,7 +45,7 @@ category_array = ["Tech", "Fitness", "Music", "Dance", "Health", "Game", "Cultur
 
 i = 1
 5.times do
-  Group.create!(name: (Faker::GameOfThrones.character + i.to_s), description: Faker::Friends.quote, category: category_array.sample, location: Faker::Address.state, about: GROUP_PHOTOS.sample)
+  Group.create!(name: (Faker::GameOfThrones.character + i.to_s), description: Faker::Friends.quote, category: category_array.sample, location: Faker::Address.state, photo_url: GROUP_PHOTOS.sample)
   i += 1
 end
 
@@ -61,7 +61,7 @@ group1 = Group.create!(
                 Coffee and Coding Conundrum started in Osaka, Japan in 2014. Let's make NYC its second home!",
   category: "Tech",
   location: "New York",
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group2 = Group.create!(
@@ -69,7 +69,7 @@ group2 = Group.create!(
   description: "TACO EVERY DAY!",
   category: "Food",
   location: 'LA',
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group3 = Group.create!(
@@ -77,7 +77,7 @@ group3 = Group.create!(
   description: "Free office hours for programming help - any programming language, all skill levels. The format is super simple: you come with your laptop, sit and hang out and code, and flag down one of the organizers if you have a question.  That's it! If we can't answer your question, we'll find you someone who can, or at least point you in the right direction.",
   category: "Tech",
   location: 'New York',
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group4 = Group.create!(
@@ -85,7 +85,7 @@ group4 = Group.create!(
   description: "We are software developers, designers, educators and students with an interest in learning about emergent technologies in areas including (but not limited to) mobile, web, wearables, cloud computing, education technology, data sciences and smart homes.",
   category: "Tech",
   location: 'New York',
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group5 = Group.create!(
@@ -93,7 +93,7 @@ group5 = Group.create!(
   description: "BCD Tofu House, Ichiumi, Maru, Wabar, Woorijip, Third Floor, BaekJeong KBBQ, Mad for Chicken, Circle.",
   category: "Fun",
   location: 'New York',
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group6 = Group.create!(
@@ -101,7 +101,7 @@ group6 = Group.create!(
   description: "A group to discuss machine learning, information retrieval, natural language processing, knowledge representation, and artificial intelligence. Meetings will cover research papers and algorithms in the field. We'll also try to occasionally bring in a speaker to talk about their work.",
   category: "Tech",
   location: 'New York',
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group7 = Group.create!(
@@ -109,7 +109,7 @@ group7 = Group.create!(
   description: "Concerned about where the country is heading? You're not alone. Join others who care about what's happening to democracy, equality, human rights, social justice, sustainability, and other important topics. It's ok if you've never been to a protest, march, or town hall -- start here. You really can make a difference.",
   category: "Movement",
   location: 'New York',
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group8 = Group.create!(
@@ -117,7 +117,7 @@ group8 = Group.create!(
   description: "Women Who Code is a global nonprofit organization dedicated to inspiring women to excel in technology careers by creating a global, connected community of women in technology. The organization tripled in 2013 and has grown to be one of the largest communities of women engineers in the world.",
   category: "Tech",
   location: 'New York',
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group9 = Group.create!(
@@ -131,7 +131,7 @@ group9 = Group.create!(
                 • Bridging the gap between FinTech Entrepreneurs and the investment community",
   category: "Business",
   location: 'Dubai',
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group10 = Group.create!(
@@ -139,7 +139,7 @@ group10 = Group.create!(
   description: "We will provide high quality Soccer tournaments, NYC PICKUP Soccer games, and yearly NYC World Cup; without the high cost!!!",
   category: "Sports",
   location: 'New York',
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group11 = Group.create!(
@@ -147,7 +147,7 @@ group11 = Group.create!(
   description: "We are a meet-up group revolving around singles in the NYC area who like to get out, socialize, have some drinks and get to know each other. A fun laid back group always looking for new members.",
   category: "Fun",
   location: 'Internet',
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group12 = Group.create!(
@@ -165,7 +165,7 @@ group12 = Group.create!(
                 If you have ideas for Asian events, Asian venues, or Asian themes, contact us!",
   category: "Social",
   location: "New York",
-  about: GROUP_PHOTOS.sample
+  photo_url: GROUP_PHOTOS.sample
 )
 
 group_ids = Group.all.ids
@@ -173,11 +173,11 @@ group_ids = Group.all.ids
 Organizer.create!(user_id: guest.id, group_id: group1.id)
 Organizer.create!(user_id: guest.id, group_id: group2.id)
 Organizer.create!(user_id: me.id, group_id: group2.id)
-250.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
-10.times { Event.create!(name: (Faker::GameOfThrones.character + i.to_s), time: Faker::Time.forward(60), location: Faker::GameOfThrones.city, description: "
+300.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
+50.times { Event.create!(name: (Faker::GameOfThrones.character + i.to_s), time: Faker::Time.forward(60), location: Faker::GameOfThrones.city, description: "
   Over 12 weeks, you'll learn all the skills needed to begin a career as a web developer. Tuition is 22% of your first year's salary. Prior programming experience isn't required, but you’ll need lots of tenacity and a passion for building cool stuff. Over 1,700 App Academy grads work as developers at top tech companies like Google, Facebook, Uber and more, and earn an average salary of $105,000 in SF and $89,000 in NYC.", group_id: group_ids.sample) }
 
 
 event_ids = Event.all.ids
 user_ids = User.all.ids
-6.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }
+200.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }
