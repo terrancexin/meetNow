@@ -3,7 +3,7 @@ class Api::GroupsController < ApplicationController
   def index
     search_bar_filter = params[:filter]
     if search_bar_filter
-      @groups = Group.includes(:users, :events).where("LOWER(location) LIKE ?", "#{search_bar_filter.downcase}%")
+      @groups = Group.includes(:users, :events).where("LOWER(name) LIKE ?", "%#{search_bar_filter.downcase}%")
     else
       @groups = Group.all.includes(:users, :events)
     end

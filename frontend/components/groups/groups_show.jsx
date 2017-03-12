@@ -164,7 +164,7 @@ class GroupsShow extends React.Component {
 
                           <div className='member-and-pic-box' key={id}>
                             <div className='pro-pic-box'>
-                              <img className='pro-pic' src={window.assets.memberlistImage} />
+                              <img className='pro-pic' src={this.props.group.users[id].image_url} />
                             </div>
 
                             <div className='member-name'>

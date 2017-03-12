@@ -68,7 +68,7 @@ class GuestLogIn extends React.Component {
               value={ password }
               onChange={this.handleChange("password")}/>
           </div>
-          <input onClick={this.guestLogin("txin@meetnow.com", "passwordsafe")} type="submit" value="Log in" />
+          <input onClick={this.guestLogin("awesome_guest@gmail.com", "passwordsafe")} type="submit" value="Log in" />
         </form>
       </div>
     );

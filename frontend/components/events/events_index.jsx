@@ -29,7 +29,7 @@ class EventsIndex extends React.Component {
                       {Object.keys(event.attendees).map(id => event.attendees[id]).map(attendee => (
                         <li key={attendee.id}>
                           <div className='attendee-wrapper'>
-                            <img className='attendee-pic' src={window.assets.memberlistImage} />
+                            <img className='attendee-pic' src={attendee.image} />
                           </div>
                         </li>
 

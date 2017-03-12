@@ -5,19 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+USER_PHOTOS = []
+users_idx = 1
+while users_idx <= 99 do
+    USER_PHOTOS.push("https://s3.amazonaws.com/meetnow-DEV/users/#{users_idx}.jpg")
+    users_idx += 1
+end
 
-GROUP_PHOTOS = [
-  "https://www.spotrunner.com/wp-content/uploads/2016/11/fitness_tracker_guide_cover_2.jpg",
-  "http://az616578.vo.msecnd.net/files/2016/05/27/635999184041758451-974082916_Live-music-bg.jpg",
-  "https://tctechcrunch2011.files.wordpress.com/2015/04/codecode.jpg",
-  "https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/2005/s300/logo-emblem-red-1000-1-.jpg",
-  "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/a/a/e/global_458042734.jpeg",
-  "https://i.ytimg.com/vi/tYBk4kLHPkk/maxresdefault.jpg",
-  "http://www.abc.net.au/news/image/7797710-1x1-940x940.jpg",
-  "http://www.memebucket.com/mb/2012/09/Javascript-535.png",
-  "http://www.3tonsofcode.com/webz/image.axd?picture=%2F2013%2F08%2Fjavascript.jpg"
+GROUP_PHOTOS = []
 
-]
+groups_idx = 1
+while groups_idx <= 7 do
+  GROUP_PHOTOS.push("https://s3.amazonaws.com/meetnow-DEV/groups/group000#{groups_idx}.png")
+  groups_idx += 1
+end
+
 
 User.destroy_all
 Group.destroy_all
@@ -27,14 +29,15 @@ Membership.destroy_all
 Organizer.destroy_all
 Rsvp.destroy_all
 
-user1 = User.create!(password: "passwordsafe", first_name: 'Terrance', last_name: 'X', email: 'txin@meetnow.com', city: 'nyc')
-user2 = User.create!(password: "123abc", first_name: "App", last_name: "Academy", email: 'appacademy@meetnow.com')
+guest = User.create!(first_name: 'Guest', password: "passwordsafe", last_name: 'Xin', email: 'awesome_guest@gmail.com', city: 'nyc', image: "https://s3.amazonaws.com/meetnow-DEV/meetNow/elon.jpg")
+me = User.create!(first_name: 'Terrance', password: "123abc", last_name: 'Xin', email: 'tx@gmail.com', city: 'nyc', image: "https://s3.amazonaws.com/meetnow-DEV/meetNow/txin.jpg")
 
 i = 1
-30.times do
-  User.create!(password: "123abc", first_name: Faker::Friends.character, last_name: "Xin", email: Faker::Internet.email, image: '')
+300.times do
+  User.create!(password: "123abc", first_name: Faker::Friends.character, last_name: "Xin", email: Faker::Internet.email, image: USER_PHOTOS.sample)
   i += 1
 end
+
 
 user_ids = User.all.ids
 
@@ -155,10 +158,10 @@ group12 = Group.create!(
 
 group_ids = Group.all.ids
 
-Organizer.create!(user_id: user1.id, group_id: group1.id)
-Organizer.create!(user_id: user1.id, group_id: group2.id)
-Organizer.create!(user_id: user2.id, group_id: group2.id)
-10.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
+Organizer.create!(user_id: guest.id, group_id: group1.id)
+Organizer.create!(user_id: guest.id, group_id: group2.id)
+Organizer.create!(user_id: me.id, group_id: group2.id)
+250.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
 10.times { Event.create!(name: (Faker::GameOfThrones.character + i.to_s), time: Faker::Time.forward(60), location: Faker::GameOfThrones.city, description: "
   Over 12 weeks, you'll learn all the skills needed to begin a career as a web developer. Tuition is 22% of your first year's salary. Prior programming experience isn't required, but you’ll need lots of tenacity and a passion for building cool stuff. Over 1,700 App Academy grads work as developers at top tech companies like Google, Facebook, Uber and more, and earn an average salary of $105,000 in SF and $89,000 in NYC.", group_id: group_ids.sample) }
 

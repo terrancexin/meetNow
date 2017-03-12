@@ -4,6 +4,7 @@ json.users do
   @group.users.each do |user|
     json.set! user.id do
       json.name user.first_name
+      json.image_url user.image
 
     end
   end

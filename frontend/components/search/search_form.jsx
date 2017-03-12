@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {location: ''};
+    this.state = {name: ''};
     this.updateSearch = this.updateSearch.bind(this);
   }
 
   updateSearch(e) {
     // this.setState({[field]: event.currentTarget.value});
-    this.setState({location: e.currentTarget.value});
+    this.setState({name: e.currentTarget.value});
     this.props.fetchAllGroups(e.currentTarget.value);
   }
 
@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
     return(
       <div className='search-bar'>
         <div className='search-bar-left'>
-          <input className='search-input' type='text' placeholder='e.g. New York' value={this.state.location} onChange={this.updateSearch} />
+          <input className='search-input' type='text' placeholder='e.g. tech' value={this.state.name} onChange={this.updateSearch} />
           <div className='within-miles'>with 25 miles by location</div>
         </div>
 

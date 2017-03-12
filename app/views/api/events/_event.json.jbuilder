@@ -5,7 +5,7 @@ else
   json.attendees do
     event.users.each do |user|
       json.set! user.id do
-        json.extract! user, :id, :first_name
+        json.extract! user, :id, :first_name, :image
       end
     end
   end
