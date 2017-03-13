@@ -52,7 +52,7 @@ class EventsIndex extends React.Component {
                     <li className='event-description'>{event.description}</li>
                   </div>
 
-                  <div className='count-going'>{Object.keys(event.attendees).map(id => event.attendees[id]).length} going</div>
+                  <div className='count-going'>{Object.keys(event.attendees).length} going</div>
                 </div>
 
               </ul>

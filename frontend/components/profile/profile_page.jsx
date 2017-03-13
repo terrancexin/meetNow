@@ -12,6 +12,12 @@ class ProfilePage extends React.Component {
     this.props.fetchSingleUser(this.props.profileId);
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.params.id !== newProps.params.id) {
+      this.props.fetchSingleUser(newProps.params.id)
+    }
+  }
+
   render() {
     if (this.props.userDetail.groups) {
       const userDetail = this.props.userDetail

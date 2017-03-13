@@ -5,7 +5,6 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("%cBuilt using: \n• React+Redux \n• ES6 \n• Ruby on Rails \n• PostgreSQL", 'background: #fff; color: #00adef');
   let preloadedState = {};
   if (window.currentUser) {
     preloadedState = { session: { currentUser: window.currentUser } };
