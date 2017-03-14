@@ -46,11 +46,7 @@ class ProfilePage extends React.Component {
         </div>
       );
     } else {
-      return (
-        <div className='profile-page-container'>
-          Loading...
-        </div>
-      );
+      return <div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>
     }
 
   }

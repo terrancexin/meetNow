@@ -25,41 +25,45 @@ class GroupsIndex extends React.Component {
 
   render () {
     const sumGroup = this.props.groups.length
-    return (
-      <div className='group-index-box'>
+    if (this.props.groups.length > 0) {
+      return (
+        <div className='group-index-box'>
 
-        <div className='group-banner'>
-          <h1>Find a Group</h1>
-          <div className='sum-group'>{sumGroup} interesting groups nearby. Go MeetNow!</div>
-        </div>
-
-        <div className='search-group-index-box'>
-        <SearchBar toggleCalendar={this.toggleCalendar}/>
-
-        {!this.state.calendar && <ul className='group-index-wrapper'>
-            {
-              this.props.groups.map(group => {
-              if (group.member_count !== 0) {
-                return (
-                  <li className='group-pics' key={group.id}>
-                    <GroupsIndexItems
-                      groupPhoto={group.photo_url}
-                      groupId={group.id}
-                      name={group.name}
-                      members={group.member_count}/>
-                  </li>
-                  );
-                }
-              })
-            }
-          </ul>}
-
-        {this.state.calendar && <ul className='calendar-group-index-wrapper'>
-              <EventCalendar events={this.props.events}/>
-          </ul>}
+          <div className='group-banner'>
+            <h1>Find a Group</h1>
+            <div className='sum-group'>{sumGroup} interesting groups nearby. Go MeetNow!</div>
           </div>
-      </div>
-    );
+
+          <div className='search-group-index-box'>
+          <SearchBar toggleCalendar={this.toggleCalendar}/>
+
+          {!this.state.calendar && <ul className='group-index-wrapper'>
+              {
+                this.props.groups.map(group => {
+                if (group.member_count !== 0) {
+                  return (
+                    <li className='group-pics' key={group.id}>
+                      <GroupsIndexItems
+                        groupPhoto={group.photo_url}
+                        groupId={group.id}
+                        name={group.name}
+                        members={group.member_count}/>
+                    </li>
+                    );
+                  }
+                })
+              }
+            </ul>}
+
+          {this.state.calendar && <ul className='calendar-group-index-wrapper'>
+                <EventCalendar events={this.props.events}/>
+            </ul>}
+            </div>
+        </div>
+      );
+    } else {
+      return <div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>
+    }
   }
 }
 

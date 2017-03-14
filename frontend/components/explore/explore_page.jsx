@@ -41,38 +41,41 @@ class ExplorePage extends React.Component {
   render () {
     const sumGroup = this.props.groups.length;
     const category = this.handleCategory(this.props.category);
+    if (sumGroup > 0) {
+      return (
+        <div className='group-index-box'>
 
-    return (
-      <div className='group-index-box'>
-
-        <div className='group-banner'>
-          <h1>{category.headerName}</h1>
-          <div className='sum-group'>{sumGroup} interesting groups nearby. Go MeetNow!</div>
-        </div>
-
-        <div className='search-group-index-box'>
-        <SearchBar category={category.searchFilter}/>
-
-          <ul className='group-index-wrapper'>
-            {
-              this.props.groups.map(group => {
-              if (group.member_count !== 0) {
-                return (
-                  <li className='group-pics' key={group.id}>
-                    <GroupsIndexItems
-                      groupPhoto={group.photo_url}
-                      groupId={group.id}
-                      name={group.name}
-                      members={group.member_count}/>
-                  </li>
-                  );
-                }
-              })
-            }
-          </ul>
+          <div className='group-banner'>
+            <h1>{category.headerName}</h1>
+            <div className='sum-group'>{sumGroup} interesting groups nearby. Go MeetNow!</div>
           </div>
-      </div>
-    );
+
+          <div className='search-group-index-box'>
+          <SearchBar category={category.searchFilter}/>
+
+            <ul className='group-index-wrapper'>
+              {
+                this.props.groups.map(group => {
+                if (group.member_count !== 0) {
+                  return (
+                    <li className='group-pics' key={group.id}>
+                      <GroupsIndexItems
+                        groupPhoto={group.photo_url}
+                        groupId={group.id}
+                        name={group.name}
+                        members={group.member_count}/>
+                    </li>
+                    );
+                  }
+                })
+              }
+            </ul>
+            </div>
+        </div>
+      );
+    } else {
+      return <div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>
+    }
   }
 }
 
