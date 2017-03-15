@@ -49,7 +49,6 @@ class EventShow extends React.Component {
       return (<div className='rsvp-buttons-box-login'><button className='attend-event-button' onClick={this.handleModalOpen("login")}>Log in</button></div>);
     }
 
-    if (this.props.loggedIn) {
       if (Object.keys(this.props.event.attendees).includes(`${this.props.currentUser.id}`)) {
         return (
           <div>
@@ -114,7 +113,6 @@ class EventShow extends React.Component {
           </div>
         );
       }
-    }
   }
 
 

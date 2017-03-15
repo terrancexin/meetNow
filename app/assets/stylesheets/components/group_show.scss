@@ -163,6 +163,7 @@
     p {
       font-size: 12px;
       padding: 0 10px 10px 12px;
+      line-height: 130%;
     }
 
   }
@@ -218,7 +219,7 @@
   font-family: sans-serif;
   border: 1px solid #ccc;
   margin-top: 14px;
-  margin-left: 14px;
+  // margin-left: 14px;
   border-radius: 3px;
 
   .event-time {
@@ -230,6 +231,7 @@
   }
 
   .event-description {
+    line-height: 120%;
     font-size: 12px;
     padding: 3px 10px;
     width: 500px;
@@ -337,4 +339,12 @@
 
 .fa.fa-map-marker.fa-1x.map-close-marker {
   margin-right: -20px;
+}
+
+.event-index-box {
+  // max-height: 1000px;
+  // overflow: scroll;
+  // border-bottom: 1px solid lightgray;
+  margin-left: 14px;
+  border-radius: 3px;
 }

@@ -38,7 +38,7 @@ class EventsIndex extends React.Component {
     if (Object.keys(this.props.events).length > 0) {
       const eventArray = Object.keys(this.props.events).map(id  => this.props.events[id]);
       return (
-        <div>
+        <div className='event-index-box'>
             {
               eventArray.map(event => (
               <ul className='events-box-on-group' key={event.id}>
