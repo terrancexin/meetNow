@@ -27,19 +27,14 @@ class EventsIndex extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
     this.props.fetchSingleGroupEvents(this.props.params.groupId);
   }
 
-  // componentWillReceiveProps(newProps) {
-  //   if (newProps.group === undefined) { return; }
-  //
-  //   if (this.props.params.groupId !== newProps.params.groupId || !newProps.group.users) {
-  //     this.props.fetchSingleGroupEvents(newProps.params.groupId);
-  //   }
-  // }
-
   render() {
+    if (this.props.loading) {
+      return (<div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>);
+    }
+
     if (Object.keys(this.props.events).length > 0) {
       const eventArray = Object.keys(this.props.events).map(id  => this.props.events[id]);
       return (
@@ -49,7 +44,7 @@ class EventsIndex extends React.Component {
               <ul className='events-box-on-group' key={event.id}>
                 <div className='event-time'><li>{event.time.slice(0, 10)}</li></div>
                 <div className='event-title'>
-                  <Link to={`groups/${this.props.groupId}/events/${event.id}`}>{event.name}</Link>
+                  <Link to={`groups/${this.props.params.groupId}/events/${event.id}`}>{event.name}</Link>
                 </div>
 
 

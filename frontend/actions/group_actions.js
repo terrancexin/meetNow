@@ -35,7 +35,6 @@ export const clearGroupErrors = () => ({
 
 
 export const fetchAllGroups = (filter) => dispatch => {
-  dispatch(startLoading());
   return (GroupApiUtil.fetchAllGroups(filter).then(groups =>{
       dispatch(receiveAllGroups(groups));
     }, error => dispatch(receiveGroupErrors(error.responseJSONs))));
@@ -51,6 +50,7 @@ export const createGroup = group => dispatch => {
 };
 
 export const fetchSingleGroup = id => dispatch => {
+  dispatch(startLoading());
   return (
     GroupApiUtil.fetchSingleGroup(id)
       .then(group => {

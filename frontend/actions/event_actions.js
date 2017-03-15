@@ -55,6 +55,7 @@ export const clearEventErrors = () => ({
 });
 
 export const fetchSingleGroupEvents = id => dispatch => {
+  dispatch(startLoading());
   return (
     GroupApiUtil.fetchSingleGroup(id)
       .then(group => {
@@ -78,5 +79,6 @@ export const createEvent = event => dispatch => {
 };
 
 export const fetchEvent = id => dispatch => {
+  dispatch(startLoading());
   return (EventApiUtil.fetchEvent(id).then(event => dispatch(receiveEvent(event))));
 };

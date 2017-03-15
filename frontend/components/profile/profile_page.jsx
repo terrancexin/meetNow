@@ -19,6 +19,9 @@ class ProfilePage extends React.Component {
   }
 
   render() {
+    if (this.props.loading) {
+      return <div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>
+    }
     if (this.props.userDetail.groups) {
       const userDetail = this.props.userDetail
       const userDetailGroups = Object.values(this.props.userDetail.groups)
@@ -68,7 +71,8 @@ const ProfileGroupsInfo = ({ group }) => {
 const mapStatetoProps = (state, ownProps) => {
   return ({
     profileId: ownProps.params.id,
-    userDetail: state.userDetail
+    userDetail: state.userDetail,
+    loading: state.loading.loading
   })
 };
 

@@ -217,7 +217,8 @@ const mapStateToProps = (state, ownProps) => {
     loggedIn: !!state.session.currentUser,
     currentUser: state.session.currentUser,
     group: state.groups[ownProps.params.groupId],
-    events: state.events
+    // events: state.events,
+    loading: state.loading.loading
   });
 };
 

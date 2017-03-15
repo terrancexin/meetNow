@@ -58,8 +58,14 @@
 .profile-page-container {
   margin-top: 6px;
   border-top: 1px solid lightgray;
+  // width: 100%;
+  display: flex;
+  justify-content: center;
+
 
   .profile-page-box {
+    max-width: 1000px;
+
     border: 1px solid lightgray;
     margin: 10px;
     display: flex;
@@ -69,14 +75,15 @@
       display: flex;
       flex-direction: column;
       margin: 14px 0;
-      margin-right: 50px;
-      width: 100%;
+      // margin-right: 30px;
+      // width: 100%;
 
       .profile-name {
         font-size: 30px;
         font-weight: bold;
         padding: 0 0 5px 14px;
         border-bottom: 1px solid lightgray;
+        width: 600px;
       }
 
       .profile-location {
@@ -91,6 +98,7 @@
         margin-top: 80px;
         padding: 0 0 25px 14px;
         border-bottom: 1px solid lightgray;
+        width: 600px;
 
       }
 
@@ -100,6 +108,7 @@
         margin: 20px 0 20px 14px;
         padding-bottom: 20px;
         border-bottom: 1px solid lightgray;
+        width: 600px;
 
       }
 
@@ -107,7 +116,7 @@
         display: flex;
         flex-wrap: wrap;
         margin-left: 14px;
-        width: 800px;
+        width: 700px;
 
         a {
           text-decoration: none;
@@ -126,7 +135,7 @@
           border-style: dotted;
           padding-right: 40px;
           margin-right: 40px;
-          width: 300px;
+          width: 240px;
 
           .profile-group-thumb {
             border-radius: 4px;
@@ -151,6 +160,7 @@
     .profile-right-section{
       margin-right: 14px;
       margin-top: 14px;
+      height: 250px;
 
       img {
         width: 250px;

@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalType: "", profile: false, rsvpState: null };
+    this.state = { modalType: "", profile: false };
     this.closeModal = this.closeModal.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
 
@@ -18,11 +18,6 @@ class EventShow extends React.Component {
     this.attendButton = this.attendButton.bind(this);
   }
 
-  // componentWillReceiveProps(newProps) {
-  //   if (this.props.params.eventId !== newProps.params.eventId) {
-  //     this.props.fetchEvent(newProps.params.groupId);
-  //   }
-  // }
   closeModal() {
     this.setState({ modalType: false});
   }
@@ -75,6 +70,10 @@ class EventShow extends React.Component {
 
 
   render() {
+    if (this.props.loading) {
+      return (<div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>);
+    }
+
     if (this.props.event) {
       return (
         <div className='event-mid-content-box'>
@@ -149,7 +148,8 @@ const mapStateToProps = (state, ownProps) => {
   return({
     event: state.events[ownProps.params.eventId],
     loggedIn: !!state.session.currentUser,
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    loading: state.loading.loading
   });
 };
 
