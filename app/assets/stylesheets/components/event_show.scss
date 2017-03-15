@@ -100,6 +100,16 @@
   min-width: 30px;
 }
 
+.rsvp-buttons-box-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  margin: 14px;
+  padding: 0 0 11px 0;
+  text-align: center;
+}
+
 .rsvp-buttons-box {
   display: flex;
   justify-content: space-between;

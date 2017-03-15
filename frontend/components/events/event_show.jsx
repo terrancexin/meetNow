@@ -46,22 +46,71 @@ class EventShow extends React.Component {
 
   attendButton() {
     if(!this.props.loggedIn) {
-      return (<button className='attend-event-button' onClick={this.handleModalOpen("login")}>Log in</button>);
+      return (<div className='rsvp-buttons-box-login'><button className='attend-event-button' onClick={this.handleModalOpen("login")}>Log in</button></div>);
     }
 
     if (this.props.loggedIn) {
       if (Object.keys(this.props.event.attendees).includes(`${this.props.currentUser.id}`)) {
         return (
+          <div>
           <div className='rsvp-buttons-box'>
             <div className='your-rsvp-text'>Your RSVP:</div>
               <button onClick={this.handleLeaveEvent} className='attend-event-button'>Yes</button>
           </div>
+
+          <div className='event-show-attending'>{this.props.event.rsvp_count} going</div>
+
+            <div className='event-members-list'>
+              <ul className='event-members'>
+              {
+                Object.keys(this.props.event.attendees).map(id => (
+
+                  <div className='member-and-pic-box' key={id}>
+                    <div className='pro-pic-box'>
+                      <Link to={`/profile/${id}`}><img className='pro-pic' src={this.props.event.attendees[id].image} /></Link>
+                    </div>
+
+                    <Link to={`/profile/${id}`}><div className='member-name'>
+                      {this.props.event.attendees[id].first_name}
+                    </div></Link>
+
+                  </div>
+                ))
+              }
+              </ul>
+            </div>
+
+        </div>
         );
       } else {
         return (
-          <div className='rsvp-buttons-box'>
+          <div><div className='rsvp-buttons-box'>
             <div className='your-rsvp-text'>Your RSVP:</div>
               <button onClick={this.handleAttendEvent} className='attend-event-button'>No</button>
+          </div>
+          <div className='event-show-attending'>{this.props.event.rsvp_count} going</div>
+
+            <div className='event-members-list'>
+              <ul className='event-members'>
+              {
+                Object.keys(this.props.event.attendees).map(id => (
+
+                  <div className='member-and-pic-box' key={id}>
+                    <div className='pro-pic-box'>
+                      <Link to={`/profile/${id}`}><img className='pro-pic' src={this.props.event.attendees[id].image} /></Link>
+                    </div>
+
+                    <Link to={`/profile/${id}`}><div className='member-name'>
+                      {this.props.event.attendees[id].first_name}
+                    </div></Link>
+
+                  </div>
+                ))
+              }
+              </ul>
+            </div>
+
+
           </div>
         );
       }
@@ -88,29 +137,6 @@ class EventShow extends React.Component {
 
             <div className='event-show-right-side'>
               {this.attendButton()}
-              <div className='event-show-attending'>{this.props.event.rsvp_count} going</div>
-
-                <div className='event-members-list'>
-                  <ul className='event-members'>
-                  {
-                    Object.keys(this.props.event.attendees).map(id => (
-
-                      <div className='member-and-pic-box' key={id}>
-                        <div className='pro-pic-box'>
-                          <Link to={`/profile/${id}`}><img className='pro-pic' src={this.props.event.attendees[id].image} /></Link>
-                        </div>
-
-                        <Link to={`/profile/${id}`}><div className='member-name'>
-                          {this.props.event.attendees[id].first_name}
-                        </div></Link>
-
-                      </div>
-                    ))
-                  }
-                  </ul>
-                </div>
-
-
 
 
             </div>
