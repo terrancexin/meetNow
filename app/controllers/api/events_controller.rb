@@ -18,15 +18,13 @@ class Api::EventsController < ApplicationController
     unless logged_in?
       render json: ["must log in first"]
     end
-
-    @event = current_user.rsvps.new(event_params)
-    @event.group_id = params[:group_id]
+    @event = current_user.events.new(event_params)
 
     if @event.save
-      Rsvp.create(event_id: @event.id, user: current_user.id)
-      render json :show
+      Rsvp.create(event_id: @event.id, user_id: current_user.id)
+      render :show
     else
-      render json @event.errors.full_messages, status: 422
+      render json: @event.errors.full_messages, status: 422
     end
   end
 

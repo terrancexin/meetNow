@@ -4,11 +4,12 @@ import { fetchEvent, attendEvent, leaveEvent } from '../../actions/event_actions
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
 import Modal from 'react-modal';
+import { Link } from 'react-router';
 
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalType: "", profile: false };
+    this.state = { modalType: "", profile: false, rsvpState: null };
     this.closeModal = this.closeModal.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
 
@@ -53,14 +54,22 @@ class EventShow extends React.Component {
       return (<button className='attend-event-button' onClick={this.handleModalOpen("login")}>Log in</button>);
     }
 
-    if (this.props.currentUser) {
+    if (this.props.loggedIn) {
       if (Object.keys(this.props.event.attendees).includes(`${this.props.currentUser.id}`)) {
-        return <button onClick={this.handleLeaveEvent} className='attend-event-button'>Going</button>;
+        return (
+          <div className='rsvp-buttons-box'>
+            <div className='your-rsvp-text'>Your RSVP:</div>
+              <button onClick={this.handleLeaveEvent} className='attend-event-button'>Yes</button>
+          </div>
+        );
       } else {
-        return <button onClick={this.handleAttendEvent} className='attend-event-button'>Not going</button>;
+        return (
+          <div className='rsvp-buttons-box'>
+            <div className='your-rsvp-text'>Your RSVP:</div>
+              <button onClick={this.handleAttendEvent} className='attend-event-button'>No</button>
+          </div>
+        );
       }
-    } else {
-      return <button onClick={this.handleLeaveEvent} className='attend-event-button'>Not going</button>;
     }
   }
 
@@ -68,17 +77,45 @@ class EventShow extends React.Component {
   render() {
     if (this.props.event) {
       return (
-        <div className='mid-content-box'>
+        <div className='event-mid-content-box'>
           <div className='event-show-description'>
             <div className='event-info-box'>
               <div className='event-show-name'><li>{this.props.event.name}</li></div>
               <div className='event-show-date'><li>Friday, March 17, 2017</li></div>
-              <div className='event-show-time'><li>6:00 PM</li></div>
-              <div className='event-show-location'><li>Location: {this.props.event.location}</li></div>
-              <div className='event-show-attending'><li>Attending: {this.props.event.rsvp_count}</li></div>
-              <div className='event-show-description'><li className='event-description'>{this.props.event.description}</li></div>
-                {this.attendButton()}
+              <div className='event-show-time'><li><i className="fa fa-clock-o fa-2x"></i>6:00 PM</li></div>
+              <div className='event-show-location'><li><i className="fa fa-map-marker fa-2x"></i>{this.props.event.location}</li></div>
+              <div className='event-show-inner-description'><li className='event-description'>{this.props.event.description}</li></div>
             </div>
+
+            <div className='event-show-right-side'>
+              {this.attendButton()}
+              <div className='event-show-attending'>{this.props.event.rsvp_count} going</div>
+
+                <div className='event-members-list'>
+                  <ul className='event-members'>
+                  {
+                    Object.keys(this.props.event.attendees).map(id => (
+
+                      <div className='member-and-pic-box' key={id}>
+                        <div className='pro-pic-box'>
+                          <Link to={`/profile/${id}`}><img className='pro-pic' src={this.props.event.attendees[id].image} /></Link>
+                        </div>
+
+                        <Link to={`/profile/${id}`}><div className='member-name'>
+                          {this.props.event.attendees[id].first_name}
+                        </div></Link>
+
+                      </div>
+                    ))
+                  }
+                  </ul>
+                </div>
+
+
+
+
+            </div>
+
         </div>
 
         <Modal
@@ -111,7 +148,7 @@ class EventShow extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return({
     event: state.events[ownProps.params.eventId],
-    loggedIn: Boolean(state.session.currentUser),
+    loggedIn: !!state.session.currentUser,
     currentUser: state.session.currentUser
   });
 };

@@ -87,3 +87,23 @@ input[type="submit"] {
 .group-index-box > .group-banner > h1 {
 	font-family: sans-serif;
 }
+
+::-webkit-input-placeholder {
+   font-style: italic;
+	 font-size: 14px;
+}
+:-moz-placeholder {
+   font-style: italic;
+	 font-size: 14px;
+}
+::-moz-placeholder {
+   font-style: italic;
+	 font-size: 14px;
+}
+:-ms-input-placeholder {
+   font-style: italic;
+	 font-size: 14px;
+}
+
+
+::-webkit-inner-spin-button { display: none; }

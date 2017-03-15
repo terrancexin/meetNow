@@ -1,43 +1,34 @@
 import React from 'react';
-import { createGroup } from '../../actions/group_actions';
+import { createEvent } from '../../actions/event_actions';
 import { connect } from 'react-redux';
 import { Router, withRouter } from 'react-router';
-import { clearSessionErrors } from '../../actions/session_actions';
+import { clearEventErrors } from '../../actions/event_actions';
 import Errors from '../errors/errors';
 
-
-class CreateGroupForm extends React.Component {
+class CreateEventForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {name: '', location: '', description: '', category: ''};
-
+    this.state = {name: '', time: '', description: '', location: '', group_id: this.props.params.groupId};
     this.handleLocation = this.handleLocation.bind(this);
-    this.handleCategory = this.handleCategory.bind(this);
     this.handleName = this.handleName.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
+    this.handleTime = this.handleTime.bind(this);
   }
 
   componentWillMount() {
-    this.props.clearSessionErrors();
+    this.props.clearEventErrors();
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createGroup(this.state)
-      .then(() => {
-        this.props.closeModal();
-
-        this.props.router.push('groups');
-      });
+    this.props.createEvent(this.state).then(() => {
+      this.props.closeModal();
+    });
   }
 
   handleLocation(e) {
     this.setState({location: e.target.value});
-  }
-
-  handleCategory(e) {
-    this.setState({category: e.target.value});
   }
 
   handleName(e) {
@@ -48,11 +39,15 @@ class CreateGroupForm extends React.Component {
     this.setState({description: e.target.value});
   }
 
+  handleTime(e) {
+    this.setState({time: e.target.value });
+  }
+
   render() {
     return (
       <div className='modal-form-container'>
         <div className='form-header'>
-          <h1 className='group-form-header'>Start a new group!</h1>
+          <h1 className='group-form-header'>Create an Event</h1>
         </div>
         <Errors errors={ this.props.errors } />
 
@@ -61,11 +56,12 @@ class CreateGroupForm extends React.Component {
             <label>Name</label>
             <input type='text' value={this.state.name} onChange={this.handleName}/>
 
-            <label>Category</label>
-            <input type='text' value={this.state.category} onChange={this.handleCategory}/>
-
             <label>Description</label>
             <input type='text' value={this.state.description} onChange={this.handleDescription}/>
+
+            <label>Time</label>
+            <input type='date' value={this.state.time} onChange={this.handleTime}/>
+
 
             <label>Location</label>
             <input type='text' value={this.state.location} onChange={this.handleLocation}/>
@@ -78,16 +74,18 @@ class CreateGroupForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  errors: state.errors.session
-});
+const mapStateToProps = state => {
+  return({
+    errors: state.errors.event
+  });
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  createGroup: group => dispatch(createGroup(group)),
-  clearSessionErrors: () => dispatch(clearSessionErrors())
+  createEvent: myEvent => dispatch(createEvent(myEvent)),
+  clearEventErrors: () => dispatch(clearEventErrors())
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(CreateGroupForm));
+)(withRouter(CreateEventForm));

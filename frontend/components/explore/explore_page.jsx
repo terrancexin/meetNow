@@ -41,7 +41,6 @@ class ExplorePage extends React.Component {
   render () {
     const sumGroup = this.props.groups.length;
     const category = this.handleCategory(this.props.category);
-    if (sumGroup > 0) {
       return (
         <div className='group-index-box'>
 
@@ -73,9 +72,6 @@ class ExplorePage extends React.Component {
             </div>
         </div>
       );
-    } else {
-      return <div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>
-    }
   }
 }
 

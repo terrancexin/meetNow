@@ -2,7 +2,7 @@ import React from 'react';
 import { createGroup } from '../../actions/group_actions';
 import { connect } from 'react-redux';
 import { Router, withRouter } from 'react-router';
-import { clearSessionErrors } from '../../actions/session_actions';
+import { clearGroupErrors } from '../../actions/group_actions';
 import Errors from '../errors/errors';
 
 
@@ -19,7 +19,7 @@ class CreateGroupForm extends React.Component {
   }
 
   componentWillMount() {
-    this.props.clearSessionErrors();
+    this.props.clearGroupErrors();
   }
 
   handleSubmit(e) {
@@ -59,16 +59,16 @@ class CreateGroupForm extends React.Component {
         <form className='create-group-form' onSubmit={this.handleSubmit}>
           <div className='group-form-inputs-box'>
             <label>Name</label>
-            <input type='text' value={this.state.name} onChange={this.handleName}/>
+            <input type='text' value={this.state.name} onChange={this.handleName} placeholder='Startup Grind NYC'/>
 
             <label>Category</label>
-            <input type='text' value={this.state.category} onChange={this.handleCategory}/>
+            <input type='text' value={this.state.category} onChange={this.handleCategory} placeholder='tech'/>
 
             <label>Description</label>
-            <input type='text' value={this.state.description} onChange={this.handleDescription}/>
+            <input type='text' value={this.state.description} onChange={this.handleDescription} placeholder='Your awesome group'/>
 
             <label>Location</label>
-            <input type='text' value={this.state.location} onChange={this.handleLocation}/>
+            <input type='text' value={this.state.location} onChange={this.handleLocation} placeholder='New York'/>
 
             <input type='submit' value="Create"/>
           </div>
@@ -79,12 +79,12 @@ class CreateGroupForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  errors: state.errors.session
+  errors: state.errors.group
 });
 
 const mapDispatchToProps = (dispatch) => ({
   createGroup: group => dispatch(createGroup(group)),
-  clearSessionErrors: () => dispatch(clearSessionErrors())
+  clearGroupErrors: () => dispatch(clearGroupErrors())
 });
 
 export default connect(

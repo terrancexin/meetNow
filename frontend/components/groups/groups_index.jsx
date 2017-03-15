@@ -25,8 +25,7 @@ class GroupsIndex extends React.Component {
 
   render () {
     const sumGroup = this.props.groups.length
-    if (this.props.groups.length > 0) {
-      return (
+        return (
         <div className='group-index-box'>
 
           <div className='group-banner'>
@@ -61,10 +60,7 @@ class GroupsIndex extends React.Component {
             </div>
         </div>
       );
-    } else {
-      return <div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>
     }
-  }
 }
 
 const GroupsIndexItems = ({ groupPhoto, groupId, name, members }) => {
@@ -81,7 +77,8 @@ const GroupsIndexItems = ({ groupPhoto, groupId, name, members }) => {
 const mapStateToProps = state => {
   return ({
     groups: groupsArray(state.groups),
-    events: state.events
+    events: state.events,
+    loading: state.loading.loading
   });
 };
 

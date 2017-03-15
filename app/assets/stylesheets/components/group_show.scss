@@ -185,7 +185,7 @@
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
-  width: 120px;
+  width: 135px;
   margin: 8px;
 
   &:hover {
@@ -332,4 +332,9 @@
 
 .display-no-events {
   margin-top: 12px;
+}
+
+
+.fa.fa-map-marker.fa-1x.map-close-marker {
+  margin-right: -20px;
 }

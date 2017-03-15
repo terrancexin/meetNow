@@ -1,9 +1,9 @@
 import * as GroupApiUtil from '../util/group_api_util';
-import { hashHistory } from 'react-router';
+import { startLoading } from './loading_actions';
+import { RECEIVE_ERRORS, CLEAR_ERRORS } from './error_actions';
 
 export const RECEIVE_ALL_GROUPS = "RECEIVE_ALL_GROUPS";
 export const RECEIVE_ONE_GROUP = "RECEIVE_ONE_GROUP";
-export const RECEIVE_GROUP_ERRORS = "RECEIVE_GROUP_ERRORS";
 export const REMOVE_GROUP = "REMOVE_GROUP";
 
 
@@ -18,7 +18,8 @@ export const receiveOneGroup = group => ({
 });
 
 const receiveGroupErrors = errors => ({
-  type: RECEIVE_GROUP_ERRORS,
+  type: RECEIVE_ERRORS,
+  key: "group",
   errors
 });
 
@@ -27,13 +28,18 @@ const removeGroup = group => ({
   group
 });
 
+export const clearGroupErrors = () => ({
+  type: CLEAR_ERRORS,
+  key: "group"
+});
 
-export const fetchAllGroups = (filter) => dispatch => (
-  GroupApiUtil.fetchAllGroups(filter)
-    .then(groups =>{
+
+export const fetchAllGroups = (filter) => dispatch => {
+  dispatch(startLoading());
+  return (GroupApiUtil.fetchAllGroups(filter).then(groups =>{
       dispatch(receiveAllGroups(groups));
-    }, error => dispatch(receiveGroupErrors(error.responseJSONs)))
-);
+    }, error => dispatch(receiveGroupErrors(error.responseJSONs))));
+};
 
 
 export const createGroup = group => dispatch => {

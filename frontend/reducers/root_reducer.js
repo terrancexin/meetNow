@@ -6,6 +6,7 @@ import EventReducer from './event_reducer';
 import UserDetailReducer from './user_detail_reducer';
 import ErrorsReducer from './errors_reducer';
 import NoticesReducer from './notices_reducer';
+import LoadingReducer from './loading_reducer';
 
 
 const RootReducer = combineReducers({
@@ -15,7 +16,8 @@ const RootReducer = combineReducers({
   events: EventReducer,
   userDetail: UserDetailReducer,
   notices: NoticesReducer,
-  errors: ErrorsReducer
+  errors: ErrorsReducer,
+  loading: LoadingReducer
 });
 
 export default RootReducer;

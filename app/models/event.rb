@@ -15,7 +15,7 @@
 #
 
 class Event < ActiveRecord::Base
-  validates :name, :location, :description, presence: true
+  validates :name, :time, :location, presence: true
   validates :description, length: { minimum: 1 }
 
   belongs_to :group

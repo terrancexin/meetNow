@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSingleGroup, updateGroup, deleteGroup } from '../../actions/group_actions';
+import { fetchSingleGroupEvents } from '../../actions/event_actions';
 import { addUserToGroup, removeUserFromGroup } from '../../actions/member_actions';
 import Modal from 'react-modal';
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
 import { Link } from 'react-router';
 import EventsIndex from '../events/events_index';
+import CreateEventForm from '../forms/create_event_form';
 
 class GroupsShow extends React.Component {
   constructor(props) {
@@ -21,6 +23,7 @@ class GroupsShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchSingleGroup(this.props.params.groupId);
+    this.props.fetchSingleGroupEvents(this.props.params.groupId);
   }
 
   componentWillReceiveProps(newProps) {
@@ -28,6 +31,7 @@ class GroupsShow extends React.Component {
 
     if (this.props.params.groupId !== newProps.params.groupId || !newProps.group.users) {
       this.props.fetchSingleGroup(newProps.params.groupId);
+      this.props.fetchSingleGroupEvents(newProps.params.groupId);
     }
   }
 
@@ -69,7 +73,7 @@ class GroupsShow extends React.Component {
   toggleJoinRsvp() {
   if (this.props.loggedIn) {
     if (Object.keys(this.props.group.users).includes(`${this.props.currentUser.id}`)) {
-      return <button onClick={this.handleLeaveGroup} className="join-group-button">Leave</button>;
+      return <button onClick={this.handleLeaveGroup} className="join-group-button">Leave Group</button>;
     } else {
       return <button onClick={this.handleJoinGroup} className="join-group-button">Join us!</button>;
       }
@@ -78,36 +82,6 @@ class GroupsShow extends React.Component {
     }
 
   }
-
-  checkChildren() {
-    if (this.props.children) {
-      return <div className='mid-content-box'>{this.props.children}</div>;
-    } else {
-      return (
-        <div className='mid-content-box'>
-            <div className="group-show-description">
-              <h1>Welcome!</h1>
-              <p>{this.props.group.description}</p>
-            </div>
-
-        {
-          this.props.group.events && <EventsIndex
-                                      handleJoinGroup={this.handleJoinGroup}
-                                      isMember={this.checkJoined()}
-                                      events={this.props.group.events}
-                                      groupId={this.props.group.id}
-                                      currentUser={this.props.currentUser}/>
-        }
-
-        { !this.props.group.events && <div className='no-events-box'><div className='display-no-events'>No Upcoming Events</div><button className='create-event'>Create an Event</button></div> }
-
-    </div>
-  );
-    }
-  }
-
-
-
 
   render () {
     if (!this.props.group || !this.props.group.users) {
@@ -124,7 +98,7 @@ class GroupsShow extends React.Component {
               <ul className='left-side-buttons'>
                 <Link to={`/groups/${this.props.group.id}`}><li>Home</li></Link>
                 <li>Members</li>
-                <li>Photos</li>
+                <button onClick={this.handleModalOpen('event')}><li>Create an Event</li></button>
               </ul>
               {this.toggleJoinRsvp()}
             </div>
@@ -184,10 +158,24 @@ class GroupsShow extends React.Component {
 
               </ul>
 
-              {this.checkChildren()}
+              {
+                this.props.children && <div className='mid-content-box'>{this.props.children}</div>
+              }
+
+              {
+                !this.props.children && <div className='mid-content-box'>
+                                          <div className="group-show-description">
+                                            <h1>Welcome!</h1>
+                                            <p>{this.props.group.description}</p>
+                                          </div>
+                                          <EventsIndex
+                                            handleJoinGroup={this.handleJoinGroup}
+                                            isMember={this.checkJoined()}
+                                            currentUser={this.props.currentUser}/>
+                                      </div>
+              }
 
           </div>
-
         </div>
 
 
@@ -209,6 +197,15 @@ class GroupsShow extends React.Component {
           <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")}/>
         </Modal>
 
+        <Modal
+          overlayClassName='modal-overlay'
+          className='modal-container large-modal'
+          isOpen={this.state.modalType === "event"}
+          onRequestClose={this.closeModal}
+          contentLabel="event-modal">
+          <CreateEventForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("event")}/>
+        </Modal>
+
         </div>
       );
     }
@@ -220,6 +217,7 @@ const mapStateToProps = (state, ownProps) => {
     loggedIn: !!state.session.currentUser,
     currentUser: state.session.currentUser,
     group: state.groups[ownProps.params.groupId],
+    events: state.events
   });
 };
 
@@ -230,6 +228,7 @@ const mapDispatchToProps = dispatch => {
       addUserToGroup: (userId, groupId) => dispatch(addUserToGroup(userId, groupId)),
       removeUserFromGroup: (userId, groupId) => dispatch(removeUserFromGroup(userId, groupId)),
       deleteGroup: id => dispatch(deleteGroup(id)),
+      fetchSingleGroupEvents: id => dispatch(fetchSingleGroupEvents(id))
     }
   );
 

@@ -1,17 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { fetchAllEvents, attendEvent, leave } from '../../actions/event_actions';
+import { fetchSingleGroupEvents, attendEvent, leave } from '../../actions/event_actions';
 import { eventsArray } from '../../reducers/event_reducer';
+import { Router, withRouter } from 'react-router';
+import Modal from 'react-modal';
+import CreateEventForm from '../forms/create_event_form';
 
 class EventsIndex extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.state = { modalType: ''};
+    this.closeModal = this.closeModal.bind(this);
+    this.handleModalOpen = this.handleModalOpen.bind(this);
   }
 
+  closeModal() {
+    this.setState({ modalType: false});
+  }
+
+  handleModalOpen(form) {
+    return () => {
+      this.closeModal();
+      this.setState({ modalType: form });
+    };
+  }
+
+  componentDidMount() {
+    // debugger
+    this.props.fetchSingleGroupEvents(this.props.params.groupId);
+  }
+
+  // componentWillReceiveProps(newProps) {
+  //   if (newProps.group === undefined) { return; }
+  //
+  //   if (this.props.params.groupId !== newProps.params.groupId || !newProps.group.users) {
+  //     this.props.fetchSingleGroupEvents(newProps.params.groupId);
+  //   }
+  // }
 
   render() {
-    if (this.props.events) {
+    if (Object.keys(this.props.events).length > 0) {
       const eventArray = Object.keys(this.props.events).map(id  => this.props.events[id]);
       return (
         <div>
@@ -37,7 +66,7 @@ class EventsIndex extends React.Component {
                   </ul>
 
                   {
-                    this.props.isMember && <Link className='rsvp-button' to={`groups/${this.props.groupId}/events/${event.id}`}>RSVP</Link>
+                    this.props.isMember && <Link className='rsvp-button' to={`groups/${this.props.params.groupId}/events/${event.id}`}>RSVP</Link>
                   }
                   {
                     !this.props.isMember && <button onClick={this.props.handleJoinGroup} className="join-group-button">Join us!</button>
@@ -48,7 +77,7 @@ class EventsIndex extends React.Component {
 
                 <div className='going-box'>
                   <div>
-                    <li className='event-location'>Location: {event.location}</li>
+                    <li className='event-location'><i className="fa fa-map-marker fa-1x map-close-marker"></i>{event.location}</li>
                     <li className='event-description'>{event.description}</li>
                   </div>
 
@@ -64,9 +93,44 @@ class EventsIndex extends React.Component {
         </div>
       );
     } else {
-      return <div className='loading-no-event'>No events</div>;
+      return (
+        <div className='no-events-box'>
+          <div className='display-no-events'>No Upcoming Events</div>
+          <button onClick={this.handleModalOpen('event')} className='create-event'>Create an Event</button>
+
+            <Modal
+              overlayClassName='modal-overlay'
+              className='modal-container large-modal'
+              isOpen={this.state.modalType === "event"}
+              onRequestClose={this.closeModal}
+              contentLabel="event-modal">
+              <CreateEventForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("event")}/>
+            </Modal>
+        </div>
+      );
     }
   }
+
+
 }
 
-export default EventsIndex;
+const mapStateToProps = state => {
+  return ({
+    events: state.events,
+    loading: state.loading.loading
+  });
+};
+
+const mapDispatchToProps = dispatch => {
+  return (
+    {
+      fetchSingleGroupEvents: id => dispatch(fetchSingleGroupEvents(id))
+    }
+  );
+
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(EventsIndex));

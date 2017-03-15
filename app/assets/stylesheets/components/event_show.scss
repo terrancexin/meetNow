@@ -1,14 +1,35 @@
+.event-mid-content-box {
+  margin-top: 14px;
+  display: flex;
+  border: 1px solid lightgray;
+  width: 640px;
+  border-radius: 3px;
+  height: 567px;
+}
+
+.event-info-box {
+  border-right: 1px solid lightgray;
+  min-width: 440px;
+
+}
+
+.event-show-right-side {
+  height: 100px;
+  min-width: 200px;
+  height: 100%;
+  border-radius: 4px;
+}
+
 .attend-event-button {
   background-color: $meetup-red;
   color: #fff;
   border-color: $meetup-red;
-  padding: 10px 15px;
+  padding: 11px 15px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
-  width: 120px;
-  margin: 8px;
+  width: 80px;
 
   &:hover {
     background-color: rgb(182, 14, 24);
@@ -20,6 +41,7 @@
 }
 
 .event-show-date {
+  margin-top: 15px;
   margin-left: 14px;
 }
 
@@ -37,31 +59,95 @@
   margin: 14px;
 
   li {
-    font-size: 10px;
+    font-size: 12px;
   }
 
 }
 
 
 .event-show-attending {
+  font-size: 16px;
+  font-weight: bold;
   margin-left: 14px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+  margin: 16px 0 0 14px;
 
 }
 
 .event-show-description {
-  margin-top: 14px;
-  margin-left: 14px;
+  display: flex;
+
+  // border: 1px solid red;
+  // margin-top: 14px;
+  // margin-left: 14px;
   border-radius: 3px;
-  height: auto;
-  width: 200px;
-  min-width: 640px;
-  margin-bottom: 30px;
+  height: 100%;
+  min-width: 440px;
+  // margin-bottom: 30px;
   .event-description {
-    width: 600px;
+    line-height: 150%;
+    font-size: 14px;
+    margin: 14px;
+    padding-top: 30px;
   }
 
   .event-show-name {
     margin: 12px;
+  }
+}
+
+.fa {
+  min-width: 30px;
+}
+
+.rsvp-buttons-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  margin: 14px;
+  padding: 0 0 11px 0;
+  text-align: center;
+}
+
+.your-rsvp-text {
+  font-size: 15px;
+  font-weight: bold;
+  // margin-right: 5px;
+}
+
+
+
+
+.event-members-list {
+  margin: 14px;
+  max-height: 440px;
+  overflow: scroll;
+  margin-top: 10px;
+
+  .member-and-pic-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      color: black;
+
+      &:hover {
+        color: $blue-hover;
+      }
+    }
+    .pro-pic {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+      margin: 10px 10px 2px 0;
+    }
+
+    .member-name {
+      font-size: 15px;
+      font-weight: bold;
+    }
   }
 }

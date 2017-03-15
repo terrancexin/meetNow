@@ -5,13 +5,13 @@ export const fetchAllEvents = () => {
   }));
 };
 
-export const createEvent = event => (
-  $.ajax({
+export const createEvent = event => {
+  return ($.ajax({
     method: 'POST',
     url: 'api/events',
     data: { event }
-  })
-);
+  }));
+};
 
 export const fetchEvent = id => {
   return (

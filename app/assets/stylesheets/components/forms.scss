@@ -13,14 +13,25 @@
   outline: none;
   border: 1px solid lightgray;
 
+  .errors-box {
+    min-height: 15px;
+  }
+
 }
 
 .modal-large-signup {
+  .errors-box {
+    min-height: 20px;
+  }
   height: 470px;
 }
 
 .large-modal{
-  height: 500px;
+  .errors-box {
+    min-height: 30px;
+  }
+
+  height: 520px;
 }
 
 .modal-overlay {
@@ -78,7 +89,7 @@
   margin: 18px;
   font-size: 13px;
   font-weight: bold;
-  margin-top: 22px;
+  // margin-top: 22px;
 
   .name-box, .email-address-box, .password-box {
     display: flex;
@@ -89,9 +100,9 @@
     }
   }
 
-  input[type="text"], input[type="password"], input[type="email"] {
+  input[type="text"], input[type="password"], input[type="email"], input[type='date'] {
     padding: 8px 4px;
-    font-size: 16px;
+    font-size: 15px;
     background-color: rgb(250, 255, 189);
     margin-bottom: 20px;
     border-radius: 5px;
@@ -128,3 +139,40 @@
   display: flex;
   flex-direction: column;
 }
+
+
+
+
+// .create-group-form {
+//   display: flex;
+//   flex-direction: column;
+//   margin: 18px;
+//   font-size: 13px;
+//   font-weight: bold;
+//   // margin-top: 22px;
+//
+//   .name-box, .email-address-box, .password-box {
+//     display: flex;
+//     flex-direction: column;
+//
+//     label {
+//       margin-bottom: 3px;
+//     }
+//   }
+//
+//   input[type="text"], textarea {
+//     padding: 8px 4px;
+//     font-size: 15px;
+//     background-color: rgb(250, 255, 189);
+//     margin-bottom: 20px;
+//     border-radius: 5px;
+//     // border-style: none;
+//     border: 1px solid #aaa;
+//     resize: none;
+//
+//
+//     outline:0px none transparent;
+//   }
+//
+//   input, textarea, select, a { outline: none; }
+// }
