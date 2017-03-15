@@ -188,7 +188,7 @@ EVENT_DESCRIPTION = [
   "Greek philosopher Heraclitus once said: “No man ever steps in the same river twice, for it's not the same river and he's not the same man.” The world around us is rapidly changing. The rate of change is accelerating. Tech sector, evolving into a tech ecosystem, is at the forefront of many changes that we experience daily."
 ]
 
-300.times { Event.create!(
+200.times { Event.create!(
   name: (Faker::GameOfThrones.character + i.to_s),
   time: Faker::Time.forward(60),
   location: (Faker::Address.street_address + " " + Faker::Address.city + ", " + Faker::Address.state + " " + Faker::Address.zip),
