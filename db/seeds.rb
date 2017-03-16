@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 USER_PHOTOS = []
 users_idx = 1
-while users_idx <= 300 do
+while users_idx <= 600 do
     USER_PHOTOS.push("https://s3.amazonaws.com/meetnow-DEV/users/#{users_idx}.jpg")
     users_idx += 1
 end
@@ -33,7 +33,7 @@ guest = User.create!(first_name: 'Guest', password: "passwordsafe", last_name: '
 me = User.create!(first_name: 'Terrance', password: "meetnow", last_name: 'Xin', email: 'tx@gmail.com', city: 'New York City, NY', image: "https://s3.amazonaws.com/meetnow-DEV/meetNow/txin.jpg", bio: "Pursuit of happiness to me means making progress towards learning and change. This is why I'm passionate about technology and software development. I love solving everyday problems by leveraging the power of our modern technology. I truly believe in bringing people closer through web apps, around the world.")
 
 i = 1
-300.times do
+600.times do
   User.create!(password: "meetnow", first_name: Faker::Friends.character, last_name: "Smith", email: "user#{i}@gmail.com", image: USER_PHOTOS.shift, city: Faker::Address.state, bio: Faker::Friends.quote)
   i += 1
 end
@@ -56,13 +56,22 @@ GROUP_DESCRIPTION = [
   "This group explores the links between creativity and tech while providing a unique opportunity to network (and drinks!). Each event over the course of this meetup combines cocktails, appetizers, panelists, and speakers to create the perfect atmosphere for making new connections and facilitating innovative discussion. Examine how technology can be used to promote creativity and how creativity can inspire technology with us!"
 ]
 
+LOCATION = [
+  "New York, NY",
+  "LA, California",
+  "Dubai",
+  "159 W 25th St, New York, NY 10001",
+  "Koreatown, Los Angeles, CA",
+  "Tokyo, Japan"
+]
+
 i = 1
 20.times do
   Group.create!(
     name: (Faker::Food.ingredient + " " + group_name.sample + i.to_s),
     description: GROUP_DESCRIPTION.sample,
     category: category_array.sample,
-    location: Faker::Address.state,
+    location: LOCATION.sample,
     photo_url: GROUP_PHOTOS.sample
   )
   i += 1
@@ -79,7 +88,7 @@ group1 = Group.create!(
 
                 Coffee and Coding Conundrum started in Osaka, Japan in 2014. Let's make NYC its second home!",
   category: "Tech",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -87,7 +96,7 @@ group2 = Group.create!(
   name: "Let's Taco About it",
   description: "TACO EVERY DAY!",
   category: "Food",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -95,7 +104,7 @@ group3 = Group.create!(
   name: "Hackers Hours",
   description: "Free office hours for programming help - any programming language, all skill levels. The format is super simple: you come with your laptop, sit and hang out and code, and flag down one of the organizers if you have a question.  That's it! If we can't answer your question, we'll find you someone who can, or at least point you in the right direction.",
   category: "Tech",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -103,7 +112,7 @@ group4 = Group.create!(
   name: "Google Developer Group",
   description: "We are software developers, designers, educators and students with an interest in learning about emergent technologies in areas including (but not limited to) mobile, web, wearables, cloud computing, education technology, data sciences and smart homes.",
   category: "Tech",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -111,7 +120,7 @@ group5 = Group.create!(
   name: "Ktown Cow Boys",
   description: "BCD Tofu House, Ichiumi, Maru, Wabar, Woorijip, Third Floor, BaekJeong KBBQ, Mad for Chicken, Circle.",
   category: "Fun",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -119,7 +128,7 @@ group6 = Group.create!(
   name: "NYC Machine Learning",
   description: "A group to discuss machine learning, information retrieval, natural language processing, knowledge representation, and artificial intelligence. Meetings will cover research papers and algorithms in the field. We'll also try to occasionally bring in a speaker to talk about their work.",
   category: "Tech",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -127,7 +136,7 @@ group7 = Group.create!(
   name: "#Resist: New York",
   description: "Concerned about where the country is heading? You're not alone. Join others who care about what's happening to democracy, equality, human rights, social justice, sustainability, and other important topics. It's ok if you've never been to a protest, march, or town hall -- start here. You really can make a difference.",
   category: "Movement",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -135,7 +144,7 @@ group8 = Group.create!(
   name: "Women Who Code NYC",
   description: "Women Who Code is a global nonprofit organization dedicated to inspiring women to excel in technology careers by creating a global, connected community of women in technology. The organization tripled in 2013 and has grown to be one of the largest communities of women engineers in the world.",
   category: "Tech",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -149,7 +158,7 @@ group9 = Group.create!(
 
                 • Bridging the gap between FinTech Entrepreneurs and the investment community",
   category: "Business",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -157,7 +166,7 @@ group10 = Group.create!(
   name: "NYC PICKUP SOCCER-'SAY GOODBYE TO LEAGUE FEES'",
   description: "We will provide high quality Soccer tournaments, NYC PICKUP Soccer games, and yearly NYC World Cup; without the high cost!!!",
   category: "Sports",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -165,7 +174,7 @@ group11 = Group.create!(
   name: "Singles casual cocktail hour",
   description: "We are a meet-up group revolving around singles in the NYC area who like to get out, socialize, have some drinks and get to know each other. A fun laid back group always looking for new members.",
   category: "Fun",
-  location: Faker::Address.state,
+  location: LOCATION.sample,
   photo_url: GROUP_PHOTOS.sample
 )
 
@@ -191,7 +200,7 @@ EVENT_DESCRIPTION = [
 200.times { Event.create!(
   name: (Faker::GameOfThrones.character + i.to_s),
   time: Faker::Time.forward(60),
-  location: (Faker::Address.street_address + " " + Faker::Address.city + ", " + Faker::Address.state + " " + Faker::Address.zip),
+  location: LOCATION.sample,
   description: EVENT_DESCRIPTION.sample,
   group_id: group_ids.sample)
 }
@@ -199,4 +208,4 @@ EVENT_DESCRIPTION = [
 
 event_ids = Event.all.ids
 user_ids = User.all.ids
-300.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }
+600.times { Rsvp.create!(user_id: user_ids.shift, event_id: event_ids.sample) }

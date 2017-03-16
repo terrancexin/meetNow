@@ -14,12 +14,27 @@ import GroupMap from './group_map';
 class GroupsShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalType: ''};
+    this.state = { modalType: "", contact: false };
     this.closeModal = this.closeModal.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
 
     this.handleJoinGroup = this.handleJoinGroup.bind(this);
     this.handleLeaveGroup = this.handleLeaveGroup.bind(this);
+    this.handleContact = this.handleContact.bind(this);
+    this.toggleContact = this.toggleContact.bind(this);
+  }
+
+  handleContact() {
+    this.setState({ contact: !this.state.contact });
+    this.toggleContact();
+  }
+
+  toggleContact() {
+    if (this.state.contact) {
+      return { visibility: 'visible' };
+    } else {
+      return { visibility: 'hidden' };
+    }
   }
 
   componentDidMount() {
@@ -98,7 +113,17 @@ class GroupsShow extends React.Component {
 
               <ul className='left-side-buttons'>
                 <Link to={`/groups/${this.props.group.id}`}><li>Home</li></Link>
-                <li>Members</li>
+
+                <div className='contact-info'>
+                  <li onClick={this.handleContact} >Contact</li>
+                  <div style={this.toggleContact()} className='contact-info-box'>
+                    <a href="https://www.terrancexin.com" target = "_blank"><i onClick={this.handleContact} className="fa fa-globe fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://github.com/terrancexin" target = "_blank"><i onClick={this.handleContact} className="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/terrancexin/" target = "_blank"><i onClick={this.handleContact} className="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                  </div>
+
+                </div>
+
                 <button onClick={this.handleModalOpen('event')}><li>Create an Event</li></button>
               </ul>
               {this.toggleJoinRsvp()}

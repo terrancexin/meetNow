@@ -3,7 +3,6 @@ import React from 'react';
 class Errors extends React.Component {
   errorList() {
     const { errors } = this.props;
-    // debugger
     if (Array.isArray(errors)) {
     return  errors.map((error, idx) => {
       if (error === "First name") {

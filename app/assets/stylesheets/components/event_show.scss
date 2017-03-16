@@ -58,7 +58,7 @@
 }
 
 .event-show-location {
-  margin: 14px;
+  margin: 15.5px;
 
   li {
     font-size: 12px;
@@ -79,18 +79,14 @@
 .event-show-description {
   display: flex;
 
-  // border: 1px solid red;
-  // margin-top: 14px;
-  // margin-left: 14px;
   border-radius: 3px;
   height: 100%;
   min-width: 440px;
-  // margin-bottom: 30px;
   .event-description {
     line-height: 150%;
     font-size: 14px;
-    margin: 14px;
-    padding-top: 30px;
+    margin: 5px 14px;
+    padding-top: 10px;
   }
 
   .event-show-name {
@@ -125,7 +121,6 @@
 .your-rsvp-text {
   font-size: 15px;
   font-weight: bold;
-  // margin-right: 5px;
 }
 
 
@@ -163,11 +158,6 @@
     }
   }
 }
-
-// .event-show-map {
-//   width: 400px;
-//   align-items: center;
-// }
 
 #event-map-container {
   height: 150px;

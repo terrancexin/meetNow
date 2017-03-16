@@ -38,6 +38,7 @@
   .left-side-buttons {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     width: 100%;
 
     a {
@@ -92,9 +93,9 @@
 
         .side-aboutus {
           border: 1px solid #ccc;
-          padding: 10px 30px;
+          padding: 12px 50px;
           text-align: center;
-          margin: 20px 30px;
+          margin: 20px 0 12px 12px;
           font-weight: bold;
           cursor: pointer;
           border-radius: 3px;
@@ -342,9 +343,6 @@
 }
 
 .event-index-box {
-  // max-height: 1000px;
-  // overflow: scroll;
-  // border-bottom: 1px solid lightgray;
   margin-left: 14px;
   border-radius: 3px;
 }
