@@ -25,13 +25,13 @@ class ProfilePage extends React.Component {
     if (this.props.userDetail.groups) {
       const userDetail = this.props.userDetail
       const userDetailGroups = Object.values(this.props.userDetail.groups)
-
+      const fullName = userDetail.first_name.concat(` ${userDetail.last_name}`);
       return (
         <div className='profile-page-container'>
           <div className='profile-page-box'>
 
             <div className='profile-left-section'>
-              <div className='profile-name'>{userDetail.first_name}</div>
+              <div className='profile-name'>{fullName}</div>
               <div className='profile-location'>Location:</div>
               <div className='profile-city'>{userDetail.city}</div>
               <div className='profile-bio'>{userDetail.bio}</div>

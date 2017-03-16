@@ -20,21 +20,21 @@ class ExplorePage extends React.Component {
     const category = { headerName: '', searchFilter: '' };
     switch(name){
       case "fitness":
-        return {headerName: "Sports & Fitness Groups", searchFilter: 'workout'};
+        return {headerName: "Sports & Fitness Groups", searchFilter: 'soccer'};
       case "music":
         return {headerName: "Music ♫ Groups", searchFilter: 'karaoke'};
       case "health":
         return {headerName: "Health & Wellness Groups", searchFilter: 'meditation'};
       case "culture":
-        return {headerName: "Language & Culture Groups", searchFilter: 'trilingual'};
+        return {headerName: "Language & Culture Groups", searchFilter: 'cultural'};
       case "art":
-        return {headerName: "Creative Groups", searchFilter: 'painting class'};
+        return {headerName: "Creative Groups", searchFilter: 'draw'};
       case "tech":
         return {headerName: "Everything Technology", searchFilter: 'tech'};
       case "dance":
-        return {headerName: "Let's Dance!", searchFilter: 'salsa'};
+        return {headerName: "Let's Dance!", searchFilter: 'dance'};
       case "game":
-        return {headerName: "Games Groups", searchFilter: 'settlers of catan'};
+        return {headerName: "Games Groups", searchFilter: 'game'};
     }
   }
 

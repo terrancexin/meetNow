@@ -137,7 +137,7 @@ class GroupsShow extends React.Component {
               <section className='side-bar-text-box'>
                 <div className='text-info-inner-box'>
                   <div className='side-bar-location'>{this.props.group.location}</div>
-                  <li className='side-founded'>Founded March 17, 2017</li>
+                  <li className='side-founded'>Founded: {this.props.group.founded.slice(0, 10)}</li>
                   <button  className='side-aboutus' onClick={this.handleModalOpen('map')}>Find us...</button>
 
                     <li className='side-bar-info'>
