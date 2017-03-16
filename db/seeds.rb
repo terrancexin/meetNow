@@ -243,8 +243,20 @@ Organizer.create!(user_id: me.id, group_id: group2.id)
 
 600.times { Membership.create!(user_id: user_ids.shift, group_id: group_ids.sample) }
 
+EVENT_NAME = [
+  "Let's meetNow @ Central Park!",
+  "Let's meetNow @ Starbucks!",
+  "Let's meetNow @ The Coffee Shop!",
+  "Let's meetNow @ The Park!",
+  "Let's meetNow @ My cafe",
+  "Let's meetNow @ 5th Avenue",
+  "Let's meetNow @ 7th Avenue",
+  "Let's meetNow @ The Avenue of Americas",
+  "Let's meetNow @ The Office"
+]
+
 70.times { Event.create!(
-  name: Faker::Superhero.name,
+  name: EVENT_NAME.sample,
   time: Faker::Time.forward(200),
   location: LOCATION.sample,
   description: SAMPLE_DES.sample,
