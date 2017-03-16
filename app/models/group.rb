@@ -19,6 +19,9 @@ class Group < ActiveRecord::Base
   validates :description, length: { minimum: 1 }
   after_initialize :init
 
+  geocoded_by :location   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
   def init
     self.photo_url ||= "https://s3.amazonaws.com/meetnow-DEV/meetNow/logo.png"
   end

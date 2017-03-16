@@ -5,6 +5,7 @@ import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
 import Modal from 'react-modal';
 import { Link } from 'react-router';
+import EventMap from './event_map';
 
 class EventShow extends React.Component {
   constructor(props) {
@@ -130,6 +131,7 @@ class EventShow extends React.Component {
               <div className='event-show-date'><li>Friday, March 17, 2017</li></div>
               <div className='event-show-time'><li><i className="fa fa-clock-o fa-2x"></i>6:00 PM</li></div>
               <div className='event-show-location'><li><i className="fa fa-map-marker fa-2x"></i>{this.props.event.location}</li></div>
+              <div className='event-show-map'><li><EventMap latitude={this.props.event.latitude} longitude={this.props.event.longitude}/></li></div>
               <div className='event-show-inner-description'><li className='event-description'>{this.props.event.description}</li></div>
             </div>
 

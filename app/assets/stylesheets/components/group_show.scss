@@ -92,9 +92,9 @@
 
         .side-aboutus {
           border: 1px solid #ccc;
-          padding: 10px;
+          padding: 10px 30px;
           text-align: center;
-          margin: 20px;
+          margin: 20px 30px;
           font-weight: bold;
           cursor: pointer;
           border-radius: 3px;
@@ -346,5 +346,11 @@
   // overflow: scroll;
   // border-bottom: 1px solid lightgray;
   margin-left: 14px;
+  border-radius: 3px;
+}
+
+#map-container {
+  height: 100%;
+  width: 100%;
   border-radius: 3px;
 }

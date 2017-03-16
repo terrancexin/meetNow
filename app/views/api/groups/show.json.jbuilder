@@ -1,4 +1,5 @@
 json.partial! 'api/groups/group', group: @group
+json.extract! @group, :longitude, :latitude
 
 json.users do
   @group.users.each do |user|

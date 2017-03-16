@@ -9,6 +9,7 @@ import SignUpForm from '../forms/signup_form';
 import { Link } from 'react-router';
 import EventsIndex from '../events/events_index';
 import CreateEventForm from '../forms/create_event_form';
+import GroupMap from './group_map';
 
 class GroupsShow extends React.Component {
   constructor(props) {
@@ -112,7 +113,7 @@ class GroupsShow extends React.Component {
                 <div className='text-info-inner-box'>
                   <div className='side-bar-location'>{this.props.group.location}</div>
                   <li className='side-founded'>Founded March 17, 2017</li>
-                  <div className='side-aboutus'><li>About us...</li></div>
+                  <button  className='side-aboutus' onClick={this.handleModalOpen('map')}>Find us...</button>
 
                     <li className='side-bar-info'>
                       <div>
@@ -167,6 +168,7 @@ class GroupsShow extends React.Component {
                                           <div className="group-show-description">
                                             <h1>Welcome!</h1>
                                             <p>{this.props.group.description}</p>
+
                                           </div>
                                           <EventsIndex
                                             handleJoinGroup={this.handleJoinGroup}
@@ -206,6 +208,14 @@ class GroupsShow extends React.Component {
           <CreateEventForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("event")}/>
         </Modal>
 
+          <Modal
+            overlayClassName='modal-overlay'
+            className='modal-container map-modal'
+            isOpen={this.state.modalType === "map"}
+            onRequestClose={this.closeModal}
+            contentLabel="map-modal">
+            <GroupMap latitude={this.props.group.latitude} longitude={this.props.group.longitude} handleModalOpen={this.handleModalOpen("map")} closeModal={this.closeModal}/>
+          </Modal>
         </div>
       );
     }
