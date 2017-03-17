@@ -59,7 +59,7 @@ class CreateEventForm extends React.Component {
             <label>Description</label>
             <input type='text' value={this.state.description} onChange={this.handleDescription}/>
 
-            <label>Time</label>
+            <label>Date</label>
             <input type='date' value={this.state.time} onChange={this.handleTime}/>
 
 

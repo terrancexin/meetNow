@@ -16,11 +16,13 @@ class EventMap extends React.Component {
   }
 
   setMapOptions() {
-    this.mapOptions = {
+    if (this.props.latitude) {
+      this.mapOptions = {
       center: { lat: this.props.latitude,
         lng: this.props.longitude },
         zoom: 13
       };
+    }
     this.map = new google.maps.Map(this.mapNode, this.mapOptions);
   }
 

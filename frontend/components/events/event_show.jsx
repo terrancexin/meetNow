@@ -30,7 +30,13 @@ class EventShow extends React.Component {
     };
   }
 
+  componentWillMount() {
+    console.log('will');
+    this.props.fetchEvent(this.props.params.eventId);
+  }
+
   componentDidMount() {
+    console.log('did');
     this.props.fetchEvent(this.props.params.eventId);
   }
 
@@ -128,7 +134,7 @@ class EventShow extends React.Component {
           <div className='event-show-description'>
             <div className='event-info-box'>
               <div className='event-show-name'><li>{this.props.event.name}</li></div>
-              <div className='event-show-date'><li>Friday, March 17, 2017</li></div>
+              <div className='event-show-date'><li>{this.props.event.time.slice(0, 10)}</li></div>
               <div className='event-show-time'><li><i className="fa fa-clock-o fa-2x"></i>6:00 PM</li></div>
               <div className='event-show-location'><li><i className="fa fa-map-marker fa-2x"></i>{this.props.event.location}</li></div>
               <div className='event-show-map'><li><EventMap latitude={this.props.event.latitude} longitude={this.props.event.longitude}/></li></div>
@@ -171,6 +177,7 @@ class EventShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  // debugger
   return({
     event: state.events[ownProps.params.eventId],
     loggedIn: !!state.session.currentUser,
