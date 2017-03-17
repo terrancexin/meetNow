@@ -25,7 +25,7 @@ class GroupsIndex extends React.Component {
 
   render () {
     if (this.props.loading) {
-      return (<div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>);
+      return (<div className='group-index-box'><img className='loading-spinner-group-index' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>);
     }
     const sumGroup = this.props.groups.length
         return (

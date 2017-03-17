@@ -101,7 +101,7 @@ class GroupsShow extends React.Component {
 
   render () {
     if (!this.props.group || !this.props.group.users) {
-      return (<div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>);
+      return (<div className='group-index-box'><img className='loading-spinner-group-show' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>);
     } else {
       return (
         <div className='width-setter'>

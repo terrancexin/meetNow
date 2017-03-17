@@ -31,10 +31,6 @@ class EventsIndex extends React.Component {
   }
 
   render() {
-    if (this.props.loading) {
-      return (<div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>);
-    }
-
     if (Object.keys(this.props.events).length > 0) {
       const eventArray = Object.keys(this.props.events).map(id  => this.props.events[id]);
       return (
