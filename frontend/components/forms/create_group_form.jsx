@@ -10,7 +10,7 @@ class CreateGroupForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {name: '', location: '', description: '', category: ''};
+    this.state = {name: '', location: '', description: '', category: '', founded: new Date() };
 
     this.handleLocation = this.handleLocation.bind(this);
     this.handleCategory = this.handleCategory.bind(this);

@@ -16,7 +16,6 @@ class Api::GroupsController < ApplicationController
     unless logged_in?
       render json: ["must log in first"]
     end
-
     @group = current_user.groups.new(group_params)
     if @group.save
       Organizer.create(group_id: @group.id, user_id: current_user.id)
