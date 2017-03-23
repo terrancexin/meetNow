@@ -2,8 +2,8 @@
 
 MeetNow! is a full-stack web application inspired by [Meetup.com](https://www.meetup.com/). The single page frontend is built using React.js/Redux; the backend is powered by Ruby on Rails sitting on a PostgreSQL database. If you're passionate about something, why wait? Try it out using the 'Guest' login and Let's [MeetNow!](http://meet-now.herokuapp.com/)
 
-### [MeetNow! Live](http://meet-now.herokuapp.com/)
-![MeetNow](/docs/pics/01-splash.png)
+### [MeetNow! Live](https://www.meetnow.life)
+![MeetNow](/docs/pics/meetnow.gif)
 
 ## Features & Implementation
 
@@ -28,12 +28,14 @@ MeetNow! is a full-stack web application inspired by [Meetup.com](https://www.me
 Users can create groups to bring together passionate individuals who are eager to share what they love.
 The groups are stored as a single table in the database. Groups have many users, many events, many organizers through each association tables accordingly.
 
-![MeetNow](/docs/pics/02-groups.png)
+![MeetNow](/docs/pics/group.png)
 
 ### Events
 Events are nested under a group, so that there are no events that stand-alone. Only the members of a group are able to create an event for their group.
 A user must be logged in and be a part of that group in order to RSVP each events.
 The Event components will re-render under groups show page as the user can join, leave, comment, and see who is attending each event.
+
+![MeetNow](/docs/pics/event.png)
 
 ### Search bar
 Users can search for groups based on location. The groups are fetched using ActiveRecord queries. An includes method is used to prefetch the database to prevent an inefficient N+1 query.
@@ -42,6 +44,9 @@ Users can search for groups based on location. The groups are fetched using Acti
   search_bar_filter = params[:filter]
   Group.includes(:users, :events).where("LOWER(location) LIKE ?", "#{search_bar_filter.downcase}%")
 ```
+
+![MeetNow](/docs/pics/search.png)
+
 
 ### New user & logging in
 Login inputs are validated on both the front-end and back-end. Client side validations check for password length and unique email addresses. Passwords are hashed using [BCrypt](https://en.wikipedia.org/wiki/Bcrypt) before being stored on the server. Plaintext passwords are never stored.
