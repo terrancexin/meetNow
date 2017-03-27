@@ -1,6 +1,6 @@
 # MeetNow!
 
-MeetNow! is a full-stack web application inspired by [Meetup.com](https://www.meetup.com/). The single page frontend is built using React.js/Redux; the backend is powered by Ruby on Rails sitting on a PostgreSQL database. If you're passionate about something, why wait? Try it out using the 'Guest' login and Let's [MeetNow!](http://meet-now.herokuapp.com/)
+MeetNow! is a full-stack web application inspired by Meetup. The single page frontend is built using React.js/Redux; the backend is powered by Ruby on Rails sitting on a PostgreSQL database. If you're passionate about something, why wait? Try it out using the 'Guest' login and Let's [MeetNow!](https://www.meetnow.life/)
 
 ### [MeetNow! Live](https://www.meetnow.life)
 ![MeetNow](/docs/pics/meetnow.gif)
