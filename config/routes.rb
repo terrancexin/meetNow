@@ -12,11 +12,7 @@ Rails.application.routes.draw do
 
     resources :events, except: [:new, :edit]
 
-
     resources :groups, except: [:new, :edit]
-      # post 'join'
-      # resources :events, except: [:new, :edit] do
-      # end
 
   end
 end

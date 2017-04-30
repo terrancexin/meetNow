@@ -18,8 +18,8 @@ class Event < ActiveRecord::Base
   validates :name, :time, :location, presence: true
   validates :description, length: { minimum: 1 }
 
-  geocoded_by :location   # can also be an IP address
-  after_validation :geocode          # auto-fetch coordinates
+  geocoded_by :location # can also be an IP address
+  after_validation :geocode # auto-fetch coordinates
 
 
   belongs_to :group

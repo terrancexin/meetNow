@@ -31,12 +31,10 @@ class EventShow extends React.Component {
   }
 
   componentWillMount() {
-    console.log('will');
     this.props.fetchEvent(this.props.params.eventId);
   }
 
   componentDidMount() {
-    console.log('did');
     this.props.fetchEvent(this.props.params.eventId);
   }
 
