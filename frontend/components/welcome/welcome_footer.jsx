@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+
+// Forms
 import Modal from 'react-modal';
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
@@ -9,8 +11,8 @@ import SignUpForm from '../forms/signup_form';
 class WelcomeFooter extends React.Component {
   constructor(){
     super();
+    this.state = { modalOpen: false, modalType: "" };
     this.handleSignOut = this.handleSignOut.bind(this);
-    this.state = { modalType: "" };
     this.handleModalOpen = this.handleModalOpen.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -18,12 +20,12 @@ class WelcomeFooter extends React.Component {
   handleModalOpen(form) {
     return () => {
       this.closeModal();
-      this.setState({ modalType: form });
+      this.setState({ modalOpen: true, modalType: form });
     };
   }
 
   closeModal() {
-    this.setState({ modalType: false});
+    this.setState({ modalOpen: false});
   }
 
   handleSignOut(e){
@@ -34,18 +36,22 @@ class WelcomeFooter extends React.Component {
     }
   }
 
+  toggleFooterButton() {
+    if (this.props.loggedIn){
+      return (<button className='footer-button' onClick={this.handleSignOut}>Log out</button>);
+    } else {
+      return (<button className='footer-button' onClick={this.handleModalOpen("login")}>Log in</button> );
+    }
+  }
 
   render(){
-    let buttons;
-    if (this.props.loggedIn){
-      buttons =  (<button className='footer-button' onClick={this.handleSignOut}>Log out</button>);
-    } else {
-      buttons = (<button className='footer-button' onClick={this.handleModalOpen("login")}>Log in</button> );
-    }
+    const forms = {
+      'login': <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")} />,
+      'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} /> }
 
     return(
       <div className='footer-buttons'>
-        <Link to='groups' className='create-button'>Join a Group</Link>
+        <Link to='/groups' className='join-group'>Join a Group</Link>
         <div className='footer-icon-box'>
             <div className="footer-icons">
               <Link href="https://www.terrancexin.com" title="www" target="_blank"><i className="fa fa-globe"></i></Link>
@@ -55,24 +61,16 @@ class WelcomeFooter extends React.Component {
            </div>
            <div className='copyright'>&copy; 2017 Built by Terrance Xin</div>
         </div>
-        {buttons}
+
+        { this.toggleFooterButton() }
 
         <Modal
           overlayClassName='modal-overlay'
-          className='modal-container modal-large-signup'
-          isOpen={this.state.modalType === "signup"}
+          className={`modal-container-${this.state.modalType}`}
+          isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}
-          contentLabel="signup-modal">
-          <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")}/>
-        </Modal>
-
-        <Modal
-          overlayClassName='modal-overlay'
-          className='modal-container'
-          isOpen={this.state.modalType === "login"}
-          onRequestClose={this.closeModal}
-          contentLabel="login-modal">
-          <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")}/>
+          contentLabel="header-modals">
+          {forms[this.state.modalType]}
         </Modal>
       </div>
     );
