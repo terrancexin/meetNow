@@ -26,7 +26,7 @@
   color: white;
   padding: 10px 25px;
   margin: 0 14px 0 20px;
-
+  min-width: 105px;
   &:hover {
     background-color: $red-hover;
   }
@@ -84,6 +84,7 @@
   @include hover-blue;
   font-weight: bold;
   margin-right: 10px;
+  min-width: 45px;
 }
 
 .welcome-msg {
@@ -109,4 +110,25 @@
 .new-group-button {
   color: $meetup-red;
   margin-left: 15px;
+}
+
+
+@media screen and (max-width: 760px) {
+  .new-group-button {
+    display: none;
+  }
+
+  .header-mid {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .header-left {
+    display: none;
+  }
+
+  .header-logo-name {
+    font-size: 40px;
+  }
 }

@@ -23,15 +23,9 @@ class WelcomeHeader extends React.Component {
     this.toggleCreateGroup = this.toggleCreateGroup.bind(this);
     this.toggleProfileView = this.toggleProfileView.bind(this);
     this.handleProfileButton = this.handleProfileButton.bind(this);
-  }
 
-  handleProfileButton(id) {
-    return () => { hashHistory.push(`profile/${id}`) }
-  }
-
-  handleLogout(){
-    this.props.logout();
-    hashHistory.push('/');
+    this.toggleProfile = this.toggleProfile.bind(this);
+    this.handleProfile = this.handleProfile.bind(this);
   }
 
   closeModal() {
@@ -55,6 +49,32 @@ class WelcomeHeader extends React.Component {
     );
   }
 
+  handleProfile() {
+   this.setState({ profile: !this.state.profile });
+   this.toggleProfile();
+   }
+
+  toggleProfile() {
+    if (this.state.profile) {
+      return  { visibility: 'visible' };
+    } else {
+      return { visibility: 'hidden' };
+    }
+  }
+
+  handleProfileButton(id) {
+    return () => {
+      this.handleProfile();
+      hashHistory.push(`profile/${id}`);
+    };
+  }
+
+  handleLogout(){
+    this.handleProfile();
+    this.props.logout();
+    hashHistory.push('/');
+  }
+
   toggleProfileView() {
     const { loggedIn, currentUser } = this.props;
 
@@ -62,7 +82,13 @@ class WelcomeHeader extends React.Component {
       return (
         <div className='header-right'>
           <label className='welcome-msg'>Welcome, {currentUser.first_name}</label>
-          <img className="profile-thumbnail" onClick={this.handleModalOpen("profile")} src={currentUser.image_url}/>
+          <img className="profile-thumbnail" onClick={this.handleProfile} src={currentUser.image_url}/>
+            <div  style={this.toggleProfile()} id='close-profile' className='profile-form-box' >
+              <div className='profile-buttons-box'>
+                <button className='profile-buttons' onClick={this.handleProfileButton(currentUser.id)}>Profile</button>
+                <button className='profile-buttons' onClick={this.handleLogout}>Log out</button>
+              </div>
+            </div>
         </div>
       );
     } else {
@@ -80,10 +106,7 @@ class WelcomeHeader extends React.Component {
     const forms = {
       'login': <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")} />,
       'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} />,
-      'createGroup': <CreateGroupForm closeModal={this.closeModal} />,
-      'profile': this.props.loggedIn && <ProfileModal closeModal={this.closeModal} handleLogout={this.handleLogout}
-                 handleProfileButton={this.handleProfileButton}
-                 currentId={this.props.currentUser.id} /> }
+    'createGroup': <CreateGroupForm closeModal={this.closeModal} /> }
 
     return (
       <div className='welcome-header'>
