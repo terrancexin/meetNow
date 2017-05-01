@@ -24,6 +24,28 @@ class LogInForm extends React.Component {
     this.props.login(user).then(() => this.props.closeModal());
   }
 
+  guestLogin(email, password) {
+    return (event) => {
+      event.preventDefault();
+      this.props.clearSessionErrors();
+      this.setState({ email: "", password: "" }, () => {
+        this.typeValue(email, "email", () => {
+          this.typeValue(password, "password", () => {
+            this.props.login(this.state).then(() => this.props.closeModal());
+          });
+        });
+      });
+    };
+  }
+
+  typeValue(value, field, callback) {
+    if (!value) return callback();
+    this.setState({ [field]: this.state[field] + value[0] });
+    setTimeout(() => {
+      this.typeValue(value.slice(1), field, callback);
+    }, 40);
+  }
+
   render() {
     const { email, password } = this.state;
 
@@ -59,6 +81,7 @@ class LogInForm extends React.Component {
           </div>
 
           <input type="submit" value="Log in" />
+          <input onClick={this.guestLogin("awesome_guest@gmail.com", "passwordsafe")} type="submit" value="Guest" />
         </form>
       </div>
     );
