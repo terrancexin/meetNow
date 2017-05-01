@@ -12,26 +12,6 @@
   background: white;
   outline: none;
   border: 1px solid lightgray;
-
-  .errors-box {
-    min-height: 15px;
-  }
-
-}
-
-.modal-large-signup {
-  .errors-box {
-    min-height: 20px;
-  }
-  height: 470px;
-}
-
-.large-modal{
-  .errors-box {
-    min-height: 30px;
-  }
-
-  height: 520px;
 }
 
 .modal-overlay {
@@ -43,96 +23,90 @@
   bottom: 0;
   z-index: 9;
   background: rgba(204, 204, 204, 0.85);
-
 }
 
-.modal-form-container {
-  height: 380px;
-
-  .form-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    border-bottom: 1px solid lightgray;
-    font-size: 18px;
-    color: $meetup-red;
-    padding: 20px;
-  }
-
-  .nav-links-box {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    font-weight: bold;
-
-    .nav-link-text {
-      margin-top: 13px;
-      font-size: 13px;
-      color: black;
-    }
-
-    .nav-link-button {
-      margin-top: 12px;
-      font-size: 13px;
-      margin-left: 5px;
-      font-weight: bold;
-      color: $link-blue;
-    }
-
-  }
+@mixin flex-column-start {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-.signup-form, .login-form, .guest-login-form, .create-group-form {
+@mixin flex-row-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.modal-createGroup {
+  height: 520px;
+}
+
+.modal-login {
+  height: 385px;
+}
+.modal-signup {
+  height: 475px;
+}
+
+.form-header {
+  @include flex-column-start;
+  border-bottom: 1px solid lightgray;
+  font-size: 18px;
+  color: $meetup-red;
+  padding: 20px;
+}
+
+.nav-link-text {
+  margin-top: 13px;
+  font-size: 13px;
+  color: black;
+}
+
+.nav-links-box {
+  @include flex-row-end;
+  font-weight: bold;
+}
+
+.nav-link-button {
+  margin-top: 12px;
+  font-size: 13px;
+  margin-left: 5px;
+  font-weight: bold;
+  color: $link-blue;
+}
+
+.signup-form,
+.login-form,
+.create-group-form {
   display: flex;
   flex-direction: column;
   margin: 18px;
   font-size: 13px;
   font-weight: bold;
-  // margin-top: 22px;
+}
 
-  .name-box, .email-address-box, .password-box {
-    display: flex;
-    flex-direction: column;
-
-    label {
-      margin-bottom: 3px;
-    }
-  }
-
-  input[type="text"], input[type="password"], input[type="email"], input[type='date'] {
-    padding: 8px 4px;
-    font-size: 15px;
-    background-color: rgb(250, 255, 189);
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border-style: none;
-    border: 1px solid #aaa;
+.name-box,
+.email-address-box,
+.password-box {
+  display: flex;
+  flex-direction: column;
+  label {
+    margin-bottom: 3px;
   }
 }
 
-.guest-login-header {
-  color: $link-blue;
-}
-
-.guest-login-form {
-  input[type="submit"] {
-    background-color: $link-blue;
-    color: #fff;
-    border-color: $link-blue;
-    padding: 11px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-  	font-weight: 600;
-  	font-size: 16px;
-  	margin-right: 15px;
-  	margin-top: 15px;
-  	width: 99px;
-
-    &:hover {
-      background-color: $blue-hover;
-    }
-  }
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type='date'] {
+  padding: 8px 4px;
+  font-size: 15px;
+  background-color: rgb(250, 255, 189);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border-style: none;
+  border: 1px solid #aaa;
 }
 
 .group-form-inputs-box {
@@ -140,39 +114,14 @@
   flex-direction: column;
 }
 
+.login-guest-login {
+  display: flex;
+  .guest-login {
+    background-color: $link-blue;
+    border-color: $link-blue;
 
-
-
-// .create-group-form {
-//   display: flex;
-//   flex-direction: column;
-//   margin: 18px;
-//   font-size: 13px;
-//   font-weight: bold;
-//   // margin-top: 22px;
-//
-//   .name-box, .email-address-box, .password-box {
-//     display: flex;
-//     flex-direction: column;
-//
-//     label {
-//       margin-bottom: 3px;
-//     }
-//   }
-//
-//   input[type="text"], textarea {
-//     padding: 8px 4px;
-//     font-size: 15px;
-//     background-color: rgb(250, 255, 189);
-//     margin-bottom: 20px;
-//     border-radius: 5px;
-//     // border-style: none;
-//     border: 1px solid #aaa;
-//     resize: none;
-//
-//
-//     outline:0px none transparent;
-//   }
-//
-//   input, textarea, select, a { outline: none; }
-// }
+    &:hover {
+      background-color: $blue-hover;
+    }
+  }
+}

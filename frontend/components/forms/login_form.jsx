@@ -80,8 +80,10 @@ class LogInForm extends React.Component {
               className={this.props.errors.password ? "input-error" : ""} />
           </div>
 
-          <input type="submit" value="Log in" />
-          <input onClick={this.guestLogin("awesome_guest@gmail.com", "passwordsafe")} type="submit" value="Guest" />
+          <div className='login-guest-login'>
+            <input type="submit" value="Log in" />
+            <input className="guest-login" onClick={this.guestLogin("awesome_guest@gmail.com", "passwordsafe")} type="submit" value="Guest" />
+          </div>
         </form>
       </div>
     );
