@@ -1,3 +1,8 @@
+@import 'base/flexbox';
+@import 'base/colors';
+@import 'base/buttons';
+@import 'base/layout';
+
 .width-setter {
   width: 900px;
   margin: 0 auto;
@@ -7,348 +12,140 @@
   width: 70%;
   min-width: 850px;
   margin: 0 auto;
-  height: 100%;
+  height: auto;
   margin-bottom: 60px;
-
-  .group-name {
-    margin-top: 10px;
-    padding: 50px;
-    background-color: $meetup-red;
-    color: white;
-    height: 40px;
-    font-size: 40px;
-    border: 1px solid #ccc;
-    text-align: center;
-    border-radius: 3px;
-
-
-  }
-
-  .group-header-buttons {
-    display: flex;
-    border-top: 9px solid lightpink;
-    margin-top: -3px;
-    border-right: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-radius: 3px;
-  }
-
-  //Home Member Photos
-  .left-side-buttons {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-
-    a {
-      text-decoration: none;
-    }
-
-    li {
-      display: flex;
-      align-items: center;
-      color: gray;
-      padding: 10px 14px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-      margin: 3px;
-      margin-top: 9px;
-      height: 18px;
-
-      &:hover {
-        background-color: rgb(182, 14, 24);
-        color: white;
-      }
-    }
-
-  }
-
-  .content-container {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .group-side-bar-info {
-    max-width: 300px;
-    border: 1px solid #ccc;
-    margin-top: 14px;
-    border-radius: 3px;
-    font-size: 12px;
-
-
-    section {
-      margin: 9px;
-
-      .side-bar-location {
-        font-size: 16px;
-        color: rgb(6, 34, 185);
-        margin-bottom: 4px;
-      }
-
-      .text-info-inner-box {
-
-        height: auto;
-
-        .side-aboutus {
-          border: 1px solid #ccc;
-          padding: 12px 50px;
-          text-align: center;
-          margin: 20px 0 12px 12px;
-          font-weight: 500;
-          cursor: pointer;
-          border-radius: 3px;
-
-          &:hover {
-            background-color: #eee;
-          }
-        }
-
-        .side-bar-info {
-          margin-top: 10px;
-        }
-
-        .group-members-list {
-          max-height: 200px;
-          overflow: scroll;
-          margin-top: 10px;
-
-          .member-and-pic-box {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-
-            a {
-              text-decoration: none;
-              color: black;
-
-              &:hover {
-                color: $blue-hover;
-              }
-            }
-            .pro-pic {
-              width: 25px;
-              height: 25px;
-              border-radius: 8px;
-              margin: 10px 20px 2px 0;
-            }
-
-            .member-name {
-              font-size: 11px;
-            }
-          }
-        }
-      }
-
-    }
-
-
-  }
-
-  .group-show-description {
-    border: 1px solid #ccc;
-    margin-top: 14px;
-    margin-left: 14px;
-    border-radius: 3px;
-    height: auto;
-    width: auto;
-    min-width: 640px;
-
-    h1 {
-      margin-bottom: 20px;
-      font-size: 20px;
-      padding: 10px;
-    }
-
-    p {
-      font-size: 15px;
-      padding: 0 10px 10px 12px;
-      line-height: 130%;
-    }
-
-  }
-
-
-
-
-
-
-
 }
 
+.group-name {
+  @include border-gray;
+  margin-top: 10px;
+  padding: 50px;
+  background-color: $meetup-red;
+  color: white;
+  height: 40px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.group-header-buttons {
+  @include border-gray;
+  @include flex-row-space-between;
+  border-top: 9px solid lightpink;
+  margin-top: -3px;
+}
+
+.left-side-buttons {
+  @include flex-row-start;
+  align-items: baseline;
+}
+
+.group-show-buttons {
+  @include hover-red-white;
+  color: gray;
+  padding: 11px;
+  border-radius: 5px;
+  font-size: 15px;
+  margin: 3px;
+}
+
+.group-side-bar-pic {
+  border-bottom: 1px solid #ccc;
+  width: 170px;
+  height: 170px;
+  padding: 12px;
+}
+
+.side-bar-info {
+  @include flex-row-space-between;
+}
+
+.content-container {
+  @include flex-row-start-start;
+}
+
+.side-bar-location {
+  color: $location-blue;
+  margin-bottom: 4px;
+}
+
+.side-founded {
+  font-size: 12px;
+}
+
+.side-aboutus {
+  @include border-gray;
+  @include hover-gray;
+  padding: 12px 50px;
+  text-align: center;
+  margin: 20px 6px 12px 8px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.member-and-pic-box {
+  @include flex-row-start;
+}
+
+.pro-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 7px;
+  margin: 10px 20px 2px 0;
+}
+
+.member-name {
+  @include hover-blue;
+  font-size: 14px;
+}
+
+.group-members-list {
+  max-height: 300px;
+  overflow: scroll;
+  margin-top: 10px;
+}
+
+.side-bar-info {
+  margin-top: 10px;
+}
+
+.side-bar-text-box {
+  margin: 10px;
+}
+
+.group-side-bar-info {
+  @include border-gray;
+  max-width: 300px;
+  margin-top: 14px;
+}
+
+.group-show-description {
+  @include border-gray;
+  margin-top: 14px;
+  margin-left: 14px;
+  height: auto;
+  width: auto;
+  min-width: 640px;
+}
+
+.group-show-description-detail {
+  font-size: 15px;
+  padding: 0 10px 10px 12px;
+  line-height: 130%;
+}
+
+.group-show-description-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  padding: 10px;
+}
 
 .join-group-button {
-  background-color: $meetup-red;
-  color: #fff;
-  border-color: $meetup-red;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
-  width: 135px;
-  margin: 8px;
-
-  &:hover {
-    background-color: rgb(182, 14, 24);
-  }
+  @include signup-button;
+  margin: 9px;
 }
 
 .loading {
   text-align: center;
   margin-top: 200px;
   height: 400px;
-
-}
-
-.group-side-bar-pic {
-  width: 170px;
-  height: 170px;
-  padding: 12px;
-  border-bottom: 1px solid #ccc;
-}
-
-.side-bar-info {
-  display: flex;
-  justify-content: space-between;
-}
-
-
-// Event detail on Group show page
-.events-box-on-group {
-  font-family: sans-serif;
-  border: 1px solid #ccc;
-  margin-top: 14px;
-  // margin-left: 14px;
-  border-radius: 3px;
-
-  .event-time {
-    padding: 10px;
-
-    li {
-      font-size: 11px;
-    }
-  }
-
-  .event-description {
-    line-height: 120%;
-    font-size: 12px;
-    padding: 3px 10px;
-    width: 500px;
-  }
-
-  .event-location {
-    font-size: 12px;
-    padding: 3px 10px;
-    font-style: italic;
-  }
-
-}
-
-.event-title > a {
-  font-family: sans-serif;
-  font-size: 22px;
-  text-decoration: none;
-  color: black;
-  padding: 10px;
-
-  &:hover {
-    color: rgb(14, 53, 226);
-  }
-}
-
-.attendee-box {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 12px;
-  max-width: 450px;
-
-  .attendee-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 15px;
-    margin-right: 8px;
-  }
-
-}
-
-.rsvp-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .rsvp-button {
-    background-color: $meetup-red;
-    color: #fff;
-    border-color: $meetup-red;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    width: 90px;
-    margin: 8px;
-    text-align: center;
-
-    &:hover {
-      background-color: $red-hover;
-    }
-  }
-}
-
-.no-events-box {
-  border: 1px solid #ccc;
-  margin: 14px 0 14px 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 3px;
-}
-
-.create-event {
-  background-color: rgb(182, 14, 24);
-  color: #fff;
-  border-color: $meetup-red;
-  padding: 15px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
-
-  margin: 15px 0px;
-
-  &:hover {
-    background-color: $meetup-red;
-  }
-}
-
-.going-box {
-  display: flex;
-  justify-content: space-between;
-
-  .count-going {
-    margin-right: 40px;
-  }
-}
-
-.display-no-events {
-  margin-top: 12px;
-}
-
-
-.fa.fa-map-marker.fa-1x.map-close-marker {
-  margin-right: -20px;
-}
-
-.event-index-box {
-  margin-left: 14px;
-  border-radius: 3px;
-}
-
-#map-container {
-  height: 100%;
-  width: 100%;
-  border-radius: 3px;
 }

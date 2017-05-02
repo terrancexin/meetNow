@@ -1,20 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { fetchSingleGroup, updateGroup, deleteGroup } from '../../actions/group_actions';
 import { fetchSingleGroupEvents } from '../../actions/event_actions';
 import { addUserToGroup, removeUserFromGroup } from '../../actions/member_actions';
+import EventsIndex from '../events/events_index';
+
+// Forms
 import Modal from 'react-modal';
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
-import { Link } from 'react-router';
-import EventsIndex from '../events/events_index';
 import CreateEventForm from '../forms/create_event_form';
 import GroupMap from './group_map';
 
 class GroupsShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalType: "", contact: false };
+    this.state = { modalOpen: false, modalType: "", contact: false };
     this.closeModal = this.closeModal.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
 
@@ -22,6 +24,17 @@ class GroupsShow extends React.Component {
     this.handleLeaveGroup = this.handleLeaveGroup.bind(this);
     this.handleContact = this.handleContact.bind(this);
     this.toggleContact = this.toggleContact.bind(this);
+  }
+
+  closeModal() {
+    this.setState({ modalOpen: false});
+  }
+
+  handleModalOpen(form) {
+    return () => {
+      this.closeModal();
+      this.setState({ modalOpen: true, modalType: form });
+    };
   }
 
   handleContact() {
@@ -49,17 +62,6 @@ class GroupsShow extends React.Component {
       this.props.fetchSingleGroup(newProps.params.groupId);
       this.props.fetchSingleGroupEvents(newProps.params.groupId);
     }
-  }
-
-  closeModal() {
-    this.setState({ modalType: false});
-  }
-
-  handleModalOpen(form) {
-    return () => {
-      this.closeModal();
-      this.setState({ modalType: form });
-    };
   }
 
   handleJoinGroup() {
@@ -103,85 +105,67 @@ class GroupsShow extends React.Component {
     if (!this.props.group || !this.props.group.users) {
       return (<div className='group-index-box'><img className='loading-spinner-group-show' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>);
     } else {
+      const forms = {
+        'login': <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")} />,
+        'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} />,
+        'createEvent': <CreateEventForm closeModal={this.closeModal} />,
+        'groupMap': <GroupMap latitude={this.props.group.latitude} longitude={this.props.group.longitude} closeModal={this.closeModal}/> }
+
+      const { name, id, photo_url, location, users,
+              founded, event_count, member_count } = this.props.group;
       return (
         <div className='width-setter'>
         <div className='group-show-page'>
-
           <div className='group-name-nav'>
-            <h1 className='group-name'>{this.props.group.name}</h1>
+            <h1 className='group-name'>{name}</h1>
             <div className='group-header-buttons'>
-
-              <ul className='left-side-buttons'>
-                <Link to={`/groups/${this.props.group.id}`}><li>Home</li></Link>
-
-                <div className='contact-info'>
-                  <li onClick={this.handleContact} >Contact</li>
-                  <div style={this.toggleContact()} className='contact-info-box'>
-                    <a href="https://www.terrancexin.com" target = "_blank"><i onClick={this.handleContact} className="fa fa-globe fa-2x" aria-hidden="true"></i></a>
-                    <a href="https://github.com/terrancexin" target = "_blank"><i onClick={this.handleContact} className="fa fa-github fa-2x" aria-hidden="true"></i></a>
-                    <a href="https://www.linkedin.com/in/terrancexin/" target = "_blank"><i onClick={this.handleContact} className="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
-                  </div>
-
-                </div>
-
-                <button onClick={this.handleModalOpen('event')}><li>Create an Event</li></button>
-              </ul>
+              <div className='left-side-buttons'>
+                <Link className='group-show-buttons' to={`/groups/${id}`}>Home</Link>
+                <button className='group-show-buttons'>Members</button>
+                <button className='group-show-buttons' onClick={this.handleModalOpen('createEvent')}>Create an Event</button>
+              </div>
               {this.toggleJoinRsvp()}
             </div>
           </div>
 
           <div className='content-container'>
             <ul className='group-side-bar-info'>
-              <img className='group-side-bar-pic' src={this.props.group.photo_url} />
+              <img className='group-side-bar-pic' src={photo_url} />
 
               <section className='side-bar-text-box'>
                 <div className='text-info-inner-box'>
-                  <div className='side-bar-location'>{this.props.group.location}</div>
-                  <li className='side-founded'>Founded: {this.props.group.founded.slice(0, 10)}</li>
-                  <button  className='side-aboutus' onClick={this.handleModalOpen('map')}>Find us...</button>
+                  <div className='side-bar-location'>{location}</div>
+                  <li className='side-founded'>Founded: {founded.slice(0, 10)}</li>
+                  <button  className='side-aboutus' onClick={this.handleModalOpen('groupMap')}>Find us...</button>
 
                     <li className='side-bar-info'>
-                      <div>
-                        Events
-                      </div>
-                      <div>
-                        {this.props.group.event_count}
-                      </div>
+                      <div>Events</div>
+                      <div>{event_count}</div>
                     </li>
 
                     <li className='side-bar-info'>
-                      <div>
-                        Members
-                      </div>
-                      <div>
-                        {this.props.group.member_count}
-                      </div>
+                      <div>Members</div>
+                      <div>{member_count}</div>
                     </li>
-
 
                     <div className='group-members-list'>
                       <ul className='group-members'>
                       {
-                        Object.keys(this.props.group.users).map(id => (
-
-                          <div className='member-and-pic-box' key={id}>
+                        Object.keys(users).map(idx => (
+                          <div className='member-and-pic-box' key={idx}>
                             <div className='pro-pic-box'>
-                              <Link to={`/profile/${id}`}><img className='pro-pic' src={this.props.group.users[id].image_url} /></Link>
+                              <Link to={`/profile/${idx}`}><img className='pro-pic' src={users[idx].image_url} /></Link>
                             </div>
 
-                            <Link to={`/profile/${id}`}><div className='member-name'>
-                              {this.props.group.users[id].name}
-                            </div></Link>
-
+                            <Link to={`/profile/${idx}`}>
+                              <div className='member-name'>{users[idx].name}</div>
+                            </Link>
                           </div>
-                        ))
-                      }
+                        ))}
                       </ul>
                     </div>
-
                   </div>
                 </section>
-
               </ul>
 
               {
@@ -191,8 +175,8 @@ class GroupsShow extends React.Component {
               {
                 !this.props.children && <div className='mid-content-box'>
                                           <div className="group-show-description">
-                                            <h1>Welcome!</h1>
-                                            <p>{this.props.group.description}</p>
+                                            <h1 className="group-show-description-title">Welcome!</h1>
+                                            <p className="group-show-description-detail">{this.props.group.description}</p>
 
                                           </div>
                                           <EventsIndex
@@ -202,44 +186,15 @@ class GroupsShow extends React.Component {
                                       </div>
               }
 
+            </div>
           </div>
-        </div>
-
-
-        <Modal
-          overlayClassName='modal-overlay'
-          className='modal-container'
-          isOpen={this.state.modalType === "login"}
-          onRequestClose={this.closeModal}
-          contentLabel="login-modal">
-          <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")}/>
-        </Modal>
-
-        <Modal
-          overlayClassName='modal-overlay'
-          className='modal-container modal-large-signup'
-          isOpen={this.state.modalType === "signup"}
-          onRequestClose={this.closeModal}
-          contentLabel="signup-modal">
-          <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")}/>
-        </Modal>
-
-        <Modal
-          overlayClassName='modal-overlay'
-          className='modal-container event-modal-size'
-          isOpen={this.state.modalType === "event"}
-          onRequestClose={this.closeModal}
-          contentLabel="event-modal">
-          <CreateEventForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("event")}/>
-        </Modal>
-
           <Modal
             overlayClassName='modal-overlay'
-            className='modal-container map-modal'
-            isOpen={this.state.modalType === "map"}
+            className={`modal-container modal-${this.state.modalType}`}
+            isOpen={this.state.modalOpen}
             onRequestClose={this.closeModal}
-            contentLabel="map-modal">
-            <GroupMap latitude={this.props.group.latitude} longitude={this.props.group.longitude} handleModalOpen={this.handleModalOpen("map")} closeModal={this.closeModal}/>
+            contentLabel="header-modals">
+            {forms[this.state.modalType]}
           </Modal>
         </div>
       );
@@ -252,7 +207,6 @@ const mapStateToProps = (state, ownProps) => {
     loggedIn: !!state.session.currentUser,
     currentUser: state.session.currentUser,
     group: state.groups[ownProps.params.groupId],
-    // events: state.events,
     loading: state.loading.loading
   });
 };

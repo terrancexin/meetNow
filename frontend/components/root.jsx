@@ -6,7 +6,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 // Components
 import App from './app';
 import Welcome from './welcome/welcome';
-import Groups from './groups/groups';
+import GroupsIndex from './groups/groups_index';
 import GroupsShow from './groups/groups_show';
 import EventsIndex from './events/events_index';
 import EventShow from './events/event_show';
@@ -21,7 +21,7 @@ const Root = ({ store }) => {
         <Route path="/" component={App}>
           <IndexRoute component={Welcome} />
           <Route path='explore/:category' component={ExplorePage} />
-          <Route path='groups' component={Groups} />
+          <Route path='groups' component={GroupsIndex} />
           <Route path='groups/:groupId' component={GroupsShow}>
               <Route path='events/:eventId' component={EventShow}/>
           </Route>

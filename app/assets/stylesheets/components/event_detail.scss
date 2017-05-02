@@ -1,0 +1,123 @@
+@import 'base/layout';
+@import 'base/buttons';
+@import 'base/flexbox';
+
+// Event index on Group show page
+.event-index-box {
+  margin-left: 14px;
+  border-radius: 3px;
+}
+
+.events-box-on-group {
+  @include border-gray;
+  margin-top: 14px;
+}
+
+.event-time {
+  padding: 10px;
+  font-size: 12px;
+}
+
+.event-title {
+  @include hover-blue;
+  font-size: 22px;
+  padding: 10px;
+}
+
+.rsvp-flex {
+  @include flex-row-space-between;
+}
+
+.rsvp-button {
+  @include signup-button;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: 4px;
+  width: 70px;
+  margin: 0 12px;
+  text-align: center;
+}
+
+.event-description {
+  line-height: 120%;
+  padding: 3px 10px;
+  width: 450px;
+}
+.event-location {
+  font-size: 12px;
+  padding: 3px 10px;
+  font-style: italic;
+}
+
+.attendee-box {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12px;
+  max-width: 450px;
+}
+
+.attendee-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  margin-right: 8px;
+}
+
+.no-events-box {
+  border: 1px solid #ccc;
+  margin: 14px 0 14px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 3px;
+}
+
+.create-event {
+  @include signup-button;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: 4px;
+  width: 70px;
+  margin: 0 12px;
+  text-align: center;
+}
+
+.event-going-box {
+  @include flex-column-start;
+}
+
+.going-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.count-going {
+  margin-top: 12px;
+}
+
+.display-no-events {
+  margin-top: 12px;
+}
+
+.fa.fa-map-marker.fa-1x.map-close-marker {
+  margin-right: -20px;
+}
+
+// Media query
+@media screen and (max-width: 730px) {
+  .events-box-on-group {
+    width: 370px;
+    height: auto;
+    margin-top: 12px;
+  }
+
+  .location-description {
+    display: none;
+  }
+
+  .attendee-pic {
+    width: 30px;
+    height: 30px;
+  }
+}

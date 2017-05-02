@@ -25,3 +25,16 @@
     color: $red-hover;
   }
 }
+
+@mixin hover-red-white {
+  &:hover {
+    background-color: rgb(182, 14, 24);
+    color: white;
+  }
+}
+
+@mixin hover-gray {
+  &:hover {
+    background-color: #eee;
+  }
+}

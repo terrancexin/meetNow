@@ -38,49 +38,30 @@ class EventsIndex extends React.Component {
             {
               eventArray.map(event => (
               <ul className='events-box-on-group' key={event.id}>
-                <div className='event-time'><li>{event.time.slice(0, 10)}</li></div>
-                <div className='event-title'>
-                  <Link to={`groups/${this.props.params.groupId}/events/${event.id}`}>{event.name}</Link>
-                </div>
+                <div className='event-time'>{event.time.slice(0, 10)}</div>
+                <Link className='event-title' to={`groups/${this.props.params.groupId}/events/${event.id}`}>{event.name}</Link>
 
 
                 <div className='rsvp-flex'>
-                  <ul className='attendee-box'>
+                  <div className='attendee-box'>
                       {Object.keys(event.attendees).map(id => event.attendees[id]).map(attendee => (
-                        <li key={attendee.id}>
-                          <div className='attendee-wrapper'>
-                            <img className='attendee-pic' src={attendee.image} />
-                          </div>
-                        </li>
-
+                            <img key={attendee.id} className='attendee-pic' src={attendee.image} />
                     ))}
-                  </ul>
+                  </div>
 
-                  {
-                    this.props.isMember && <Link className='rsvp-button' to={`groups/${this.props.params.groupId}/events/${event.id}`}>RSVP</Link>
-                  }
-                  {
-                    !this.props.isMember && <button onClick={this.props.handleJoinGroup} className="join-group-button">Join us!</button>
-                  }
-
+                  <div className='event-going-box'>
+                    { this.props.isMember && <Link className='rsvp-button' to={`groups/${this.props.params.groupId}/events/${event.id}`}>RSVP</Link> }
+                    { !this.props.isMember && <button onClick={this.props.handleJoinGroup} className="join-group-button">Join us!</button> }
+                    <div className='count-going'>{Object.keys(event.attendees).length} going</div>
+                  </div>
                 </div>
 
-
-                <div className='going-box'>
-                  <div>
+                  <div className='location-description'>
                     <li className='event-location'><i className="fa fa-map-marker fa-1x map-close-marker"></i>{event.location}</li>
                     <li className='event-description'>{event.description}</li>
                   </div>
-
-                  <div className='count-going'>{Object.keys(event.attendees).length} going</div>
-                </div>
-
               </ul>
-
-            ))
-          }
-
-
+            ))}
         </div>
       );
     } else {
@@ -101,25 +82,16 @@ class EventsIndex extends React.Component {
       );
     }
   }
-
-
 }
 
-const mapStateToProps = state => {
-  return ({
-    events: state.events,
-    loading: state.loading.loading
-  });
-};
+const mapStateToProps = state => ({
+  events: state.events,
+  loading: state.loading.loading
+});
 
-const mapDispatchToProps = dispatch => {
-  return (
-    {
-      fetchSingleGroupEvents: id => dispatch(fetchSingleGroupEvents(id))
-    }
-  );
-
-};
+const mapDispatchToProps = dispatch => ({
+  fetchSingleGroupEvents: id => dispatch(fetchSingleGroupEvents(id))
+});
 
 export default connect(
   mapStateToProps,
