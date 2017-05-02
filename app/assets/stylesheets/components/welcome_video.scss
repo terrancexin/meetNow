@@ -70,7 +70,10 @@
     margin-top: 50px;
   }
 
-  video,
+  video {
+    autoplay: "";
+  }
+
   .video-div {
     display: none;
   }
