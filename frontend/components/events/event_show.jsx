@@ -175,7 +175,6 @@ class EventShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   return({
     event: state.events[ownProps.params.eventId],
     loggedIn: !!state.session.currentUser,
