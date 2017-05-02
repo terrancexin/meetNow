@@ -72,11 +72,17 @@
 // Media query
 @media screen and (max-width: 730px) {
   .calendar-box-on-group {
-    width: 400px;
+    width: 370px;
     height: auto;
+    margin-top: 12px;
   }
 
   .location-description {
     display: none;
+  }
+
+  .calendar-attendee-pic {
+    width: 30px;
+    height: 30px;
   }
 }
