@@ -1,106 +1,74 @@
+@import 'base/flexbox';
+
 .group-index-box {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
   flex-wrap: wrap;
   width: 100%;
+}
 
-  .group-banner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 5px auto;
-    padding: 60px;
-    background-color: $meetup-red;
-    color: white;
-    height: 50px;
-    font-size: 30px;
+.loading-spinner-group-index,
+.loading-spinner-group-show {
+  padding: 150px 0 600px 0;
+}
 
-    .sum-group {
-      margin-top: 10px;
-      font-size: 14px;
-      color: rgba(255,255,255,.7);
-    }
+.group-banner {
+  @include flex-column-super-center;
+  width: 100%;
+  padding: 25px 0 45px 0;
+  background-color: $meetup-red;
+  color: white;
+  font-size: 30px;
+}
 
-    .group-banner > h1 {
-    }
+.sum-group {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,.7);
+}
 
-  }
+.group-index-wrapper {
+  @include flex-row-center;
+  flex-wrap: wrap;
+  margin: 30px;
+  width: 1000px;
+}
 
-  .group-index-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 30px;
-    width: 1000px;
-    height: auto;
-    min-width: 900px;
+.group-pics {
+  width: 300px;
+  height: 180px;
+  margin: 10px;
+  position: relative;
+}
 
+.group-img {
+  z-index: -1;
+  width: 300px;
+  height: 180px;
+  filter: brightness(0.4);
+  border-radius: 3px;
+  transition: all 0.6s ease;
 
-
-    li {
-      width: 300px;
-      height: 180px;
-      margin: 10px;
-      position: relative;
-
-
-
-      img {
-        z-index: -1;
-        width: 300px;
-        height: 180px;
-        filter: brightness(0.4);
-        cursor: pointer;
-        border-radius: 5px;
-
-        transition: transform 0.2s ease;
-
-        &:hover {
-          transform: scale(1.035);
-        }
-      }
-
-
-
-      p {
-        color: white;
-        position: absolute;
-        bottom: 0;
-        left: 10px;
-        margin-bottom: 40px;
-        font-size: 14px;
-
-        width: auto;
-        height: auto;
-        text-decoration: none;
-      }
-
-      h4 {
-        font-size: 20px;
-        position: absolute;
-        font-weight: bold;
-        top: 60px;
-        left: 10px;
-        color: white;
-      }
-
-    }
+  &:hover {
+    transform: scale(1.07) translate3d(0px, 0px, 0px);
+    border-radius: 10px;
   }
 }
 
-.search-group-index-box {
-  display: flex;
-  flex-direction: column;
+.member-count {
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  margin-bottom: 30px;
 }
 
-.loading-spinner {
-  margin: 200px;
-}
-
-.loading-spinner-group-index, .loading-spinner-group-show {
-  padding: 400px;
+.group-name {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  font-weight: bold;
+  top: 60px;
+  left: 10px;
 }

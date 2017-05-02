@@ -8,9 +8,10 @@
   background-color: $search-bar-background;
   color: white;
   border-radius: 4px;
-  height: 75px;
+  height: 70px;
   margin: 0 20px;
-  margin-top: -32px;
+  margin-top: -35px;
+  width: 1010px;
 }
 
 .search-bar-left {
@@ -21,7 +22,7 @@
   .search-input {
     @include input-type;
     width: 230px;
-    margin: 0 15px;
+    margin: 0 11px;
     background-color: white;
   }
 }
@@ -33,7 +34,7 @@
 }
 
 .search-bar-right {
-  margin-right: 25px;
+  margin-right: 22px;
 }
 
 .groups-button {
@@ -49,4 +50,22 @@
   padding: 12px 26px;
   font-size: 18px;
   width: 140px;
+}
+
+// Media query
+@media screen and (max-width: 830px) {
+  .within-miles {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  #search-icon,
+  .search-input {
+    display: none;
+  }
+
+  .search-bar {
+    @include flex-row-center;
+  }
 }

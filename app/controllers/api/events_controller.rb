@@ -1,7 +1,7 @@
 class Api::EventsController < ApplicationController
 
   def index
-    @events = Event.all.includes(:users)
+    @events = Event.order('time DESC').limit(10)
   end
 
   def show

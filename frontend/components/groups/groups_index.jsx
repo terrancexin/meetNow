@@ -19,29 +19,28 @@ class GroupsIndex extends React.Component {
     this.props.fetchAllEvents();
   }
 
-  toggleCalendar() {
-    this.setState({ calendar: !this.state.calendar });
+  toggleCalendar(bool) {
+    this.setState({ calendar: bool });
   }
 
   render () {
     if (this.props.loading) {
       return (<div className='group-index-box'><img className='loading-spinner-group-index' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>);
     }
-    const sumGroup = this.props.groups.length
-        return (
-        <div className='group-index-box'>
 
-          <div className='group-banner'>
-            <h1>Find a Group</h1>
-            <div className='sum-group'>{sumGroup} interesting groups nearby. Go MeetNow!</div>
-          </div>
+    const countAllGroups = this.props.groups.length
+    return (
+      <div className='group-index-box'>
+        <div className='group-banner'>
+          <h1>Find a Group</h1>
+          <div className='sum-group'>{countAllGroups} interesting groups nearby. Go MeetNow!</div>
+        </div>
 
-          <div className='search-group-index-box'>
-          <SearchBar toggleCalendar={this.toggleCalendar}/>
+        <SearchBar toggleCalendar={this.toggleCalendar}/>
 
-          {!this.state.calendar && <ul className='group-index-wrapper'>
-              {
-                this.props.groups.map(group => {
+        { !this.state.calendar &&
+          <ul className='group-index-wrapper'>
+            { this.props.groups.map(group => {
                 if (group.member_count !== 0) {
                   return (
                     <li className='group-pics' key={group.id}>
@@ -51,49 +50,43 @@ class GroupsIndex extends React.Component {
                         name={group.name}
                         members={group.member_count}/>
                     </li>
-                    );
-                  }
-                })
-              }
-            </ul>}
+                  );
+                }
+              })
+            }
+          </ul>
+        }
 
-          {this.state.calendar && <ul className='calendar-group-index-wrapper'>
-                <EventCalendar events={this.props.events}/>
-            </ul>}
-            </div>
-        </div>
-      );
-    }
+        { this.state.calendar &&
+          <ul className='calendar-group-index-wrapper'>
+            <EventCalendar events={this.props.events}/>
+          </ul>
+        }
+      </div>
+    );
+  }
 }
 
 const GroupsIndexItems = ({ groupPhoto, groupId, name, members }) => {
   return (
-    <Link to={`/groups/${groupId}`} className='group-links'>
-        <img src={groupPhoto} alt="groups"/>
+    <Link className='group-links' to={`/groups/${groupId}`}>
+        <img className='group-img' src={groupPhoto} alt="groups"/>
         <h4 className='group-name'>{name}</h4>
         <p className='member-count'>We're {members} Members</p>
-
     </Link>
   );
 };
 
-const mapStateToProps = state => {
-  return ({
-    groups: groupsArray(state.groups),
-    events: state.events,
-    loading: state.loading.loading
-  });
-};
+const mapStateToProps = state => ({
+  groups: groupsArray(state.groups),
+  events: state.events,
+  loading: state.loading.loading
+});
 
-const mapDispatchToProps = dispatch => {
-  return (
-    {
-      fetchAllGroups: () => dispatch(fetchAllGroups()),
-      fetchAllEvents: () => dispatch(fetchAllEvents())
-    }
-  );
-
-};
+const mapDispatchToProps = dispatch => ({
+  fetchAllGroups: () => dispatch(fetchAllGroups()),
+  fetchAllEvents: () => dispatch(fetchAllEvents())
+});
 
 export default connect(
   mapStateToProps,

@@ -9,8 +9,11 @@ class SearchBar extends React.Component {
     this.updateSearch = this.updateSearch.bind(this);
   }
 
-  toggleSelected(selected) {
-    return () => { this.setState({ selected }) };
+  toggleSelected(selected, bool) {
+    return () => {
+      this.setState({ selected });
+      this.props.toggleCalendar(bool);
+    };
   }
 
   updateSearch(e) {
@@ -31,8 +34,8 @@ class SearchBar extends React.Component {
         </div>
 
         <div className='search-bar-right'>
-          <button onClick={this.toggleSelected('groups')} className={groupsClass}>Groups</button>
-          <button onClick={this.toggleSelected('calendar')} className={calendarClass}>Calendar</button>
+          <button onClick={this.toggleSelected('groups', false)} className={groupsClass}>Groups</button>
+          <button onClick={this.toggleSelected('calendar', true)} className={calendarClass}>Calendar</button>
         </div>
       </div>
     );
