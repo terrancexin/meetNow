@@ -120,7 +120,7 @@ class GroupsShow extends React.Component {
             <h1 className='group-name'>{name}</h1>
             <div className='group-header-buttons'>
               <div className='left-side-buttons'>
-                <Link className='group-show-buttons' to={`/groups/${id}`}>Home</Link>
+                <Link className='home-button' to={`/groups/${id}`}>Home</Link>
                 <button className='group-show-buttons'>Members</button>
                 <button className='group-show-buttons' onClick={this.handleModalOpen('createEvent')}>Create an Event</button>
               </div>

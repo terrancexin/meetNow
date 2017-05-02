@@ -51,7 +51,7 @@ class EventsIndex extends React.Component {
 
                   <div className='event-going-box'>
                     { this.props.isMember && <Link className='rsvp-button' to={`groups/${this.props.params.groupId}/events/${event.id}`}>RSVP</Link> }
-                    { !this.props.isMember && <button onClick={this.props.handleJoinGroup} className="join-group-button">Join us!</button> }
+                    { !this.props.isMember && <button onClick={this.props.handleJoinGroup} className="rsvp-button-join">Join us!</button> }
                     <div className='count-going'>{Object.keys(event.attendees).length} going</div>
                   </div>
                 </div>

@@ -4,13 +4,12 @@
 @import 'base/layout';
 
 .width-setter {
-  width: 900px;
   margin: 0 auto;
+  width: 70%;
 }
 
 .group-show-page {
-  width: 70%;
-  min-width: 850px;
+  width: 80%;
   margin: 0 auto;
   height: auto;
   margin-bottom: 60px;
@@ -39,6 +38,7 @@
   align-items: baseline;
 }
 
+.home-button,
 .group-show-buttons {
   @include hover-red-white;
   color: gray;
@@ -123,8 +123,7 @@
   margin-top: 14px;
   margin-left: 14px;
   height: auto;
-  width: auto;
-  min-width: 640px;
+  // width: 7;
 }
 
 .group-show-description-detail {
@@ -148,4 +147,54 @@
   text-align: center;
   margin-top: 200px;
   height: 400px;
+}
+
+.mid-content-box {
+  width: auto;
+}
+
+@media screen and (max-width: 802px) {
+  .group-name {
+    font-size: 30px;
+  }
+
+  .group-show-buttons {
+    display: none;
+  }
+
+  .group-side-bar-info {
+    display: none;
+  }
+
+  .event-index-box,
+  .group-show-description {
+    margin: 12px auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .group-name {
+    font-size: 20px;
+  }
+
+  .group-show-buttons {
+    display: none;
+  }
+
+  .group-show-description {
+    margin: 0;
+    margin-top: 12px;
+    width: 370px;
+  }
+
+  .group-show-page {
+    width: 370px;
+  }
+
+
+
+  .width-setter {
+    width: 370px;;
+    margin: 0 auto;
+  }
 }

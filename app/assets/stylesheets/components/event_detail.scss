@@ -28,20 +28,23 @@
   @include flex-row-space-between;
 }
 
+.rsvp-button-join,
 .rsvp-button {
   @include signup-button;
-  font-weight: 500;
-  padding: 10px 12px;
-  border-radius: 4px;
-  width: 70px;
-  margin: 0 12px;
+}
+
+.rsvp-button {
+  padding: 10px 25px;
+  margin: 0 14px 0 20px;
+  min-width: 56px;
+  border-radius: 3px;
   text-align: center;
 }
 
 .event-description {
   line-height: 120%;
   padding: 3px 10px;
-  width: 450px;
+  max-width: 450px;
 }
 .event-location {
   font-size: 12px;
@@ -106,10 +109,14 @@
 
 // Media query
 @media screen and (max-width: 730px) {
+  .event-index-box {
+    margin: 12px auto;
+    // width: 370px;
+  }
+
   .events-box-on-group {
-    width: 370px;
     height: auto;
-    margin-top: 12px;
+    margin: 12px;
   }
 
   .location-description {
@@ -119,5 +126,10 @@
   .attendee-pic {
     width: 30px;
     height: 30px;
+  }
+
+  .rsvp-button,
+  .rsvp-button-join {
+    font-size: 14px;
   }
 }
