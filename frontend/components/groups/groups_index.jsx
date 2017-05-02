@@ -56,12 +56,7 @@ class GroupsIndex extends React.Component {
             }
           </ul>
         }
-
-        { this.state.calendar &&
-          <ul className='calendar-group-index-wrapper'>
-            <EventCalendar events={this.props.events}/>
-          </ul>
-        }
+        { this.state.calendar && <EventCalendar events={this.props.events}/> }
       </div>
     );
   }
@@ -71,7 +66,7 @@ const GroupsIndexItems = ({ groupPhoto, groupId, name, members }) => {
   return (
     <Link className='group-links' to={`/groups/${groupId}`}>
         <img className='group-img' src={groupPhoto} alt="groups"/>
-        <h4 className='group-name'>{name}</h4>
+        <h4 className='group-index-name'>{name}</h4>
         <p className='member-count'>We're {members} Members</p>
     </Link>
   );

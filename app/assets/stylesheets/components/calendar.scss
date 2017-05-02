@@ -1,52 +1,28 @@
-.calendar-group-index-wrapper {
-  // padding: 0 218.5px;
-  // margin: 0 218.5px;
-  margin: 0 146px;
-  // border: 1px solid red;
-}
+@import 'base/buttons';
+@import 'base/flexbox';
 
 .calendar-box-on-group {
-  font-family: sans-serif;
   border: 1px solid lightgray;
-  margin-top: 14px;
-  margin-left: 14px;
+  margin: 14px 0;
   border-radius: 3px;
   width: 750px;
-
-  .calendar-time {
-    padding: 10px;
-    padding-bottom: 20px;
-
-    li {
-      font-size: 20px;
-      font-weight: bold;
-    }
-  }
-
-  .calendar-event-description {
-    font-size: 12px;
-    padding: 3px 10px;
-    width: 500px;
-  }
-
-  .calendar-event-location {
-    font-size: 12px;
-    padding: 3px 10px;
-    font-style: italic;
-  }
-
 }
 
-.calendar-title > a {
-  font-family: sans-serif;
-  font-size: 22px;
-  text-decoration: none;
-  color: black;
+.calendar-time {
   padding: 10px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
 
-  &:hover {
-    color: rgb(14, 53, 226);
-  }
+.calendar-title {
+  @include hover-blue;
+  font-size: 22px;
+  padding: 10px;
+}
+
+.calendar-rsvp-flex {
+  @include flex-row-space-between;
 }
 
 .calendar-attendee-box {
@@ -54,76 +30,53 @@
   flex-wrap: wrap;
   padding: 12px;
   max-width: 450px;
-
-  .calendar-attendee-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 15px;
-    margin-right: 8px;
-  }
-
 }
 
-.calendar-rsvp-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .calendar-rsvp-button {
-    background-color: $meetup-red;
-    color: #fff;
-    border-color: $meetup-red;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    width: 90px;
-    margin: 8px;
-    text-align: center;
-
-    &:hover {
-      background-color: $red-hover;
-    }
-  }
+.calendar-attendee-pic {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  margin: 5px;
 }
 
-.calendar-no-events-box {
-  border: 1px solid #ccc;
-  margin: 14px 0 14px 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 3px;
-}
-
-.calendar-create-event {
-  background-color: rgb(182, 14, 24);
-  color: #fff;
-  border-color: $meetup-red;
-  padding: 15px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
-
-  margin: 15px 0px;
-
-  &:hover {
-    background-color: $meetup-red;
-  }
+.calendar-rsvp-button {
+  @include signup-button;
+  font-weight: bold;
+  padding: 10px 12px;
+  border-radius: 4px;
+  width: 70px;
+  margin: 0 12px;
+  text-align: center;
 }
 
 .calendar-going-box {
-  display: flex;
-  justify-content: space-between;
-
-  .calendar-count-going {
-    margin-right: 40px;
-  }
+  @include flex-column-start;
 }
 
-.calendar-display-no-events {
+.calendar-event-location {
+  font-size: 13px;
+  padding: 3px 10px;
+  font-style: italic;
+}
+
+.calendar-event-description {
+  font-size: 15px;
+  padding: 3px 10px;
+  width: 450px;
+}
+
+.calendar-count-going {
   margin-top: 12px;
+}
+
+// Media query
+@media screen and (max-width: 730px) {
+  .calendar-box-on-group {
+    width: 400px;
+    height: auto;
+  }
+
+  .location-description {
+    display: none;
+  }
 }

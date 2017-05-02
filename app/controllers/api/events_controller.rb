@@ -1,7 +1,7 @@
 class Api::EventsController < ApplicationController
 
   def index
-    @events = Event.order('time DESC').limit(10)
+    @events = Event.order('RANDOM()').limit(10)
   end
 
   def show
