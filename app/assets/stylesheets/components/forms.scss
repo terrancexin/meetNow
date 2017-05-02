@@ -45,6 +45,7 @@
 .modal-login {
   height: 385px;
 }
+
 .modal-signup {
   height: 475px;
 }
@@ -123,5 +124,32 @@ input[type='date'] {
     &:hover {
       background-color: $blue-hover;
     }
+  }
+}
+
+
+// Media query
+@media screen and (max-width: 450px) {
+  .form-header {
+    @include flex-column-start;
+    border-bottom: 1px solid lightgray;
+    font-size: 15px;
+    color: $meetup-red;
+    padding: 10px;
+  }
+
+  .modal-container {
+    top: 20px;
+    left: 0;
+    height: 380px;
+    width: 400px;
+  }
+
+  .modal-signup {
+    height: 440px;
+  }
+
+  .modal-login {
+    height: 350px;
   }
 }

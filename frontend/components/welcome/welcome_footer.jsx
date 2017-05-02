@@ -66,7 +66,7 @@ class WelcomeFooter extends React.Component {
 
         <Modal
           overlayClassName='modal-overlay'
-          className={`modal-container-${this.state.modalType}`}
+          className={`modal-container modal-${this.state.modalType}`}
           isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}
           contentLabel="header-modals">

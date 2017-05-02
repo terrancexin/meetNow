@@ -10,7 +10,7 @@ class WelcomeExplore extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='explore-box'>
         <h3 className='welcome-explore-header'>Explore</h3>
         <div className='welcome-explore-below-header'>
           <section className='explore-first-section'>
@@ -18,25 +18,25 @@ class WelcomeExplore extends React.Component {
             <label className='explore-pic-wrapper'>
               <Link to='/explore/fitness' className='explore-pic-links'>
                 <img className='explore-pics' src="https://s3.amazonaws.com/meetnow-DEV/category/fitness.png" />
-              </Link><p>Fitness</p>
+              </Link><p className='category-name'>Fitness</p>
             </label>
 
             <label className='explore-pic-wrapper'>
               <Link to='/explore/music' className='explore-pic-links'>
                 <img className='explore-pics' src="https://s3.amazonaws.com/meetnow-DEV/category/music.png" />
-              </Link><p>Music</p>
+              </Link><p className='category-name'>Music</p>
             </label>
 
             <label className='explore-pic-wrapper'>
               <Link to='/explore/culture' className='explore-pic-links'>
                 <img className='explore-pics' src="https://s3.amazonaws.com/meetnow-DEV/category/culture.png" />
-              </Link><p>Culture</p>
+              </Link><p className='category-name'>Culture</p>
             </label>
 
             <label className='explore-pic-wrapper'>
               <Link to='/explore/tech' className='explore-pic-links'>
                 <img className='explore-pics' src="https://s3.amazonaws.com/meetnow-DEV/category/tech.png" />
-              </Link><p>Tech</p>
+              </Link><p className='category-name'>Tech</p>
             </label>
 
           </section>
@@ -46,25 +46,25 @@ class WelcomeExplore extends React.Component {
             <label className='explore-pic-wrapper'>
               <Link to='/explore/art' className='explore-pic-links'>
                 <img className='explore-pics' src="https://s3.amazonaws.com/meetnow-DEV/category/art.png" />
-              </Link><p>Art</p>
+              </Link><p className='category-name'>Art</p>
             </label>
 
             <label className='explore-pic-wrapper'>
               <Link to='/explore/dance' className='explore-pic-links'>
                 <img className='explore-pics' src="https://s3.amazonaws.com/meetnow-DEV/category/dance.png" />
-              </Link><p>Dance</p>
+              </Link><p className='category-name'>Dance</p>
             </label>
 
             <label className='explore-pic-wrapper'>
               <Link to='/explore/health' className='explore-pic-links'>
                 <img className='explore-pics' src="https://s3.amazonaws.com/meetnow-DEV/category/health.png" />
-              </Link><p>Health</p>
+              </Link><p className='category-name'>Health</p>
             </label>
 
             <label className='explore-pic-wrapper'>
               <Link to='/explore/game' className='explore-pic-links'>
                 <img className='explore-pics' src="https://s3.amazonaws.com/meetnow-DEV/category/game.png" />
-              </Link><p>Game</p>
+              </Link><p className='category-name'>Game</p>
             </label>
 
           </section>
@@ -75,8 +75,6 @@ class WelcomeExplore extends React.Component {
 
   }
 }
-
-// export default WelcomeExplore;
 
 const mapStatetoProps = state => ({
   filterName: state.groups

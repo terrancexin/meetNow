@@ -112,7 +112,7 @@
   margin-left: 15px;
 }
 
-
+// Media query
 @media screen and (max-width: 760px) {
   .new-group-button {
     display: none;
@@ -120,6 +120,11 @@
 
   .header-mid {
     width: 40%;
+  }
+
+  .welcome-msg {
+    font-size: 14px;
+    min-width: 105px;
   }
 }
 
