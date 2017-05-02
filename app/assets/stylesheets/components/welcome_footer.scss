@@ -28,3 +28,11 @@
 .copyright {
   padding: 3px 0;
 }
+
+@media screen and (max-width: 400px) {
+  .footer-button,
+  .join-group,
+  .copyright {
+    font-size: 12px;
+  }
+}

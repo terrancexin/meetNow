@@ -55,7 +55,8 @@
 @media screen and (max-width: 610px) {
   .love-something {
     font-size: 30px;
-    margin-top: 90px;
+    margin-top: 180px;
+    color: $meetup-red;
   }
 
   .video-button {
@@ -64,6 +65,11 @@
   }
 
   .video-div {
-    left: -900px;
+    display: none;
+  }
+
+  .cover-video {
+    background-image: url('https://s3.amazonaws.com/meetnow-DEV/meetNow/mobile-photo.png');
+    background-position: center;
   }
 }
