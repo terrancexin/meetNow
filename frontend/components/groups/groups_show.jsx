@@ -226,7 +226,7 @@ class GroupsShow extends React.Component {
 
         <Modal
           overlayClassName='modal-overlay'
-          className='modal-container large-modal'
+          className='modal-container event-modal-size'
           isOpen={this.state.modalType === "event"}
           onRequestClose={this.closeModal}
           contentLabel="event-modal">
