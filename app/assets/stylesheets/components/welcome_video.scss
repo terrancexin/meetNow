@@ -1,3 +1,7 @@
+@import 'base/flexbox';
+@import 'base/buttons';
+@import 'base/web-placeholder';
+
 .welcome-vid {
   background-color: rgba(0, 0, 0, 0.25);
 }
@@ -12,31 +16,15 @@
 }
 
 .video-letters-box {
+  @include flex-column-start;
   z-index: 0;
   height: 430px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   color: white;
 }
 
 .love-something {
   font-size: 75px;
   margin-top: 70px;
-}
-
-
-@mixin signup-button {
-  background-color: $meetup-red;
-  border-color: $meetup-red;
-  color: white;
-  padding: 10px 25px;
-  margin: 0 14px 0 20px;
-
-  &:hover {
-    background-color: $red-hover;
-  }
 }
 
 .video-button {
@@ -49,22 +37,14 @@
   margin-top: 70px;
 }
 
-
 // Media query
 @media screen and (max-width: 910px) {
   .love-something {
     font-size: 50px;
-    margin-top: 70px;
   }
 
   .video-button {
-    @include signup-button;
     font-size: 15px;
-    padding: 10px 0;
-    min-width: 200px;
-    border-radius: 2px;
-    text-align: center;
-    margin-top: 70px;
   }
 
   .video-div {
@@ -79,12 +59,7 @@
   }
 
   .video-button {
-    @include signup-button;
-    font-size: 15px;
-    padding: 10px 0;
     min-width: 200px;
-    border-radius: 2px;
-    text-align: center;
     margin-top: 50px;
   }
 

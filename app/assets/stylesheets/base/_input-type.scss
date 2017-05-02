@@ -1,0 +1,14 @@
+@mixin input-type {
+  padding: 8px 4px;
+  font-size: 15px;
+  background-color: rgb(250, 255, 189);
+  margin-bottom: 20px;
+  border-radius: 3px;
+  border-style: none;
+  border: 1px solid #aaa;
+	cursor: text;
+
+  &:focus {
+    outline: none;
+  }
+}

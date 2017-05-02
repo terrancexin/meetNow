@@ -1,23 +1,9 @@
-@mixin flex-row-center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@mixin hover-blue {
-  &:hover {
-    color: $link-blue;
-  }
-}
-
-@mixin hover-red {
-  &:hover {
-    color: $meetup-red;
-  }
-}
+@import 'base/flexbox';
+@import 'base/buttons';
+@import 'base/web-placeholder';
 
 .footer-buttons {
-  @include flex-row-center;
+  @include flex-row-space-between;
   background-color: black;
   text-align: center;
   height: 15px;

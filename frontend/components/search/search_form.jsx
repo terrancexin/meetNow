@@ -5,32 +5,35 @@ import { connect } from 'react-redux';
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: this.props.category || '' };
+    this.state = { name: this.props.category || '', selected: 'groups' };
     this.updateSearch = this.updateSearch.bind(this);
   }
 
+  toggleSelected(selected) {
+    return () => { this.setState({ selected }) };
+  }
+
   updateSearch(e) {
-    // this.setState({[field]: event.currentTarget.value});
     this.setState({name: e.currentTarget.value});
     this.props.fetchAllGroups(e.currentTarget.value);
   }
 
-
   render() {
+    const groupsClass = this.state.selected === 'groups' ? 'groups-button' : 'calendar-button';
+    const calendarClass = this.state.selected === 'calendar' ? 'groups-button' : 'calendar-button';
+
     return(
       <div className='search-bar'>
         <div className='search-bar-left'>
           <input className='search-input' type='text' placeholder='e.g. tech' value={this.state.name} onChange={this.updateSearch} />
-          <img className='search-icon' src="https://s3.amazonaws.com/meetnow-DEV/meetNow/searchicon.png" alt="search-icon" />
+          <i id='search-icon' className="fa fa-search fa-2x" aria-hidden="true"></i>
           <div className='within-miles'>within 25 miles by location</div>
         </div>
 
         <div className='search-bar-right'>
-          <button onClick={this.props.toggleCalendar} className='groups-button'>Groups</button>
-          <button onClick={this.props.toggleCalendar} className='calendar-button'>Calendar</button>
+          <button onClick={this.toggleSelected('groups')} className={groupsClass}>Groups</button>
+          <button onClick={this.toggleSelected('calendar')} className={calendarClass}>Calendar</button>
         </div>
-
-
       </div>
     );
   }

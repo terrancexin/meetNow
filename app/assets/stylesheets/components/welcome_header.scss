@@ -1,48 +1,7 @@
-@mixin flex-row-center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@mixin flex-row-start {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-@mixin flex-row-end {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-@mixin button-margin-left {
-  margin-left: 10px;
-}
-
-@mixin signup-button {
-  background-color: $meetup-red;
-  border-color: $meetup-red;
-  color: white;
-  padding: 10px 25px;
-  margin: 0 14px 0 20px;
-  min-width: 105px;
-  &:hover {
-    background-color: $red-hover;
-  }
-}
-
-@mixin hover-blue {
-  &:hover {
-    color: $link-blue;
-  }
-}
-
-@mixin hover-red {
-  &:hover {
-    color: $red-hover;
-  }
-}
+@import 'base/flexbox';
+@import 'base/buttons';
+@import 'base/colors';
+@import 'base/web-placeholder';
 
 .header-mid,
 .header-logo-name {
@@ -55,7 +14,7 @@
 }
 
 .welcome-header {
-  @include flex-row-center;
+  @include flex-row-space-between;
   background-color: white;
   z-index: 1;
   position: relative;

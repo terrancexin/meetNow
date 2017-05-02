@@ -1,3 +1,5 @@
+@import 'base/input-type';
+
 .modal-container {
   position: absolute;
   top: 20px;
@@ -101,13 +103,7 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type='date'] {
-  padding: 8px 4px;
-  font-size: 15px;
-  background-color: rgb(250, 255, 189);
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border-style: none;
-  border: 1px solid #aaa;
+  @include input-type;
 }
 
 .group-form-inputs-box {

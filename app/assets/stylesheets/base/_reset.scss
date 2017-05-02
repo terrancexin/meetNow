@@ -32,58 +32,37 @@ button {
 	font-size: 16px;
 }
 
-input[type="password"],
-input[type="email"],
-input[type="text"],
 input[type="submit"],
-textarea,
 button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
 	cursor: pointer;
+
 	&:focus {
 		outline: none;
 	}
 }
 
-input[type="submit"] {
-  background-color: $meetup-red;
-  color: white;
-  border-color: $meetup-red;
-  padding: 11px 18px;
-  border-radius: 3px;
+input[type='submit'] {
+	background-color: $meetup-red;
+	color: white;
+	border-color: $meetup-red;
+	padding: 11px 18px;
+	border-radius: 3px;
 	font-weight: 400;
 	font-size: 16px;
 	margin-right: 15px;
 	margin-top: 15px;
 	width: 99px;
+	font-family: 'Lato', sans-serif;
 
 	&:hover {
 		background-color: $red-hover;
 	}
 }
 
-::-webkit-input-placeholder {
-   font-style: italic;
-	 font-size: 14px;
-}
-:-moz-placeholder {
-   font-style: italic;
-	 font-size: 14px;
-}
-::-moz-placeholder {
-   font-style: italic;
-	 font-size: 14px;
-}
-:-ms-input-placeholder {
-   font-style: italic;
-	 font-size: 14px;
-}
-
 ::-webkit-inner-spin-button { display: none; }
-
 
 a {
 	color: black;
