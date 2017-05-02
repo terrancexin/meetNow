@@ -151,6 +151,11 @@
   width: auto;
 }
 
+#map-container {
+  height: 100%;
+  width: 100%;
+}
+
 // Media query
 @media screen and (max-width: 802px) {
   .group-name {

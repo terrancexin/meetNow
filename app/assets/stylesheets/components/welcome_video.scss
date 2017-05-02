@@ -61,8 +61,8 @@
 
 @media screen and (max-width: 450px) {
   .love-something {
-    font-size: 25px;
-    margin-top: 180px;
+    font-size: 28px;
+    margin: 50px 0;
     color: $meetup-red;
   }
 
@@ -70,7 +70,7 @@
     min-width: 200px;
     margin-top: 50px;
   }
-  
+
   .video-div {
     display: none;
   }
