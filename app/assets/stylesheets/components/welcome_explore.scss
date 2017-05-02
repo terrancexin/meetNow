@@ -48,7 +48,7 @@
   margin-bottom: 20px;
 }
 
-@media screen and (max-width: 1000px ) {
+@media screen and (max-width: 1000px) {
   .explore-first-section,
   .explore-second-section {
     flex-wrap: wrap;
@@ -58,5 +58,11 @@
   .explore-pics {
     width: 350px;
     height: 236px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .welcome-explore-below-header {
+    padding: 0;
   }
 }

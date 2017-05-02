@@ -60,12 +60,10 @@
 }
 
 @media screen and (max-width: 630px) {
-  #search-icon,
-  .search-input {
-    display: none;
-  }
-
   .search-bar {
-    @include flex-row-center;
+    @include flex-column-center;
+    flex-direction: column-reverse;
+    height: auto;
+    padding-top: 10px;
   }
 }

@@ -68,7 +68,17 @@
   color: white;
   font-size: 20px;
   position: absolute;
-  font-weight: bold;
+  font-weight: 500;
   top: 60px;
   left: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .group-banner {
+    font-size: 15px;
+  }
+
+  .sum-group {
+    font-size: 12px;
+  }
 }

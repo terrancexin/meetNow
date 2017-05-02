@@ -36,7 +36,7 @@ class GroupsIndex extends React.Component {
           <div className='sum-group'>{countAllGroups} interesting groups nearby. Go MeetNow!</div>
         </div>
 
-        <SearchBar toggleCalendar={this.toggleCalendar}/>
+        <SearchBar toggleCalendar={this.toggleCalendar} />
 
         { !this.state.calendar &&
           <ul className='group-index-wrapper'>

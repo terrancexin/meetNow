@@ -69,14 +69,14 @@
 
 .nav-links-box {
   @include flex-row-end;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .nav-link-button {
   margin-top: 12px;
   font-size: 13px;
   margin-left: 5px;
-  font-weight: bold;
+  font-weight: 500;
   color: $link-blue;
 }
 
@@ -87,7 +87,7 @@
   flex-direction: column;
   margin: 18px;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .name-box,
@@ -137,9 +137,9 @@ input[type='date'] {
 
   .modal-container {
     top: 20px;
-    left: 0;
+    left: 7px;
     height: 380px;
-    width: 400px;
+    width: 360px;
   }
 
   .modal-signup {

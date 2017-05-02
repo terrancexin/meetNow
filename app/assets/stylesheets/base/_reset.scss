@@ -14,7 +14,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
 	vertical-align: baseline;
 	list-style: none;
 }
@@ -55,7 +55,7 @@ input[type='submit'] {
 	margin-right: 15px;
 	margin-top: 15px;
 	width: 99px;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Roboto', sans-serif;
 
 	&:hover {
 		background-color: $red-hover;
