@@ -13,8 +13,6 @@ class Welcome extends React.Component {
   render() {
     return (
       <div className='welcome-container'>
-
-
         <div className="welcome-vid">
           <WelcomeVideo />
         </div>
@@ -22,8 +20,6 @@ class Welcome extends React.Component {
         <div className="explore-div">
           <WelcomeExplore />
         </div>
-
-
       </div>
     );
   }
