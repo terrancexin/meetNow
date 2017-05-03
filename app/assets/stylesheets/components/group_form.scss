@@ -1,0 +1,147 @@
+@import 'base/flexbox';
+@import 'base/buttons';
+@import 'base/colors';
+
+.group-form-header {
+  @include flex-column-center-center;
+  background-color: $meetup-red;
+  width: 100%;
+  padding: 25px 0;
+}
+
+.group-form-header-title {
+  @include flex-column-center-center;
+  color: white;
+  font-size: 45px;
+}
+
+.group-form-header-p {
+  margin-top: 20px;
+  font-size: 16px;
+  color: rgba(255,255,255,.7);
+}
+
+.new-group-container {
+  @include flex-column-center;
+  margin: 0 auto;
+}
+
+.step:first-of-type {
+  border: none;
+}
+
+.step {
+  @include flex-column;
+  border-top: 1px solid $cancel-gray;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+}
+
+.step-button {
+  @include next-button;
+}
+
+.cancel-button {
+  @include cancel-button;
+}
+
+.new-group-form {
+  @include flex-column-center-center;
+  align-text: left;
+  padding: 20px 50px;
+}
+
+.group-form-question {
+  align-items: center;
+  display: flex;
+  font-size: 28px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.step input {
+  display: flex;
+  background-color: white;
+  font-size: 16px;
+  line-height: 28px;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  letter-spacing: 1px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.new-group-form {
+  input[type='submit'] {
+  	background-color: $meetup-red;
+  	color: white;
+  	border-color: $meetup-red;
+  	padding: 11px 18px;
+  	border-radius: 3px;
+  	font-weight: 400;
+  	font-size: 16px;
+  	margin-right: 15px;
+  	width: 150px;
+  	font-family: 'Roboto', sans-serif;
+    margin-bottom: 15px;
+
+    &:hover {
+      background-color: $red-hover;
+    }
+  }
+}
+
+.group-flash-error {
+  color: $error;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.group-errors-box {
+  width: 614px;
+}
+
+// Media query
+@media screen and (max-width: 750px) {
+  .group-form-header-title {
+    font-size: 25px;
+  }
+
+  .group-form-header-p {
+    font-size: 13px;
+  }
+
+  .group-form-question {
+    font-size: 14px;
+  }
+
+  .cancel-button {
+    font-size: 11px;
+    padding: 7px;
+  }
+
+  .group-flash-error {
+    font-size: 13px;
+  }
+
+  .group-errors-box {
+    width: 357px;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .group-errors-box {
+    width: 95%;
+    padding: 5px;
+  }
+
+  .group-flash-error {
+    font-size: 13px;
+  }
+
+  .new-group-form {
+    padding: 5px;
+  }
+}

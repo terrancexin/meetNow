@@ -6,12 +6,16 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 // Components
 import App from './app';
 import Welcome from './welcome/welcome';
-import GroupsIndex from './groups/groups_index';
-import GroupsShow from './groups/groups_show';
-import EventsIndex from './events/events_index';
-import EventShow from './events/event_show';
 import ExplorePage from './explore/explore_page';
 import ProfilePage from './profile/profile_page';
+
+import GroupsIndex from './groups/groups_index';
+import GroupsShow from './groups/groups_show';
+import GroupForm from './groups/group_form';
+
+import EventsIndex from './events/events_index';
+import EventShow from './events/event_show';
+
 
 const Root = ({ store }) => {
 
@@ -22,6 +26,7 @@ const Root = ({ store }) => {
           <IndexRoute component={Welcome} />
           <Route path='explore/:category' component={ExplorePage} />
           <Route path='groups' component={GroupsIndex} />
+          <Route path='new-group' component={ GroupForm } />
           <Route path='groups/:groupId' component={GroupsShow}>
               <Route path='events/:eventId' component={EventShow}/>
           </Route>

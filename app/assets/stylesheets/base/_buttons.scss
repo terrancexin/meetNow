@@ -38,3 +38,30 @@
     background-color: #eee;
   }
 }
+
+@mixin next-button {
+  background-color: $meetup-red;
+  border-color: $meetup-red;
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 10px 0;
+  color: white;
+  width: 16%;
+  text-align: center;
+
+  &:hover {
+    background-color: $red-hover;
+  }
+}
+
+@mixin cancel-button {
+  background-color: $cancel-gray;
+  color: white;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 10px;
+
+  &:hover {
+    background-color: $hover-gray;
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link, hashHistory, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 
@@ -37,13 +37,17 @@ class WelcomeHeader extends React.Component {
   }
 
   toggleCreateGroup(formType) {
-    return (
-      <button
-        onClick={this.handleModalOpen(formType)}
-        className='new-group-button'
-        >Create a Group
-      </button>
-    );
+    if (formType === 'createGroup') {
+      return <Link to='/new-group' className='new-group-button'>Create a Group</Link>
+    } else {
+      return (
+        <button
+          onClick={this.handleModalOpen(formType)}
+          className='new-group-button'
+          >Create a Group
+        </button>
+      );
+    }
   }
 
   handleProfile() {
