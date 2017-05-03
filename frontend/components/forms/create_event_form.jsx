@@ -47,24 +47,24 @@ class CreateEventForm extends React.Component {
     return (
       <div className='modal-form-container'>
         <div className='form-header'>
-          <h1 className='group-form-header'>Create an Event</h1>
+          <h1 className='event-form-header'>Create an Event</h1>
         </div>
         <Errors errors={ this.props.errors } />
 
         <form className='create-group-form' onSubmit={this.handleSubmit}>
           <div className='group-form-inputs-box'>
             <label>Name</label>
-            <input type='text' value={this.state.name} onChange={this.handleName}/>
+            <input type='text' value={this.state.name} onChange={this.handleName} placeholder='React Party #271'/>
 
             <label>Description</label>
-            <input type='text' value={this.state.description} onChange={this.handleDescription}/>
+            <input type='text' value={this.state.description} onChange={this.handleDescription} placeholder='Everybody Redux!'/>
 
             <label>Date</label>
-            <input type='date' value={this.state.time} onChange={this.handleTime}/>
+            <input type='date' value={this.state.time} onChange={this.handleTime} value="2017-05-05" />
 
 
             <label>Location</label>
-            <input type='text' value={this.state.location} onChange={this.handleLocation}/>
+            <input type='text' value={this.state.location} onChange={this.handleLocation} placeholder='New York, NY'/>
 
             <input type='submit' value="Create"/>
           </div>

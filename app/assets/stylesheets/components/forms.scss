@@ -19,6 +19,14 @@
   border: 1px solid lightgray;
 }
 
+.event-form-header {
+  @include flex-column-center-center;
+  background-color: $meetup-red;
+  width: 100%;
+  padding: 25px 0;
+  color: white;
+}
+
 .modal-overlay {
   position: fixed;
   overflow-y: scroll;
