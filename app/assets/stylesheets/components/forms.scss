@@ -38,7 +38,10 @@
   background: rgba(204, 204, 204, 0.85);
 }
 
-.modal-createEvent,
+.modal-createEvent {
+  height: 570px;
+}
+
 .modal-createGroup {
   height: 520px;
 }
