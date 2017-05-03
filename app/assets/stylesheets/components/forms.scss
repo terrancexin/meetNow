@@ -1,4 +1,7 @@
 @import 'base/input-type';
+@import 'base/flexbox';
+@import 'base/colors';
+@import 'base/buttons';
 
 .modal-container {
   position: absolute;
@@ -27,19 +30,6 @@
   background: rgba(204, 204, 204, 0.85);
 }
 
-@mixin flex-column-start {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-@mixin flex-row-end {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 .modal-createEvent,
 .modal-createGroup {
   height: 520px;
@@ -54,7 +44,7 @@
 }
 
 .form-header {
-  @include flex-column-start;
+  @include flex-column-start-start;
   border-bottom: 1px solid lightgray;
   font-size: 18px;
   color: $meetup-red;
@@ -83,8 +73,7 @@
 .signup-form,
 .login-form,
 .create-group-form {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   margin: 18px;
   font-size: 13px;
   font-weight: 500;
@@ -93,8 +82,7 @@
 .name-box,
 .email-address-box,
 .password-box {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   label {
     margin-bottom: 3px;
   }
@@ -143,10 +131,10 @@ input[type='date'] {
   }
 
   .modal-signup {
-    height: 440px;
+    height: 450px;
   }
 
   .modal-login {
-    height: 350px;
+    height: 360px;
   }
 }

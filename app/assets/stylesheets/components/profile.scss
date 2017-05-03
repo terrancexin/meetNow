@@ -1,11 +1,12 @@
+@import 'base/layout';
+
 .header-right {
   position: relative;
   transition: all 0.3s ease 0s;
-
-    .profile-form-box {
-      visibility: visible;
-      opacity: 1;
-    }
+  .profile-form-box {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .profile-form-box {
@@ -21,10 +22,7 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
-
   box-shadow: rgba(0,0,0,0.54) 0 3px 8px 0;
-
-
 }
 
 .profile-buttons-box {
@@ -47,7 +45,6 @@
     background-color: $meetup-red;
     color: white;
   }
-
 }
 
 .welcome-msg {
@@ -55,118 +52,131 @@
 }
 
 
+// Profile Page
 .profile-page-container {
+  @include flex-center;
   margin-top: 6px;
   border-top: 1px solid lightgray;
-  // width: 100%;
+}
+
+.profile-page-box {
+  @include flex-space-between;
+  @include border-gray;
+  // max-width: 1000px;
+  margin: 10px;
+}
+
+.profile-group-member-count {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px 0 20px 14px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+  width: 600px;
+}
+
+.profile-right-section{
+  margin-right: 14px;
+  margin-top: 14px;
+  height: 250px;
+  img {
+    width: 250px;
+    height: 250px;
+    border-radius: 4px;
+  }
+}
+
+.profile-group-members-count {
+  margin: 10px 0;
+}
+
+.group-name-member-count {
+  margin: 0 15px;
+  label {
+    font-weight: 500;
+    cursor: pointer;
+  }
+}
+
+.profile-group-thumb {
+  border-radius: 4px;
+}
+
+.profile-groups-box {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+  border-style: dotted;
+  padding-right: 40px;
+  margin-right: 40px;
+  width: 240px;
+}
 
 
+.profile-groups {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 14px;
+  width: 700px;
+  a {
+    @include hover-blue;
+  }
+}
+
+.profile-left-section {
+  @include flex-column;
+  margin: 14px 0;
+}
+
+.profile-name {
+  font-size: 30px;
+  font-weight: 500;
+  padding: 0 0 5px 14px;
+  border-bottom: 1px solid lightgray;
+  width: 600px;
+}
+
+.profile-location {
+  padding: 20px 0 5px 14px;
+}
+
+.profile-city {
+  padding: 5px 0 5px 14px;
+}
+
+.profile-bio {
+  margin-top: 80px;
+  padding: 0 0 25px 14px;
+  border-bottom: 1px solid lightgray;
+  width: 600px;
+}
+
+
+// Media query
+@media screen and (max-width: 750px) {
   .profile-page-box {
-    max-width: 1000px;
+    @include flex-column-start-start;
+    flex-direction: column-reverse;
+    text-align: center;
+    margin: 0 auto;
+  }
 
-    border: 1px solid lightgray;
-    margin: 10px;
-    display: flex;
-    justify-content: space-between;
+  .profile-right-section {
+    margin: 12px auto;
+  }
 
-    .profile-left-section {
-      display: flex;
-      flex-direction: column;
-      margin: 14px 0;
-      // margin-right: 30px;
-      // width: 100%;
+  .profile-left-section {
+    @include flex-column-center-center;
+  }
 
-      .profile-name {
-        font-size: 30px;
-        font-weight: 500;
-        padding: 0 0 5px 14px;
-        border-bottom: 1px solid lightgray;
-        width: 600px;
-      }
+  .profile-bio {
+    margin: 5px auto;
+    width: 370px;
+  }
 
-      .profile-location {
-        padding: 20px 0 5px 14px;
-      }
-
-      .profile-city {
-        padding: 5px 0 5px 14px;
-      }
-
-      .profile-bio {
-        margin-top: 80px;
-        padding: 0 0 25px 14px;
-        border-bottom: 1px solid lightgray;
-        width: 600px;
-
-      }
-
-      .profile-group-member-count {
-        font-size: 30px;
-        font-weight: 500;
-        margin: 20px 0 20px 14px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid lightgray;
-        width: 600px;
-
-      }
-
-      .profile-groups {
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: 14px;
-        width: 700px;
-
-        a {
-          text-decoration: none;
-          color: black;
-
-          &:hover {
-            color: $blue-hover;
-          }
-        }
-
-        .profile-groups-box {
-          display: flex;
-          align-items: center;
-          padding-bottom: 10px;
-          border-bottom: 1px solid gray;
-          border-style: dotted;
-          padding-right: 40px;
-          margin-right: 40px;
-          width: 240px;
-
-          .profile-group-thumb {
-            border-radius: 4px;
-          }
-
-          .group-name-member-count {
-            margin: 0 15px;
-
-            label {
-              font-weight: 500;
-              cursor: pointer;
-            }
-
-            .profile-group-members-count {
-              margin: 10px 0;
-            }
-          }
-        }
-      }
-    }
-
-    .profile-right-section{
-      margin-right: 14px;
-      margin-top: 14px;
-      height: 250px;
-
-      img {
-        width: 250px;
-        height: 250px;
-        border-radius: 4px;
-      }
-    }
+  .profile-groups {
+    margin: 5px auto;
+    width: 370px;
   }
 }

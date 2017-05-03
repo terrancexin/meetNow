@@ -8,7 +8,6 @@ import Modal from 'react-modal';
 import CreateGroupForm from '../forms/create_group_form';
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
-import ProfileModal from '../forms/profile_modal';
 
 class WelcomeHeader extends React.Component {
   constructor(){
@@ -16,7 +15,7 @@ class WelcomeHeader extends React.Component {
     this.state = { modalOpen: false, modalType: "", profile: false };
     this.closeModal = this.closeModal.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
-    
+
     this.handleLogout = this.handleLogout.bind(this);
     this.toggleCreateGroup = this.toggleCreateGroup.bind(this);
     this.toggleProfileView = this.toggleProfileView.bind(this);

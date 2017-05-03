@@ -26,10 +26,10 @@ class ProfilePage extends React.Component {
       const userDetail = this.props.userDetail
       const userDetailGroups = Object.values(this.props.userDetail.groups)
       const fullName = userDetail.first_name.concat(` ${userDetail.last_name}`);
+      
       return (
         <div className='profile-page-container'>
           <div className='profile-page-box'>
-
             <div className='profile-left-section'>
               <div className='profile-name'>{fullName}</div>
               <div className='profile-location'>Location:</div>
