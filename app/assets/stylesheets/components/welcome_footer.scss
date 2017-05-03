@@ -8,25 +8,26 @@
   text-align: center;
   height: 15px;
   padding: 20px;
-  color: white;
+}
 
-  a {
-    @include hover-red;
-    color: white;
+.join-group,
+.footer-button,
+.footer-links-icon {
+  color: white;
+  &:hover {
+    color: $red-hover;
+    font-weight: 500;
   }
 }
 
-.footer-button,
-.footer-icons {
-  @include hover-red;
-  a {
-    font-size: 20px;
-    padding-top: 5px;
-  }
+.footer-links-icon {
+  font-size: 20px;
 }
 
 .copyright {
+  color: white;
   padding: 3px 0;
+  font-size: 14px;
 }
 
 .fa-globe,

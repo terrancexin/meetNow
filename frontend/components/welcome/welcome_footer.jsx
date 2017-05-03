@@ -54,10 +54,10 @@ class WelcomeFooter extends React.Component {
         <Link to='/groups' className='join-group'>Join a Group</Link>
         <div className='footer-icon-box'>
             <div className="footer-icons">
-              <Link href="https://www.terrancexin.com" title="www" target="_blank"><i className="fa fa-globe"></i></Link>
-              <Link href="https://github.com/terrancexin/meetNow" title="github" target="_blank"><i className="fa fa-github"></i></Link>
-              <Link href="https://www.linkedin.com/in/terrancexin/" title="linkedin" target="_blank" ><i className="fa fa-linkedin"></i></Link>
-              <Link href="https://angel.co/terrancexin" title="angellist" target="_blank" ><i className="fa fa-angellist"></i></Link>
+              <Link className='footer-links-icon' href="https://www.terrancexin.com" title="www" target="_blank"><i className="fa fa-globe"></i></Link>
+              <Link className='footer-links-icon' href="https://github.com/terrancexin/meetNow" title="github" target="_blank"><i className="fa fa-github"></i></Link>
+              <Link className='footer-links-icon' href="https://www.linkedin.com/in/terrancexin/" title="linkedin" target="_blank" ><i className="fa fa-linkedin"></i></Link>
+              <Link className='footer-links-icon' href="https://angel.co/terrancexin" title="angellist" target="_blank" ><i className="fa fa-angellist"></i></Link>
            </div>
            <div className='copyright'>&copy; 2017 Built by Terrance Xin</div>
         </div>

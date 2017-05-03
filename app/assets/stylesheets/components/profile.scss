@@ -160,6 +160,7 @@
     flex-direction: column-reverse;
     text-align: center;
     margin: 0 auto;
+    border: none;
   }
 
   .profile-right-section {
@@ -168,15 +169,20 @@
 
   .profile-left-section {
     @include flex-column-center-center;
+    width: 370px;
+  }
+
+  .profile-name,
+  .profile-bio,
+  .profile-group-member-count,
+  .profile-groups {
+    margin: 5px 0;
+    width: 370px;
+    border: none;
   }
 
   .profile-bio {
-    margin: 5px auto;
-    width: 370px;
-  }
-
-  .profile-groups {
-    margin: 5px auto;
-    width: 370px;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
   }
 }
