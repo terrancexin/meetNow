@@ -1,4 +1,5 @@
 import React from 'react';
+import { hashHistory } from 'react-router';
 import Errors from '../errors/errors';
 import { signup, clearSessionErrors } from '../../actions/session_actions';
 import { connect } from 'react-redux';
@@ -21,7 +22,10 @@ class SignUpForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.signup(user).then(() => this.props.closeModal());
+    this.props.signup(user).then(() => {
+      this.props.closeModal();
+      hashHistory.push('/');
+    });
   }
 
   render() {

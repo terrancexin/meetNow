@@ -1,0 +1,9 @@
+@import 'base/layout';
+
+.redirect-login-container {
+  @include border-gray;
+  width: 450px;
+  margin: 20px auto;
+  height: 350px;
+  margin-bottom: 400px;
+}

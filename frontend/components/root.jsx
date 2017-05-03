@@ -8,6 +8,7 @@ import App from './app';
 import Welcome from './welcome/welcome';
 import ExplorePage from './explore/explore_page';
 import ProfilePage from './profile/profile_page';
+import RedirectLogInForm from './forms/redirect_login_form';
 
 import GroupsIndex from './groups/groups_index';
 import GroupsShow from './groups/groups_show';
@@ -18,19 +19,33 @@ import EventShow from './events/event_show';
 
 
 const Root = ({ store }) => {
+  const _redirectIfLoggedIn = (nextState, replace) => {
+    const currentUser = store.getState().session.currentUser;
+    if (currentUser) {
+      replace('/');
+    }
+  };
+
+  const _ensureLoggedIn = (nextState, replace) => {
+    const currentUser = store.getState().session.currentUser;
+    if (!currentUser) {
+    replace('/login');
+    }
+  };
 
   return (
-    <Provider store={store}>
-      <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
-        <Route path="/" component={App}>
-          <IndexRoute component={Welcome} />
-          <Route path='explore/:category' component={ExplorePage} />
-          <Route path='groups' component={GroupsIndex} />
-          <Route path='new-group' component={ GroupForm } />
-          <Route path='groups/:groupId' component={GroupsShow}>
-              <Route path='events/:eventId' component={EventShow}/>
+    <Provider store={ store }>
+      <Router onUpdate={() => window.scrollTo(0, 0)} history={ hashHistory }>
+        <Route path="/" component={ App }>
+          <IndexRoute component={ Welcome } />
+          <Route path="/login" component={ RedirectLogInForm } onEnter={ _redirectIfLoggedIn }/>
+          <Route path='explore/:category' component={ ExplorePage } />
+          <Route path='groups' component={ GroupsIndex } />
+          <Route path='new-group' component={ GroupForm } onEnter={ _ensureLoggedIn }/>
+          <Route path='groups/:groupId' component={ GroupsShow }>
+              <Route path='events/:eventId' component={ EventShow } onEnter={ _ensureLoggedIn }/>
           </Route>
-          <Route path='profile/:id' component={ProfilePage} />
+          <Route path='profile/:id' component={ ProfilePage } />
         </Route>
       </Router>
     </Provider>
