@@ -50,8 +50,10 @@ class GroupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    window.scrollTo(0, 0)
     this.props.createGroup(this.state).then(result => {
       this.props.router.push(`groups/${result.group.id}`);
+
     });
   }
 
