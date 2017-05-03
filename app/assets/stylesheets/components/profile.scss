@@ -62,7 +62,6 @@
 .profile-page-box {
   @include flex-space-between;
   @include border-gray;
-  // max-width: 1000px;
   margin: 10px;
 }
 

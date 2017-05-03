@@ -1,0 +1,21 @@
+.modal-founderProfile {
+  width: 900px;
+  height: 410px;
+}
+
+.founder-page-container {
+  @include flex-center;
+  margin-top: 6px;
+}
+
+.founder-name {
+  font-size: 30px;
+  font-weight: 500;
+  padding: 0 0 5px 14px;
+}
+
+.founder-bio {
+  margin-top: 80px;
+  padding: 0 0 25px 14px;
+  width: 500px;
+}

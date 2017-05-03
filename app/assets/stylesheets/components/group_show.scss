@@ -36,6 +36,7 @@
   align-items: baseline;
 }
 
+.create-event-button,
 .home-button,
 .group-show-buttons {
   @include hover-red-white;

@@ -12,6 +12,7 @@ import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
 import CreateEventForm from '../forms/create_event_form';
 import GroupMap from './group_map';
+import FounderProfile from '../profile/founder_profile.jsx';
 
 class GroupsShow extends React.Component {
   constructor(props) {
@@ -109,10 +110,12 @@ class GroupsShow extends React.Component {
         'login': <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")} />,
         'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} />,
         'createEvent': <CreateEventForm closeModal={this.closeModal} />,
+        'founderProfile': <FounderProfile closeModal={this.closeModal} profileId={ this.props.loggedIn ? this.props.currentUser.id : 3034 }/>,
         'groupMap': <GroupMap latitude={this.props.group.latitude} longitude={this.props.group.longitude} closeModal={this.closeModal}/> }
 
       const { name, id, photo_url, location, users,
               founded, event_count, member_count } = this.props.group;
+
       return (
         <div className='width-setter'>
         <div className='group-show-page'>
@@ -121,8 +124,8 @@ class GroupsShow extends React.Component {
             <div className='group-header-buttons'>
               <div className='left-side-buttons'>
                 <Link className='home-button' to={`/groups/${id}`}>Home</Link>
-                <button className='group-show-buttons'>Members</button>
-                <button className='group-show-buttons' onClick={this.handleModalOpen('createEvent')}>Create an Event</button>
+                <button className='group-show-buttons' onClick={this.handleModalOpen('founderProfile')}>Founder</button>
+                <button className='create-event-button' onClick={this.handleModalOpen('createEvent')}>Create an Event</button>
               </div>
               {this.toggleJoinRsvp()}
             </div>
