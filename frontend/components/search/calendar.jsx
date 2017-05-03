@@ -13,7 +13,7 @@ class EventCalendar extends React.Component {
     if (this.props.events) {
       const eventArray = Object.keys(this.props.events).map(id => this.props.events[id]);
       return (
-        <div>
+        <div className='calendar-wrapper'>
             {
               eventArray.map(event => (
               <ul className='calendar-box-on-group' key={event.id}>
