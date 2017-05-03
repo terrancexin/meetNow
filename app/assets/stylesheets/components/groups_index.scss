@@ -13,7 +13,7 @@
 }
 
 .group-banner {
-  @include flex-column-super-center;
+  @include flex-column-center-center;
   width: 100%;
   padding: 25px 0 45px 0;
   background-color: $meetup-red;

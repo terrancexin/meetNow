@@ -129,22 +129,19 @@ class EventShow extends React.Component {
     if (this.props.event) {
       return (
         <div className='event-mid-content-box'>
-          <div className='event-show-description'>
+          <div className='event-show-left-right'>
             <div className='event-info-box'>
               <div className='event-show-name'><li>{this.props.event.name}</li></div>
               <div className='event-show-date'><li>{this.props.event.time.slice(0, 10)}</li></div>
               <div className='event-show-time'><li><i className="fa fa-clock-o fa-2x"></i>6:00 PM</li></div>
               <div className='event-show-location'><li><i className="fa fa-map-marker fa-2x"></i>{this.props.event.location}</li></div>
               <div className='event-show-map'><li><EventMap latitude={this.props.event.latitude} longitude={this.props.event.longitude}/></li></div>
-              <div className='event-show-inner-description'><li className='event-description'>{this.props.event.description}</li></div>
+              <div className='event-show-inner-description'><li className='event-show-description'>{this.props.event.description}</li></div>
             </div>
 
             <div className='event-show-right-side'>
               {this.attendButton()}
-
-
             </div>
-
         </div>
 
         <Modal

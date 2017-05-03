@@ -1,165 +1,140 @@
+@import 'base/buttons';
+@import 'base/layout';
+@import 'base/flexbox';
+
 .event-mid-content-box {
-  margin-top: 14px;
-  display: flex;
-  border: 1px solid lightgray;
-  width: 640px;
-  border-radius: 3px;
-  height: 599px;
-  margin-left: 14px;
+  @include border-gray;
+  margin: 14px 0 0 14px;
 }
 
 .event-info-box {
   border-right: 1px solid lightgray;
-  min-width: 440px;
-
+  min-height: 550px;
 }
 
 .event-show-right-side {
-  height: 100px;
-  min-width: 200px;
-  height: 100%;
-  border-radius: 4px;
+  height: 550px;
+  min-width: 160px;
+  border-radius: 3px;
   overflow: scroll;
 }
 
-.attend-event-button {
-  background-color: $meetup-red;
-  color: #fff;
-  border-color: $meetup-red;
-  padding: 11px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
-  width: 80px;
-
-  &:hover {
-    background-color: rgb(182, 14, 24);
-  }
+.rsvp-buttons-box {
+  @include flex-row-space-around;
+  @include event-show-margin-padding;
 }
 
-.event-show-name {
-  font-size: 40px;
+.attend-event-button {
+  @include signup-button;
+  min-width: 60px;
+  font-size: 14px;
+  margin: 0 5px;
+  padding: 9px;
+}
+
+.your-rsvp-text {
+  font-size: 13px;
+  font-weight: 500;
+  min-width: 70px;
 }
 
 .event-show-date {
-  margin-top: 15px;
+  margin-top: 14px;
   margin-left: 14px;
 }
 
 .event-show-time {
-  margin-left: 14px;
-
+  margin: 14px;
   li {
     font-size: 12px;
     margin-bottom: 3px;
   }
-  margin: 14px;
 }
 
 .event-show-location {
   margin: 15.5px;
-
   li {
     font-size: 12px;
   }
-
 }
 
-
 .event-show-attending {
-  font-size: 16px;
   font-weight: 500;
-  margin-left: 14px;
-  margin-bottom: 10px;
   margin: 16px 0 0 14px;
+}
 
+.event-show-left-right {
+  @include flex-row-space-between;
+  align-items: flex-start;
 }
 
 .event-show-description {
-  display: flex;
-
-  border-radius: 3px;
-  height: 100%;
-  min-width: 440px;
-  .event-description {
-    line-height: 150%;
-    font-size: 14px;
-    margin: 5px 14px;
-    padding-top: 10px;
-  }
-
-  .event-show-name {
-    margin: 12px;
-  }
+  line-height: 130%;
+  font-size: 14px;
+  margin: 14px;
 }
 
-.fa {
-  min-width: 30px;
+.event-show-name {
+  margin: 12px;
+  font-size: 20px;
+}
+
+.fa-clock-o,
+.fa-map-marker {
+  margin-right: 20px;
 }
 
 .rsvp-buttons-box-login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid lightgray;
-  margin: 14px;
-  padding: 0 0 11px 0;
-  text-align: center;
+  @include flex-row-center;
+  @include event-show-margin-padding;
 }
-
-.rsvp-buttons-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid lightgray;
-  margin: 14px;
-  padding: 0 0 11px 0;
-  text-align: center;
-}
-
-.your-rsvp-text {
-  font-size: 15px;
-  font-weight: 500;
-}
-
-
-
 
 .event-members-list {
   margin: 14px;
   max-height: 440px;
   overflow: scroll;
   margin-top: 10px;
+}
 
-  .member-and-pic-box {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+.member-and-pic-box {
+  @include flex-row-start;
+  @include hover-blue;
+}
 
-    a {
-      text-decoration: none;
-      color: black;
+.pro-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
 
-      &:hover {
-        color: $blue-hover;
-      }
-    }
-    .pro-pic {
-      width: 50px;
-      height: 50px;
-      border-radius: 5px;
-      margin: 10px 10px 2px 0;
-    }
-
-    .member-name {
-      font-size: 15px;
-      font-weight: 500;
-    }
-  }
+.member-name {
+  font-size: 15px;
+  font-weight: 500;
 }
 
 #event-map-container {
   height: 150px;
   width: auto;
+}
+
+
+// Media query
+
+@media screen and (max-width: 1000px) {
+  .event-show-right-side {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 790px){
+  .event-mid-content-box {
+    width: 100%;
+    margin: 12px auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .event-show-right-side {
+    display: block;
+  }
 }

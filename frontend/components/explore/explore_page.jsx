@@ -89,24 +89,20 @@ const GroupsIndexItems = ({ groupPhoto, groupId, name, members }) => {
         <img className='group-img' src={groupPhoto} alt="groups"/>
         <h4 className='group-index-name'>{name}</h4>
         <p className='member-count'>We're {members} Members</p>
-
     </Link>
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return ({
+const mapStateToProps = (state, ownProps) => ({
     category: ownProps.params.category,
     groups: groupsArray(state.groups),
     events: state.events
-  });
-};
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchAllGroups: (filter) => dispatch(fetchAllGroups(filter)),
   fetchAllEvents: () => dispatch(fetchAllEvents())
 });
-
 
 export default connect(
   mapStateToProps,

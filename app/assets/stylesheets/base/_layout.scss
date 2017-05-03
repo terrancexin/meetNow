@@ -2,3 +2,10 @@
   border-radius: 3px;
   border: 1px solid #ccc;
 }
+
+@mixin event-show-margin-padding {
+  border-bottom: 1px solid lightgray;
+  margin: 14px;
+  padding: 0 0 11px 0;
+  text-align: center;
+}

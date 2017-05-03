@@ -10,6 +10,12 @@
   align-items: center;
 }
 
+@mixin flex-row-space-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 @mixin flex-row-start {
   display: flex;
   justify-content: flex-start;
@@ -41,7 +47,7 @@
   align-items: center;
 }
 
-@mixin flex-column-super-center {
+@mixin flex-column-center-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
