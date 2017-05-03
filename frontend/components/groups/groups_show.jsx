@@ -110,7 +110,7 @@ class GroupsShow extends React.Component {
         'login': <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")} />,
         'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} />,
         'createEvent': <CreateEventForm closeModal={this.closeModal} />,
-        'founderProfile': <FounderProfile closeModal={this.closeModal} profileId={ this.props.loggedIn ? this.props.currentUser.id : 3034 }/>,
+        'founderProfile': <FounderProfile closeModal={this.closeModal} profileId={ this.props.loggedIn ? this.props.currentUser.id : 9823 }/>,
         'groupMap': <GroupMap latitude={this.props.group.latitude} longitude={this.props.group.longitude} closeModal={this.closeModal}/> }
 
       const { name, id, photo_url, location, users,
