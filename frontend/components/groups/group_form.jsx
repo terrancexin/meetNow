@@ -155,7 +155,7 @@ class GroupForm extends React.Component {
             </div>
 
             <div>
-              <input className="red-button animated bounceInUp"
+              <input className="animated bounceInUp"
                      style={{display: 'none'}}
                      id='new-group-submit'
                      type="submit"
