@@ -193,7 +193,7 @@ class GroupsShow extends React.Component {
           </div>
           <Modal
             overlayClassName='modal-overlay'
-            className={`modal-container modal-${this.state.modalType}`}
+            className={`modal-container modal-${this.state.modalType} animated  animated zoomIn`}
             isOpen={this.state.modalOpen}
             onRequestClose={this.closeModal}
             contentLabel="header-modals">

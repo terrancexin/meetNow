@@ -16,7 +16,7 @@ class EventCalendar extends React.Component {
         <div className='calendar-wrapper'>
             {
               eventArray.map(event => (
-              <ul className='calendar-box-on-group' key={event.id}>
+              <ul className='calendar-box-on-group animated fadeInLeft' key={event.id}>
                 <div className='calendar-time'>{event.time.slice(0, 10)}</div>
                 <Link className='calendar-title' to={`groups/${event.group_id}/events/${event.id}`}>{event.name}</Link>
 

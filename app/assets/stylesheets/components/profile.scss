@@ -4,7 +4,7 @@
   position: relative;
   transition: all 0.3s ease 0s;
   .profile-form-box {
-    visibility: visible;
+    display: flex;
     opacity: 1;
   }
 }
@@ -19,16 +19,14 @@
   background-color: white;
   border-radius: 4px;
 
-  visibility: hidden;
+  display: none;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
   box-shadow: rgba(0,0,0,0.54) 0 3px 8px 0;
 }
 
 .profile-buttons-box {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  @include flex-column-start-no-center;
   margin-left: 5px;
 }
 

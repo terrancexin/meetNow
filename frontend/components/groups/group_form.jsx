@@ -118,7 +118,7 @@ class GroupForm extends React.Component {
                       onClick={this.goToStepTwo}>Next</button>
             </div>
 
-            <div className="step animated bounceInUp" id="step-two" style={{display: 'none'}}>
+            <div className="step animated zoomIn" id="step-two" style={{display: 'none'}}>
               <label className="group-form-question">What are you passionate about?</label>
 
               <input type="text"
@@ -132,7 +132,7 @@ class GroupForm extends React.Component {
                       onClick={this.goToStepThree}>Next</button>
             </div>
 
-            <div className="step animated bounceInUp" id="step-three" style={{display: 'none'}}>
+            <div className="step animated slideInRight" id="step-three" style={{display: 'none'}}>
               <label className="group-form-question">Tell us the name of your new Group!</label>
               <input type="text"
                      placeholder="Rise&Code React&Grind"
@@ -147,7 +147,7 @@ class GroupForm extends React.Component {
 
             <div className="step animated bounceInUp" id="step-four" style={{display: 'none'}}>
               <label className="group-form-question">Introduce your new Group to the world.</label >
-              <input type="text"
+              <input type="textarea"
                      placeholder="React Wolfpack"
                      value={this.state.description}
                      onChange={this.update("description")}/>

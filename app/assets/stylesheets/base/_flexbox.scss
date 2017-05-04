@@ -75,3 +75,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+@mixin flex-column-start-no-center {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

@@ -51,7 +51,7 @@ class RedirectLogInForm extends React.Component {
     const { email, password } = this.state;
 
     return (
-      <div className='redirect-login-container'>
+      <div className='redirect-login-container animated tada'>
         <div className='form-header'>
           <h1>Log in</h1>
           <div className='nav-links-box'>

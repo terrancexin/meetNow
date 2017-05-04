@@ -57,9 +57,9 @@ class WelcomeHeader extends React.Component {
 
   toggleProfile() {
     if (this.state.profile) {
-      return  { visibility: 'visible' };
+      return  { display: 'flex' };
     } else {
-      return { visibility: 'hidden' };
+      return { display: 'none' };
     }
   }
 
@@ -87,7 +87,7 @@ class WelcomeHeader extends React.Component {
             <img className="profile-thumbnail" src={currentUser.image_url}/>
             <i className="fa fa-chevron-down" aria-hidden="true"></i>
           </div>
-            <div  style={this.toggleProfile()} id='close-profile' className='profile-form-box' >
+            <div  style={this.toggleProfile()} id='close-profile' className='profile-form-box animated flipInX' >
               <div className='profile-buttons-box'>
                 <button className='profile-buttons' onClick={this.handleProfileButton(currentUser.id)}>Profile</button>
                 <button className='profile-buttons' onClick={this.handleLogout}>Log out</button>
