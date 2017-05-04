@@ -30,9 +30,11 @@
 .calendar-wrapper,
 .group-index-wrapper {
   @include flex-row-center;
+  align-items: flex-start;
   flex-wrap: wrap;
   margin: 30px;
   width: 1000px;
+  min-height: 600px;
 }
 
 .group-pics {

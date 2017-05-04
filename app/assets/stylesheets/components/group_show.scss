@@ -114,8 +114,9 @@
 
 .group-side-bar-info {
   @include border-gray;
-  max-width: 300px;
+  max-width: 200px;
   margin-top: 14px;
+  min-height: 600px;
 }
 
 .group-show-description {
@@ -123,7 +124,6 @@
   margin-top: 14px;
   margin-left: 14px;
   height: auto;
-  // width: 7;
 }
 
 .group-show-description-detail {

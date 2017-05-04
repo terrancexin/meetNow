@@ -8,8 +8,8 @@
 }
 
 .event-info-box {
-  border-right: 1px solid lightgray;
   min-height: 550px;
+  width: 100%;
 }
 
 .event-show-right-side {
@@ -17,6 +17,7 @@
   min-width: 160px;
   border-radius: 3px;
   overflow: scroll;
+  border-left: 1px solid lightgray;
 }
 
 .rsvp-buttons-box {
