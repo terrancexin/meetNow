@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
+import PlacesAutocomplete from 'react-places-autocomplete'
+import { geocodeByAddress } from 'react-places-autocomplete'
 
 import { connect } from 'react-redux';
 import { createGroup } from '../../actions/group_actions';
@@ -11,18 +13,24 @@ class GroupForm extends React.Component {
     super(props);
     this.state = {
       name: "",
-      location: "",
+      location: "New York, NY",
       description: "",
       category: "",
       founded: new Date()
     };
 
+    this.onChange = (location) => this.setState({ location })
+
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.navigateToSearch = this.navigateToSearch.bind(this);
-    this.navigateToGroupShow = this.navigateToGroupShow.bind(this);
+    this.goToHomePage = this.goToHomePage.bind(this);
+    this.goToGroupShowPage = this.goToGroupShowPage.bind(this);
+
+    this.goToStepTwo = this.goToStepTwo.bind(this);
+    this.goToStepThree = this.goToStepThree.bind(this);
+    this.goToStepFour = this.goToStepFour.bind(this);
   }
 
-  navigateToSearch() {
+  goToHomePage() {
     this.props.router.push("/");
   }
 
@@ -44,12 +52,16 @@ class GroupForm extends React.Component {
     return event => this.setState({ [field]: event.currentTarget.value });
   }
 
-  navigateToGroupShow() {
+  goToGroupShowPage() {
     this.props.router.push(`groups/${this.state.group.id}`);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
+    geocodeByAddress(this.state.location,  (err, latLng) => {
+      if (err) { console.log(err) }
+    });
+
     window.scrollTo(0, 0)
     this.props.createGroup(this.state).then(result => {
       this.props.router.push(`groups/${result.group.id}`);
@@ -77,6 +89,8 @@ class GroupForm extends React.Component {
   }
 
   render() {
+    const inputProps = { value: this.state.location,
+                        onChange: this.onChange, }
     return (
       <div className="new-group-container animated bounceInUp">
         <div className="group-form-header">
@@ -93,10 +107,7 @@ class GroupForm extends React.Component {
                 Where is the hometown of this new Group?
               </label>
 
-              <input type="text"
-                     placeholder="New York, NY"
-                     value={this.state.location}
-                     onChange={this.update("location")}/>
+              <PlacesAutocomplete inputProps={inputProps} />
 
               <button id="button-one"
                       className="step-button"
@@ -147,7 +158,7 @@ class GroupForm extends React.Component {
                      value="Let's MeetNow!" />
             </div>
             <button
-              onClick={this.navigateToSearch}
+              onClick={this.goToHomePage}
               className='cancel-button'>Cancel</button>
             </form>
 

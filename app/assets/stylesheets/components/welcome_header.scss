@@ -55,12 +55,28 @@
   font-weight: 500;
 }
 
-.profile-thumbnail {
-  width: 52px;
-  height: 52px;
-  border-radius: 30px;
-  margin: 0 14px 0 18px;
+.profile-thumbnail-box {
   cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  i {
+    font-size: 12px;
+    color: lightgray;
+  }
+}
+
+.profile-thumbnail {
+  width: 47px;
+  height: 47px;
+  border-radius: 30px;
+  margin: 0 2px 0 18px;
+  padding: 0;
+}
+
+.fa-chevron-down {
+  margin: 0 10px 0 6px;
 }
 
 .meetnow-button,

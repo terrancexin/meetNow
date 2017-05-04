@@ -83,7 +83,10 @@ class WelcomeHeader extends React.Component {
       return (
         <div className='header-right'>
           <label className='welcome-msg'>Welcome, {currentUser.first_name}</label>
-          <img className="profile-thumbnail" onClick={this.handleProfile} src={currentUser.image_url}/>
+          <div className="profile-thumbnail-box" onClick={this.handleProfile}>
+            <img className="profile-thumbnail" src={currentUser.image_url}/>
+            <i className="fa fa-chevron-down" aria-hidden="true"></i>
+          </div>
             <div  style={this.toggleProfile()} id='close-profile' className='profile-form-box' >
               <div className='profile-buttons-box'>
                 <button className='profile-buttons' onClick={this.handleProfileButton(currentUser.id)}>Profile</button>

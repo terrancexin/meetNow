@@ -40,12 +40,14 @@ const Root = ({ store }) => {
           <IndexRoute component={ Welcome } />
           <Route path="/login" component={ RedirectLogInForm } onEnter={ _redirectIfLoggedIn }/>
           <Route path='explore/:category' component={ ExplorePage } />
+          <Route path='profile/:id' component={ ProfilePage } />
+
           <Route path='groups' component={ GroupsIndex } />
           <Route path='new-group' component={ GroupForm } onEnter={ _ensureLoggedIn }/>
           <Route path='groups/:groupId' component={ GroupsShow }>
               <Route path='events/:eventId' component={ EventShow } onEnter={ _ensureLoggedIn }/>
           </Route>
-          <Route path='profile/:id' component={ ProfilePage } />
+
         </Route>
       </Router>
     </Provider>
