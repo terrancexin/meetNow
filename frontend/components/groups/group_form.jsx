@@ -91,6 +91,7 @@ class GroupForm extends React.Component {
   render() {
     const inputProps = { value: this.state.location,
                         onChange: this.onChange, }
+                        
     return (
       <div className="new-group-container animated bounceInUp">
         <div className="group-form-header">
