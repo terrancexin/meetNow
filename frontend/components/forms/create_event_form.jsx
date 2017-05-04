@@ -12,7 +12,7 @@ class CreateEventForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {name: '', date: '', description: '', location: '', group_id: this.props.params.groupId};
+    this.state = {name: '', time: '', description: '', location: '', group_id: this.props.params.groupId};
     this.handleLocation = this.handleLocation.bind(this);
     this.handleName = this.handleName.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
@@ -49,7 +49,7 @@ class CreateEventForm extends React.Component {
   }
 
   handleTime(e) {
-    this.setState({date: e.target.value });
+    this.setState({time: e.target.value });
   }
 
   render() {
@@ -73,7 +73,7 @@ class CreateEventForm extends React.Component {
             <input type='text' value={this.state.description} onChange={this.handleDescription} placeholder='Everybody Redux!'/>
 
             <label>Date</label>
-            <input type='date' value={this.state.date} onChange={this.handleTime} />
+            <input type='date' value={this.state.time} onChange={this.handleTime} />
 
 
             <label>Location</label>

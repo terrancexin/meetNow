@@ -23,7 +23,7 @@ class FounderProfile extends React.Component {
 
       return (
         <div className='founder-page-container'>
-          <div className='profile-page-box'>
+          <div className='founder-page-box'>
             <div className='profile-left-section'>
               <div className='founder-name'>{fullName}</div>
               <div className='profile-location'>Location:</div>
@@ -31,7 +31,7 @@ class FounderProfile extends React.Component {
               <div className='founder-bio'>{userDetail.bio}</div>
             </div>
 
-            <div className='profile-right-section'>
+            <div className='founder-right-section'>
               <img src={userDetail.image_url} alt='profile_pic'/>
             </div>
 

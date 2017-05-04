@@ -1,5 +1,5 @@
 .modal-founderProfile {
-  width: 900px;
+  width: 800px;
   height: 410px;
 }
 
@@ -18,4 +18,59 @@
   margin-top: 80px;
   padding: 0 0 25px 14px;
   width: 500px;
+}
+
+.founder-page-box {
+  @include flex-space-between;
+  margin: 10px;
+}
+
+.founder-right-section{
+  margin-right: 14px;
+  margin-top: 14px;
+  height: 250px;
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+  }
+}
+
+
+// Media query
+@media screen and (max-width: 750px) {
+  .modal-founderProfile {
+    width: 400px;
+    height: auto;
+  }
+
+  .founder-page-box {
+    @include flex-column-start-start;
+    flex-direction: column-reverse;
+    text-align: center;
+    margin: 0 auto;
+    border: none;
+  }
+
+  .founder-right-section {
+    margin: 12px auto;
+  }
+
+  .profile-left-section {
+    @include flex-column-center-center;
+    width: 370px;
+  }
+
+  .founder-name,
+  .founder-bio,
+  .profile-group-member-count,
+  .profile-groups {
+    margin: 5px 0;
+    width: 370px;
+    border: none;
+  }
+
+  .founder-bio {
+    padding: 0;
+  }
 }
