@@ -4,16 +4,21 @@ import { connect } from 'react-redux';
 import { Router, withRouter } from 'react-router';
 import { clearEventErrors } from '../../actions/event_actions';
 import Errors from '../errors/errors';
+import PlacesAutocomplete from 'react-places-autocomplete'
+import { geocodeByAddress } from 'react-places-autocomplete'
+import { eventStyle } from './auto_complete';
 
 class CreateEventForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {name: '', time: '', description: '', location: '', group_id: this.props.params.groupId};
+    this.state = {name: '', date: '', description: '', location: '', group_id: this.props.params.groupId};
     this.handleLocation = this.handleLocation.bind(this);
     this.handleName = this.handleName.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
     this.handleTime = this.handleTime.bind(this);
+
+    this.onChange = (location) => this.setState({ location })
   }
 
   componentWillMount() {
@@ -22,6 +27,10 @@ class CreateEventForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    geocodeByAddress(this.state.location,  (err, latLng) => {
+      if (err) { return}
+    });
+
     this.props.createEvent(this.state).then(() => {
       this.props.closeModal();
     });
@@ -40,10 +49,14 @@ class CreateEventForm extends React.Component {
   }
 
   handleTime(e) {
-    this.setState({time: e.target.value });
+    this.setState({date: e.target.value });
   }
 
   render() {
+    const inputProps = { value: this.state.location,
+                         onChange: this.onChange,
+                         placeholder: '277 Park Avenue New York, NY'}
+
     return (
       <div className='modal-form-container'>
         <div className='form-header'>
@@ -60,11 +73,11 @@ class CreateEventForm extends React.Component {
             <input type='text' value={this.state.description} onChange={this.handleDescription} placeholder='Everybody Redux!'/>
 
             <label>Date</label>
-            <input type='date' value={this.state.time} onChange={this.handleTime} value="2017-05-05" />
+            <input type='date' value={this.state.date} onChange={this.handleTime} />
 
 
             <label>Location</label>
-            <input type='text' value={this.state.location} onChange={this.handleLocation} placeholder='New York, NY'/>
+            <PlacesAutocomplete inputProps={inputProps} styles={eventStyle}/>
 
             <input type='submit' value="Create"/>
           </div>

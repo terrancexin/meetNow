@@ -1,19 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router';
 import PlacesAutocomplete from 'react-places-autocomplete'
 import { geocodeByAddress } from 'react-places-autocomplete'
 
-import { connect } from 'react-redux';
 import { createGroup } from '../../actions/group_actions';
 import { clearGroupErrors } from '../../actions/group_actions';
 import GroupErrors from '../errors/group_errors';
+import { groupStyle } from '../forms/auto_complete';
 
 class GroupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
-      location: "New York, NY",
+      location: "",
       description: "",
       category: "",
       founded: new Date()
@@ -59,7 +60,7 @@ class GroupForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     geocodeByAddress(this.state.location,  (err, latLng) => {
-      if (err) { console.log(err) }
+      if (err) { return }
     });
 
     window.scrollTo(0, 0)
@@ -90,8 +91,9 @@ class GroupForm extends React.Component {
 
   render() {
     const inputProps = { value: this.state.location,
-                        onChange: this.onChange, }
-                        
+                         onChange: this.onChange,
+                         placeholder: 'New York, NY'}
+
     return (
       <div className="new-group-container animated bounceInUp">
         <div className="group-form-header">
@@ -108,7 +110,8 @@ class GroupForm extends React.Component {
                 Where is the hometown of this new Group?
               </label>
 
-              <PlacesAutocomplete inputProps={inputProps} />
+              <PlacesAutocomplete inputProps={inputProps}
+                                  styles={groupStyle} />
 
               <button id="button-one"
                       className="step-button"
