@@ -37,6 +37,10 @@
   margin-top: 70px;
 }
 
+.no-video-cover {
+  display: none;
+}
+
 // Media query
 @media screen and (max-width: 910px) {
   .love-something {
@@ -71,11 +75,16 @@
     margin-top: 50px;
   }
 
+  .cover-video,
   .video-div {
     display: none;
   }
 
-  .cover-video {
+  .no-video-cover {
+    margin-top: 8px;
+    display: block;
+    height: 500px;
+    width: 100%;
     background-image: url('https://s3.amazonaws.com/meetnow-DEV/meetNow/mobile-photo.png');
     background-position: center;
   }

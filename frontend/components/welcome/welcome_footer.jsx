@@ -51,7 +51,7 @@ class WelcomeFooter extends React.Component {
 
     return(
       <div className='footer-buttons'>
-        <Link to='/new-group' className='join-group'>Join a Group</Link>
+        <Link to='/new-group' className='join-group'>Create a Group</Link>
         <div className='footer-icon-box'>
             <div className="footer-icons">
               <Link className='footer-links-icon' href="https://www.terrancexin.com" title="www" target="_blank"><i className="fa fa-globe"></i></Link>

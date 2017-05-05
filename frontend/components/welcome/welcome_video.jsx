@@ -32,7 +32,8 @@ class WelcomeVideo extends React.Component {
     'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} /> }
 
     return (
-      <div className="splash-main">
+      <div className="splash-main"><div className='no-video-cover'> <div className="video-letters-box"><h1 className='love-something'>Love something? Why wait.</h1>{ !this.props.loggedIn && <button className='video-button' onClick={this.handleModalOpen('signup')}>Sign up</button> }
+        { this.props.loggedIn && <Link to='/groups' className='video-button'>Let's MeetNow!</Link> }</div></div>
         <div className="cover-video">
           <div className="video-div">
             <video

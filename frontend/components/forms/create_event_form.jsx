@@ -64,8 +64,8 @@ class CreateEventForm extends React.Component {
         </div>
         <Errors errors={ this.props.errors } />
 
-        <form className='create-group-form' onSubmit={this.handleSubmit}>
-          <div className='group-form-inputs-box'>
+        <form className='create-event-form' onSubmit={this.handleSubmit}>
+          <div className='event-form-inputs-box'>
             <label>Name</label>
             <input type='text' value={this.state.name} onChange={this.handleName} placeholder='React Party #271'/>
 

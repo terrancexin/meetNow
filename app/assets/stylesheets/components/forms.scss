@@ -56,6 +56,7 @@
 
 .form-header {
   @include flex-column-start-start;
+  position: relative;
   border-bottom: 1px solid lightgray;
   font-size: 18px;
   color: $meetup-red;
@@ -123,15 +124,32 @@ input[type='date'] {
   }
 }
 
+.close-modal-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.modal-close-x {
+  position: absolute;
+  font-size: 30px;
+  color: lightgray;
+  top: 8px;
+  left: 365px;
+  &:hover {
+    color: gray;
+    cursor: pointer;
+  }
+}
 
 // Media query
 @media screen and (max-width: 450px) {
   .form-header {
-    @include flex-column-start;
+    @include flex-column;
     border-bottom: 1px solid lightgray;
     font-size: 15px;
     color: $meetup-red;
-    padding: 10px;
   }
 
   .modal-container {
@@ -151,5 +169,12 @@ input[type='date'] {
 
   .modal-login {
     height: 367px;
+  }
+
+  .modal-close-x {
+    position: absolute;
+    font-size: 30px;
+    top: 8px;
+    left: 330px;
   }
 }

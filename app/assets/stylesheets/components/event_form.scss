@@ -1,0 +1,22 @@
+@import 'base/flexbox';
+@import 'base/input-type';
+
+.create-event-form {
+  @include flex-column;
+  margin: 18px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.event-form-inputs-box {
+  display: flex;
+  flex-direction: column;
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type='date'] {
+    @include input-type;
+    background-color: white;
+  }
+}

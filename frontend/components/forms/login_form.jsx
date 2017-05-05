@@ -52,7 +52,7 @@ class LogInForm extends React.Component {
     return (
       <div className='modal-form-container'>
         <div className='form-header'>
-          <h1>Log in</h1>
+          <h1>Log in</h1><div className='modal-close-x' onClick={this.props.closeModal}>&times;</div>
           <div className='nav-links-box'>
             <div className='nav-link-text'>Not registered with us yet?</div>
             <button className='nav-link-button' onClick={this.props.handleModalOpen}>Sign up.</button>

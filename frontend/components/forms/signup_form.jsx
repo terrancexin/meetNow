@@ -34,7 +34,7 @@ class SignUpForm extends React.Component {
     return (
       <div className='modal-form-container'>
         <div className='form-header'>
-          <h1>Sign up</h1>
+          <h1>Sign up</h1><div className='modal-close-x' onClick={this.props.closeModal}>&times;</div>
           <div className='nav-links-box'>
             <div className='nav-link-text'>Already a member?</div>
             <button className='nav-link-button' onClick={this.props.handleModalOpen}>Log in.</button>
