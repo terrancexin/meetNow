@@ -22,6 +22,7 @@ class WelcomeHeader extends React.Component {
 
     this.toggleProfile = this.toggleProfile.bind(this);
     this.handleProfile = this.handleProfile.bind(this);
+    this.goToCreateGroup = this.goToCreateGroup.bind(this);
   }
 
   closeModal() {
@@ -49,10 +50,10 @@ class WelcomeHeader extends React.Component {
     }
   }
 
-  handleProfile() {
+  handleProfile () {
    this.setState({ profile: !this.state.profile });
    this.toggleProfile();
-   }
+  }
 
   toggleProfile() {
     if (this.state.profile) {
@@ -75,6 +76,11 @@ class WelcomeHeader extends React.Component {
     hashHistory.push('/');
   }
 
+  goToCreateGroup () {
+    this.handleProfile();
+    hashHistory.push('/new-group');
+  }
+
   toggleProfileView() {
     const { loggedIn, currentUser } = this.props;
 
@@ -89,6 +95,7 @@ class WelcomeHeader extends React.Component {
             <div  style={this.toggleProfile()} id='close-profile' className='profile-form-box animated flipInX' >
               <div className='profile-buttons-box'>
                 <button className='profile-buttons' onClick={this.handleProfileButton(currentUser.id)}>Profile</button>
+                <button className='profile-buttons' onClick={this.goToCreateGroup}>Create a Group</button>
                 <button className='profile-buttons' onClick={this.handleLogout}>Log out</button>
               </div>
             </div>
