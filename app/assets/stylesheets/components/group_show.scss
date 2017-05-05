@@ -178,6 +178,62 @@
   }
 }
 
+// Are you sure
+.group-header-buttons {
+  position: relative;
+  transition: all 0.3s ease 0s;
+  .sure-form-box {
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+  }
+}
+
+.sure-form-box {
+  transition: all 0.3s ease 0s;
+  // height: 30px;
+  width: 120px;
+  position: absolute;
+  top: -67%;
+  right: 2%;
+  background-color: $green;
+  border-radius: 3px;
+
+  display: none;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.sure-buttons-box {
+  @include flex-row-center;
+  z-index: 10;
+}
+
+.sure-buttons {
+  padding: 10px 5px;
+  width: 60px;
+  border-radius: 3px;
+  color: white;
+  &:hover {
+    background-color: $purple;
+  }
+}
+
+.sure-arrow-up-pos {
+  position: relative;
+}
+
+.sure-arrow-up {
+  position: absolute;
+  top: 75%;
+  right: 43%;
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  background-color: $green;
+  z-index: -10;
+}
+
 @media screen and (max-width: 600px) {
   .group-name {
     font-size: 20px;

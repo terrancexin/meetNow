@@ -59,7 +59,7 @@ class EventShow extends React.Component {
           <div>
           <div className='rsvp-buttons-box'>
             <div className='your-rsvp-text'>Your RSVP:</div>
-              <button onClick={this.handleLeaveEvent} className='attend-event-button'>Yes</button>
+              <button onClick={this.handleLeaveEvent} className='attend-event-button yes-btn'>Yes</button>
           </div>
 
           <div className='event-show-attending'>{this.props.event.rsvp_count} going</div>
@@ -90,7 +90,7 @@ class EventShow extends React.Component {
         return (
           <div><div className='rsvp-buttons-box'>
             <div className='your-rsvp-text'>Your RSVP:</div>
-              <button onClick={this.handleAttendEvent} className='attend-event-button'>No</button>
+              <button onClick={this.handleAttendEvent} className='attend-event-button no-btn'>No</button>
           </div>
           <div className='event-show-attending'>{this.props.event.rsvp_count} going</div>
 

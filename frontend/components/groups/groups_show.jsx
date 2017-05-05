@@ -17,7 +17,10 @@ import FounderProfile from '../profile/founder_profile.jsx';
 class GroupsShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalOpen: false, modalType: "", contact: false };
+    this.state = { modalOpen: false,
+                   modalType: "",
+                   contact: false,
+                   areYouSure: false };
     this.closeModal = this.closeModal.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
 
@@ -25,6 +28,9 @@ class GroupsShow extends React.Component {
     this.handleLeaveGroup = this.handleLeaveGroup.bind(this);
     this.handleContact = this.handleContact.bind(this);
     this.toggleContact = this.toggleContact.bind(this);
+
+    this.toggleAreYouSure = this.toggleAreYouSure.bind(this);
+    this.handleAreYouSure = this.handleAreYouSure.bind(this);
   }
 
   closeModal() {
@@ -86,13 +92,27 @@ class GroupsShow extends React.Component {
   handleLeaveGroup () {
     if (this.props.loggedIn) {
       this.props.removeUserFromGroup(this.props.currentUser.id, this.props.group.id);
+      this.handleAreYouSure();
     }
+  }
+
+  toggleAreYouSure () {
+    if (this.state.areYouSure) {
+      return  { display: 'flex' };
+    } else {
+      return { display: 'none' };
+    }
+  }
+
+  handleAreYouSure () {
+    this.setState({ areYouSure: !this.state.areYouSure });
+    this.toggleAreYouSure();
   }
 
   toggleJoinRsvp() {
   if (this.props.loggedIn) {
     if (Object.keys(this.props.group.users).includes(`${this.props.currentUser.id}`)) {
-      return <button onClick={this.handleLeaveGroup} className="join-group-button">Leave Group</button>;
+      return <button onClick={this.handleAreYouSure} className="join-group-button">Leave Group</button>;
     } else {
       return <button onClick={this.handleJoinGroup} className="join-group-button">Join us!</button>;
       }
@@ -128,6 +148,15 @@ class GroupsShow extends React.Component {
                 <button className='create-event-button' onClick={this.handleModalOpen('createEvent')}>Create an Event</button>
               </div>
               {this.toggleJoinRsvp()}
+                <div  style={this.toggleAreYouSure()} className='sure-form-box animated fadeInUp' >
+                  <div className='sure-arrow-up-pos'>
+                    <div className='sure-buttons-box'>
+                      <button className='sure-buttons' onClick={this.handleLeaveGroup}>Yes</button>
+                      <button className='sure-buttons' onClick={this.handleAreYouSure}>No</button>
+                    </div>
+                    <div className='sure-arrow-up'></div>
+                  </div>
+                </div>
             </div>
           </div>
 

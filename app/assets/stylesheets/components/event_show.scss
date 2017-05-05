@@ -1,6 +1,7 @@
 @import 'base/buttons';
 @import 'base/layout';
 @import 'base/flexbox';
+@import 'base/colors';
 
 .event-mid-content-box {
   @include border-gray;
@@ -119,7 +120,13 @@
   min-width: 200px;
 }
 
+.yes-btn {
+  background-color: $green;
+}
 
+.no-btn {
+  background-color: $no-gray;
+}
 // Media query
 
 @media screen and (max-width: 1000px) {
