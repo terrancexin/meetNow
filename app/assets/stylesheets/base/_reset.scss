@@ -73,3 +73,11 @@ a {
 body {
 	overflow-x: hidden;
 }
+
+textarea {
+	outline: none;
+}
+
+textarea:focus {
+	outline: none;
+}

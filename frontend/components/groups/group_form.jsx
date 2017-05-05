@@ -125,7 +125,6 @@ class GroupForm extends React.Component {
                      placeholder="The MERN Stack!"
                      value={this.state.category}
                      onChange={this.update("category")}/>
-              <br/>
 
               <button id="button-two"
                       className="step-button"
@@ -147,11 +146,10 @@ class GroupForm extends React.Component {
 
             <div className="step animated bounceInUp" id="step-four" style={{display: 'none'}}>
               <label className="group-form-question">Introduce your new Group to the world.</label >
-              <input type="textarea"
-                     placeholder="React Wolfpack"
+              <textarea rows='6'
+                     placeholder="Empty your mind, be formless. Shapeless, like water. If you put water into a cup, it becomes the cup. You put water into a bottle and it becomes the bottle. You put it in a teapot, it becomes the teapot. Now, water can flow or it can crash. Be water, my friend.."
                      value={this.state.description}
-                     onChange={this.update("description")}/>
-             <br/>
+                     onChange={this.update("description")}></textarea>
             </div>
 
             <div>

@@ -5,7 +5,6 @@ import { logout } from '../../actions/session_actions';
 
 // Forms
 import Modal from 'react-modal';
-import CreateGroupForm from '../forms/create_group_form';
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
 
@@ -109,8 +108,7 @@ class WelcomeHeader extends React.Component {
     const formType = this.props.loggedIn ? 'createGroup' : 'signup';
     const forms = {
       'login': <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")} />,
-      'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} />,
-    'createGroup': <CreateGroupForm closeModal={this.closeModal} /> }
+      'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} /> }
 
     return (
       <div className='welcome-header'>
