@@ -191,10 +191,9 @@
 
 .sure-form-box {
   transition: all 0.3s ease 0s;
-  // height: 30px;
   width: 120px;
   position: absolute;
-  top: -67%;
+  top: -125%;
   right: 2%;
   background-color: $green;
   border-radius: 3px;
@@ -221,11 +220,21 @@
 
 .sure-arrow-up-pos {
   position: relative;
+  @include flex-column-center;
+}
+
+.are-you-sure-text {
+  padding: 7px;
+  font-size: 14px;
+  border-top: 1px solid lightgray;
+  width: 106px;
+  text-align: center;
+  color: green;
 }
 
 .sure-arrow-up {
   position: absolute;
-  top: 75%;
+  top: 88%;
   right: 43%;
   width: 15px;
   height: 15px;

@@ -154,6 +154,7 @@ class GroupsShow extends React.Component {
                       <button className='sure-buttons' onClick={this.handleLeaveGroup}>Yes</button>
                       <button className='sure-buttons' onClick={this.handleAreYouSure}>No</button>
                     </div>
+                    <div className='are-you-sure-text'>Are you sure?</div>
                     <div className='sure-arrow-up'></div>
                   </div>
                 </div>
