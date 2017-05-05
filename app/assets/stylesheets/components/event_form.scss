@@ -20,3 +20,15 @@
     background-color: white;
   }
 }
+
+.event-form-button-box {
+  display: flex;
+  .event-cancel-button {
+    background-color: $cancel-gray;
+    border-color: $cancel-gray;
+
+    &:hover {
+      background-color: $hover-gray;
+    }
+  }
+}

@@ -79,7 +79,10 @@ class CreateEventForm extends React.Component {
             <label>Location</label>
             <PlacesAutocomplete inputProps={inputProps} styles={eventStyle}/>
 
-            <input type='submit' value="Create"/>
+            <div className='event-form-button-box'>
+              <input type='submit' value="Create"/>
+              <input className="event-cancel-button" onClick={this.props.closeModal} type="submit" value="Cancel" />
+            </div>
           </div>
         </form>
       </div>
