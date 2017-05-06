@@ -51,10 +51,10 @@
   filter: brightness(0.4);
   border-radius: 3px;
   transition: all 0.6s ease;
-
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 10px 50px rgba(0,0,0,0.3);
   &:hover {
-    transform: scale(1.07) translate3d(0px, 0px, 0px);
-    border-radius: 10px;
+    transform: scale(1.04) translate3d(0px, 0px, 0px);
+    filter: brightness(0.66);
   }
 }
 

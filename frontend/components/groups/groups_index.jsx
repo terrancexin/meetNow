@@ -39,7 +39,7 @@ class GroupsIndex extends React.Component {
         <SearchBar toggleCalendar={this.toggleCalendar} />
 
         { !this.state.calendar &&
-          <ul className='group-index-wrapper'>
+          <ul className='group-index-wrapper animated fadeInLeft'>
             { this.props.groups.map(group => {
                 if (group.member_count !== 0) {
                   return (
