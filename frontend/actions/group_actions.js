@@ -57,11 +57,18 @@ export const fetchSingleGroup = id => dispatch => {
         dispatch(receiveOneGroup(group));
       }, error => dispatch(receiveGroupErrors(error.responseJSON)))
   );
-
 };
 
 export const deleteGroup = id => dispatch => {
   return (
     GroupApiUtil.deleteGroup(id).then(group => dispatch(removeGroup(group)))
+  );
+};
+
+export const updateGroup = (group, id) => dispatch => {
+  return(
+    GroupApiUtil.updateGroup(group, id).then((group, id) => {
+      dispatch(receiveOneGroup(group, id));
+    }, error => dispatch(receiveGroupErrors(error.responseJSON)))
   );
 };

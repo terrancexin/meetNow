@@ -13,6 +13,7 @@ import RedirectLogInForm from './forms/redirect_login_form';
 import GroupsIndex from './groups/groups_index';
 import GroupsShow from './groups/groups_show';
 import GroupForm from './groups/group_form';
+import EditGroupForm from './groups/edit_group_form';
 
 import EventsIndex from './events/events_index';
 import EventShow from './events/event_show';
@@ -45,7 +46,8 @@ const Root = ({ store }) => {
           <Route path='groups' component={ GroupsIndex } />
           <Route path='new-group' component={ GroupForm } onEnter={ _ensureLoggedIn }/>
           <Route path='groups/:groupId' component={ GroupsShow }>
-              <Route path='events/:eventId' component={ EventShow } onEnter={ _ensureLoggedIn }/>
+            <Route path='edit' component={ EditGroupForm } onEnter={ _ensureLoggedIn }/>
+            <Route path='events/:eventId' component={ EventShow } onEnter={ _ensureLoggedIn }/>
           </Route>
 
         </Route>

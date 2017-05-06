@@ -58,6 +58,15 @@
   @include flex-row-space-between;
 }
 
+.side-bar-passion {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.about-passion {
+  color: $meetup-red;
+}
+
 .content-container {
   @include flex-row-start-start;
 }
@@ -159,6 +168,12 @@
 }
 
 // Media query
+@media screen and (max-width: 970px) {
+  .founder-modal-button {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 802px) {
   .group-name {
     font-size: 30px;
@@ -176,6 +191,8 @@
   .group-show-description {
     margin: 12px auto;
   }
+
+
 }
 
 // Are you sure
@@ -262,10 +279,12 @@
     width: 370px;
   }
 
-
-
   .width-setter {
     width: 370px;;
     margin: 0 auto;
+  }
+
+  .edit-group-button {
+    display: flex;
   }
 }

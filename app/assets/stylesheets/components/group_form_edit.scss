@@ -1,0 +1,271 @@
+@import 'base/flexbox';
+@import 'base/buttons';
+@import 'base/colors';
+
+.mid-content-box {
+  overflow: hidden;
+}
+
+.group-form-edit-container {
+  @include flex-column-center;
+  margin: 14px 0 200px 14px;
+}
+
+.group-form-edit-header {
+  @include flex-column-center-center;
+  background-color: $meetup-red;
+  width: 100%;
+  padding: 25px 0;
+  border-radius: 3px;
+}
+
+.new-group-form-edit {
+  @include flex-column-center-center;
+  margin: 12px auto;
+}
+
+.group-form-edit-header-title {
+  @include flex-column-center-center;
+  color: white;
+  font-size: 45px;
+}
+
+.group-form-edit-header-p {
+  margin-top: 20px;
+  font-size: 16px;
+  color: rgba(255,255,255,.7);
+}
+
+.step-edit:first-of-type {
+  border: none;
+}
+
+.step-edit {
+  @include flex-column;
+    margin-bottom: 5px;
+  letter-spacing: 2px;
+}
+
+.step-edit-button {
+  @include next-button;
+}
+
+.group-form-edit-question {
+  align-items: center;
+  display: flex;
+  font-size: 22px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+
+}
+
+.step-edit input,
+.step-edit textarea {
+  display: flex;
+  background-color: white;
+  font-size: 16px;
+  line-height: 28px;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  letter-spacing: 1px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.step-edit textarea {
+  line-height: 20px;
+}
+
+.new-group-form-edit {
+  input[type='submit'] {
+  	background-color: $meetup-red;
+  	color: white;
+  	border-color: $meetup-red;
+  	padding: 11px 18px;
+  	border-radius: 3px;
+    margin-top: 0;
+
+    &:hover {
+      background-color: $red-hover;
+    }
+  }
+}
+
+.group-form-edit-buttons {
+  @include flex-row-space-between;
+}
+
+.edit-delete-button {
+  background-color: $meetup-red;
+  color: white;
+  box-shadow: 1.5px 1.5px gray;
+  padding: 12px 0;
+  border-radius: 3px;
+  font-weight: 400;
+  transition: all 0.6s ease;
+  font-size: 12px;
+  min-width: 120px;
+  margin-right: 120px;
+
+  &:hover {
+    transform: scale(0.8) translate3d(0px, 0px, 0px);
+    background-color: black;
+  }
+}
+
+.group-flash-error {
+  color: $error;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.group-errors-box {
+  // width: 614px;
+}
+
+
+
+// Are you sure delete
+
+.group-form-edit-buttons {
+  position: relative;
+  transition: all 0.3s ease 0s;
+  .sure-edit-form-box {
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+  }
+}
+
+.sure-edit-form-box {
+  transition: all 0.3s ease 0s;
+  width: 120px;
+  position: absolute;
+  top: 120%;
+  right: 25%;
+  background-color: $green;
+  border-radius: 3px;
+
+  display: none;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.sure-edit-buttons-box {
+  @include flex-row-center;
+  z-index: 10;
+}
+
+.sure-edit-buttons {
+  padding: 10px 5px;
+  width: 60px;
+  border-radius: 3px;
+  color: white;
+  &:hover {
+    background-color: $purple;
+  }
+}
+
+.sure-edit-arrow-up-pos {
+  position: relative;
+  @include flex-column-center;
+}
+
+.are-you-sure-edit-text {
+  padding: 7px;
+  font-size: 14px;
+  border-bottom: 1px solid lightgray;
+  width: 106px;
+  text-align: center;
+  color: green;
+}
+
+.sure-edit-arrow-up {
+  position: absolute;
+  top: -8%;
+  right: 43%;
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  background-color: $green;
+  z-index: -10;
+}
+
+
+
+
+
+
+
+
+
+// Media query
+@media screen and (max-width: 750px) {
+  .group-form-edit-header-title {
+    font-size: 25px;
+  }
+
+  .group-form-edit-header-p {
+    font-size: 13px;
+  }
+
+  .group-form-edit-question {
+    font-size: 14px;
+  }
+
+  .cancel-button {
+    font-size: 11px;
+    padding: 7px;
+  }
+
+  .group-flash-error {
+    font-size: 13px;
+  }
+
+  .group-errors-box {
+    width: 357px;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .group-errors-box {
+    width: 95%;
+    padding: 5px;
+  }
+
+  .group-flash-error {
+    font-size: 13px;
+  }
+
+  .new-group-form-edit {
+    padding: 5px;
+  }
+
+  .group-form-edit-header-title {
+    font-size: 20px;
+  }
+
+  .group-form-edit-header-p {
+    font-size: 11px;
+  }
+
+  .group-form-edit-question {
+    font-size: 12px;
+  }
+
+  .sure-edit-form-box {
+    transition: all 0.3s ease 0s;
+    width: 120px;
+    position: absolute;
+    top: 120%;
+    right: 35%;
+    background-color: $green;
+    border-radius: 3px;
+
+    display: none;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+}

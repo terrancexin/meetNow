@@ -29,3 +29,11 @@ export const deleteGroup = id => {
     url: `/api/groups/${id}`
   });
 };
+
+export const updateGroup = (group, id) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/groups/${id}`,
+    data: { group }
+  });
+};

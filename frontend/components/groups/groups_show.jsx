@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 import { fetchSingleGroup, updateGroup, deleteGroup } from '../../actions/group_actions';
 import { fetchSingleGroupEvents } from '../../actions/event_actions';
 import { addUserToGroup, removeUserFromGroup } from '../../actions/member_actions';
@@ -93,6 +93,7 @@ class GroupsShow extends React.Component {
     if (this.props.loggedIn) {
       this.props.removeUserFromGroup(this.props.currentUser.id, this.props.group.id);
       this.handleAreYouSure();
+      hashHistory.push(`/groups/${this.props.group.id}`);
     }
   }
 
@@ -119,7 +120,10 @@ class GroupsShow extends React.Component {
     }  else {
       return <button onClick={this.handleJoinGroup} className="join-group-button">Join us!</button>;
     }
+  }
 
+  goToEditGroup (id) {
+    return () => { hashHistory.push(`/groups/${id}/edit`) };
   }
 
   render () {
@@ -133,7 +137,7 @@ class GroupsShow extends React.Component {
         'founderProfile': <FounderProfile closeModal={this.closeModal} profileId={ this.props.loggedIn ? this.props.currentUser.id : 9823 }/>,
         'groupMap': <GroupMap latitude={this.props.group.latitude} longitude={this.props.group.longitude} closeModal={this.closeModal}/> }
 
-      const { name, id, photo_url, location, users,
+      const { name, id, photo_url, location, users, category,
               founded, event_count, member_count } = this.props.group;
 
       return (
@@ -144,8 +148,9 @@ class GroupsShow extends React.Component {
             <div className='group-header-buttons'>
               <div className='left-side-buttons'>
                 <Link className='home-button' to={`/groups/${id}`}>Home</Link>
-                <button className='group-show-buttons' onClick={this.handleModalOpen('founderProfile')}>Founder</button>
-                <button className='create-event-button' onClick={this.handleModalOpen('createEvent')}>Create an Event</button>
+                <button className='group-show-buttons founder-modal-button' onClick={this.handleModalOpen('founderProfile')}>Founder</button>
+                { this.props.loggedIn && Object.keys(this.props.group.users).includes(`${this.props.currentUser.id}`) && <button className='create-event-button' onClick={this.handleModalOpen('createEvent')}>Create Events</button> }
+                { this.props.loggedIn && Object.keys(this.props.group.users).includes(`${this.props.currentUser.id}`) && <button className='group-show-buttons edit-group-button' onClick={this.goToEditGroup(id)}>Edit Group</button> }
               </div>
               {this.toggleJoinRsvp()}
                 <div  style={this.toggleAreYouSure()} className='sure-form-box animated fadeInUp' >
@@ -171,6 +176,12 @@ class GroupsShow extends React.Component {
                   <li className='side-founded'>Founded: {founded.slice(0, 10)}</li>
                   <button  className='side-aboutus' onClick={this.handleModalOpen('groupMap')}>Find us...</button>
 
+
+                    <li className='side-bar-passion'>
+                      <div>We are passionate about:</div>
+                      <div className='about-passion'>{category}</div>
+                    </li>
+
                     <li className='side-bar-info'>
                       <div>Events</div>
                       <div>{event_count}</div>
@@ -180,6 +191,8 @@ class GroupsShow extends React.Component {
                       <div>Members</div>
                       <div>{member_count}</div>
                     </li>
+
+
 
                     <div className='group-members-list'>
                       <ul className='group-members'>
