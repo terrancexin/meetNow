@@ -65,3 +65,19 @@
     background-color: $hover-gray;
   }
 }
+
+@mixin edit-form-button {
+  background-color: $meetup-red;
+  color: white;
+  box-shadow: 1.5px 1.5px gray;
+  padding: 12px 0;
+  border-radius: 3px;
+  font-weight: 400;
+  transition: all 0.6s ease;
+  font-size: 12px;
+  min-width: 120px;
+  margin-right: 120px;
+  &:hover {
+    background-color: black;
+  }
+}

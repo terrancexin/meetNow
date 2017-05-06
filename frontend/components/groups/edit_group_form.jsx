@@ -54,6 +54,7 @@ class EditGroupForm extends React.Component {
     event.preventDefault();
     geocodeByAddress(this.state.location,  (err, latLng) => { if (err) { return } });
 
+    // window.scrollTo(0, 0);
     this.props.updateGroup({
       name: this.state.name,
       location: this.state.location,
@@ -61,6 +62,8 @@ class EditGroupForm extends React.Component {
       category: this.state.category,
       founded: this.state.founded
     }, this.props.group.id);
+
+    hashHistory.push(`/groups/${this.props.group.id}`);
   }
 
   toggleAreYouSure () {
@@ -115,7 +118,7 @@ class EditGroupForm extends React.Component {
             <div className="step-edit" id="step-edit-three">
               <label className="group-form-edit-question">Tell us the name of your new Group!</label>
               <input type="text"
-                     maxLength="20"
+                     maxLength="30"
                      placeholder="Rise&Code React&Grind"
                      value={this.state.name}
                      onChange={this.update("name")}/>
@@ -130,23 +133,22 @@ class EditGroupForm extends React.Component {
                      onChange={this.update("description")}></textarea>
             </div>
 
-            <div className='group-form-edit-buttons'>
-              <input id='edit-group-submit' type="submit" value="Update" />
-              <button className='edit-delete-button' onClick={this.handleAreYouSure}>Delete this Group</button>
-              <div  style={this.toggleAreYouSure()} className='sure-edit-form-box animated fadeInDown'>
-                <div className='sure-edit-arrow-up-pos'>
-                  <div className='are-you-sure-edit-text'>Are you sure?</div>
-                  <div className='sure-edit-arrow-up'></div>
+          </form>
+          <div className='group-form-edit-buttons'>
+            <button className='edit-update-button' onClick={this.handleSubmit}>Update</button>
+            <button className='edit-delete-button' onClick={this.handleAreYouSure}>Delete this Group</button>
+            <div  style={this.toggleAreYouSure()} className='sure-edit-form-box animated fadeInDown'>
+              <div className='sure-edit-arrow-up-pos'>
+                <div className='are-you-sure-edit-text'>Are you sure?</div>
+                <div className='sure-edit-arrow-up'></div>
 
-                  <div className='sure-edit-buttons-box'>
-                    <button className='sure-edit-buttons' onClick={this.deleteGroup(this.props.group.id)}>Yes</button>
-                    <button className='sure-edit-buttons' onClick={this.handleAreYouSure}>No</button>
-                  </div>
+                <div className='sure-edit-buttons-box'>
+                  <button className='sure-edit-buttons' onClick={this.deleteGroup(this.props.group.id)}>Yes</button>
+                  <button className='sure-edit-buttons' onClick={this.handleAreYouSure}>No</button>
                 </div>
               </div>
             </div>
-          </form>
-
+          </div>
           </div>
         </div>
       );

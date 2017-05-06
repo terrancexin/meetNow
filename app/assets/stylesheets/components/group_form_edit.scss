@@ -96,17 +96,17 @@
   @include flex-row-space-between;
 }
 
+.edit-update-button {
+  @include edit-form-button;
+  font-size: 16px;
+  &:hover {
+    transform: scale(1.2) translate3d(0px, 0px, 0px);
+    background-color: $green;
+  }
+}
+
 .edit-delete-button {
-  background-color: $meetup-red;
-  color: white;
-  box-shadow: 1.5px 1.5px gray;
-  padding: 12px 0;
-  border-radius: 3px;
-  font-weight: 400;
-  transition: all 0.6s ease;
-  font-size: 12px;
-  min-width: 120px;
-  margin-right: 120px;
+  @include edit-form-button;
 
   &:hover {
     transform: scale(0.8) translate3d(0px, 0px, 0px);
@@ -121,7 +121,7 @@
 }
 
 .group-errors-box {
-  // width: 614px;
+  width: 614px;
 }
 
 
