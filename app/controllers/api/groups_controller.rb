@@ -49,7 +49,7 @@ class Api::GroupsController < ApplicationController
 
   def destroy
     @group = Group.find(params[:id])
-    @group.events.each { |event| event.destroy } unless @group.events.empty?
+    @group.events.destroy_all
 
     if @group.destroy
       render :show
