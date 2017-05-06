@@ -6,6 +6,7 @@ import SignUpForm from '../forms/signup_form';
 import Modal from 'react-modal';
 import { Link } from 'react-router';
 import EventMap from './event_map';
+import EditEventForm from '../forms/edit_event_form';
 
 class EventShow extends React.Component {
   constructor(props) {
@@ -126,7 +127,8 @@ class EventShow extends React.Component {
     if (this.props.event) {
       const forms = {
         'login': <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")} />,
-        'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} /> }
+        'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} />,
+        'editEvent': <EditEventForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen('editEvent')} /> }
 
       return (
         <div className='event-mid-content-box'>
@@ -138,7 +140,7 @@ class EventShow extends React.Component {
               <div className='event-show-location'><li><i className="fa fa-map-marker fa-2x"></i>{this.props.event.location}</li></div>
               <div className='event-show-map'><li><EventMap latitude={this.props.event.latitude} longitude={this.props.event.longitude}/></li></div>
               <div className='event-show-inner-description'><li className='event-show-description'>{this.props.event.description}</li></div>
-              <button>Update Event</button>
+              { this.props.loggedIn && <button className='update-event-button' onClick={this.handleModalOpen("editEvent")}>Update Event</button> }
             </div>
 
             <div className='event-show-right-side'>
