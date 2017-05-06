@@ -122,6 +122,7 @@ class GroupForm extends React.Component {
               <label className="group-form-question">What are you passionate about?</label>
 
               <input type="text"
+                     maxLength="20"
                      placeholder="The MERN Stack!"
                      value={this.state.category}
                      onChange={this.update("category")}/>
