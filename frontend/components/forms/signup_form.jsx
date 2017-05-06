@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 class SignUpForm extends React.Component {
   constructor() {
     super();
-    this.state = { first_name: "", email: "", password: "" };
+    this.state = { first_name: "", last_name: "", email: "", password: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -29,7 +29,7 @@ class SignUpForm extends React.Component {
   }
 
   render() {
-    const { first_name, email, password } = this.state;
+    const { first_name, last_name, email, password } = this.state;
 
     return (
       <div className='modal-form-container'>

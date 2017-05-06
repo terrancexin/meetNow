@@ -19,14 +19,9 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    if (this.props.loading) {
-      return <div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>
-    }
-    if (this.props.userDetail.groups) {
-      const userDetail = this.props.userDetail
-      const userDetailGroups = Object.values(this.props.userDetail.groups)
+    if (this.props.userDetail.first_name) {
+      const { userDetail } = this.props;
       const fullName = userDetail.first_name.concat(` ${userDetail.last_name}`);
-
       return (
         <div className='profile-page-container'>
           <div className='profile-page-box'>
@@ -35,23 +30,28 @@ class ProfilePage extends React.Component {
               <div className='profile-location'>Location:</div>
               <div className='profile-city'>{userDetail.city}</div>
               <div className='profile-bio'>{userDetail.bio}</div>
-              <div className='profile-group-member-count'>Member of {userDetailGroups.length} Groups</div>
-              <div className='profile-groups'>{userDetailGroups.map(group => {
-                  return <div key={group.id}><ProfileGroupsInfo group={group}/></div>
-                })}</div>
+
+            { this.props.userDetail.groups && <div>
+                                                <div className='profile-group-member-count'>
+                                                  Member of {Object.values(this.props.userDetail.groups).length} Groups
+                                                </div>
+                                                <div className='profile-groups'>
+                                                  {Object.values(this.props.userDetail.groups).map(group => {
+                                                    return <div key={group.id}>
+                                                              <ProfileGroupsInfo group={group}/>
+                                                            </div>})}
+                                                </div>
+                                              </div> }
+            { !this.props.userDetail.groups && <div className='profile-group-member-count'>Member of 0 Groups</div> }
             </div>
 
-            <div className='profile-right-section'>
-              <img src={userDetail.image_url} alt='profile_pic'/>
-            </div>
-
+            <div className='profile-right-section'><img src={userDetail.image_url} alt='profile_pic'/></div>
           </div>
         </div>
       );
     } else {
       return <div className='group-index-box'><img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/></div>
     }
-
   }
 }
 
