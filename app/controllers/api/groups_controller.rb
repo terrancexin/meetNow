@@ -49,6 +49,8 @@ class Api::GroupsController < ApplicationController
 
   def destroy
     @group = Group.find(params[:id])
+    @group.events.each { |event| event.destroy } unless @group.events.empty?
+
     if @group.destroy
       render :show
     else
@@ -58,6 +60,6 @@ class Api::GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, :description, :category, :location, :member_count, :about, :founded, :photo_url)
+    params.require(:group).permit(:name, :description, :category, :location, :member_count, :about, :founded, :photo_url, :organizers)
   end
 end

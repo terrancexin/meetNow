@@ -20,7 +20,6 @@ class FounderProfile extends React.Component {
       const userDetail = this.props.userDetail
       const userDetailGroups = Object.values(this.props.userDetail.groups)
       const fullName = userDetail.first_name.concat(` ${userDetail.last_name}`);
-
       return (
         <div className='founder-page-container'>
           <div className='founder-page-box'>

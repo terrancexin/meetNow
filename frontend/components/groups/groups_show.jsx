@@ -19,15 +19,12 @@ class GroupsShow extends React.Component {
     super(props);
     this.state = { modalOpen: false,
                    modalType: "",
-                   contact: false,
                    areYouSure: false };
     this.closeModal = this.closeModal.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
 
     this.handleJoinGroup = this.handleJoinGroup.bind(this);
     this.handleLeaveGroup = this.handleLeaveGroup.bind(this);
-    this.handleContact = this.handleContact.bind(this);
-    this.toggleContact = this.toggleContact.bind(this);
 
     this.toggleAreYouSure = this.toggleAreYouSure.bind(this);
     this.handleAreYouSure = this.handleAreYouSure.bind(this);
@@ -42,19 +39,6 @@ class GroupsShow extends React.Component {
       this.closeModal();
       this.setState({ modalOpen: true, modalType: form });
     };
-  }
-
-  handleContact() {
-    this.setState({ contact: !this.state.contact });
-    this.toggleContact();
-  }
-
-  toggleContact() {
-    if (this.state.contact) {
-      return { visibility: 'visible' };
-    } else {
-      return { visibility: 'hidden' };
-    }
   }
 
   componentDidMount() {

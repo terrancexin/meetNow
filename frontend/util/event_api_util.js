@@ -42,3 +42,18 @@ export const leaveEvent = (eventId) => {
     })
   );
 };
+
+export const updateEvent = (event, id) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/events/${id}`,
+    data: { event }
+  });
+};
+
+export const deleteEvent = id => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/groups/${id}`
+  });
+};

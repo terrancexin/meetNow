@@ -10,7 +10,7 @@ import EventMap from './event_map';
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalType: "", profile: false };
+    this.state = { modalType: "", profile: false, modalOpen: false };
     this.closeModal = this.closeModal.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
 
@@ -20,13 +20,13 @@ class EventShow extends React.Component {
   }
 
   closeModal() {
-    this.setState({ modalType: false});
+    this.setState({ modalOpen: false});
   }
 
   handleModalOpen(form) {
     return () => {
       this.closeModal();
-      this.setState({ modalType: form });
+      this.setState({ modalOpen: true, modalType: form });
     };
   }
 
@@ -38,16 +38,15 @@ class EventShow extends React.Component {
     this.props.fetchEvent(this.props.params.eventId);
   }
 
-  handleAttendEvent(e) {
-    e.preventDefault();
+  handleAttendEvent(event) {
+    event.preventDefault();
     this.props.attendEvent(this.props.event.id);
   }
 
-  handleLeaveEvent(e) {
-    e.preventDefault();
+  handleLeaveEvent(event) {
+    event.preventDefault();
     this.props.leaveEvent(this.props.event.id);
   }
-
 
   attendButton() {
     if(!this.props.loggedIn) {
@@ -109,8 +108,7 @@ class EventShow extends React.Component {
                     </div></Link>
 
                   </div>
-                ))
-              }
+                ))}
               </ul>
             </div>
 
@@ -120,13 +118,16 @@ class EventShow extends React.Component {
       }
   }
 
-
   render() {
     if (this.props.loading) {
       return (<img className='loading-spinner' src='https://s3.amazonaws.com/meetnow-DEV/meetNow/rolling.gif' alt='loading'/>);
     }
 
     if (this.props.event) {
+      const forms = {
+        'login': <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")} />,
+        'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} /> }
+
       return (
         <div className='event-mid-content-box'>
           <div className='event-show-left-right'>
@@ -137,6 +138,7 @@ class EventShow extends React.Component {
               <div className='event-show-location'><li><i className="fa fa-map-marker fa-2x"></i>{this.props.event.location}</li></div>
               <div className='event-show-map'><li><EventMap latitude={this.props.event.latitude} longitude={this.props.event.longitude}/></li></div>
               <div className='event-show-inner-description'><li className='event-show-description'>{this.props.event.description}</li></div>
+              <button>Update Event</button>
             </div>
 
             <div className='event-show-right-side'>
@@ -146,20 +148,11 @@ class EventShow extends React.Component {
 
         <Modal
           overlayClassName='modal-overlay'
-          className='modal-container modal-large-signup'
-          isOpen={this.state.modalType === "signup"}
+          className={`modal-container modal-${this.state.modalType} animated  animated zoomIn`}
+          isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}
-          contentLabel="signup-modal">
-          <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")}/>
-        </Modal>
-
-        <Modal
-          overlayClassName='modal-overlay'
-          className='modal-container'
-          isOpen={this.state.modalType === "login"}
-          onRequestClose={this.closeModal}
-          contentLabel="login-modal">
-          <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")}/>
+          contentLabel="header-modals">
+          {forms[this.state.modalType]}
         </Modal>
       </div>
 
