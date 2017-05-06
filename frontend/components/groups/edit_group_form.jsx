@@ -54,7 +54,6 @@ class EditGroupForm extends React.Component {
     event.preventDefault();
     geocodeByAddress(this.state.location,  (err, latLng) => { if (err) { return } });
 
-    // window.scrollTo(0, 0);
     this.props.updateGroup({
       name: this.state.name,
       location: this.state.location,
