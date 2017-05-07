@@ -6,7 +6,7 @@ MeetNow! is a Full Stack Web Application inspired by Meetup. The single page fro
 
 ## Features & Implementation
 
-* [MeetNow!](#the-core-f-meetnow)
+* [MeetNow!](#the-core-of-meetnow)
   - Explore, Search, Join Groups, and RSVP Events
   - CRUD for Groups and Events
   - List of Events for each Group
