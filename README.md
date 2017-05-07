@@ -1,23 +1,24 @@
-# MeetNow!
+# MeetNow! ([Live](https://www.meetnow.life))
 
-MeetNow! is a full-stack web application inspired by Meetup. The single page frontend is built using React.js/Redux; the backend is powered by Ruby on Rails sitting on a PostgreSQL database. If you're passionate about something, why wait? Try it out using the 'Guest' login and Let's [MeetNow!](https://www.meetnow.life/)
+MeetNow! is a Full Stack Web Application inspired by Meetup. The single page frontend is built using JavaScript, React.js, and Redux framework. The backend is powered by Ruby on Rails sitting on a PostgreSQL database. If you're passionate about something, why wait? Try it out using the 'Guest' login and Let's [MeetNow!](https://www.meetnow.life/)
 
-### [MeetNow! Live](https://www.meetnow.life)
 ![MeetNow](/docs/pics/meetnow.gif)
 
 ## Features & Implementation
 
 * [MeetNow!](#the-core-of-meetnow!)
-  - Join groups
-  - Create, Update, Delete (organizers only)
-  - See events of the group
-  - See members of the group
-* [Events](#events)
-  - Create, Update, Delete (group organizers only)
-  - RSVP, comment (members only)
-  - See attending list of the event
+  - Explore, Search, Join Groups, and RSVP Events
+  - CRUD for Groups and Events
+  - List of Events for each Group
+  - List of attendees for each Event
+  - See each user's profile
+  - List of members for each Group
+* [Groups/Events](#events)
+  - Create, Retrieve, Update, Delete (organizers only)
+  - Join/Leave, RSVP (member/logged-in users only)
+  - Clickable on other members/users profiles
 * [Search Bar](#search-bar)
-  - Searches for groups based on location
+  - Search for groups by group name
 * [New User & Log in](#new-user-&-logging-in)
   - Create an account
   - Login / Logout / Guest login for exploration
@@ -38,11 +39,11 @@ The Event components will re-render under groups show page as the user can join,
 ![MeetNow](/docs/pics/event.png)
 
 ### Search bar
-Users can search for groups based on location. The groups are fetched using ActiveRecord queries. An includes method is used to prefetch the database to prevent an inefficient N+1 query.
+Users can search for groups based on group names. The groups are fetched using ActiveRecord queries. An includes method is used to prefetch the database to prevent an inefficient N+1 query.
 
 ```ruby
   search_bar_filter = params[:filter]
-  Group.includes(:users, :events).where("LOWER(location) LIKE ?", "#{search_bar_filter.downcase}%")
+  Group.includes(:users, :events).where("LOWER(name) LIKE ?", "#{search_bar_filter.downcase}%")
 ```
 
 ![MeetNow](/docs/pics/search.png)
