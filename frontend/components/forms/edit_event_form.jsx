@@ -65,7 +65,7 @@ class EditEventForm extends React.Component {
             <input type='text'
                    value={ this.state.name }
                    onChange={ this.update('name') }
-                   maxLength='20'
+                   maxLength='30'
                    placeholder='React Party #271'/>
 
             <label>Description</label>

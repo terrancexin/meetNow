@@ -58,7 +58,11 @@ class CreateEventForm extends React.Component {
         <form className='create-event-form' onSubmit={this.handleSubmit}>
           <div className='event-form-inputs-box'>
             <label>Name</label>
-            <input type='text' value={this.state.name} onChange={this.update('name')} placeholder='React Party #271'/>
+            <input type='text'
+                  maxLength="30"
+                   value={this.state.name}
+                   onChange={this.update('name')}
+                   placeholder='React Party #271'/>
 
             <label>Description</label>
             <textarea rows='4'
