@@ -6,35 +6,35 @@ MeetNow! is a Full Stack Web Application inspired by Meetup. The single page fro
 
 ## Features & Implementation
 
-* [MeetNow!](#the-core-of-meetnow!)
+* [MeetNow!](#the-core-f-meetnow)
   - Explore, Search, Join Groups, and RSVP Events
   - CRUD for Groups and Events
   - List of Events for each Group
   - List of attendees for each Event
   - See each user's profile
   - List of members for each Group
-* [Groups/Events](#events)
+* [Groups/Events](#groups-and-events)
   - Create, Retrieve, Update, Delete (organizers only)
   - Join/Leave, RSVP (member/logged-in users only)
   - Clickable on other members/users profiles
 * [Search Bar](#search-bar)
   - Search for groups by group name
-* [New User & Log in](#new-user-&-logging-in)
+* [New User & Log in](#new-user-and-logging-in)
   - Create an account
   - Login / Logout / Guest login for exploration
 * [Authentication](#authentication)
   - Secure custom authentication system that hashes/salts passwords using BCrypt
 
-### The core of MeetNow!
+### The core of MeetNow
 Users can create groups to bring together passionate individuals who are eager to share what they love.
 The groups are stored as a single table in the database. Groups have many users, many events, many organizers through each association tables accordingly.
 
 ![MeetNow](/docs/pics/group.png)
 
-### Events
+### Groups and Events
 Events are nested under a group, so that there are no events that stand-alone. Only the members of a group are able to create an event for their group.
 A user must be logged in and be a part of that group in order to RSVP each events.
-The Event components will re-render under groups show page as the user can join, leave, comment, and see who is attending each event.
+The Event components will re-render under groups show page as the user can join, leave, and see who is attending each event.
 
 ![MeetNow](/docs/pics/event.png)
 
@@ -49,7 +49,7 @@ Users can search for groups based on group names. The groups are fetched using A
 ![MeetNow](/docs/pics/search.png)
 
 
-### New user & logging in
+### New user and logging in
 Login inputs are validated on both the front-end and back-end. Client side validations check for password length and unique email addresses. Passwords are hashed using [BCrypt](https://en.wikipedia.org/wiki/Bcrypt) before being stored on the server. Plaintext passwords are never stored.
 
 Server side validation occurs at both the model and the database. These redundancies are useful to ensure the integrity of data stored within the database and generally considered best practice.
