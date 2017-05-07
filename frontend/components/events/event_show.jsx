@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchEvent, attendEvent, leaveEvent } from '../../actions/event_actions';
+import { fetchEvent, attendEvent, leaveEvent, deleteEvent } from '../../actions/event_actions';
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
 import Modal from 'react-modal';
@@ -128,7 +128,7 @@ class EventShow extends React.Component {
       const forms = {
         'login': <LogInForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("signup")} />,
         'signup': <SignUpForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen("login")} />,
-        'editEvent': <EditEventForm closeModal={this.closeModal} handleModalOpen={this.handleModalOpen('editEvent')} /> }
+      'editEvent': <EditEventForm closeModal={this.closeModal} handleModalOpen={ this.handleModalOpen('editEvent') } eventId={ this.props.params.eventId }/> }
 
       return (
         <div className='event-mid-content-box'>
@@ -140,7 +140,8 @@ class EventShow extends React.Component {
               <div className='event-show-location'><li><i className="fa fa-map-marker fa-2x"></i>{this.props.event.location}</li></div>
               <div className='event-show-map'><li><EventMap latitude={this.props.event.latitude} longitude={this.props.event.longitude}/></li></div>
               <div className='event-show-inner-description'><li className='event-show-description'>{this.props.event.description}</li></div>
-              { this.props.loggedIn && <button className='update-event-button' onClick={this.handleModalOpen("editEvent")}>Update Event</button> }
+              { this.props.loggedIn && (Object.keys(this.props.event.attendees).includes(`${this.props.currentUser.id}`)) && <button className='update-event-button' onClick={this.handleModalOpen("editEvent")}>Update Event</button> }
+              { this.props.loggedIn && (Object.keys(this.props.event.attendees).includes(`${this.props.currentUser.id}`)) && <button className='event-delete-button' onClick={this.handleModalOpen("editEvent")}>Delete Event</button> }
             </div>
 
             <div className='event-show-right-side'>

@@ -12,12 +12,15 @@ class CreateEventForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {name: '', time: '', description: '', location: '', group_id: this.props.params.groupId};
-    this.handleLocation = this.handleLocation.bind(this);
-    this.handleName = this.handleName.bind(this);
-    this.handleDescription = this.handleDescription.bind(this);
-    this.handleTime = this.handleTime.bind(this);
+    this.state = {
+      name: '',
+      time: '',
+      description: '',
+      location: '',
+      group_id: this.props.params.groupId
+    };
 
+    this.update = this.update.bind(this);
     this.onChange = (location) => this.setState({ location })
   }
 
@@ -36,20 +39,8 @@ class CreateEventForm extends React.Component {
     });
   }
 
-  handleLocation(e) {
-    this.setState({location: e.target.value});
-  }
-
-  handleName(e) {
-    this.setState({name: e.target.value});
-  }
-
-  handleDescription(e) {
-    this.setState({description: e.target.value});
-  }
-
-  handleTime(e) {
-    this.setState({time: e.target.value });
+  update (field) {
+    return e => this.setState({ [field]: e.currentTarget.value });
   }
 
   render() {
@@ -67,13 +58,16 @@ class CreateEventForm extends React.Component {
         <form className='create-event-form' onSubmit={this.handleSubmit}>
           <div className='event-form-inputs-box'>
             <label>Name</label>
-            <input type='text' value={this.state.name} onChange={this.handleName} placeholder='React Party #271'/>
+            <input type='text' value={this.state.name} onChange={this.update('name')} placeholder='React Party #271'/>
 
             <label>Description</label>
-            <input type='text' value={this.state.description} onChange={this.handleDescription} placeholder='Everybody Redux!'/>
+            <textarea rows='4'
+                      value={this.state.description}
+                      onChange={this.update('description')}
+                      placeholder='Everybody Redux!'></textarea>
 
             <label>Date</label>
-            <input type='date' value={this.state.time} onChange={this.handleTime} />
+            <input type='date' value={this.state.time} onChange={this.update('time')} />
 
 
             <label>Location</label>

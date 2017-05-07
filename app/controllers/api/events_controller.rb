@@ -28,9 +28,8 @@ class Api::EventsController < ApplicationController
     end
   end
 
-  def updated
+  def update
     @event = Event.find(params[:id])
-
     if @event.update(event_params)
       render :show
     else

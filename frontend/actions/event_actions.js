@@ -80,19 +80,21 @@ export const createEvent = event => dispatch => {
 
 export const fetchEvent = id => dispatch => {
   dispatch(startLoading());
-  return (EventApiUtil.fetchEvent(id).then(event => dispatch(receiveEvent(event))));
+  return (EventApiUtil.fetchEvent(id).then(event => {
+    dispatch(receiveEvent(event));
+  }, error => dispatch(receiveEventErrors(error.responseJSON))));
 };
 
 export const updateEvent = (event, id) => dispatch => {
   return(
-    EventUtil.updateEvent(event, id).then((event, id) => {
-      dispatch(receiveOneEvent(event, id));
+    EventApiUtil.updateEvent(event, id).then((event, id) => {
+      dispatch(receiveEvent(event, id));
     }, error => dispatch(receiveEventErrors(error.responseJSON)))
   );
 };
 
 export const deleteEvent = id => dispatch => {
   return (
-    EventUtil.deleteEvent(id).then(event => dispatch(removeEvent(event)))
+    EventApiUtil.deleteEvent(id).then(event => dispatch(removeEvent(event)))
   );
 };

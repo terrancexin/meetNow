@@ -1,5 +1,6 @@
 @import 'base/flexbox';
 @import 'base/input-type';
+@import 'base/buttons';
 
 .create-event-form {
   @include flex-column;
@@ -12,6 +13,7 @@
   display: flex;
   flex-direction: column;
 
+  textarea,
   input[type="text"],
   input[type="password"],
   input[type="email"],
@@ -31,4 +33,18 @@
       background-color: $hover-gray;
     }
   }
+}
+
+.event-delete-button {
+  @include cancel-button;
+  &:hover {
+    background-color: black;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .event-delete-button {
+    margin-left: 14px;
+  }
+
 }

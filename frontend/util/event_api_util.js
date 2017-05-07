@@ -46,7 +46,7 @@ export const leaveEvent = (eventId) => {
 export const updateEvent = (event, id) => {
   return $.ajax({
     method: 'PATCH',
-    url: `api/events/${id}`,
+    url: `/api/events/${id}`,
     data: { event }
   });
 };
@@ -54,6 +54,6 @@ export const updateEvent = (event, id) => {
 export const deleteEvent = id => {
   return $.ajax({
     method: 'DELETE',
-    url: `/api/groups/${id}`
+    url: `/api/events/${id}`
   });
 };

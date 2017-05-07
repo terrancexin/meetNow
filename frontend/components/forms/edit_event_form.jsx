@@ -1,55 +1,50 @@
 import React from 'react';
-import { createEvent } from '../../actions/event_actions';
 import { connect } from 'react-redux';
-import { Router, withRouter } from 'react-router';
-import { clearEventErrors } from '../../actions/event_actions';
+import { Router, withRouter, hashHistory, Link } from 'react-router';
 import Errors from '../errors/errors';
 import PlacesAutocomplete from 'react-places-autocomplete'
 import { geocodeByAddress } from 'react-places-autocomplete'
 import { eventStyle } from './auto_complete';
+import {updateEvent, clearEventErrors } from '../../actions/event_actions';
 
 class EditEventForm extends React.Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {name: '', time: '', description: '', location: '', group_id: this.props.params.groupId};
-    this.handleLocation = this.handleLocation.bind(this);
-    this.handleName = this.handleName.bind(this);
-    this.handleDescription = this.handleDescription.bind(this);
-    this.handleTime = this.handleTime.bind(this);
+    this.state = {
+      name: this.props.event.name,
+      time: this.props.event.time.slice(0, 10),
+      description: this.props.event.description,
+      location: this.props.event.location,
+    };
 
     this.onChange = (location) => this.setState({ location })
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount () {
+    this.props.clearEventErrors();
   }
 
   componentWillMount() {
     this.props.clearEventErrors();
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    geocodeByAddress(this.state.location,  (err, latLng) => {
-      if (err) { return}
-    });
+  update (field) {
+    return e => this.setState({ [field]: e.currentTarget.value });
+  }
 
-    this.props.createEvent(this.state).then(() => {
+  handleSubmit(event) {
+    event.preventDefault();
+    geocodeByAddress(this.state.location,  (err, latLng) => { if (err) { return} });
+
+    this.props.updateEvent({
+      name: this.state.name,
+      time: this.state.time.slice(0, 10),
+      description: this.state.description,
+      location: this.state.location,
+    }, this.props.eventId).then(() => {
       this.props.closeModal();
     });
-  }
-
-  handleLocation(e) {
-    this.setState({location: e.target.value});
-  }
-
-  handleName(e) {
-    this.setState({name: e.target.value});
-  }
-
-  handleDescription(e) {
-    this.setState({description: e.target.value});
-  }
-
-  handleTime(e) {
-    this.setState({time: e.target.value });
   }
 
   render() {
@@ -60,27 +55,35 @@ class EditEventForm extends React.Component {
     return (
       <div className='modal-form-container'>
         <div className='form-header'>
-          <h1 className='event-form-header'>Create an Event</h1>
+          <h1 className='event-form-header'>Update Event</h1>
         </div>
         <Errors errors={ this.props.errors } />
 
         <form className='create-event-form' onSubmit={this.handleSubmit}>
           <div className='event-form-inputs-box'>
             <label>Name</label>
-            <input type='text' value={this.state.name} onChange={this.handleName} placeholder='React Party #271'/>
+            <input type='text'
+                   value={ this.state.name }
+                   onChange={ this.update('name') }
+                   maxLength='20'
+                   placeholder='React Party #271'/>
 
             <label>Description</label>
-            <input type='text' value={this.state.description} onChange={this.handleDescription} placeholder='Everybody Redux!'/>
+            <textarea rows='4'
+                      value={ this.state.description }
+                      onChange={ this.update('description') }
+                      placeholder='Everybody Redux!'></textarea>
 
             <label>Date</label>
-            <input type='date' value={this.state.time} onChange={this.handleTime} />
-
+            <input type='date'
+                   value={ this.state.time }
+                   onChange={ this.update('date') } />
 
             <label>Location</label>
-            <PlacesAutocomplete inputProps={inputProps} styles={eventStyle}/>
+            <PlacesAutocomplete inputProps={ inputProps } styles={ eventStyle } />
 
             <div className='event-form-button-box'>
-              <input type='submit' value="Create"/>
+              <input type='submit' value="Update"/>
               <input className="event-cancel-button" onClick={this.props.closeModal} type="submit" value="Cancel" />
             </div>
           </div>
@@ -90,15 +93,14 @@ class EditEventForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return({
-    errors: state.errors.event
-  });
-};
+const mapStateToProps = (state, ownProps) => ({
+  errors: state.errors.event,
+  event: state.events[ownProps.eventId]
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  createEvent: myEvent => dispatch(createEvent(myEvent)),
-  clearEventErrors: () => dispatch(clearEventErrors())
+  clearEventErrors: () => dispatch(clearEventErrors()),
+  updateEvent: (event, id) => dispatch(updateEvent(event, id))
 });
 
 export default connect(
