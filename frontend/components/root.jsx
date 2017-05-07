@@ -46,8 +46,8 @@ const Root = ({ store }) => {
           <Route path='groups' component={ GroupsIndex } />
           <Route path='new-group' component={ GroupForm } onEnter={ _ensureLoggedIn }/>
           <Route path='groups/:groupId' component={ GroupsShow }>
-            <Route path='edit' component={ EditGroupForm } onEnter={ _ensureLoggedIn }/>
-            <Route path='events/:eventId' component={ EventShow }>
+            <Route path='edit' component={ EditGroupForm } onEnter={ _ensureLoggedIn } />
+            <Route path='events/:eventId' component={ EventShow } onEnter={ _ensureLoggedIn } >
             </Route>
           </Route>
 
