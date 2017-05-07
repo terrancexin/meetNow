@@ -4,20 +4,50 @@ import { fetchEvent, attendEvent, leaveEvent, deleteEvent } from '../../actions/
 import LogInForm from '../forms/login_form';
 import SignUpForm from '../forms/signup_form';
 import Modal from 'react-modal';
-import { Link } from 'react-router';
+import { Link, withRouter, hashHistory } from 'react-router';
 import EventMap from './event_map';
 import EditEventForm from '../forms/edit_event_form';
 
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalType: "", profile: false, modalOpen: false };
+    this.state = {
+      modalType: "",
+      profile: false,
+      modalOpen: false,
+      areYouSure: false
+    };
+
     this.closeModal = this.closeModal.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
 
     this.handleAttendEvent = this.handleAttendEvent.bind(this);
     this.handleLeaveEvent = this.handleLeaveEvent.bind(this);
     this.attendButton = this.attendButton.bind(this);
+
+    this.toggleAreYouSure = this.toggleAreYouSure.bind(this);
+    this.handleAreYouSure = this.handleAreYouSure.bind(this);
+    this.handleDeleteEvent = this.handleDeleteEvent.bind(this);
+  }
+
+  handleDeleteEvent(id) {
+    return () => {
+      this.props.deleteEvent(id);
+      this.props.router.push(`/groups/${this.props.params.groupId}`);
+    }
+  }
+
+  toggleAreYouSure () {
+    if (this.state.areYouSure) {
+      return  { display: 'flex' };
+    } else {
+      return { display: 'none' };
+    }
+  }
+
+  handleAreYouSure () {
+    this.setState({ areYouSure: !this.state.areYouSure });
+    this.toggleAreYouSure();
   }
 
   closeModal() {
@@ -141,7 +171,8 @@ class EventShow extends React.Component {
               <div className='event-show-map'><li><EventMap latitude={this.props.event.latitude} longitude={this.props.event.longitude}/></li></div>
               <div className='event-show-inner-description'><li className='event-show-description'>{this.props.event.description}</li></div>
               { this.props.loggedIn && (Object.keys(this.props.event.attendees).includes(`${this.props.currentUser.id}`)) && <button className='update-event-button' onClick={this.handleModalOpen("editEvent")}>Update Event</button> }
-              { this.props.loggedIn && (Object.keys(this.props.event.attendees).includes(`${this.props.currentUser.id}`)) && <button className='event-delete-button' onClick={this.handleModalOpen("editEvent")}>Delete Event</button> }
+              { this.props.loggedIn && (Object.keys(this.props.event.attendees).includes(`${this.props.currentUser.id}`)) && <button className='event-delete-button' onClick={this.handleDeleteEvent(`${this.props.params.eventId}`) }>Delete Event</button> }
+
             </div>
 
             <div className='event-show-right-side'>
@@ -181,7 +212,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     {
       fetchEvent: id => dispatch(fetchEvent(id)),
       attendEvent: (eventId) => dispatch(attendEvent(eventId)),
-      leaveEvent: (eventId) => dispatch(leaveEvent(eventId))
+      leaveEvent: (eventId) => dispatch(leaveEvent(eventId)),
+      deleteEvent: id => dispatch(deleteEvent(id))
     }
   );
 };

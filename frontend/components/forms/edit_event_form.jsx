@@ -14,7 +14,7 @@ class EditEventForm extends React.Component {
       name: this.props.event.name,
       time: this.props.event.time.slice(0, 10),
       description: this.props.event.description,
-      location: this.props.event.location,
+      location: this.props.event.location
     };
 
     this.onChange = (location) => this.setState({ location })
