@@ -55,7 +55,7 @@ class WelcomeFooter extends React.Component {
         <div className='footer-icon-box'>
             <div className="footer-icons">
               <Link className='footer-links-icon' href="https://www.terrancexin.com" title="www" target="_blank"><i className="fa fa-globe"></i></Link>
-              <Link className='footer-links-icon' href="https://github.com/terrancexin/meetNow" title="github" target="_blank"><i className="fa fa-github"></i></Link>
+              <Link className='footer-links-icon' href="https://github.com/terrancexin" title="github" target="_blank"><i className="fa fa-github"></i></Link>
               <Link className='footer-links-icon' href="https://www.linkedin.com/in/terrancexin/" title="linkedin" target="_blank" ><i className="fa fa-linkedin"></i></Link>
               <Link className='footer-links-icon' href="https://angel.co/terrancexin" title="angellist" target="_blank" ><i className="fa fa-angellist"></i></Link>
            </div>
